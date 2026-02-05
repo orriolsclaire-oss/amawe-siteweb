@@ -141,59 +141,108 @@ const includes = [
 
     <!-- Bon de commande retraite -->
     <section id="reservation" class="py-20 md:py-28">
-      <div class="mx-auto max-w-4xl px-6">
-        <p class="section-label mb-4 text-center">RESERVER TA PLACE</p>
-        <h2 class="text-center text-4xl md:text-5xl">Retraite Danse & Silence</h2>
-        <div class="divider mx-auto mt-6 mb-6"></div>
-        <p class="mx-auto mb-12 max-w-xl text-center text-sm text-[var(--color-text-light)]">
-          {t("exp.retreat.pricing.label")}
-        </p>
+      <div class="mx-auto max-w-xl px-6">
+        <div class="order-form">
+          <!-- Header sombre -->
+          <div class="order-form-header">
+            <p class="font-['Inter',sans-serif] text-xs font-medium uppercase tracking-[0.2em]">Bon de commande</p>
+            <h3 class="mt-2 font-['Cormorant_Garamond',serif] text-2xl font-light text-[var(--color-surface)]">Retraite Danse & Silence</h3>
+            <p class="mt-1 text-sm text-[var(--color-surface)]/70">25 — 28 fevrier 2026 · Ecolieu, Sud Aveyron</p>
+          </div>
 
-        <!-- Pricing grid -->
-        <div class="mb-12 grid gap-4 md:grid-cols-2">
-          <div class="border border-[var(--color-border)] bg-[var(--color-surface)] p-6 text-center">
-            <p class="section-label">Autonome (van/camping-car)</p>
-            <p class="mt-2 font-['Cormorant_Garamond',serif] text-3xl text-[var(--color-accent)]">420 EUR</p>
-          </div>
-          <div class="border border-[var(--color-border)] bg-[var(--color-surface)] p-6 text-center opacity-50">
-            <p class="section-label">Dortoir partage (4-5 lits)</p>
-            <p class="mt-2 font-['Cormorant_Garamond',serif] text-3xl text-[var(--color-text-light)]">490 EUR</p>
-            <span class="badge-urgency mt-2 inline-block">COMPLET</span>
-          </div>
-          <div class="border-2 border-[var(--color-accent)] bg-[var(--color-surface)] p-6 text-center">
-            <p class="section-label">Gite independant partage (3 lits)</p>
-            <p class="mt-2 font-['Cormorant_Garamond',serif] text-3xl text-[var(--color-accent)]">560 EUR</p>
-            <span class="badge-urgency mt-2 inline-block">1 PLACE RESTANTE</span>
-          </div>
-          <div class="border border-[var(--color-border)] bg-[var(--color-surface)] p-6 text-center">
-            <p class="section-label">Studio independant solo ou couple</p>
-            <p class="mt-2 font-['Cormorant_Garamond',serif] text-3xl text-[var(--color-accent)]">620 EUR</p>
-            <p class="mt-1 text-xs text-[var(--color-text-light)]">-80 EUR si couple</p>
-          </div>
-        </div>
+          <!-- Body -->
+          <div class="order-form-body">
+            <p class="section-label mb-6 text-center">{t("exp.retreat.pricing.label")}</p>
 
-        <!-- Reassurance + CTA -->
-        <div class="mx-auto max-w-md text-center">
-          <div class="mb-6 grid grid-cols-2 gap-4">
-            <div class="reassurance-item justify-center">
-              <div class="reassurance-icon">🏡</div>
-              <span class="text-xs">Tout inclus</span>
+            <!-- 4 tarifs hebergement -->
+            <div class="space-y-3">
+              <!-- Autonome -->
+              <div class="flex items-center justify-between border border-[var(--color-border)] p-4">
+                <div>
+                  <p class="text-sm font-medium">Autonome</p>
+                  <p class="text-xs text-[var(--color-text-light)]">Van / camping-car</p>
+                </div>
+                <p class="font-['Cormorant_Garamond',serif] text-2xl text-[var(--color-accent)]">420 EUR</p>
+              </div>
+
+              <!-- Dortoir — COMPLET -->
+              <div class="flex items-center justify-between border border-[var(--color-border)] p-4 opacity-50">
+                <div>
+                  <p class="text-sm font-medium">Dortoir partage</p>
+                  <p class="text-xs text-[var(--color-text-light)]">4-5 lits</p>
+                </div>
+                <div class="text-right">
+                  <p class="font-['Cormorant_Garamond',serif] text-2xl text-[var(--color-text-light)] line-through">490 EUR</p>
+                  <span class="badge-urgency text-[10px]">COMPLET</span>
+                </div>
+              </div>
+
+              <!-- Gite — 1 place restante -->
+              <div class="flex items-center justify-between border-2 border-[var(--color-accent)] p-4">
+                <div>
+                  <p class="text-sm font-medium">Gite independant partage</p>
+                  <p class="text-xs text-[var(--color-text-light)]">3 lits</p>
+                </div>
+                <div class="text-right">
+                  <p class="font-['Cormorant_Garamond',serif] text-2xl text-[var(--color-accent)]">560 EUR</p>
+                  <span class="badge-urgency text-[10px]">1 PLACE</span>
+                </div>
+              </div>
+
+              <!-- Studio -->
+              <div class="flex items-center justify-between border border-[var(--color-border)] p-4">
+                <div>
+                  <p class="text-sm font-medium">Studio independant</p>
+                  <p class="text-xs text-[var(--color-text-light)]">Solo ou couple (-80 EUR si couple)</p>
+                </div>
+                <p class="font-['Cormorant_Garamond',serif] text-2xl text-[var(--color-accent)]">620 EUR</p>
+              </div>
             </div>
-            <div class="reassurance-item justify-center">
-              <div class="reassurance-icon">🍽</div>
-              <span class="text-xs">Pension complete bio</span>
+
+            <!-- Divider -->
+            <div class="my-6 h-px w-full bg-[var(--color-border)]"></div>
+
+            <!-- Ce qui est inclus -->
+            <div class="mb-6">
+              <p class="section-label mb-4">Ce qui est inclus</p>
+              <div class="space-y-3">
+                {includes.map((item) => (
+                  <div class="check-icon flex items-center text-sm text-[var(--color-text-medium)]">
+                    {item}
+                  </div>
+                ))}
+              </div>
             </div>
-            <div class="reassurance-item justify-center">
-              <div class="reassurance-icon">🔒</div>
-              <span class="text-xs">Acompte 200 EUR</span>
+
+            <!-- Divider -->
+            <div class="my-6 h-px w-full bg-[var(--color-border)]"></div>
+
+            <!-- Reassurance -->
+            <div class="mb-8 grid grid-cols-2 gap-4">
+              <div class="reassurance-item">
+                <div class="reassurance-icon">🏡</div>
+                <span class="text-xs">Tout inclus</span>
+              </div>
+              <div class="reassurance-item">
+                <div class="reassurance-icon">🍽</div>
+                <span class="text-xs">Pension complete bio</span>
+              </div>
+              <div class="reassurance-item">
+                <div class="reassurance-icon">🔒</div>
+                <span class="text-xs">Acompte 200 EUR</span>
+              </div>
+              <div class="reassurance-item">
+                <div class="reassurance-icon">💚</div>
+                <span class="text-xs">Groupe intime (12 max)</span>
+              </div>
             </div>
-            <div class="reassurance-item justify-center">
-              <div class="reassurance-icon">💚</div>
-              <span class="text-xs">Groupe intime</span>
+
+            <!-- CTA -->
+            <div class="text-center">
+              <a href="#" class="btn-accent block w-full text-center">{t("exp.retreat.booking")}</a>
+              <p class="mt-3 text-xs text-[var(--color-text-light)]">{t("exp.retreat.booking.note")}</p>
             </div>
           </div>
-          <a href="#" class="btn-accent block w-full">{t("exp.retreat.booking")}</a>
-          <p class="mt-3 text-xs text-[var(--color-text-light)]">{t("exp.retreat.booking.note")}</p>
         </div>
       </div>
     </section>
