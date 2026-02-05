@@ -3,7 +3,6 @@ import Layout from "~/layouts/Layout.astro"
 import Header from "~/components/Header.astro"
 import Footer from "~/components/Footer.astro"
 import TestimonialQuote from "~/components/TestimonialQuote.astro"
-import ImagePlaceholder from "~/components/ImagePlaceholder.astro"
 import { generatePersonSchema } from "~/utils/schema"
 import { getLangFromUrl, useTranslations } from "~/i18n/utils"
 
@@ -27,7 +26,14 @@ const certifications = [
     <!-- Hero -->
     <section class="py-20 md:py-28">
       <div class="mx-auto grid max-w-6xl items-center gap-12 px-6 md:grid-cols-2 md:gap-20">
-        <ImagePlaceholder label="Claire Orriols — Portrait" aspect="portrait" />
+        <img
+          src="/images/claire-energie-illimitee2.webp"
+          alt="Claire Orriols — Coach en sante holistique et formatrice MovNat en Sud Aveyron"
+          width="683"
+          height="1024"
+          loading="eager"
+          class="aspect-[3/4] w-full object-cover"
+        />
         <div>
           <p class="section-label mb-4">{t("about.label")}</p>
           <h1 class="text-5xl md:text-6xl">{t("about.title")}</h1>
@@ -83,14 +89,28 @@ const certifications = [
             {t("about.philosophy.text")}
           </p>
         </div>
-        <ImagePlaceholder label="Roue de la Sante Holistique" aspect="square" />
+        <img
+          src="/images/roue-sante-holistique.webp"
+          alt="La Roue de la Sante Holistique — Outil Amawe pour evaluer tous les domaines de vie"
+          width="800"
+          height="756"
+          loading="lazy"
+          class="aspect-square w-full object-contain"
+        />
       </div>
     </section>
 
     <!-- Roots -->
     <section class="py-20 md:py-28">
       <div class="mx-auto grid max-w-6xl items-center gap-12 px-6 md:grid-cols-2 md:gap-20">
-        <ImagePlaceholder label="Ecolieu Sud Aveyron" aspect="landscape" />
+        <img
+          src="/images/ecolieu-paysage.webp"
+          alt="Ecolieu en Sud Aveyron — Hameau en pierres au coeur du Parc Naturel des Grands Causses"
+          width="1400"
+          height="1050"
+          loading="lazy"
+          class="aspect-[4/3] w-full object-cover"
+        />
         <div>
           <p class="section-label mb-4">{t("about.roots.label")}</p>
           <h2 class="text-3xl md:text-4xl">Sud Aveyron</h2>

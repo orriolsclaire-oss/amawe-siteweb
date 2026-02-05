@@ -1,6 +1,5 @@
 ---
 import { getLangFromUrl, useTranslations } from "~/i18n/utils"
-import ImagePlaceholder from "./ImagePlaceholder.astro"
 
 const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
@@ -9,7 +8,14 @@ const t = useTranslations(lang)
 <section class="py-20 md:py-28">
   <div class="mx-auto max-w-6xl px-6">
     <div class="grid items-center gap-12 md:grid-cols-2 md:gap-20">
-      <ImagePlaceholder label="Photo Energie Illimitee" aspect="portrait" />
+      <img
+        src="/images/claire-energie-illimitee.webp"
+        alt="Claire Orriols — Programme Energie Illimitee, accompagnement en sante holistique"
+        width="683"
+        height="1024"
+        loading="lazy"
+        class="aspect-[3/4] w-full object-cover"
+      />
       <div>
         <p class="section-label mb-4">{t("program.label")}</p>
         <h2 class="text-4xl md:text-5xl">{t("program.title")}</h2>

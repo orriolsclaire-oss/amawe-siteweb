@@ -3,7 +3,6 @@ import Layout from "~/layouts/Layout.astro"
 import Header from "~/components/Header.astro"
 import Footer from "~/components/Footer.astro"
 import TestimonialQuote from "~/components/TestimonialQuote.astro"
-import ImagePlaceholder from "~/components/ImagePlaceholder.astro"
 import NewsletterSignup from "~/components/NewsletterSignup.astro"
 import { getLangFromUrl, useTranslations } from "~/i18n/utils"
 
@@ -48,7 +47,14 @@ const pricing = [
     </section>
 
     <!-- Full-width image placeholder -->
-    <ImagePlaceholder label="Photo panoramique ecolieu" aspect="hero" />
+    <img
+      src="/images/paysage-aveyron.webp"
+      alt="Paysage panoramique du Sud Aveyron — Parc Naturel des Grands Causses, lieu des retraites Amawe"
+      width="1351"
+      height="900"
+      loading="eager"
+      class="aspect-[16/9] w-full object-cover"
+    />
 
     <!-- Retraite Danse & Silence -->
     <section class="py-20 md:py-28">
@@ -69,7 +75,14 @@ const pricing = [
               <p>{t("exp.retreat.location")}</p>
             </div>
           </div>
-          <ImagePlaceholder label="Photo retraite danse libre" aspect="portrait" />
+          <img
+            src="/images/stage-groupe.webp"
+            alt="Groupe lors d'une retraite Danse et Silence — Stage Amawe en Sud Aveyron"
+            width="1200"
+            height="1600"
+            loading="lazy"
+            class="aspect-[3/4] w-full object-cover"
+          />
         </div>
       </div>
     </section>
@@ -102,7 +115,14 @@ const pricing = [
     <!-- Le lieu -->
     <section class="bg-[var(--color-warm)] py-20 md:py-28">
       <div class="mx-auto grid max-w-6xl items-center gap-12 px-6 md:grid-cols-2 md:gap-20">
-        <ImagePlaceholder label="Photo salle de pratique 120m2" aspect="landscape" />
+        <img
+          src="/images/salle-pratique.webp"
+          alt="Salle de pratique de 120m2 en bois avec baies vitrees — Ecolieu Amawe, Sud Aveyron"
+          width="1024"
+          height="768"
+          loading="lazy"
+          class="aspect-[4/3] w-full object-cover"
+        />
         <div>
           <p class="section-label mb-4">{t("exp.retreat.venue.label")}</p>
           <h2 class="text-3xl md:text-4xl">L'ecolieu</h2>
@@ -117,10 +137,10 @@ const pricing = [
     <!-- Photos grid -->
     <section class="py-16">
       <div class="mx-auto grid max-w-6xl grid-cols-2 gap-4 px-6 md:grid-cols-4">
-        <ImagePlaceholder label="Hameau en pierres" aspect="square" />
-        <ImagePlaceholder label="Riviere" aspect="square" />
-        <ImagePlaceholder label="Salle de pratique" aspect="square" />
-        <ImagePlaceholder label="Soiree feu de bois" aspect="square" />
+        <img src="/images/ecolieu-la-margue.webp" alt="Hameau en pierres de l'ecolieu La Margue — Hebergement retraites Amawe" width="1024" height="768" loading="lazy" class="aspect-square w-full object-cover" />
+        <img src="/images/nature-aveyron.webp" alt="Chemin en nature dans le Sud Aveyron — Randonnee lors des retraites silence" width="800" height="1067" loading="lazy" class="aspect-square w-full object-cover" />
+        <img src="/images/silence-meditation.webp" alt="Meditation en groupe lors d'une retraite silencieuse Amawe" width="1024" height="683" loading="lazy" class="aspect-square w-full object-cover" />
+        <img src="/images/introspection.webp" alt="Moment d'introspection et de journaling lors d'une retraite Danse et Silence" width="1198" height="800" loading="lazy" class="aspect-square w-full object-cover" />
       </div>
     </section>
 
@@ -166,7 +186,14 @@ const pricing = [
             {t("exp.stage.coming")}
           </p>
         </div>
-        <ImagePlaceholder label="Photo stage danse & silence" aspect="landscape" />
+        <img
+          src="/images/claire-stage.webp"
+          alt="Claire Orriols animant un stage de danse libre et mouvement naturel"
+          width="1198"
+          height="800"
+          loading="lazy"
+          class="aspect-[4/3] w-full object-cover"
+        />
       </div>
     </section>
 

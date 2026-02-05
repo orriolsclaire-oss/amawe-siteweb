@@ -1,6 +1,5 @@
 ---
 import { getLangFromUrl, useTranslations } from "~/i18n/utils"
-import ImagePlaceholder from "./ImagePlaceholder.astro"
 
 const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
@@ -23,7 +22,14 @@ const t = useTranslations(lang)
 
     <!-- Photo -->
     <div class="order-1 md:order-2">
-      <ImagePlaceholder label="Portrait Claire Orriols" aspect="portrait" />
+      <img
+        src="/images/claire-portrait-full.webp"
+        alt="Claire Orriols — Coach en sante holistique, formatrice MovNat et facilitatrice de retraites en nature"
+        width="800"
+        height="1200"
+        loading="eager"
+        class="aspect-[3/4] w-full object-cover"
+      />
     </div>
   </div>
 </section>

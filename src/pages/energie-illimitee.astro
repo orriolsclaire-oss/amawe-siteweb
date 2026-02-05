@@ -3,7 +3,6 @@ import Layout from "~/layouts/Layout.astro"
 import Header from "~/components/Header.astro"
 import Footer from "~/components/Footer.astro"
 import TestimonialQuote from "~/components/TestimonialQuote.astro"
-import ImagePlaceholder from "~/components/ImagePlaceholder.astro"
 import NewsletterSignup from "~/components/NewsletterSignup.astro"
 import { getLangFromUrl, useTranslations } from "~/i18n/utils"
 
@@ -136,7 +135,14 @@ const faqs = [
             <h3 class="text-xl">{t("ei.format.immersion.2.title")}</h3>
             <p class="mt-2 text-[var(--color-text-medium)]">{t("ei.format.immersion.2.text")}</p>
           </div>
-          <ImagePlaceholder label="Photo immersion nature" aspect="landscape" />
+          <img
+            src="/images/nature-aveyron.webp"
+            alt="Immersion en nature dans le Sud Aveyron — Randonnee et reconnexion lors du programme Energie Illimitee"
+            width="800"
+            height="1067"
+            loading="lazy"
+            class="aspect-[4/3] w-full object-cover"
+          />
         </div>
       </div>
     </section>
