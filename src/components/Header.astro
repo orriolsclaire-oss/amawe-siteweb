@@ -13,7 +13,7 @@ const t = useTranslations(lang)
     </a>
 
     <!-- Desktop nav -->
-    <div class="hidden items-center gap-8 md:flex">
+    <div class="hidden items-center gap-7 md:flex">
       <a href="/a-propos/" class="section-label hover:text-[var(--color-primary)] transition-colors">
         {t("nav.about")}
       </a>
@@ -25,6 +25,14 @@ const t = useTranslations(lang)
       </a>
       <a href="/contact/" class="section-label hover:text-[var(--color-primary)] transition-colors">
         {t("nav.contact")}
+      </a>
+      <a
+        href="https://meprogramme.amawe.com/login"
+        target="_blank"
+        rel="noopener"
+        class="btn-nav ml-2"
+      >
+        Connexion
       </a>
     </div>
 
@@ -47,6 +55,14 @@ const t = useTranslations(lang)
       <a href="/energie-illimitee/" class="section-label">{t("nav.program")}</a>
       <a href="/experiences/" class="section-label">{t("nav.experiences")}</a>
       <a href="/contact/" class="section-label">{t("nav.contact")}</a>
+      <a
+        href="https://meprogramme.amawe.com/login"
+        target="_blank"
+        rel="noopener"
+        class="btn-nav"
+      >
+        Connexion
+      </a>
     </div>
   </div>
 </header>

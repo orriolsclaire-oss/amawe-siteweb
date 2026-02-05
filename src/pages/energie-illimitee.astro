@@ -2,7 +2,9 @@
 import Layout from "~/layouts/Layout.astro"
 import Header from "~/components/Header.astro"
 import Footer from "~/components/Footer.astro"
-import TestimonialQuote from "~/components/TestimonialQuote.astro"
+import TestimonialCard from "~/components/TestimonialCard.astro"
+import ValueStack from "~/components/ValueStack.astro"
+import OrderForm from "~/components/OrderForm.astro"
 import NewsletterSignup from "~/components/NewsletterSignup.astro"
 import { getLangFromUrl, useTranslations } from "~/i18n/utils"
 
@@ -17,10 +19,10 @@ const problems = [
 ]
 
 const pillars = [
-  { title: t("ei.pillar.1.title"), text: t("ei.pillar.1.text"), num: "01" },
-  { title: t("ei.pillar.2.title"), text: t("ei.pillar.2.text"), num: "02" },
-  { title: t("ei.pillar.3.title"), text: t("ei.pillar.3.text"), num: "03" },
-  { title: t("ei.pillar.4.title"), text: t("ei.pillar.4.text"), num: "04" },
+  { title: t("ei.pillar.1.title"), text: t("ei.pillar.1.text"), num: "01", icon: "🌿" },
+  { title: t("ei.pillar.2.title"), text: t("ei.pillar.2.text"), num: "02", icon: "🤸" },
+  { title: t("ei.pillar.3.title"), text: t("ei.pillar.3.text"), num: "03", icon: "🧠" },
+  { title: t("ei.pillar.4.title"), text: t("ei.pillar.4.text"), num: "04", icon: "🎯" },
 ]
 
 const bonuses = [
@@ -37,6 +39,35 @@ const faqs = [
   { q: t("ei.faq.2.q"), a: t("ei.faq.2.a") },
   { q: t("ei.faq.3.q"), a: t("ei.faq.3.a") },
 ]
+
+const valueStackItems = [
+  { label: "12 seances de coaching de groupe", value: "1 200 EUR" },
+  { label: "6 coachings individualises hot seat", value: "600 EUR" },
+  { label: "Immersion 2 jours a Montpellier", value: "400 EUR" },
+  { label: "Immersion 4 jours en nature (Aveyron)", value: "800 EUR" },
+  { label: "Bibliotheque videos mouvement", value: "200 EUR" },
+  { label: "Recettes sante + listes de courses", value: "150 EUR" },
+  { label: "Groupe WhatsApp prive", value: "Offert" },
+  { label: "Suivi post-programme M+1", value: "150 EUR" },
+  { label: "6 bonus (experts, reunion alumni...)", value: "300 EUR" },
+]
+
+const orderIncluded = [
+  { text: "12 seances de coaching (groupe + hot seat)" },
+  { text: "2 immersions en presentiel (Montpellier + Aveyron)" },
+  { text: "Bibliotheque de videos mouvement" },
+  { text: "Recettes sante et listes de courses" },
+  { text: "Groupe WhatsApp prive" },
+  { text: "Suivi post-programme a M+1" },
+  { text: "6 bonus offerts (experts, reunion alumni...)" },
+]
+
+const orderReassurance = [
+  { icon: "🔒", text: "Paiement 100% securise" },
+  { icon: "👥", text: "Entree sur candidature" },
+  { icon: "💚", text: "Accompagnement personnalise" },
+  { icon: "⭐", text: "+3 500 personnes accompagnees" },
+]
 ---
 
 <Layout
@@ -46,49 +77,120 @@ const faqs = [
   <Header />
   <main class="pt-20">
 
-    <!-- Hero -->
-    <section class="py-20 md:py-32">
-      <div class="mx-auto max-w-4xl px-6 text-center">
-        <p class="section-label mb-6">{t("ei.label")}</p>
-        <h1 class="text-5xl md:text-7xl">{t("ei.title")}</h1>
-        <p class="mx-auto mt-6 max-w-2xl font-['Cormorant_Garamond',serif] text-xl italic text-[var(--color-text-light)] md:text-2xl">
-          {t("ei.subtitle")}
+    <!-- ============================================
+         HERO — Full-impact with image background
+         ============================================ -->
+    <section class="relative min-h-[85vh] flex items-center overflow-hidden">
+      <img
+        src="/images/ecolieu-paysage.webp"
+        alt=""
+        role="presentation"
+        class="absolute inset-0 h-full w-full object-cover"
+      />
+      <div class="gradient-overlay"></div>
+      <div class="relative z-10 mx-auto max-w-4xl px-6 py-24">
+        <span class="badge-urgency mb-6 inline-block">Places limitees — Prochaine session : 20 avril 2026</span>
+        <h1 class="text-5xl text-[var(--color-surface)] md:text-7xl">{t("ei.title")}</h1>
+        <p class="mt-6 max-w-2xl font-['Cormorant_Garamond',serif] text-xl text-[var(--color-surface)]/80 md:text-2xl">
+          Retrouve une energie durable, un corps qui repond, un mental apaise — en 3 mois d'accompagnement holistique.
         </p>
-        <div class="divider mx-auto mt-8"></div>
-        <div class="mt-10 flex flex-col items-center gap-3">
-          <a href="#postuler" class="btn-primary">{t("ei.cta")}</a>
-          <p class="text-xs text-[var(--color-text-light)]">{t("ei.cta.note")}</p>
+        <div class="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
+          <a href="#bon-de-commande" class="btn-accent">{t("ei.cta")}</a>
+          <p class="text-sm text-[var(--color-surface)]/60">{t("ei.cta.note")}</p>
         </div>
       </div>
     </section>
 
-    <!-- Problem section -->
-    <section class="bg-[var(--color-warm)] py-20 md:py-28">
+    <!-- ============================================
+         SOCIAL PROOF BAR
+         ============================================ -->
+    <section class="border-y border-[var(--color-border)] bg-[var(--color-surface)]">
+      <div class="mx-auto grid max-w-4xl grid-cols-3 divide-x divide-[var(--color-border)]">
+        <div class="px-4 py-6 text-center">
+          <p class="font-['Cormorant_Garamond',serif] text-2xl text-[var(--color-accent)] md:text-3xl">3 500+</p>
+          <p class="section-label mt-1 text-[0.6rem]">personnes accompagnees</p>
+        </div>
+        <div class="px-4 py-6 text-center">
+          <p class="font-['Cormorant_Garamond',serif] text-2xl text-[var(--color-sage)] md:text-3xl">3 mois</p>
+          <p class="section-label mt-1 text-[0.6rem]">d'accompagnement</p>
+        </div>
+        <div class="px-4 py-6 text-center">
+          <p class="font-['Cormorant_Garamond',serif] text-2xl text-[var(--color-accent)] md:text-3xl">2</p>
+          <p class="section-label mt-1 text-[0.6rem]">immersions en presentiel</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         PROBLEM — Are you surviving instead of living?
+         ============================================ -->
+    <section class="bg-[var(--color-primary)] py-20 md:py-28">
       <div class="mx-auto max-w-4xl px-6">
-        <p class="section-label mb-4 text-center">{t("ei.problem.label")}</p>
-        <h2 class="text-center text-4xl md:text-5xl">{t("ei.problem.title")}</h2>
-        <div class="mt-12 space-y-6">
+        <p class="section-label mb-4 text-center text-[var(--color-accent)]">{t("ei.problem.label")}</p>
+        <h2 class="text-center text-4xl text-[var(--color-surface)] md:text-5xl">{t("ei.problem.title")}</h2>
+        <div class="mt-12 space-y-4">
           {problems.map((problem) => (
-            <div class="flex items-start gap-4 rounded-none border-l-2 border-[var(--color-accent)] bg-[var(--color-surface)] px-6 py-5">
-              <p class="text-[var(--color-text-medium)]">{problem}</p>
+            <div class="flex items-start gap-4 border-l-2 border-[var(--color-accent)] bg-[var(--color-surface)]/5 px-6 py-5">
+              <span class="mt-0.5 text-lg text-[var(--color-accent)]">—</span>
+              <p class="text-[var(--color-surface)]/80">{problem}</p>
             </div>
           ))}
         </div>
+        <p class="mt-10 text-center font-['Cormorant_Garamond',serif] text-2xl italic text-[var(--color-accent)]">
+          Il existe un autre chemin.
+        </p>
       </div>
     </section>
 
-    <!-- 4 Pillars -->
+    <!-- ============================================
+         TRANSFORMATION — What if you could...
+         ============================================ -->
+    <section class="bg-[var(--color-sage-light)] py-20 md:py-28">
+      <div class="mx-auto max-w-3xl px-6 text-center">
+        <p class="section-label mb-4 text-[var(--color-sage-dark)]">ET SI...</p>
+        <h2 class="text-4xl md:text-5xl">Imagine une version de toi</h2>
+        <div class="divider mx-auto mt-6 mb-10" style="background-color: var(--color-sage);"></div>
+        <div class="space-y-4 text-left">
+          <p class="flex items-start gap-3 text-lg text-[var(--color-text-medium)]">
+            <span class="mt-1 text-[var(--color-sage)]">✦</span>
+            Qui se reveille avec de l'energie, sans alarme, sans cafe en perfusion
+          </p>
+          <p class="flex items-start gap-3 text-lg text-[var(--color-text-medium)]">
+            <span class="mt-1 text-[var(--color-sage)]">✦</span>
+            Dont le corps est un allie, pas un obstacle
+          </p>
+          <p class="flex items-start gap-3 text-lg text-[var(--color-text-medium)]">
+            <span class="mt-1 text-[var(--color-sage)]">✦</span>
+            Qui sait exactement quoi manger, comment bouger, comment gerer son stress
+          </p>
+          <p class="flex items-start gap-3 text-lg text-[var(--color-text-medium)]">
+            <span class="mt-1 text-[var(--color-sage)]">✦</span>
+            Qui a retrouve la joie de vivre et la liberte dans son quotidien
+          </p>
+        </div>
+        <p class="mt-10 font-['Cormorant_Garamond',serif] text-xl italic text-[var(--color-sage-dark)]">
+          C'est exactement ce que Energie Illimitee va t'aider a construire.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================================
+         4 PILLARS
+         ============================================ -->
     <section class="py-20 md:py-28">
       <div class="mx-auto max-w-6xl px-6">
         <p class="section-label mb-4 text-center">{t("ei.pillars.label")}</p>
         <h2 class="text-center text-4xl md:text-5xl">{t("ei.pillars.title")}</h2>
         <div class="divider mx-auto mt-6 mb-16"></div>
 
-        <div class="grid gap-12 md:grid-cols-2">
+        <div class="grid gap-8 md:grid-cols-2">
           {pillars.map((pillar) => (
-            <div class="border-t border-[var(--color-border)] pt-8">
-              <p class="font-['Cormorant_Garamond',serif] text-4xl font-light text-[var(--color-border)]">{pillar.num}</p>
-              <h3 class="mt-4 text-xl">{pillar.title}</h3>
+            <div class="border border-[var(--color-border)] bg-[var(--color-surface)] p-8 transition-shadow duration-300 hover:shadow-lg">
+              <div class="flex items-center gap-4 mb-4">
+                <span class="text-2xl">{pillar.icon}</span>
+                <span class="font-['Cormorant_Garamond',serif] text-4xl font-light text-[var(--color-border)]">{pillar.num}</span>
+              </div>
+              <h3 class="text-xl">{pillar.title}</h3>
               <p class="mt-3 text-[var(--color-text-medium)]">{pillar.text}</p>
             </div>
           ))}
@@ -96,108 +198,146 @@ const faqs = [
       </div>
     </section>
 
-    <!-- Testimonial -->
-    <TestimonialQuote
-      quote={t("testimonial.default")}
-      author={t("testimonial.author")}
-      bg="sage"
-    />
+    <!-- ============================================
+         TEMOIGNAGES
+         ============================================ -->
+    <section class="bg-[var(--color-warm)] py-20 md:py-28">
+      <div class="mx-auto max-w-6xl px-6">
+        <p class="section-label mb-4 text-center">CE QUE CA A CHANGE CHEZ ELLES</p>
+        <h2 class="text-center text-4xl md:text-5xl">Temoignages</h2>
+        <div class="divider mx-auto mt-6 mb-12"></div>
 
-    <!-- Format -->
-    <section class="py-20 md:py-28">
-      <div class="mx-auto grid max-w-6xl items-start gap-12 px-6 md:grid-cols-2 md:gap-20">
-        <div>
-          <p class="section-label mb-4">{t("ei.format.label")}</p>
-          <h2 class="text-4xl md:text-5xl">{t("ei.format.title")}</h2>
-          <div class="divider mt-6"></div>
-          <div class="mt-8 space-y-4">
-            <p class="flex items-start gap-3 text-[var(--color-text-medium)]">
-              <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-sage)]"></span>
-              {t("ei.format.coaching")}
-            </p>
-            <p class="flex items-start gap-3 text-[var(--color-text-medium)]">
-              <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-sage)]"></span>
-              {t("ei.format.hotseat")}
-            </p>
-            <p class="mt-4 font-medium text-[var(--color-primary)]">
-              {t("ei.format.rhythm")}
-            </p>
-          </div>
-        </div>
-
-        <!-- Immersions -->
-        <div class="space-y-8">
-          <div class="bg-[var(--color-warm)] p-8">
-            <h3 class="text-xl">{t("ei.format.immersion.1.title")}</h3>
-            <p class="mt-2 text-[var(--color-text-medium)]">{t("ei.format.immersion.1.text")}</p>
-          </div>
-          <div class="bg-[var(--color-sage-light)] p-8">
-            <h3 class="text-xl">{t("ei.format.immersion.2.title")}</h3>
-            <p class="mt-2 text-[var(--color-text-medium)]">{t("ei.format.immersion.2.text")}</p>
-          </div>
-          <img
-            src="/images/nature-aveyron.webp"
-            alt="Immersion en nature dans le Sud Aveyron — Randonnee et reconnexion lors du programme Energie Illimitee"
-            width="800"
-            height="1067"
-            loading="lazy"
-            class="aspect-[4/3] w-full object-cover"
+        <div class="grid gap-8 md:grid-cols-2">
+          <TestimonialCard
+            quote="Ce stage a ete declencheur pour moi, beaucoup de changements ont ete entrepris. Claire m'avait dit que je ressortirais differente a la fin de ce stage. OUI, je me souviendrai de ce stage toute ma vie !"
+            name="Severine"
+            context="Stage Amawe"
+          />
+          <TestimonialCard
+            quote="Un stage qui a lance le debut de changements d'ampleur. Je vis un peu plus pres du sol et de mes ressentis, je danse un peu toute seule... J'integre ce mantra : I am everything I want to be."
+            name="Helene"
+            context="Stage & Retraite"
+          />
+          <TestimonialCard
+            quote="Merci pour ce stage qui m'a apporte une vision globale de ma sante. Je ne vous remercierai jamais assez pour tout ce que j'ai appris !"
+            name="Celine"
+            context="Stage sante holistique"
+          />
+          <TestimonialCard
+            quote="J'ai retrouve le gout de cuisiner, des plats savoureux. On est loin des regimes ! Et pourtant -10 kilos ! Tout ca sans privation, c'est juste incroyable !"
+            name="Izadora"
+            context="Programme nutrition"
           />
         </div>
       </div>
     </section>
 
-    <!-- Dates -->
-    <section class="border-y border-[var(--color-border)] bg-[var(--color-surface)] py-16">
-      <div class="mx-auto flex max-w-4xl flex-col items-center gap-6 px-6 text-center md:flex-row md:justify-center md:gap-16">
-        <div>
-          <p class="section-label">{t("ei.dates.label")}</p>
-        </div>
-        <div class="flex flex-col gap-2 md:flex-row md:gap-12">
-          <p class="text-lg">{t("ei.dates.start")}</p>
-          <p class="text-lg">{t("ei.dates.end")}</p>
-          <p class="font-medium text-[var(--color-accent)]">{t("ei.dates.duration")}</p>
+    <!-- ============================================
+         FORMAT — How it works (visual)
+         ============================================ -->
+    <section class="py-20 md:py-28">
+      <div class="mx-auto max-w-6xl px-6">
+        <div class="grid items-start gap-12 md:grid-cols-2 md:gap-20">
+          <div>
+            <p class="section-label mb-4">{t("ei.format.label")}</p>
+            <h2 class="text-4xl md:text-5xl">{t("ei.format.title")}</h2>
+            <div class="divider mt-6"></div>
+            <div class="mt-8 space-y-5">
+              <div class="flex items-start gap-4 border-l-2 border-[var(--color-sage)] pl-6 py-2">
+                <div>
+                  <p class="font-medium text-[var(--color-primary)]">Coaching de groupe</p>
+                  <p class="text-sm text-[var(--color-text-medium)]">{t("ei.format.coaching")}</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-4 border-l-2 border-[var(--color-sage)] pl-6 py-2">
+                <div>
+                  <p class="font-medium text-[var(--color-primary)]">Hot seat individualise</p>
+                  <p class="text-sm text-[var(--color-text-medium)]">{t("ei.format.hotseat")}</p>
+                </div>
+              </div>
+              <div class="mt-4 bg-[var(--color-sage-light)] px-6 py-3 text-center">
+                <p class="font-medium text-[var(--color-sage-dark)]">{t("ei.format.rhythm")}</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Immersions -->
+          <div class="space-y-6">
+            <div class="relative overflow-hidden">
+              <img
+                src="/images/claire-stage.webp"
+                alt="Immersion Energie Illimitee a Montpellier avec Claire Orriols"
+                width="1198"
+                height="800"
+                loading="lazy"
+                class="aspect-[4/3] w-full object-cover"
+              />
+              <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[var(--color-primary)] to-transparent p-6">
+                <h3 class="text-lg text-[var(--color-surface)]">{t("ei.format.immersion.1.title")}</h3>
+                <p class="text-sm text-[var(--color-surface)]/70">{t("ei.format.immersion.1.text")}</p>
+              </div>
+            </div>
+            <div class="relative overflow-hidden">
+              <img
+                src="/images/nature-aveyron.webp"
+                alt="Immersion en nature a l'ecolieu du Sud Aveyron"
+                width="800"
+                height="1067"
+                loading="lazy"
+                class="aspect-[4/3] w-full object-cover"
+              />
+              <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[var(--color-primary)] to-transparent p-6">
+                <h3 class="text-lg text-[var(--color-surface)]">{t("ei.format.immersion.2.title")}</h3>
+                <p class="text-sm text-[var(--color-surface)]/70">{t("ei.format.immersion.2.text")}</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Pricing -->
+    <!-- ============================================
+         DATES BAR
+         ============================================ -->
+    <section class="border-y border-[var(--color-accent)] bg-[var(--color-accent-light)] py-10">
+      <div class="mx-auto flex max-w-4xl flex-col items-center gap-4 px-6 text-center md:flex-row md:justify-center md:gap-12">
+        <p class="section-label text-[var(--color-accent-dark)]">{t("ei.dates.label")}</p>
+        <p class="text-lg">{t("ei.dates.start")}</p>
+        <span class="hidden text-[var(--color-accent)] md:inline">—</span>
+        <p class="text-lg">{t("ei.dates.end")}</p>
+        <span class="badge-urgency">{t("ei.dates.duration")}</span>
+      </div>
+    </section>
+
+    <!-- ============================================
+         VALUE STACK — Hormozi style
+         ============================================ -->
     <section class="py-20 md:py-28">
       <div class="mx-auto max-w-4xl px-6">
-        <p class="section-label mb-4 text-center">{t("ei.pricing.label")}</p>
-        <div class="mt-8 grid gap-8 md:grid-cols-2">
-          <!-- Early bird -->
-          <div class="border border-[var(--color-accent)] p-10 text-center">
-            <p class="section-label">{t("ei.pricing.earlybird.label")}</p>
-            <p class="mt-4 font-['Cormorant_Garamond',serif] text-5xl font-light">{t("ei.pricing.earlybird")}</p>
-            <div class="divider mx-auto mt-6 mb-6"></div>
-            <p class="text-sm text-[var(--color-text-light)]">{t("ei.pricing.payment.3x")}</p>
-            <p class="text-sm text-[var(--color-text-light)]">{t("ei.pricing.payment.5x")}</p>
-          </div>
-          <!-- Regular -->
-          <div class="border border-[var(--color-border)] p-10 text-center">
-            <p class="section-label">{t("ei.pricing.regular.label")}</p>
-            <p class="mt-4 font-['Cormorant_Garamond',serif] text-5xl font-light text-[var(--color-text-light)]">{t("ei.pricing.regular")}</p>
-            <div class="divider mx-auto mt-6 mb-6"></div>
-            <p class="text-sm text-[var(--color-text-light)]">{t("ei.pricing.payment.3x")}</p>
-            <p class="text-sm text-[var(--color-text-light)]">{t("ei.pricing.payment.5x")}</p>
-          </div>
-        </div>
-        <p class="mt-8 text-center text-sm text-[var(--color-text-light)]">
-          {t("ei.pricing.includes")}
-        </p>
+        <p class="section-label mb-4 text-center">LA VALEUR DE CE PROGRAMME</p>
+        <h2 class="text-center text-4xl md:text-5xl">Tout ce que tu recois</h2>
+        <div class="divider mx-auto mt-6 mb-12"></div>
+
+        <ValueStack
+          items={valueStackItems}
+          totalValue="3 800 EUR"
+          actualPrice="2 000 EUR"
+          earlyBirdPrice="1 350 EUR"
+        />
       </div>
     </section>
 
-    <!-- Bonuses -->
-    <section class="bg-[var(--color-warm)] py-20 md:py-28">
+    <!-- ============================================
+         BONUSES
+         ============================================ -->
+    <section class="bg-[var(--color-sage-light)] py-20 md:py-28">
       <div class="mx-auto max-w-4xl px-6">
-        <p class="section-label mb-4 text-center">{t("ei.bonus.label")}</p>
-        <div class="divider mx-auto mt-2 mb-12"></div>
+        <p class="section-label mb-4 text-center text-[var(--color-sage-dark)]">{t("ei.bonus.label")}</p>
+        <div class="divider mx-auto mt-2 mb-12" style="background-color: var(--color-sage);"></div>
         <div class="grid gap-4 md:grid-cols-2">
           {bonuses.map((bonus) => (
             <div class="flex items-center gap-4 bg-[var(--color-surface)] px-6 py-4">
-              <span class="h-2 w-2 shrink-0 rounded-full bg-[var(--color-accent)]"></span>
+              <span class="badge-included">Offert</span>
               <p class="text-[var(--color-text-medium)]">{bonus}</p>
             </div>
           ))}
@@ -205,35 +345,71 @@ const faqs = [
       </div>
     </section>
 
-    <!-- CTA -->
-    <section id="postuler" class="py-20 md:py-28">
-      <div class="mx-auto max-w-2xl px-6 text-center">
-        <h2 class="text-4xl md:text-5xl">{t("ei.cta")}</h2>
-        <p class="mt-4 text-[var(--color-text-light)]">{t("ei.cta.note")}</p>
-        <a
-          href="#"
-          class="btn-primary mt-10 inline-block"
-          target="_blank"
-          rel="noopener"
-        >
-          {t("ei.cta")}
-        </a>
+    <!-- ============================================
+         BON DE COMMANDE
+         ============================================ -->
+    <section id="bon-de-commande" class="py-20 md:py-28">
+      <div class="mx-auto max-w-4xl px-6">
+        <p class="section-label mb-4 text-center">PRETE A TRANSFORMER TA VIE ?</p>
+        <h2 class="text-center text-4xl md:text-5xl">Rejoins Energie Illimitee</h2>
+        <div class="divider mx-auto mt-6 mb-12"></div>
+
+        <OrderForm
+          title="Energie Illimitee"
+          subtitle="Programme de 3 mois — 20 avril au 20 juillet 2026"
+          price="1 350 EUR"
+          priceNote="Tarif early bird (au lieu de 2 000 EUR)"
+          payment3x="En 3 fois : 450 EUR/mois"
+          payment5x="En 5 fois : 270 EUR/mois"
+          included={orderIncluded}
+          reassurance={orderReassurance}
+          ctaText="Postuler maintenant"
+          ctaHref="#candidature"
+          ctaNote="Entree sur candidature — Reponse sous 48h"
+          badge="Places limitees"
+        />
       </div>
     </section>
 
-    <!-- FAQ -->
+    <!-- ============================================
+         FAQ — Interactive accordions
+         ============================================ -->
     <section class="bg-[var(--color-surface)] py-20 md:py-28">
       <div class="mx-auto max-w-3xl px-6">
         <p class="section-label mb-4 text-center">{t("ei.faq.label")}</p>
-        <div class="divider mx-auto mt-2 mb-12"></div>
-        <div class="space-y-8">
+        <h2 class="text-center text-4xl md:text-5xl">Des questions ?</h2>
+        <div class="divider mx-auto mt-6 mb-12"></div>
+        <div class="space-y-4">
           {faqs.map((faq) => (
-            <div class="border-b border-[var(--color-border)] pb-8">
-              <h3 class="text-xl">{faq.q}</h3>
-              <p class="mt-3 text-[var(--color-text-medium)]">{faq.a}</p>
-            </div>
+            <details class="faq-item group border border-[var(--color-border)] bg-[var(--color-background)]">
+              <summary class="flex cursor-pointer items-center justify-between p-6">
+                <h3 class="text-lg pr-4">{faq.q}</h3>
+                <span class="faq-icon text-xl text-[var(--color-accent)]">+</span>
+              </summary>
+              <div class="px-6 pb-6">
+                <p class="text-[var(--color-text-medium)]">{faq.a}</p>
+              </div>
+            </details>
           ))}
         </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         FINAL CTA
+         ============================================ -->
+    <section class="bg-[var(--color-primary)] py-20 md:py-28">
+      <div class="mx-auto max-w-3xl px-6 text-center">
+        <p class="font-['Cormorant_Garamond',serif] text-3xl italic text-[var(--color-surface)] md:text-4xl">
+          "Tout le monde peut etre en meilleure sante."
+        </p>
+        <p class="mt-4 text-sm text-[var(--color-surface)]/60">— Claire Orriols</p>
+        <div class="mt-10">
+          <a href="#bon-de-commande" class="btn-accent">Postuler au programme</a>
+        </div>
+        <p class="mt-4 text-xs text-[var(--color-surface)]/40">
+          Places limitees — Prochaine session : 20 avril 2026
+        </p>
       </div>
     </section>
 

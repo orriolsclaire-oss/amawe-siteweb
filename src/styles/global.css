@@ -2,15 +2,14 @@
 
 /* ===========================
    AMAWE — Global Styles
-   Direction artistique : Melissa Ambrosini
-   Palette : warm neutrals, sage, charcoal
+   Direction artistique : Melissa Ambrosini + Hormozi conversion
+   Palette : warm neutrals, terracotta, sage green, charcoal
    =========================== */
 
 @theme {
   /* Warm neutral palette */
   --color-primary: #2c2c2c;
-  --color-secondary: #7a8b6f;
-  --color-accent: #b8976a;
+  --color-secondary: #6b8f6b;
   --color-background: #faf8f5;
   --color-surface: #ffffff;
   --color-warm: #f5efe8;
@@ -19,8 +18,18 @@
   --color-text-light: #8a8a8a;
   --color-text-medium: #5a5a5a;
   --color-border: #e8e4de;
-  --color-sage: #7a8b6f;
-  --color-sage-light: #e8ede5;
+
+  /* Terracotta — used sparingly for CTAs, urgency, accents */
+  --color-accent: #c4704b;
+  --color-accent-light: #f0ddd4;
+  --color-accent-dark: #a85a3a;
+
+  /* Sage green — nature, trust, included, certifications */
+  --color-sage: #6b8f6b;
+  --color-sage-light: #e5ede2;
+  --color-sage-dark: #4a6b4a;
+
+  /* Blush — soft accent */
   --color-blush: #d4b8a0;
 }
 
@@ -74,7 +83,7 @@ h3 {
   font-weight: 400;
 }
 
-/* Section labels — uppercase sans-serif like Melissa Ambrosini */
+/* Section labels — uppercase sans-serif */
 .section-label {
   font-family: "Inter", system-ui, sans-serif;
   font-size: 0.75rem;
@@ -99,7 +108,10 @@ a {
   transition: color 0.3s ease, opacity 0.3s ease;
 }
 
-/* Buttons */
+/* ===========================
+   BUTTONS
+   =========================== */
+
 .btn-primary {
   display: inline-block;
   padding: 0.875rem 2.5rem;
@@ -140,7 +152,151 @@ a {
   color: var(--color-surface);
 }
 
-/* Images — all images should be WebP */
+/* Terracotta CTA — high-conversion button */
+.btn-accent {
+  display: inline-block;
+  padding: 1rem 3rem;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-surface);
+  background-color: var(--color-accent);
+  border: 2px solid var(--color-accent);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-accent:hover {
+  background-color: var(--color-accent-dark);
+  border-color: var(--color-accent-dark);
+}
+
+/* Small outline button (navbar connexion) */
+.btn-nav {
+  display: inline-block;
+  padding: 0.4rem 1.2rem;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 0.65rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  background-color: transparent;
+  border: 1px solid var(--color-border);
+  transition: all 0.3s ease;
+}
+
+.btn-nav:hover {
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+  border-color: var(--color-primary);
+}
+
+/* ===========================
+   CONVERSION ELEMENTS
+   =========================== */
+
+/* Badge urgency */
+.badge-urgency {
+  display: inline-block;
+  padding: 0.35rem 1rem;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-accent-dark);
+  background-color: var(--color-accent-light);
+  border: 1px solid var(--color-accent);
+}
+
+/* Badge included (green) */
+.badge-included {
+  display: inline-block;
+  padding: 0.35rem 1rem;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-sage-dark);
+  background-color: var(--color-sage-light);
+  border: 1px solid var(--color-sage);
+}
+
+/* Check icon for lists */
+.check-icon::before {
+  content: "\2713";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-right: 0.75rem;
+  font-size: 0.7rem;
+  color: var(--color-surface);
+  background-color: var(--color-sage);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Strikethrough price */
+.price-struck {
+  text-decoration: line-through;
+  color: var(--color-text-light);
+  font-size: 0.9em;
+}
+
+/* ===========================
+   ORDER FORM
+   =========================== */
+
+.order-form {
+  background-color: var(--color-surface);
+  border: 2px solid var(--color-border);
+  position: relative;
+  overflow: hidden;
+}
+
+.order-form-header {
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+  padding: 1.5rem 2rem;
+  text-align: center;
+}
+
+.order-form-body {
+  padding: 2rem;
+}
+
+.reassurance-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--color-text-medium);
+}
+
+.reassurance-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background-color: var(--color-sage-light);
+  color: var(--color-sage-dark);
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}
+
+/* ===========================
+   UTILITY
+   =========================== */
+
+/* Images */
 img {
   max-width: 100%;
   height: auto;
@@ -176,4 +332,34 @@ section {
   width: 60px;
   height: 1px;
   background-color: var(--color-border);
+}
+
+/* Gradient overlay for hero images */
+.gradient-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(44, 44, 44, 0.85) 0%,
+    rgba(44, 44, 44, 0.5) 50%,
+    transparent 100%
+  );
+}
+
+/* FAQ accordion */
+.faq-item summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item[open] .faq-icon {
+  transform: rotate(45deg);
+}
+
+.faq-icon {
+  transition: transform 0.3s ease;
 }

@@ -1,0 +1,111 @@
+---
+interface IncludedItem {
+  text: string
+}
+
+interface ReassuranceItem {
+  icon: string
+  text: string
+}
+
+interface Props {
+  title: string
+  subtitle?: string
+  price: string
+  priceNote?: string
+  payment3x?: string
+  payment5x?: string
+  included: IncludedItem[]
+  reassurance: ReassuranceItem[]
+  ctaText: string
+  ctaHref: string
+  ctaNote?: string
+  badge?: string
+}
+
+const {
+  title,
+  subtitle,
+  price,
+  priceNote,
+  payment3x,
+  payment5x,
+  included,
+  reassurance,
+  ctaText,
+  ctaHref,
+  ctaNote,
+  badge,
+} = Astro.props
+---
+
+<div class="order-form mx-auto max-w-xl">
+  <!-- Header -->
+  <div class="order-form-header">
+    <p class="font-['Inter',sans-serif] text-xs font-medium uppercase tracking-[0.2em]">Bon de commande</p>
+    <h3 class="mt-2 font-['Cormorant_Garamond',serif] text-2xl font-light text-[var(--color-surface)]">{title}</h3>
+    {subtitle && <p class="mt-1 text-sm text-[var(--color-surface)]/70">{subtitle}</p>}
+  </div>
+
+  <!-- Body -->
+  <div class="order-form-body">
+    {badge && (
+      <div class="mb-6 text-center">
+        <span class="badge-urgency">{badge}</span>
+      </div>
+    )}
+
+    <!-- Price -->
+    <div class="mb-6 text-center">
+      <p class="font-['Cormorant_Garamond',serif] text-5xl text-[var(--color-accent)]">{price}</p>
+      {priceNote && <p class="mt-1 text-xs text-[var(--color-text-light)]">{priceNote}</p>}
+    </div>
+
+    <!-- Payment options -->
+    {(payment3x || payment5x) && (
+      <div class="mb-6 space-y-2 rounded-none bg-[var(--color-warm)] p-4 text-center">
+        <p class="section-label mb-2">Facilites de paiement</p>
+        {payment3x && <p class="text-sm text-[var(--color-text-medium)]">{payment3x}</p>}
+        {payment5x && <p class="text-sm text-[var(--color-text-medium)]">{payment5x}</p>}
+      </div>
+    )}
+
+    <!-- Divider -->
+    <div class="my-6 h-px w-full bg-[var(--color-border)]"></div>
+
+    <!-- Included -->
+    <div class="mb-6">
+      <p class="section-label mb-4">Ce qui est inclus</p>
+      <div class="space-y-3">
+        {included.map((item) => (
+          <div class="check-icon flex items-center text-sm text-[var(--color-text-medium)]">
+            {item.text}
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Divider -->
+    <div class="my-6 h-px w-full bg-[var(--color-border)]"></div>
+
+    <!-- Reassurance -->
+    <div class="mb-8 grid grid-cols-2 gap-4">
+      {reassurance.map((item) => (
+        <div class="reassurance-item">
+          <div class="reassurance-icon">{item.icon}</div>
+          <span class="text-xs">{item.text}</span>
+        </div>
+      ))}
+    </div>
+
+    <!-- CTA -->
+    <div class="text-center">
+      <a href={ctaHref} target="_blank" rel="noopener" class="btn-accent block w-full text-center">
+        {ctaText}
+      </a>
+      {ctaNote && (
+        <p class="mt-3 text-xs text-[var(--color-text-light)]">{ctaNote}</p>
+      )}
+    </div>
+  </div>
+</div>

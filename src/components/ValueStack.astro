@@ -1,0 +1,44 @@
+---
+interface ValueItem {
+  label: string
+  value: string
+}
+
+interface Props {
+  items: ValueItem[]
+  totalValue: string
+  actualPrice: string
+  earlyBirdPrice: string
+}
+
+const { items, totalValue, actualPrice, earlyBirdPrice } = Astro.props
+---
+
+<div class="mx-auto max-w-2xl">
+  <p class="section-label mb-6 text-center">CE QUE TU RECOIS</p>
+
+  <div class="space-y-3">
+    {items.map((item) => (
+      <div class="flex items-center justify-between border-b border-[var(--color-border)] pb-3">
+        <span class="check-icon flex items-center text-[var(--color-text-medium)]">{item.label}</span>
+        <span class="text-sm font-medium text-[var(--color-text-light)]">{item.value}</span>
+      </div>
+    ))}
+  </div>
+
+  <!-- Total -->
+  <div class="mt-6 flex items-center justify-between border-t-2 border-[var(--color-primary)] pt-4">
+    <span class="section-label text-[var(--color-primary)]">Valeur totale</span>
+    <span class="font-['Cormorant_Garamond',serif] text-2xl text-[var(--color-primary)]">{totalValue}</span>
+  </div>
+
+  <!-- Actual price -->
+  <div class="mt-8 text-center">
+    <p class="text-sm text-[var(--color-text-light)]">Ton investissement aujourd'hui</p>
+    <div class="mt-2 flex items-center justify-center gap-4">
+      <span class="price-struck font-['Cormorant_Garamond',serif] text-3xl">{actualPrice}</span>
+      <span class="font-['Cormorant_Garamond',serif] text-5xl text-[var(--color-accent)]">{earlyBirdPrice}</span>
+    </div>
+    <span class="badge-urgency mt-3">Tarif early bird</span>
+  </div>
+</div>
