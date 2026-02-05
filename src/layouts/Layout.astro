@@ -1,0 +1,61 @@
+---
+import "~/styles/global.css"
+import { getLangFromUrl, useTranslations, getLocalizedPath } from "~/i18n/utils"
+
+interface Props {
+  title?: string
+  description?: string
+}
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+
+const { title = t("seo.title"), description = t("seo.description") } =
+  Astro.props
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site)
+const alternateURL = new URL(
+  getLocalizedPath(
+    Astro.url.pathname.replace(/^\/(en)/, ""),
+    lang === "fr" ? "en" : "fr",
+  ),
+  Astro.site,
+)
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Hreflang -->
+    <link rel="alternate" hreflang="fr" href={lang === "fr" ? canonicalURL : alternateURL} />
+    <link rel="alternate" hreflang="en" href={lang === "en" ? canonicalURL : alternateURL} />
+    <link rel="alternate" hreflang="x-default" href={new URL("/", Astro.site)} />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content={lang === "fr" ? "fr_FR" : "en_US"} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body class="min-h-screen bg-[var(--color-background)] text-[var(--color-text)]">
+    <slot />
+  </body>
+</html>

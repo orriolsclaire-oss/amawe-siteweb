@@ -1,0 +1,47 @@
+You are working on the Amawe website project.
+
+## Tech Stack
+- **Framework**: Astro 5 (SSR mode)
+- **Styling**: Tailwind CSS v4
+- **Language**: TypeScript (strict mode)
+- **Package Manager**: Bun (NOT npm, NOT yarn, NOT pnpm)
+- **Deployment**: Cloudflare Workers (via Wrangler)
+- **i18n**: French (default) + English
+
+## Rules
+
+### General
+- Always use Bun for package management and scripts
+- Default language is French
+- Use Tailwind CSS for all styling — no CSS modules, no styled-components
+- Write clean, minimal code
+- Use `.astro` components — no React, no Vue, no Svelte
+
+### Code Style
+- No semicolons
+- Double quotes for strings
+- Use Prettier with astro and tailwind plugins
+- Use the `~/` path alias for imports from `src/`
+
+### Images
+- All images MUST be in WebP format (except SVGs and favicons)
+- Use sharp for image optimization
+- Store images in `public/images/`
+
+### Design
+- Luxury, minimal aesthetic
+- Light font weights (300-400) for headings
+- System fonts
+- Color palette: see `src/styles/global.css`
+
+### SEO
+- Every page must have proper meta tags (title, description, OG, Twitter)
+- Use JSON-LD structured data via `schema-dts`
+- Maintain hreflang tags for i18n
+- Keep canonical URLs with trailing slashes
+
+### i18n
+- French content at `/` (no prefix)
+- English content at `/en/`
+- All user-facing strings in `src/i18n/translations.ts`
+- Use `useTranslations()` helper to access strings

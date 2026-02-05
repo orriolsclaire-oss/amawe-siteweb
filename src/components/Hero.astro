@@ -1,0 +1,15 @@
+---
+import { getLangFromUrl, useTranslations } from "~/i18n/utils"
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+---
+
+<section class="flex min-h-screen flex-col items-center justify-center px-6 text-center">
+  <h1 class="text-5xl font-light tracking-tight md:text-7xl">
+    {t("hero.title")}
+  </h1>
+  <p class="mt-6 max-w-xl text-lg text-[var(--color-text-light)]">
+    {t("hero.subtitle")}
+  </p>
+</section>

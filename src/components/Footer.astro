@@ -1,0 +1,13 @@
+---
+import { getLangFromUrl, useTranslations } from "~/i18n/utils"
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+const year = new Date().getFullYear()
+---
+
+<footer class="border-t border-[var(--color-border)] py-8">
+  <div class="mx-auto max-w-6xl px-6 text-center text-sm text-[var(--color-text-light)]">
+    <p>&copy; {year} Amawe. {t("footer.rights")}.</p>
+  </div>
+</footer>

@@ -1,0 +1,19 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "amawe-siteweb",
+  "main": "./dist/_worker.js",
+  "compatibility_date": "2025-01-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS"
+  },
+  // Uncomment and set your custom domain when ready:
+  // "routes": [
+  //   { "pattern": "amawe.fr", "custom_domain": true },
+  //   { "pattern": "www.amawe.fr", "custom_domain": true }
+  // ],
+  "observability": {
+    "enabled": true
+  }
+}
