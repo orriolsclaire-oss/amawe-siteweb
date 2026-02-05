@@ -1,0 +1,143 @@
+---
+import Layout from "~/layouts/Layout.astro"
+import Header from "~/components/Header.astro"
+import Footer from "~/components/Footer.astro"
+import ValueStack from "~/components/ValueStack.astro"
+import OrderForm from "~/components/OrderForm.astro"
+import { getLangFromUrl, useTranslations } from "~/i18n/utils"
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+
+const valueStackItems = [
+  { label: "12 seances de coaching de groupe", value: "1 200 EUR" },
+  { label: "6 coachings individualises hot seat", value: "600 EUR" },
+  { label: "Immersion 2 jours a Montpellier", value: "400 EUR" },
+  { label: "Immersion 4 jours en nature (Aveyron)", value: "800 EUR" },
+  { label: "Bibliotheque videos mouvement", value: "200 EUR" },
+  { label: "Recettes sante + listes de courses", value: "150 EUR" },
+  { label: "Groupe WhatsApp prive", value: "Offert" },
+  { label: "Suivi post-programme M+1", value: "150 EUR" },
+  { label: "6 bonus (experts, reunion alumni...)", value: "300 EUR" },
+]
+
+const orderIncluded = [
+  { text: "12 seances de coaching (groupe + hot seat)" },
+  { text: "2 immersions en presentiel (Montpellier + Aveyron)" },
+  { text: "Bibliotheque de videos mouvement" },
+  { text: "Recettes sante et listes de courses" },
+  { text: "Groupe WhatsApp prive" },
+  { text: "Suivi post-programme a M+1" },
+  { text: "6 bonus offerts (experts, reunion alumni...)" },
+]
+
+const orderReassurance = [
+  { icon: "🔒", text: "Paiement 100% securise" },
+  { icon: "👥", text: "Entree sur candidature" },
+  { icon: "💚", text: "Accompagnement personnalise" },
+  { icon: "⭐", text: "+3 500 personnes accompagnees" },
+]
+
+const faqs = [
+  { q: t("ei.faq.1.q"), a: t("ei.faq.1.a") },
+  { q: t("ei.faq.2.q"), a: t("ei.faq.2.a") },
+  { q: t("ei.faq.3.q"), a: t("ei.faq.3.a") },
+]
+---
+
+<Layout
+  title="Bon de commande — Energie Illimitee — Amawe"
+  description="Rejoins Energie Illimitee, le programme de transformation holistique de 3 mois avec Claire Orriols."
+>
+  <Header />
+  <main class="pt-20">
+
+    <!-- Hero sobre -->
+    <section class="bg-[var(--color-primary)] py-16 md:py-24">
+      <div class="mx-auto max-w-3xl px-6 text-center">
+        <span class="badge-urgency mb-6 inline-block">Places limitees — Prochaine session : 20 avril 2026</span>
+        <h1 class="text-4xl text-[var(--color-surface)] md:text-6xl">Energie Illimitee</h1>
+        <p class="mt-4 font-['Cormorant_Garamond',serif] text-xl text-[var(--color-surface)]/70 md:text-2xl">
+          Programme de transformation holistique — 3 mois
+        </p>
+      </div>
+    </section>
+
+    <!-- Value Stack -->
+    <section class="py-16 md:py-24">
+      <div class="mx-auto max-w-4xl px-6">
+        <p class="section-label mb-4 text-center">CE QUE TU RECOIS</p>
+        <div class="divider mx-auto mt-2 mb-12"></div>
+        <ValueStack
+          items={valueStackItems}
+          totalValue="3 800 EUR"
+          actualPrice="2 000 EUR"
+          earlyBirdPrice="1 350 EUR"
+        />
+      </div>
+    </section>
+
+    <!-- Bon de commande -->
+    <section class="bg-[var(--color-warm)] py-16 md:py-24">
+      <div class="mx-auto max-w-4xl px-6">
+        <p class="section-label mb-4 text-center">PRETE A TRANSFORMER TA VIE ?</p>
+        <h2 class="text-center text-4xl md:text-5xl">Rejoins le programme</h2>
+        <div class="divider mx-auto mt-6 mb-12"></div>
+
+        <OrderForm
+          title="Energie Illimitee"
+          subtitle="Programme de 3 mois — 20 avril au 20 juillet 2026"
+          price="1 350 EUR"
+          priceNote="Tarif early bird (au lieu de 2 000 EUR)"
+          payment3x="En 3 fois : 450 EUR/mois"
+          payment5x="En 5 fois : 270 EUR/mois"
+          included={orderIncluded}
+          reassurance={orderReassurance}
+          ctaText="Postuler maintenant"
+          ctaHref="#"
+          ctaNote="Entree sur candidature — Reponse sous 48h"
+          badge="Places limitees"
+        />
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-16 md:py-24">
+      <div class="mx-auto max-w-3xl px-6">
+        <p class="section-label mb-4 text-center">{t("ei.faq.label")}</p>
+        <h2 class="text-center text-4xl md:text-5xl">Des questions ?</h2>
+        <div class="divider mx-auto mt-6 mb-12"></div>
+        <div class="space-y-4">
+          {faqs.map((faq) => (
+            <details class="faq-item group border border-[var(--color-border)] bg-[var(--color-background)]">
+              <summary class="flex cursor-pointer items-center justify-between p-6">
+                <h3 class="text-lg pr-4">{faq.q}</h3>
+                <span class="faq-icon text-xl text-[var(--color-accent)]">+</span>
+              </summary>
+              <div class="px-6 pb-6">
+                <p class="text-[var(--color-text-medium)]">{faq.a}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Reassurance finale -->
+    <section class="bg-[var(--color-primary)] py-16 md:py-20">
+      <div class="mx-auto max-w-3xl px-6 text-center">
+        <p class="font-['Cormorant_Garamond',serif] text-3xl italic text-[var(--color-surface)] md:text-4xl">
+          "Tout le monde peut etre en meilleure sante."
+        </p>
+        <p class="mt-4 text-sm text-[var(--color-surface)]/60">— Claire Orriols</p>
+        <div class="mt-8">
+          <a href="/energie-illimitee/" class="text-sm text-[var(--color-surface)]/70 underline underline-offset-4 hover:text-[var(--color-surface)] transition-colors">
+            Redecouvrir le programme
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</Layout>

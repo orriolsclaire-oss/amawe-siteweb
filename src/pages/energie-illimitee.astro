@@ -4,7 +4,6 @@ import Header from "~/components/Header.astro"
 import Footer from "~/components/Footer.astro"
 import TestimonialCard from "~/components/TestimonialCard.astro"
 import ValueStack from "~/components/ValueStack.astro"
-import OrderForm from "~/components/OrderForm.astro"
 import NewsletterSignup from "~/components/NewsletterSignup.astro"
 import { getLangFromUrl, useTranslations } from "~/i18n/utils"
 
@@ -34,12 +33,6 @@ const bonuses = [
   t("ei.bonus.6"),
 ]
 
-const faqs = [
-  { q: t("ei.faq.1.q"), a: t("ei.faq.1.a") },
-  { q: t("ei.faq.2.q"), a: t("ei.faq.2.a") },
-  { q: t("ei.faq.3.q"), a: t("ei.faq.3.a") },
-]
-
 const valueStackItems = [
   { label: "12 seances de coaching de groupe", value: "1 200 EUR" },
   { label: "6 coachings individualises hot seat", value: "600 EUR" },
@@ -52,22 +45,7 @@ const valueStackItems = [
   { label: "6 bonus (experts, reunion alumni...)", value: "300 EUR" },
 ]
 
-const orderIncluded = [
-  { text: "12 seances de coaching (groupe + hot seat)" },
-  { text: "2 immersions en presentiel (Montpellier + Aveyron)" },
-  { text: "Bibliotheque de videos mouvement" },
-  { text: "Recettes sante et listes de courses" },
-  { text: "Groupe WhatsApp prive" },
-  { text: "Suivi post-programme a M+1" },
-  { text: "6 bonus offerts (experts, reunion alumni...)" },
-]
 
-const orderReassurance = [
-  { icon: "🔒", text: "Paiement 100% securise" },
-  { icon: "👥", text: "Entree sur candidature" },
-  { icon: "💚", text: "Accompagnement personnalise" },
-  { icon: "⭐", text: "+3 500 personnes accompagnees" },
-]
 ---
 
 <Layout
@@ -95,7 +73,7 @@ const orderReassurance = [
           Retrouve une energie durable, un corps qui repond, un mental apaise — en 3 mois d'accompagnement holistique.
         </p>
         <div class="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
-          <a href="#bon-de-commande" class="btn-accent">{t("ei.cta")}</a>
+          <a href="/bon-de-commande/" class="btn-accent">{t("ei.cta")}</a>
           <p class="text-sm text-[var(--color-surface)]/60">{t("ei.cta.note")}</p>
         </div>
       </div>
@@ -346,57 +324,7 @@ const orderReassurance = [
     </section>
 
     <!-- ============================================
-         BON DE COMMANDE
-         ============================================ -->
-    <section id="bon-de-commande" class="py-20 md:py-28">
-      <div class="mx-auto max-w-4xl px-6">
-        <p class="section-label mb-4 text-center">PRETE A TRANSFORMER TA VIE ?</p>
-        <h2 class="text-center text-4xl md:text-5xl">Rejoins Energie Illimitee</h2>
-        <div class="divider mx-auto mt-6 mb-12"></div>
-
-        <OrderForm
-          title="Energie Illimitee"
-          subtitle="Programme de 3 mois — 20 avril au 20 juillet 2026"
-          price="1 350 EUR"
-          priceNote="Tarif early bird (au lieu de 2 000 EUR)"
-          payment3x="En 3 fois : 450 EUR/mois"
-          payment5x="En 5 fois : 270 EUR/mois"
-          included={orderIncluded}
-          reassurance={orderReassurance}
-          ctaText="Postuler maintenant"
-          ctaHref="#candidature"
-          ctaNote="Entree sur candidature — Reponse sous 48h"
-          badge="Places limitees"
-        />
-      </div>
-    </section>
-
-    <!-- ============================================
-         FAQ — Interactive accordions
-         ============================================ -->
-    <section class="bg-[var(--color-surface)] py-20 md:py-28">
-      <div class="mx-auto max-w-3xl px-6">
-        <p class="section-label mb-4 text-center">{t("ei.faq.label")}</p>
-        <h2 class="text-center text-4xl md:text-5xl">Des questions ?</h2>
-        <div class="divider mx-auto mt-6 mb-12"></div>
-        <div class="space-y-4">
-          {faqs.map((faq) => (
-            <details class="faq-item group border border-[var(--color-border)] bg-[var(--color-background)]">
-              <summary class="flex cursor-pointer items-center justify-between p-6">
-                <h3 class="text-lg pr-4">{faq.q}</h3>
-                <span class="faq-icon text-xl text-[var(--color-accent)]">+</span>
-              </summary>
-              <div class="px-6 pb-6">
-                <p class="text-[var(--color-text-medium)]">{faq.a}</p>
-              </div>
-            </details>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================
-         FINAL CTA
+         FINAL CTA — Vers le bon de commande
          ============================================ -->
     <section class="bg-[var(--color-primary)] py-20 md:py-28">
       <div class="mx-auto max-w-3xl px-6 text-center">
@@ -405,7 +333,7 @@ const orderReassurance = [
         </p>
         <p class="mt-4 text-sm text-[var(--color-surface)]/60">— Claire Orriols</p>
         <div class="mt-10">
-          <a href="#bon-de-commande" class="btn-accent">Postuler au programme</a>
+          <a href="/bon-de-commande/" class="btn-accent">Postuler au programme</a>
         </div>
         <p class="mt-4 text-xs text-[var(--color-surface)]/40">
           Places limitees — Prochaine session : 20 avril 2026
