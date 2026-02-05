@@ -1,0 +1,20 @@
+---
+interface Props {
+  label?: string
+  aspect?: "square" | "portrait" | "landscape" | "hero"
+  class?: string
+}
+
+const { label = "Photo", aspect = "landscape", class: className = "" } = Astro.props
+
+const aspectClass = {
+  square: "aspect-square",
+  portrait: "aspect-[3/4]",
+  landscape: "aspect-[4/3]",
+  hero: "aspect-[16/9]",
+}[aspect]
+---
+
+<div class={`img-placeholder ${aspectClass} w-full ${className}`}>
+  <span>{label}</span>
+</div>

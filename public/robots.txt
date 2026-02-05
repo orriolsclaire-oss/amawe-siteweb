@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://amawe.fr/sitemap-index.xml
+Sitemap: https://amawe.com/sitemap-index.xml

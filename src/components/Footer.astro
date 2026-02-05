@@ -6,8 +6,57 @@ const t = useTranslations(lang)
 const year = new Date().getFullYear()
 ---
 
-<footer class="border-t border-[var(--color-border)] py-8">
-  <div class="mx-auto max-w-6xl px-6 text-center text-sm text-[var(--color-text-light)]">
-    <p>&copy; {year} Amawe. {t("footer.rights")}.</p>
+<footer class="border-t border-[var(--color-border)] bg-[var(--color-surface)]">
+  <div class="mx-auto max-w-6xl px-6 py-16">
+    <div class="grid gap-12 md:grid-cols-3">
+      <!-- Brand -->
+      <div>
+        <a href="/" class="font-['Cormorant_Garamond',serif] text-2xl font-light tracking-[0.15em] uppercase">
+          Amawe
+        </a>
+        <p class="mt-4 max-w-xs text-sm text-[var(--color-text-light)]">
+          {t("footer.tagline")}
+        </p>
+      </div>
+
+      <!-- Navigation -->
+      <div>
+        <p class="section-label mb-4">NAVIGATION</p>
+        <nav class="flex flex-col gap-3">
+          <a href="/" class="text-sm text-[var(--color-text-medium)] hover:text-[var(--color-primary)] transition-colors">{t("nav.home")}</a>
+          <a href="/a-propos/" class="text-sm text-[var(--color-text-medium)] hover:text-[var(--color-primary)] transition-colors">{t("nav.about")}</a>
+          <a href="/energie-illimitee/" class="text-sm text-[var(--color-text-medium)] hover:text-[var(--color-primary)] transition-colors">{t("nav.program")}</a>
+          <a href="/experiences/" class="text-sm text-[var(--color-text-medium)] hover:text-[var(--color-primary)] transition-colors">{t("nav.experiences")}</a>
+          <a href="/contact/" class="text-sm text-[var(--color-text-medium)] hover:text-[var(--color-primary)] transition-colors">{t("nav.contact")}</a>
+        </nav>
+      </div>
+
+      <!-- Social & Contact -->
+      <div>
+        <p class="section-label mb-4">CONTACT</p>
+        <div class="flex flex-col gap-3">
+          <a href="mailto:hello@amawe.com" class="text-sm text-[var(--color-text-medium)] hover:text-[var(--color-primary)] transition-colors">
+            hello@amawe.com
+          </a>
+          <a href="https://instagram.com/amawefrance" target="_blank" rel="noopener" class="text-sm text-[var(--color-text-medium)] hover:text-[var(--color-primary)] transition-colors">
+            Instagram @amawefrance
+          </a>
+          <a href="https://instagram.com/claireorriols" target="_blank" rel="noopener" class="text-sm text-[var(--color-text-medium)] hover:text-[var(--color-primary)] transition-colors">
+            Instagram @claireorriols
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="border-t border-[var(--color-border)] py-6">
+    <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-2 px-6 text-xs text-[var(--color-text-light)] sm:flex-row">
+      <p>&copy; {year} Amawe — Claire Orriols. {t("footer.rights")}.</p>
+      <div class="flex gap-4">
+        <a href="#" class="hover:text-[var(--color-primary)] transition-colors">{t("footer.legal")}</a>
+        <a href="#" class="hover:text-[var(--color-primary)] transition-colors">{t("footer.privacy")}</a>
+      </div>
+    </div>
   </div>
 </footer>

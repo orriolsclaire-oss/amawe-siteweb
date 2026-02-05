@@ -1,0 +1,177 @@
+---
+import Layout from "~/layouts/Layout.astro"
+import Header from "~/components/Header.astro"
+import Footer from "~/components/Footer.astro"
+import TestimonialQuote from "~/components/TestimonialQuote.astro"
+import ImagePlaceholder from "~/components/ImagePlaceholder.astro"
+import NewsletterSignup from "~/components/NewsletterSignup.astro"
+import { getLangFromUrl, useTranslations } from "~/i18n/utils"
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+
+const includes = [
+  t("exp.retreat.includes.1"),
+  t("exp.retreat.includes.2"),
+  t("exp.retreat.includes.3"),
+  t("exp.retreat.includes.4"),
+  t("exp.retreat.includes.5"),
+  t("exp.retreat.includes.6"),
+  t("exp.retreat.includes.7"),
+]
+
+const pricing = [
+  t("exp.retreat.pricing.autonomous"),
+  t("exp.retreat.pricing.dorm"),
+  t("exp.retreat.pricing.gite"),
+  t("exp.retreat.pricing.studio"),
+]
+---
+
+<Layout
+  title={`${t("exp.title")} — Amawe`}
+  description={t("exp.subtitle")}
+>
+  <Header />
+  <main class="pt-20">
+
+    <!-- Hero -->
+    <section class="py-20 md:py-32">
+      <div class="mx-auto max-w-4xl px-6 text-center">
+        <p class="section-label mb-6">{t("exp.label")}</p>
+        <h1 class="text-5xl md:text-7xl">{t("exp.title")}</h1>
+        <p class="mx-auto mt-6 max-w-2xl font-['Cormorant_Garamond',serif] text-xl italic text-[var(--color-text-light)] md:text-2xl">
+          {t("exp.subtitle")}
+        </p>
+        <div class="divider mx-auto mt-8"></div>
+      </div>
+    </section>
+
+    <!-- Full-width image placeholder -->
+    <ImagePlaceholder label="Photo panoramique ecolieu" aspect="hero" />
+
+    <!-- Retraite Danse & Silence -->
+    <section class="py-20 md:py-28">
+      <div class="mx-auto max-w-6xl px-6">
+        <div class="grid items-start gap-12 md:grid-cols-2 md:gap-20">
+          <div>
+            <p class="section-label mb-2">{t("exp.retreat.label")}</p>
+            <h2 class="text-4xl md:text-5xl">{t("exp.retreat.title")}</h2>
+            <p class="mt-2 font-['Cormorant_Garamond',serif] text-lg italic text-[var(--color-text-light)]">
+              {t("exp.retreat.edition")}
+            </p>
+            <div class="divider mt-6"></div>
+            <p class="mt-8 text-lg leading-relaxed text-[var(--color-text-medium)]">
+              {t("exp.retreat.intro")}
+            </p>
+            <div class="mt-6 space-y-1 text-sm text-[var(--color-text-medium)]">
+              <p>{t("exp.retreat.dates")}</p>
+              <p>{t("exp.retreat.location")}</p>
+            </div>
+          </div>
+          <ImagePlaceholder label="Photo retraite danse libre" aspect="portrait" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Silence notice -->
+    <section class="border-y border-[var(--color-border)] bg-[var(--color-sage-light)] py-12">
+      <div class="mx-auto max-w-3xl px-6 text-center">
+        <p class="font-['Cormorant_Garamond',serif] text-xl italic text-[var(--color-text-medium)]">
+          {t("exp.retreat.silence")}
+        </p>
+      </div>
+    </section>
+
+    <!-- Programme includes -->
+    <section class="py-20 md:py-28">
+      <div class="mx-auto max-w-4xl px-6">
+        <p class="section-label mb-4 text-center">{t("exp.retreat.includes.label")}</p>
+        <div class="divider mx-auto mt-2 mb-12"></div>
+        <div class="grid gap-4 md:grid-cols-2">
+          {includes.map((item) => (
+            <div class="flex items-center gap-4 border-b border-[var(--color-border)] pb-4">
+              <span class="h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-sage)]"></span>
+              <p class="text-[var(--color-text-medium)]">{item}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Le lieu -->
+    <section class="bg-[var(--color-warm)] py-20 md:py-28">
+      <div class="mx-auto grid max-w-6xl items-center gap-12 px-6 md:grid-cols-2 md:gap-20">
+        <ImagePlaceholder label="Photo salle de pratique 120m2" aspect="landscape" />
+        <div>
+          <p class="section-label mb-4">{t("exp.retreat.venue.label")}</p>
+          <h2 class="text-3xl md:text-4xl">L'ecolieu</h2>
+          <div class="divider mt-6"></div>
+          <p class="mt-8 text-lg leading-relaxed text-[var(--color-text-medium)]">
+            {t("exp.retreat.venue.text")}
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Photos grid -->
+    <section class="py-16">
+      <div class="mx-auto grid max-w-6xl grid-cols-2 gap-4 px-6 md:grid-cols-4">
+        <ImagePlaceholder label="Hameau en pierres" aspect="square" />
+        <ImagePlaceholder label="Riviere" aspect="square" />
+        <ImagePlaceholder label="Salle de pratique" aspect="square" />
+        <ImagePlaceholder label="Soiree feu de bois" aspect="square" />
+      </div>
+    </section>
+
+    <!-- Tarifs -->
+    <section class="py-20 md:py-28">
+      <div class="mx-auto max-w-4xl px-6">
+        <p class="section-label mb-4 text-center">{t("exp.retreat.pricing.label")}</p>
+        <div class="divider mx-auto mt-2 mb-12"></div>
+        <div class="space-y-4">
+          {pricing.map((price) => (
+            <div class="flex items-center justify-between border-b border-[var(--color-border)] pb-4">
+              <p class="text-[var(--color-text-medium)]">{price}</p>
+            </div>
+          ))}
+        </div>
+        <p class="mt-6 text-center text-sm text-[var(--color-text-light)]">
+          {t("exp.retreat.booking.note")}
+        </p>
+        <div class="mt-10 text-center">
+          <a href="#" class="btn-primary">{t("exp.retreat.booking")}</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonial -->
+    <TestimonialQuote
+      quote={t("testimonial.default")}
+      author={t("testimonial.author")}
+      bg="warm"
+    />
+
+    <!-- Stages -->
+    <section class="py-20 md:py-28">
+      <div class="mx-auto grid max-w-6xl items-center gap-12 px-6 md:grid-cols-2 md:gap-20">
+        <div>
+          <p class="section-label mb-4">{t("exp.stage.label")}</p>
+          <h2 class="text-4xl md:text-5xl">{t("exp.stage.title")}</h2>
+          <div class="divider mt-6"></div>
+          <p class="mt-8 text-lg leading-relaxed text-[var(--color-text-medium)]">
+            {t("exp.stage.text")}
+          </p>
+          <p class="mt-6 font-['Cormorant_Garamond',serif] text-lg italic text-[var(--color-accent)]">
+            {t("exp.stage.coming")}
+          </p>
+        </div>
+        <ImagePlaceholder label="Photo stage danse & silence" aspect="landscape" />
+      </div>
+    </section>
+
+    <!-- Newsletter -->
+    <NewsletterSignup />
+  </main>
+  <Footer />
+</Layout>

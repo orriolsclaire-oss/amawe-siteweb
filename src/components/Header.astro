@@ -1,25 +1,62 @@
 ---
-import { getLangFromUrl, useTranslations, getAlternateLang, getLocalizedPath } from "~/i18n/utils"
+import { getLangFromUrl, useTranslations } from "~/i18n/utils"
 
 const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
-const altLang = getAlternateLang(lang)
-const altPath = getLocalizedPath("/", altLang)
 ---
 
-<header class="fixed top-0 z-50 w-full bg-[var(--color-surface)]/80 backdrop-blur-md border-b border-[var(--color-border)]">
-  <nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-    <a href={getLocalizedPath("/", lang)} class="text-xl font-light tracking-wider uppercase">
+<header class="fixed top-0 z-50 w-full bg-[var(--color-surface)]/90 backdrop-blur-md">
+  <nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
+    <!-- Logo -->
+    <a href="/" class="font-['Cormorant_Garamond',serif] text-2xl font-light tracking-[0.15em] uppercase">
       Amawe
     </a>
 
-    <div class="flex items-center gap-8">
-      <a href={getLocalizedPath("/", lang)} class="text-sm tracking-wide hover:text-[var(--color-accent)] transition-colors">
-        {t("nav.home")}
+    <!-- Desktop nav -->
+    <div class="hidden items-center gap-8 md:flex">
+      <a href="/a-propos/" class="section-label hover:text-[var(--color-primary)] transition-colors">
+        {t("nav.about")}
       </a>
-      <a href={altPath} class="text-sm tracking-wide border border-[var(--color-border)] px-3 py-1 hover:bg-[var(--color-primary)] hover:text-[var(--color-surface)] transition-colors">
-        {t("nav.language")}
+      <a href="/energie-illimitee/" class="section-label hover:text-[var(--color-primary)] transition-colors">
+        {t("nav.program")}
+      </a>
+      <a href="/experiences/" class="section-label hover:text-[var(--color-primary)] transition-colors">
+        {t("nav.experiences")}
+      </a>
+      <a href="/contact/" class="section-label hover:text-[var(--color-primary)] transition-colors">
+        {t("nav.contact")}
       </a>
     </div>
+
+    <!-- Mobile burger -->
+    <button
+      id="mobile-menu-toggle"
+      class="flex flex-col gap-1.5 md:hidden"
+      aria-label="Menu"
+    >
+      <span class="block h-px w-6 bg-[var(--color-primary)] transition-transform"></span>
+      <span class="block h-px w-6 bg-[var(--color-primary)] transition-opacity"></span>
+      <span class="block h-px w-6 bg-[var(--color-primary)] transition-transform"></span>
+    </button>
   </nav>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden border-t border-[var(--color-border)] bg-[var(--color-surface)] md:hidden">
+    <div class="flex flex-col items-center gap-6 py-8">
+      <a href="/a-propos/" class="section-label">{t("nav.about")}</a>
+      <a href="/energie-illimitee/" class="section-label">{t("nav.program")}</a>
+      <a href="/experiences/" class="section-label">{t("nav.experiences")}</a>
+      <a href="/contact/" class="section-label">{t("nav.contact")}</a>
+    </div>
+  </div>
 </header>
+
+<script is:inline>
+  const toggle = document.getElementById("mobile-menu-toggle")
+  const menu = document.getElementById("mobile-menu")
+  if (toggle && menu) {
+    toggle.addEventListener("click", () => {
+      menu.classList.toggle("hidden")
+    })
+  }
+</script>

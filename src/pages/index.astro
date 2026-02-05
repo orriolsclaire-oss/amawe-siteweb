@@ -2,16 +2,59 @@
 import Layout from "~/layouts/Layout.astro"
 import Header from "~/components/Header.astro"
 import Hero from "~/components/Hero.astro"
+import StatsBar from "~/components/StatsBar.astro"
+import TestimonialQuote from "~/components/TestimonialQuote.astro"
+import ProgramCard from "~/components/ProgramCard.astro"
+import ExperiencesPreview from "~/components/ExperiencesPreview.astro"
+import NewsletterSignup from "~/components/NewsletterSignup.astro"
 import Footer from "~/components/Footer.astro"
 import { generateWebsiteSchema } from "~/utils/schema"
+import { getLangFromUrl, useTranslations } from "~/i18n/utils"
 
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
 const schema = generateWebsiteSchema("fr")
 ---
 
 <Layout>
   <Header />
   <main>
+    <!-- Hero -->
     <Hero />
+
+    <!-- Stats Bar -->
+    <StatsBar />
+
+    <!-- Mission -->
+    <section class="py-20 md:py-28">
+      <div class="mx-auto max-w-3xl px-6 text-center">
+        <p class="section-label mb-4">{t("mission.label")}</p>
+        <h2 class="text-4xl md:text-5xl">{t("mission.title")}</h2>
+        <div class="divider mx-auto mt-6"></div>
+        <p class="mt-8 text-lg leading-relaxed text-[var(--color-text-medium)]">
+          {t("mission.text")}
+        </p>
+        <a href="/a-propos/" class="btn-secondary mt-10 inline-block">
+          {t("mission.cta")}
+        </a>
+      </div>
+    </section>
+
+    <!-- Testimonial -->
+    <TestimonialQuote
+      quote={t("testimonial.default")}
+      author={t("testimonial.author")}
+      bg="warm"
+    />
+
+    <!-- Programme phare -->
+    <ProgramCard />
+
+    <!-- Experiences preview -->
+    <ExperiencesPreview />
+
+    <!-- Newsletter -->
+    <NewsletterSignup />
   </main>
   <Footer />
   <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />

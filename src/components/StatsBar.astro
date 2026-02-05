@@ -1,0 +1,23 @@
+---
+import { getLangFromUrl, useTranslations } from "~/i18n/utils"
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+---
+
+<section class="border-y border-[var(--color-border)] bg-[var(--color-surface)]">
+  <div class="mx-auto grid max-w-5xl grid-cols-3 divide-x divide-[var(--color-border)]">
+    <div class="px-6 py-10 text-center">
+      <p class="font-['Cormorant_Garamond',serif] text-3xl font-light md:text-4xl">{t("stats.newsletter")}</p>
+      <p class="section-label mt-2">{t("stats.newsletter.label")}</p>
+    </div>
+    <div class="px-6 py-10 text-center">
+      <p class="font-['Cormorant_Garamond',serif] text-3xl font-light md:text-4xl">{t("stats.community")}</p>
+      <p class="section-label mt-2">{t("stats.community.label")}</p>
+    </div>
+    <div class="px-6 py-10 text-center">
+      <p class="font-['Cormorant_Garamond',serif] text-3xl font-light md:text-4xl">{t("stats.since")}</p>
+      <p class="section-label mt-2">{t("stats.since.label")}</p>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,99 @@
+---
+import Layout from "~/layouts/Layout.astro"
+import Header from "~/components/Header.astro"
+import Footer from "~/components/Footer.astro"
+import { getLangFromUrl, useTranslations } from "~/i18n/utils"
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+---
+
+<Layout
+  title={`${t("contact.title")} — Amawe`}
+  description={t("contact.text")}
+>
+  <Header />
+  <main class="pt-20">
+
+    <section class="py-20 md:py-32">
+      <div class="mx-auto max-w-5xl px-6">
+        <div class="grid gap-16 md:grid-cols-2">
+          <!-- Left: info -->
+          <div>
+            <p class="section-label mb-4">{t("contact.label")}</p>
+            <h1 class="text-5xl md:text-6xl">{t("contact.title")}</h1>
+            <div class="divider mt-6"></div>
+            <p class="mt-8 text-lg text-[var(--color-text-medium)]">
+              {t("contact.text")}
+            </p>
+
+            <div class="mt-12 space-y-6">
+              <div>
+                <p class="section-label mb-2">EMAIL</p>
+                <a href="mailto:hello@amawe.com" class="text-lg text-[var(--color-text-medium)] hover:text-[var(--color-primary)] transition-colors">
+                  {t("contact.email")}
+                </a>
+              </div>
+              <div>
+                <p class="section-label mb-2">LIEU</p>
+                <p class="text-lg text-[var(--color-text-medium)]">{t("contact.location")}</p>
+              </div>
+              <div>
+                <p class="section-label mb-2">{t("contact.social.label")}</p>
+                <div class="flex flex-col gap-2">
+                  <a href="https://instagram.com/amawefrance" target="_blank" rel="noopener" class="text-[var(--color-text-medium)] hover:text-[var(--color-primary)] transition-colors">
+                    Instagram @amawefrance
+                  </a>
+                  <a href="https://instagram.com/claireorriols" target="_blank" rel="noopener" class="text-[var(--color-text-medium)] hover:text-[var(--color-primary)] transition-colors">
+                    Instagram @claireorriols
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: form -->
+          <div class="bg-[var(--color-surface)] p-8 md:p-12">
+            <form class="space-y-6">
+              <div>
+                <label for="name" class="section-label mb-2 block">{t("contact.form.name")}</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  class="w-full border-b border-[var(--color-border)] bg-transparent py-3 text-[var(--color-text)] focus:border-[var(--color-primary)] focus:outline-none"
+                />
+              </div>
+              <div>
+                <label for="email" class="section-label mb-2 block">{t("contact.form.email")}</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  class="w-full border-b border-[var(--color-border)] bg-transparent py-3 text-[var(--color-text)] focus:border-[var(--color-primary)] focus:outline-none"
+                />
+              </div>
+              <div>
+                <label for="message" class="section-label mb-2 block">{t("contact.form.message")}</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                  required
+                  class="w-full resize-none border-b border-[var(--color-border)] bg-transparent py-3 text-[var(--color-text)] focus:border-[var(--color-primary)] focus:outline-none"
+                ></textarea>
+              </div>
+              <button type="submit" class="btn-primary w-full">
+                {t("contact.form.send")}
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</Layout>

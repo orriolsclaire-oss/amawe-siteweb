@@ -1,15 +1,29 @@
 ---
 import { getLangFromUrl, useTranslations } from "~/i18n/utils"
+import ImagePlaceholder from "./ImagePlaceholder.astro"
 
 const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
 ---
 
-<section class="flex min-h-screen flex-col items-center justify-center px-6 text-center">
-  <h1 class="text-5xl font-light tracking-tight md:text-7xl">
-    {t("hero.title")}
-  </h1>
-  <p class="mt-6 max-w-xl text-lg text-[var(--color-text-light)]">
-    {t("hero.subtitle")}
-  </p>
+<section class="relative min-h-screen pt-20">
+  <div class="mx-auto grid max-w-6xl items-center gap-12 px-6 py-20 md:grid-cols-2 md:gap-20 md:py-32">
+    <!-- Text -->
+    <div class="order-2 md:order-1">
+      <p class="section-label mb-6">{t("hero.name")}</p>
+      <h1 class="text-5xl md:text-6xl lg:text-7xl">{t("hero.title")}</h1>
+      <p class="mt-6 font-['Cormorant_Garamond',serif] text-xl italic text-[var(--color-text-light)] md:text-2xl">
+        {t("hero.subtitle")}
+      </p>
+      <div class="divider mt-8"></div>
+      <a href="/a-propos/" class="btn-primary mt-10 inline-block">
+        {t("hero.cta")}
+      </a>
+    </div>
+
+    <!-- Photo -->
+    <div class="order-1 md:order-2">
+      <ImagePlaceholder label="Portrait Claire Orriols" aspect="portrait" />
+    </div>
+  </div>
 </section>

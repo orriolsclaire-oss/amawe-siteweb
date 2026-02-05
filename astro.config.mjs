@@ -4,7 +4,7 @@ import sitemap from "@astrojs/sitemap"
 import tailwindcss from "@tailwindcss/vite"
 
 export default defineConfig({
-  site: "https://amawe.fr",
+  site: "https://amawe.com",
   output: "server",
   adapter: cloudflare(),
 

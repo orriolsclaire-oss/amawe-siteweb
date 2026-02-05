@@ -1,0 +1,108 @@
+---
+import Layout from "~/layouts/Layout.astro"
+import Header from "~/components/Header.astro"
+import Footer from "~/components/Footer.astro"
+import TestimonialQuote from "~/components/TestimonialQuote.astro"
+import ImagePlaceholder from "~/components/ImagePlaceholder.astro"
+import { generatePersonSchema } from "~/utils/schema"
+import { getLangFromUrl, useTranslations } from "~/i18n/utils"
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+const schema = generatePersonSchema()
+
+const certifications = [
+  t("about.certifications.iin"),
+  t("about.certifications.cnh"),
+  t("about.certifications.movnat"),
+  t("about.certifications.jmv"),
+  t("about.certifications.polyvagal"),
+]
+---
+
+<Layout title={`${t("about.title")} — Amawe`} description={t("about.intro")}>
+  <Header />
+  <main class="pt-20">
+
+    <!-- Hero -->
+    <section class="py-20 md:py-28">
+      <div class="mx-auto grid max-w-6xl items-center gap-12 px-6 md:grid-cols-2 md:gap-20">
+        <ImagePlaceholder label="Claire Orriols — Portrait" aspect="portrait" />
+        <div>
+          <p class="section-label mb-4">{t("about.label")}</p>
+          <h1 class="text-5xl md:text-6xl">{t("about.title")}</h1>
+          <div class="divider mt-6"></div>
+          <p class="mt-8 text-lg leading-relaxed text-[var(--color-text-medium)]">
+            {t("about.intro")}
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Story -->
+    <section class="bg-[var(--color-surface)] py-20 md:py-28">
+      <div class="mx-auto max-w-3xl space-y-8 px-6 text-[var(--color-text-medium)]">
+        <p class="text-lg leading-relaxed">{t("about.story.1")}</p>
+        <p class="text-lg leading-relaxed">{t("about.story.2")}</p>
+        <p class="text-lg leading-relaxed">{t("about.story.3")}</p>
+        <p class="text-lg leading-relaxed">{t("about.story.4")}</p>
+      </div>
+    </section>
+
+    <!-- Quote -->
+    <TestimonialQuote
+      quote={t("about.quote")}
+      author="Claire Orriols"
+      bg="sage"
+    />
+
+    <!-- Certifications -->
+    <section class="py-20 md:py-28">
+      <div class="mx-auto max-w-4xl px-6">
+        <p class="section-label mb-4 text-center">{t("about.certifications.label")}</p>
+        <div class="divider mx-auto mt-2 mb-12"></div>
+        <div class="space-y-6">
+          {certifications.map((cert) => (
+            <div class="flex items-start gap-4 border-b border-[var(--color-border)] pb-6">
+              <span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-[var(--color-sage)]"></span>
+              <p class="text-[var(--color-text-medium)]">{cert}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Philosophy -->
+    <section class="bg-[var(--color-warm)] py-20 md:py-28">
+      <div class="mx-auto grid max-w-6xl items-center gap-12 px-6 md:grid-cols-2 md:gap-20">
+        <div>
+          <p class="section-label mb-4">{t("about.philosophy.label")}</p>
+          <h2 class="text-4xl md:text-5xl">{t("about.philosophy.title")}</h2>
+          <div class="divider mt-6"></div>
+          <p class="mt-8 text-lg leading-relaxed text-[var(--color-text-medium)]">
+            {t("about.philosophy.text")}
+          </p>
+        </div>
+        <ImagePlaceholder label="Roue de la Sante Holistique" aspect="square" />
+      </div>
+    </section>
+
+    <!-- Roots -->
+    <section class="py-20 md:py-28">
+      <div class="mx-auto grid max-w-6xl items-center gap-12 px-6 md:grid-cols-2 md:gap-20">
+        <ImagePlaceholder label="Ecolieu Sud Aveyron" aspect="landscape" />
+        <div>
+          <p class="section-label mb-4">{t("about.roots.label")}</p>
+          <h2 class="text-3xl md:text-4xl">Sud Aveyron</h2>
+          <div class="divider mt-6"></div>
+          <p class="mt-8 text-lg leading-relaxed text-[var(--color-text-medium)]">
+            {t("about.roots.text")}
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />
+</Layout>

@@ -1,0 +1,238 @@
+---
+import Layout from "~/layouts/Layout.astro"
+import Header from "~/components/Header.astro"
+import Footer from "~/components/Footer.astro"
+import TestimonialQuote from "~/components/TestimonialQuote.astro"
+import ImagePlaceholder from "~/components/ImagePlaceholder.astro"
+import NewsletterSignup from "~/components/NewsletterSignup.astro"
+import { getLangFromUrl, useTranslations } from "~/i18n/utils"
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+
+const problems = [
+  t("ei.problem.1"),
+  t("ei.problem.2"),
+  t("ei.problem.3"),
+  t("ei.problem.4"),
+]
+
+const pillars = [
+  { title: t("ei.pillar.1.title"), text: t("ei.pillar.1.text"), num: "01" },
+  { title: t("ei.pillar.2.title"), text: t("ei.pillar.2.text"), num: "02" },
+  { title: t("ei.pillar.3.title"), text: t("ei.pillar.3.text"), num: "03" },
+  { title: t("ei.pillar.4.title"), text: t("ei.pillar.4.text"), num: "04" },
+]
+
+const bonuses = [
+  t("ei.bonus.1"),
+  t("ei.bonus.2"),
+  t("ei.bonus.3"),
+  t("ei.bonus.4"),
+  t("ei.bonus.5"),
+  t("ei.bonus.6"),
+]
+
+const faqs = [
+  { q: t("ei.faq.1.q"), a: t("ei.faq.1.a") },
+  { q: t("ei.faq.2.q"), a: t("ei.faq.2.a") },
+  { q: t("ei.faq.3.q"), a: t("ei.faq.3.a") },
+]
+---
+
+<Layout
+  title={`${t("ei.title")} — Amawe`}
+  description={t("ei.subtitle")}
+>
+  <Header />
+  <main class="pt-20">
+
+    <!-- Hero -->
+    <section class="py-20 md:py-32">
+      <div class="mx-auto max-w-4xl px-6 text-center">
+        <p class="section-label mb-6">{t("ei.label")}</p>
+        <h1 class="text-5xl md:text-7xl">{t("ei.title")}</h1>
+        <p class="mx-auto mt-6 max-w-2xl font-['Cormorant_Garamond',serif] text-xl italic text-[var(--color-text-light)] md:text-2xl">
+          {t("ei.subtitle")}
+        </p>
+        <div class="divider mx-auto mt-8"></div>
+        <div class="mt-10 flex flex-col items-center gap-3">
+          <a href="#postuler" class="btn-primary">{t("ei.cta")}</a>
+          <p class="text-xs text-[var(--color-text-light)]">{t("ei.cta.note")}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Problem section -->
+    <section class="bg-[var(--color-warm)] py-20 md:py-28">
+      <div class="mx-auto max-w-4xl px-6">
+        <p class="section-label mb-4 text-center">{t("ei.problem.label")}</p>
+        <h2 class="text-center text-4xl md:text-5xl">{t("ei.problem.title")}</h2>
+        <div class="mt-12 space-y-6">
+          {problems.map((problem) => (
+            <div class="flex items-start gap-4 rounded-none border-l-2 border-[var(--color-accent)] bg-[var(--color-surface)] px-6 py-5">
+              <p class="text-[var(--color-text-medium)]">{problem}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 Pillars -->
+    <section class="py-20 md:py-28">
+      <div class="mx-auto max-w-6xl px-6">
+        <p class="section-label mb-4 text-center">{t("ei.pillars.label")}</p>
+        <h2 class="text-center text-4xl md:text-5xl">{t("ei.pillars.title")}</h2>
+        <div class="divider mx-auto mt-6 mb-16"></div>
+
+        <div class="grid gap-12 md:grid-cols-2">
+          {pillars.map((pillar) => (
+            <div class="border-t border-[var(--color-border)] pt-8">
+              <p class="font-['Cormorant_Garamond',serif] text-4xl font-light text-[var(--color-border)]">{pillar.num}</p>
+              <h3 class="mt-4 text-xl">{pillar.title}</h3>
+              <p class="mt-3 text-[var(--color-text-medium)]">{pillar.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonial -->
+    <TestimonialQuote
+      quote={t("testimonial.default")}
+      author={t("testimonial.author")}
+      bg="sage"
+    />
+
+    <!-- Format -->
+    <section class="py-20 md:py-28">
+      <div class="mx-auto grid max-w-6xl items-start gap-12 px-6 md:grid-cols-2 md:gap-20">
+        <div>
+          <p class="section-label mb-4">{t("ei.format.label")}</p>
+          <h2 class="text-4xl md:text-5xl">{t("ei.format.title")}</h2>
+          <div class="divider mt-6"></div>
+          <div class="mt-8 space-y-4">
+            <p class="flex items-start gap-3 text-[var(--color-text-medium)]">
+              <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-sage)]"></span>
+              {t("ei.format.coaching")}
+            </p>
+            <p class="flex items-start gap-3 text-[var(--color-text-medium)]">
+              <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-sage)]"></span>
+              {t("ei.format.hotseat")}
+            </p>
+            <p class="mt-4 font-medium text-[var(--color-primary)]">
+              {t("ei.format.rhythm")}
+            </p>
+          </div>
+        </div>
+
+        <!-- Immersions -->
+        <div class="space-y-8">
+          <div class="bg-[var(--color-warm)] p-8">
+            <h3 class="text-xl">{t("ei.format.immersion.1.title")}</h3>
+            <p class="mt-2 text-[var(--color-text-medium)]">{t("ei.format.immersion.1.text")}</p>
+          </div>
+          <div class="bg-[var(--color-sage-light)] p-8">
+            <h3 class="text-xl">{t("ei.format.immersion.2.title")}</h3>
+            <p class="mt-2 text-[var(--color-text-medium)]">{t("ei.format.immersion.2.text")}</p>
+          </div>
+          <ImagePlaceholder label="Photo immersion nature" aspect="landscape" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Dates -->
+    <section class="border-y border-[var(--color-border)] bg-[var(--color-surface)] py-16">
+      <div class="mx-auto flex max-w-4xl flex-col items-center gap-6 px-6 text-center md:flex-row md:justify-center md:gap-16">
+        <div>
+          <p class="section-label">{t("ei.dates.label")}</p>
+        </div>
+        <div class="flex flex-col gap-2 md:flex-row md:gap-12">
+          <p class="text-lg">{t("ei.dates.start")}</p>
+          <p class="text-lg">{t("ei.dates.end")}</p>
+          <p class="font-medium text-[var(--color-accent)]">{t("ei.dates.duration")}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="py-20 md:py-28">
+      <div class="mx-auto max-w-4xl px-6">
+        <p class="section-label mb-4 text-center">{t("ei.pricing.label")}</p>
+        <div class="mt-8 grid gap-8 md:grid-cols-2">
+          <!-- Early bird -->
+          <div class="border border-[var(--color-accent)] p-10 text-center">
+            <p class="section-label">{t("ei.pricing.earlybird.label")}</p>
+            <p class="mt-4 font-['Cormorant_Garamond',serif] text-5xl font-light">{t("ei.pricing.earlybird")}</p>
+            <div class="divider mx-auto mt-6 mb-6"></div>
+            <p class="text-sm text-[var(--color-text-light)]">{t("ei.pricing.payment.3x")}</p>
+            <p class="text-sm text-[var(--color-text-light)]">{t("ei.pricing.payment.5x")}</p>
+          </div>
+          <!-- Regular -->
+          <div class="border border-[var(--color-border)] p-10 text-center">
+            <p class="section-label">{t("ei.pricing.regular.label")}</p>
+            <p class="mt-4 font-['Cormorant_Garamond',serif] text-5xl font-light text-[var(--color-text-light)]">{t("ei.pricing.regular")}</p>
+            <div class="divider mx-auto mt-6 mb-6"></div>
+            <p class="text-sm text-[var(--color-text-light)]">{t("ei.pricing.payment.3x")}</p>
+            <p class="text-sm text-[var(--color-text-light)]">{t("ei.pricing.payment.5x")}</p>
+          </div>
+        </div>
+        <p class="mt-8 text-center text-sm text-[var(--color-text-light)]">
+          {t("ei.pricing.includes")}
+        </p>
+      </div>
+    </section>
+
+    <!-- Bonuses -->
+    <section class="bg-[var(--color-warm)] py-20 md:py-28">
+      <div class="mx-auto max-w-4xl px-6">
+        <p class="section-label mb-4 text-center">{t("ei.bonus.label")}</p>
+        <div class="divider mx-auto mt-2 mb-12"></div>
+        <div class="grid gap-4 md:grid-cols-2">
+          {bonuses.map((bonus) => (
+            <div class="flex items-center gap-4 bg-[var(--color-surface)] px-6 py-4">
+              <span class="h-2 w-2 shrink-0 rounded-full bg-[var(--color-accent)]"></span>
+              <p class="text-[var(--color-text-medium)]">{bonus}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="postuler" class="py-20 md:py-28">
+      <div class="mx-auto max-w-2xl px-6 text-center">
+        <h2 class="text-4xl md:text-5xl">{t("ei.cta")}</h2>
+        <p class="mt-4 text-[var(--color-text-light)]">{t("ei.cta.note")}</p>
+        <a
+          href="#"
+          class="btn-primary mt-10 inline-block"
+          target="_blank"
+          rel="noopener"
+        >
+          {t("ei.cta")}
+        </a>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="bg-[var(--color-surface)] py-20 md:py-28">
+      <div class="mx-auto max-w-3xl px-6">
+        <p class="section-label mb-4 text-center">{t("ei.faq.label")}</p>
+        <div class="divider mx-auto mt-2 mb-12"></div>
+        <div class="space-y-8">
+          {faqs.map((faq) => (
+            <div class="border-b border-[var(--color-border)] pb-8">
+              <h3 class="text-xl">{faq.q}</h3>
+              <p class="mt-3 text-[var(--color-text-medium)]">{faq.a}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter -->
+    <NewsletterSignup />
+  </main>
+  <Footer />
+</Layout>

@@ -1,18 +1,5 @@
 ---
-import Layout from "~/layouts/Layout.astro"
-import Header from "~/components/Header.astro"
-import Hero from "~/components/Hero.astro"
-import Footer from "~/components/Footer.astro"
-import { generateWebsiteSchema } from "~/utils/schema"
-
-const schema = generateWebsiteSchema("en")
+// EN version — coming soon
+// For now, redirect to FR homepage
+return Astro.redirect("/")
 ---
-
-<Layout>
-  <Header />
-  <main>
-    <Hero />
-  </main>
-  <Footer />
-  <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />
-</Layout>

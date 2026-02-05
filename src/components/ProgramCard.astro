@@ -1,0 +1,38 @@
+---
+import { getLangFromUrl, useTranslations } from "~/i18n/utils"
+import ImagePlaceholder from "./ImagePlaceholder.astro"
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+---
+
+<section class="py-20 md:py-28">
+  <div class="mx-auto max-w-6xl px-6">
+    <div class="grid items-center gap-12 md:grid-cols-2 md:gap-20">
+      <ImagePlaceholder label="Photo Energie Illimitee" aspect="portrait" />
+      <div>
+        <p class="section-label mb-4">{t("program.label")}</p>
+        <h2 class="text-4xl md:text-5xl">{t("program.title")}</h2>
+        <p class="mt-2 font-['Cormorant_Garamond',serif] text-xl italic text-[var(--color-text-light)]">
+          {t("program.subtitle")}
+        </p>
+        <p class="mt-6 text-[var(--color-text-medium)]">
+          {t("program.description")}
+        </p>
+        <div class="mt-6 space-y-2">
+          <p class="flex items-center gap-3 text-sm text-[var(--color-text-medium)]">
+            <span class="h-px w-4 bg-[var(--color-accent)]"></span>
+            {t("program.duration")}
+          </p>
+          <p class="flex items-center gap-3 text-sm text-[var(--color-text-medium)]">
+            <span class="h-px w-4 bg-[var(--color-accent)]"></span>
+            {t("program.start")}
+          </p>
+        </div>
+        <a href="/energie-illimitee/" class="btn-primary mt-10 inline-block">
+          {t("program.cta")}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

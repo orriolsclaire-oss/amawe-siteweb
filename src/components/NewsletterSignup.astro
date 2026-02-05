@@ -1,0 +1,27 @@
+---
+import { getLangFromUrl, useTranslations } from "~/i18n/utils"
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+---
+
+<section class="bg-[var(--color-warm)] py-20 md:py-28">
+  <div class="mx-auto max-w-2xl px-6 text-center">
+    <p class="section-label mb-4">{t("newsletter.label")}</p>
+    <h2 class="text-4xl md:text-5xl">{t("newsletter.title")}</h2>
+    <p class="mt-6 text-[var(--color-text-light)]">
+      {t("newsletter.text")}
+    </p>
+    <form class="mx-auto mt-10 flex max-w-md flex-col gap-3 sm:flex-row">
+      <input
+        type="email"
+        placeholder={t("newsletter.placeholder")}
+        required
+        class="flex-1 border border-[var(--color-border)] bg-[var(--color-surface)] px-5 py-3 text-sm focus:border-[var(--color-primary)] focus:outline-none"
+      />
+      <button type="submit" class="btn-primary whitespace-nowrap">
+        {t("newsletter.cta")}
+      </button>
+    </form>
+  </div>
+</section>

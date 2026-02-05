@@ -2,18 +2,26 @@
 
 /* ===========================
    AMAWE — Global Styles
+   Direction artistique : Melissa Ambrosini
+   Palette : warm neutrals, sage, charcoal
    =========================== */
 
 @theme {
-  /* Color palette — customize for your brand */
-  --color-primary: #1a1a1a;
-  --color-secondary: #2d5016;
-  --color-accent: #d4af37;
-  --color-background: #fafafa;
+  /* Warm neutral palette */
+  --color-primary: #2c2c2c;
+  --color-secondary: #7a8b6f;
+  --color-accent: #b8976a;
+  --color-background: #faf8f5;
   --color-surface: #ffffff;
-  --color-text: #1a1a1a;
-  --color-text-light: #6b7280;
-  --color-border: #e5e7eb;
+  --color-warm: #f5efe8;
+  --color-warm-dark: #ebe3d7;
+  --color-text: #2c2c2c;
+  --color-text-light: #8a8a8a;
+  --color-text-medium: #5a5a5a;
+  --color-border: #e8e4de;
+  --color-sage: #7a8b6f;
+  --color-sage-light: #e8ede5;
+  --color-blush: #d4b8a0;
 }
 
 /* Base styles */
@@ -23,27 +31,113 @@ html {
 
 body {
   font-family:
+    "Inter",
     system-ui,
     -apple-system,
     BlinkMacSystemFont,
     "Segoe UI",
     Roboto,
     sans-serif;
+  font-weight: 300;
   color: var(--color-text);
   background-color: var(--color-background);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  line-height: 1.7;
 }
 
-/* Typography — light weight headings for luxury feel */
+/* Typography — Cormorant Garamond for headings (serif, elegant) */
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
+  font-family: "Cormorant Garamond", "Georgia", serif;
   font-weight: 300;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 3.5rem;
+  font-weight: 300;
+}
+
+h2 {
+  font-size: 2.5rem;
+  font-weight: 300;
+}
+
+h3 {
+  font-size: 1.75rem;
+  font-weight: 400;
+}
+
+/* Section labels — uppercase sans-serif like Melissa Ambrosini */
+.section-label {
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-text-light);
+}
+
+/* Elegant blockquotes */
+blockquote {
+  font-family: "Cormorant Garamond", "Georgia", serif;
+  font-style: italic;
+  font-size: 1.5rem;
+  font-weight: 300;
+  line-height: 1.5;
+  color: var(--color-text-medium);
+}
+
+/* Links */
+a {
+  transition: color 0.3s ease, opacity 0.3s ease;
+}
+
+/* Buttons */
+.btn-primary {
+  display: inline-block;
+  padding: 0.875rem 2.5rem;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-surface);
+  background-color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: transparent;
+  color: var(--color-primary);
+}
+
+.btn-secondary {
+  display: inline-block;
+  padding: 0.875rem 2.5rem;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  background-color: transparent;
+  border: 1px solid var(--color-primary);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-primary);
+  color: var(--color-surface);
 }
 
 /* Images — all images should be WebP */
@@ -56,5 +150,30 @@ img {
 /* Selection */
 ::selection {
   background-color: var(--color-accent);
-  color: var(--color-primary);
+  color: var(--color-surface);
+}
+
+/* Smooth section transitions */
+section {
+  position: relative;
+}
+
+/* Placeholder image style */
+.img-placeholder {
+  background-color: var(--color-warm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-light);
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Divider */
+.divider {
+  width: 60px;
+  height: 1px;
+  background-color: var(--color-border);
 }

@@ -1,0 +1,50 @@
+---
+import { getLangFromUrl, useTranslations } from "~/i18n/utils"
+import SectionTitle from "./SectionTitle.astro"
+import ImagePlaceholder from "./ImagePlaceholder.astro"
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+---
+
+<section class="bg-[var(--color-surface)] py-20 md:py-28">
+  <div class="mx-auto max-w-6xl px-6">
+    <SectionTitle
+      label={t("experiences.label")}
+      title={t("experiences.title")}
+      subtitle={t("experiences.subtitle")}
+    />
+
+    <div class="mt-12 grid gap-8 md:grid-cols-2">
+      <!-- Retraite Danse & Silence -->
+      <div class="group">
+        <ImagePlaceholder label="Photo Retraite Danse & Silence" aspect="landscape" class="transition-transform duration-500 group-hover:scale-[1.02]" />
+        <div class="mt-6">
+          <p class="section-label mb-2">{t("retreat.edition")}</p>
+          <h3 class="text-2xl">{t("retreat.title")}</h3>
+          <p class="mt-1 text-sm text-[var(--color-text-light)]">{t("retreat.location")}</p>
+          <p class="mt-3 text-[var(--color-text-medium)]">{t("retreat.description")}</p>
+        </div>
+      </div>
+
+      <!-- Stage Danse & Silence -->
+      <div class="group">
+        <ImagePlaceholder label="Photo Stage Danse & Silence" aspect="landscape" class="transition-transform duration-500 group-hover:scale-[1.02]" />
+        <div class="mt-6">
+          <p class="section-label mb-2">STAGES</p>
+          <h3 class="text-2xl">Danse & Silence</h3>
+          <p class="mt-1 text-sm text-[var(--color-text-light)]">{t("retreat.location")}</p>
+          <p class="mt-3 text-[var(--color-text-medium)]">
+            Des experiences plus courtes pour decouvrir la danse libre et le silence en immersion nature.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-12 text-center">
+      <a href="/experiences/" class="btn-secondary">
+        {t("experiences.cta")}
+      </a>
+    </div>
+  </div>
+</section>
