@@ -775,7 +775,7 @@ const eventSchema = JSON.stringify({
               <line x1="10" y1="22" x2="7" y2="22" />
               <line x1="34" y1="22" x2="37" y2="22" />
             </svg>
-            <h3 class="mt-2 text-sm font-medium text-[var(--color-primary)] sm:text-base">Matin</h3>
+            <h3 class="mt-2 text-sm font-medium text-[var(--color-primary)] sm:text-base">Réveil</h3>
             <p class="mt-1 text-xs text-[var(--color-text)] leading-relaxed sm:text-sm">Réveil au son de la nature. Pratique douce en plein air, petit-déj à ton rythme.</p>
           </div>
 
@@ -788,7 +788,7 @@ const eventSchema = JSON.stringify({
               <line x1="22" y1="24" x2="16" y2="34" />
               <line x1="22" y1="24" x2="28" y2="34" />
             </svg>
-            <h3 class="mt-2 text-sm font-medium text-[var(--color-primary)] sm:text-base">Fin de matinée</h3>
+            <h3 class="mt-2 text-sm font-medium text-[var(--color-primary)] sm:text-base">Matin</h3>
             <p class="mt-1 text-xs text-[var(--color-text)] leading-relaxed sm:text-sm">Conférence, intervention inspirante ou atelier corporel.</p>
           </div>
 
@@ -933,51 +933,61 @@ const eventSchema = JSON.stringify({
          11. POUR QUI
          ============================================ -->
     <section class="py-12 sm:py-16 md:py-20">
-      <div class="mx-auto max-w-5xl px-6">
+      <div class="mx-auto max-w-6xl px-6 lg:max-w-7xl">
         <h2 class="text-center text-2xl sm:text-3xl md:text-4xl text-[var(--color-primary)]">C'est pour toi si&hellip;</h2>
-        <p class="mx-auto mt-3 max-w-2xl text-center text-base italic text-[var(--color-text-light)] sm:mt-4 sm:text-lg">
-          Une seule de ces phrases résonne ? Tu es au bon endroit.
+        <p class="mx-auto mt-3 max-w-3xl text-center text-base italic text-[var(--color-text-light)] sm:mt-4 sm:text-lg">
+          Le Summer Camp est fait pour toi si tu réponds OUI à une ou plusieurs de ces affirmations.
         </p>
 
         <div class="mt-10 grid gap-x-8 gap-y-7 sm:mt-12 md:grid-cols-2 md:gap-x-12 md:gap-y-8">
           <div class="border-l-2 border-[var(--color-accent)] pl-5">
-            <p class="font-['Josefin_Sans',sans-serif] text-base font-medium leading-snug text-[var(--color-primary)] sm:text-lg">Tu as besoin d'une vraie coupure</p>
-            <p class="mt-1 text-sm text-[var(--color-text-light)] leading-relaxed">Loin du bruit, des écrans et du quotidien qui te grignote.</p>
+            <p class="font-['Josefin_Sans',sans-serif] text-base font-medium leading-snug text-[var(--color-primary)] sm:text-lg">Tu tournes à vide ou à plein régime depuis trop longtemps</p>
+            <p class="mt-1 text-sm text-[var(--color-text-light)] leading-relaxed">Il te faut une vraie coupure, un espace ressourçant, loin du bruit, des écrans et du quotidien.</p>
           </div>
 
           <div class="border-l-2 border-[var(--color-accent)] pl-5">
-            <p class="font-['Josefin_Sans',sans-serif] text-base font-medium leading-snug text-[var(--color-primary)] sm:text-lg">Tu veux passer à l'action sur ta santé</p>
-            <p class="mt-1 text-sm text-[var(--color-text-light)] leading-relaxed">Tu lis, tu sais, mais tu tournes en rond. Il est temps de vivre ce que tu apprends.</p>
+            <p class="font-['Josefin_Sans',sans-serif] text-base font-medium leading-snug text-[var(--color-primary)] sm:text-lg">Tu t'intéresses à ta santé, ton corps, ton énergie</p>
+            <p class="mt-1 text-sm text-[var(--color-text-light)] leading-relaxed">Mais tu as l'impression de tourner en rond sans jamais vraiment passer à l'action.</p>
           </div>
 
           <div class="border-l-2 border-[var(--color-accent)] pl-5">
-            <p class="font-['Josefin_Sans',sans-serif] text-base font-medium leading-snug text-[var(--color-primary)] sm:text-lg">Tu veux t'entourer de gens qui avancent</p>
-            <p class="mt-1 text-sm text-[var(--color-text-light)] leading-relaxed">Pour ancrer dans le concret ce que tu portes en toi.</p>
+            <p class="font-['Josefin_Sans',sans-serif] text-base font-medium leading-snug text-[var(--color-primary)] sm:text-lg">Tu manques d'un environnement et de gens soutenants</p>
+            <p class="mt-1 text-sm text-[var(--color-text-light)] leading-relaxed">Pour ancrer un nouvel état d'esprit, des changements ou des pratiques dans le concret.</p>
           </div>
 
           <div class="border-l-2 border-[var(--color-accent)] pl-5">
-            <p class="font-['Josefin_Sans',sans-serif] text-base font-medium leading-snug text-[var(--color-primary)] sm:text-lg">Tu as soif de quelque chose de plus profond</p>
-            <p class="mt-1 text-sm text-[var(--color-text-light)] leading-relaxed">Du monde autour, et pourtant souvent seul·e dans ce que tu traverses.</p>
+            <p class="font-['Josefin_Sans',sans-serif] text-base font-medium leading-snug text-[var(--color-primary)] sm:text-lg">Tu as du monde autour de toi, et pourtant tu te sens souvent seul·e</p>
+            <p class="mt-1 text-sm text-[var(--color-text-light)] leading-relaxed">Dans ce que tu traverses. Tu as soif de quelque chose de plus profond.</p>
           </div>
 
           <div class="border-l-2 border-[var(--color-accent)] pl-5">
-            <p class="font-['Josefin_Sans',sans-serif] text-base font-medium leading-snug text-[var(--color-primary)] sm:text-lg">Tu veux ressentir, rire, t'émerveiller</p>
-            <p class="mt-1 text-sm text-[var(--color-text-light)] leading-relaxed">Te laisser aller à des moments qui comptent vraiment.</p>
+            <p class="font-['Josefin_Sans',sans-serif] text-base font-medium leading-snug text-[var(--color-primary)] sm:text-lg">Tu es engagé·e dans une démarche de santé globale depuis longtemps</p>
+            <p class="mt-1 text-sm text-[var(--color-text-light)] leading-relaxed">Tu connais les bases. Tu veux maintenant rencontrer des pairs et des facilitateurs qui ont eux aussi fait du chemin, et approfondir en présentiel plutôt qu'en ligne.</p>
           </div>
 
           <div class="border-l-2 border-[var(--color-accent)] pl-5">
-            <p class="font-['Josefin_Sans',sans-serif] text-base font-medium leading-snug text-[var(--color-primary)] sm:text-lg">Tu veux redescendre dans ton corps</p>
-            <p class="mt-1 text-sm text-[var(--color-text-light)] leading-relaxed">Sortir de la tête, retrouver le présent, le vivant.</p>
+            <p class="font-['Josefin_Sans',sans-serif] text-base font-medium leading-snug text-[var(--color-primary)] sm:text-lg">Tu veux ressentir, rire aux éclats, t'émouvoir, t'émerveiller</p>
+            <p class="mt-1 text-sm text-[var(--color-text-light)] leading-relaxed">Tu réalises que ça fait longtemps que tu ne t'es pas vraiment laissé·e aller à vivre des moments qui comptent.</p>
           </div>
 
           <div class="border-l-2 border-[var(--color-accent)] pl-5">
-            <p class="font-['Josefin_Sans',sans-serif] text-base font-medium leading-snug text-[var(--color-primary)] sm:text-lg">Tu veux te reposer ET te remotiver</p>
-            <p class="mt-1 text-sm text-[var(--color-text-light)] leading-relaxed">Les deux à la fois, parce que tu vis une période intense.</p>
+            <p class="font-['Josefin_Sans',sans-serif] text-base font-medium leading-snug text-[var(--color-primary)] sm:text-lg">Tu vis beaucoup dans ta tête</p>
+            <p class="mt-1 text-sm text-[var(--color-text-light)] leading-relaxed">Tu sens qu'il est temps de redescendre dans ton corps, dans le présent, dans le vivant.</p>
           </div>
 
           <div class="border-l-2 border-[var(--color-accent)] pl-5">
-            <p class="font-['Josefin_Sans',sans-serif] text-base font-medium leading-snug text-[var(--color-primary)] sm:text-lg">Tu repousses ce moment depuis longtemps</p>
-            <p class="mt-1 text-sm text-[var(--color-text-light)] leading-relaxed">T'accorder du temps. Pour de vrai. Plus à plus tard.</p>
+            <p class="font-['Josefin_Sans',sans-serif] text-base font-medium leading-snug text-[var(--color-primary)] sm:text-lg">Tu vis une période intense</p>
+            <p class="mt-1 text-sm text-[var(--color-text-light)] leading-relaxed">Tu as besoin de te reposer ET de te remotiver, les deux en même temps.</p>
+          </div>
+
+          <div class="border-l-2 border-[var(--color-accent)] pl-5">
+            <p class="font-['Josefin_Sans',sans-serif] text-base font-medium leading-snug text-[var(--color-primary)] sm:text-lg">Ça fait longtemps que tu ne t'es pas vraiment accordé·e du temps</p>
+            <p class="mt-1 text-sm text-[var(--color-text-light)] leading-relaxed">Et tu remets ça à plus tard depuis trop longtemps.</p>
+          </div>
+
+          <div class="border-l-2 border-[var(--color-accent)] pl-5">
+            <p class="font-['Josefin_Sans',sans-serif] text-base font-medium leading-snug text-[var(--color-primary)] sm:text-lg">Tu veux repartir avec des pratiques, des outils, de l'inspiration</p>
+            <p class="mt-1 text-sm text-[var(--color-text-light)] leading-relaxed">Et peut-être des personnes importantes dans ta vie.</p>
           </div>
         </div>
 
