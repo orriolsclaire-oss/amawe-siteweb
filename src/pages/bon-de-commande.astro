@@ -10,32 +10,32 @@ const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
 
 const valueStackItems = [
-  { label: "12 seances de coaching de groupe", value: "1 200 EUR" },
-  { label: "6 coachings individualises hot seat", value: "600 EUR" },
-  { label: "Immersion 2 jours a Montpellier", value: "400 EUR" },
+  { label: "12 séances de coaching de groupe", value: "1 200 EUR" },
+  { label: "6 coachings individualisés hot seat", value: "600 EUR" },
+  { label: "Immersion 2 jours à Montpellier", value: "400 EUR" },
   { label: "Immersion 4 jours en nature (Aveyron)", value: "800 EUR" },
-  { label: "Bibliotheque videos mouvement", value: "200 EUR" },
-  { label: "Recettes sante + listes de courses", value: "150 EUR" },
-  { label: "Groupe WhatsApp prive", value: "Offert" },
+  { label: "Bibliothèque vidéos mouvement", value: "200 EUR" },
+  { label: "Recettes santé + listes de courses", value: "150 EUR" },
+  { label: "Groupe WhatsApp privé", value: "Offert" },
   { label: "Suivi post-programme M+1", value: "150 EUR" },
-  { label: "6 bonus (experts, reunion alumni...)", value: "300 EUR" },
+  { label: "6 bonus (experts, réunion alumni...)", value: "300 EUR" },
 ]
 
 const orderIncluded = [
-  { text: "12 seances de coaching (groupe + hot seat)" },
-  { text: "2 immersions en presentiel (Montpellier + Aveyron)" },
-  { text: "Bibliotheque de videos mouvement" },
-  { text: "Recettes sante et listes de courses" },
-  { text: "Groupe WhatsApp prive" },
-  { text: "Suivi post-programme a M+1" },
-  { text: "6 bonus offerts (experts, reunion alumni...)" },
+  { text: "12 séances de coaching (groupe + hot seat)" },
+  { text: "2 immersions en présentiel (Montpellier + Aveyron)" },
+  { text: "Bibliothèque de vidéos mouvement" },
+  { text: "Recettes santé et listes de courses" },
+  { text: "Groupe WhatsApp privé" },
+  { text: "Suivi post-programme à M+1" },
+  { text: "6 bonus offerts (experts, réunion alumni...)" },
 ]
 
 const orderReassurance = [
-  { icon: "🔒", text: "Paiement 100% securise" },
-  { icon: "👥", text: "Entree sur candidature" },
-  { icon: "💚", text: "Accompagnement personnalise" },
-  { icon: "⭐", text: "+3 500 personnes accompagnees" },
+  { icon: "🔒", text: "Paiement 100% sécurisé" },
+  { icon: "👥", text: "Entrée sur candidature" },
+  { icon: "💚", text: "Accompagnement personnalisé" },
+  { icon: "⭐", text: "+3 500 personnes accompagnées" },
 ]
 
 const faqs = [
@@ -46,8 +46,8 @@ const faqs = [
 ---
 
 <Layout
-  title="Bon de commande — Energie Illimitee — Amawe"
-  description="Rejoins Energie Illimitee, le programme de transformation holistique de 3 mois avec Claire Orriols."
+  title="Bon de commande — Énergie Illimitée — Amawe"
+  description="Rejoins Énergie Illimitée, le programme de transformation holistique de 3 mois avec Claire Orriols."
 >
   <Header />
   <main class="pt-20">
@@ -55,9 +55,9 @@ const faqs = [
     <!-- Hero sobre -->
     <section class="bg-[var(--color-primary)] py-16 md:py-24">
       <div class="mx-auto max-w-3xl px-6 text-center">
-        <span class="badge-urgency mb-6 inline-block">Places limitees — Prochaine session : 20 avril 2026</span>
-        <h1 class="text-4xl text-[var(--color-surface)] md:text-6xl">Energie Illimitee</h1>
-        <p class="mt-4 font-['Cormorant_Garamond',serif] text-xl text-[var(--color-surface)]/70 md:text-2xl">
+        <span class="badge-urgency mb-6 inline-block">Places limitées — Prochaine session : 20 avril 2026</span>
+        <h1 class="text-4xl text-[var(--color-surface)] md:text-6xl">Énergie Illimitée</h1>
+        <p class="mt-4 font-['Josefin_Sans',sans-serif] text-xl text-[var(--color-surface)]/70 md:text-2xl">
           Programme de transformation holistique — 3 mois
         </p>
       </div>
@@ -66,7 +66,7 @@ const faqs = [
     <!-- Value Stack -->
     <section class="py-16 md:py-24">
       <div class="mx-auto max-w-4xl px-6">
-        <p class="section-label mb-4 text-center">CE QUE TU RECOIS</p>
+        <p class="section-label mb-4 text-center">CE QUE TU REÇOIS</p>
         <div class="divider mx-auto mt-2 mb-12"></div>
         <ValueStack
           items={valueStackItems}
@@ -80,12 +80,12 @@ const faqs = [
     <!-- Bon de commande -->
     <section class="bg-[var(--color-warm)] py-16 md:py-24">
       <div class="mx-auto max-w-4xl px-6">
-        <p class="section-label mb-4 text-center">PRETE A TRANSFORMER TA VIE ?</p>
+        <p class="section-label mb-4 text-center">PRÊTE À TRANSFORMER TA VIE ?</p>
         <h2 class="text-center text-4xl md:text-5xl">Rejoins le programme</h2>
         <div class="divider mx-auto mt-6 mb-12"></div>
 
         <OrderForm
-          title="Energie Illimitee"
+          title="Énergie Illimitée"
           subtitle="Programme de 3 mois — 20 avril au 20 juillet 2026"
           price="1 350 EUR"
           priceNote="Tarif early bird (au lieu de 2 000 EUR)"
@@ -95,8 +95,8 @@ const faqs = [
           reassurance={orderReassurance}
           ctaText="Postuler maintenant"
           ctaHref="#"
-          ctaNote="Entree sur candidature — Reponse sous 48h"
-          badge="Places limitees"
+          ctaNote="Entrée sur candidature — Réponse sous 48h"
+          badge="Places limitées"
         />
       </div>
     </section>
@@ -126,13 +126,13 @@ const faqs = [
     <!-- Reassurance finale -->
     <section class="bg-[var(--color-primary)] py-16 md:py-20">
       <div class="mx-auto max-w-3xl px-6 text-center">
-        <p class="font-['Cormorant_Garamond',serif] text-3xl italic text-[var(--color-surface)] md:text-4xl">
-          "Tout le monde peut etre en meilleure sante."
+        <p class="font-['Josefin_Sans',sans-serif] text-3xl italic text-[var(--color-surface)] md:text-4xl">
+          "Tout le monde peut être en meilleure santé."
         </p>
         <p class="mt-4 text-sm text-[var(--color-surface)]/60">— Claire Orriols</p>
         <div class="mt-8">
           <a href="/energie-illimitee/" class="text-sm text-[var(--color-surface)]/70 underline underline-offset-4 hover:text-[var(--color-surface)] transition-colors">
-            Redecouvrir le programme
+            Redécouvrir le programme
           </a>
         </div>
       </div>

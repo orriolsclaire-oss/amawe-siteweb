@@ -1,27 +1,48 @@
 ---
-import { getLangFromUrl, useTranslations } from "~/i18n/utils"
-
-const lang = getLangFromUrl(Astro.url)
-const t = useTranslations(lang)
+import SubscribeForm from "~/components/SubscribeForm.astro"
 ---
 
-<section class="bg-[var(--color-warm)] py-20 md:py-28">
-  <div class="mx-auto max-w-2xl px-6 text-center">
-    <p class="section-label mb-4">{t("newsletter.label")}</p>
-    <h2 class="text-4xl md:text-5xl">{t("newsletter.title")}</h2>
-    <p class="mt-6 text-[var(--color-text-light)]">
-      {t("newsletter.text")}
+<section id="newsletter" class="bg-[var(--color-accent-dark)] py-12 md:py-16">
+  <div class="mx-auto max-w-4xl px-6 text-center">
+    <svg
+      aria-hidden="true"
+      width="44"
+      height="40"
+      viewBox="0 0 44 40"
+      fill="none"
+      stroke="var(--color-surface)"
+      stroke-width="1.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="mx-auto mb-3"
+    >
+      <rect x="3" y="12" width="28" height="20" rx="2" />
+      <path d="M3 14 L17 25 L31 14" />
+      <path d="M34 4 C40 5 41 12 38 16 C34 16 31 13 31 9 C31 6 32 5 34 4 Z" stroke-width="1.4" fill="var(--color-surface)" fill-opacity="0.2" />
+      <line x1="34" y1="6" x2="37" y2="13" stroke-width="1" />
+    </svg>
+    <p class="section-label mb-3" style="color: var(--color-surface);">LA SUPERLETTER</p>
+    <h2 class="text-3xl text-[var(--color-surface)] md:text-4xl" style="color: var(--color-surface);">
+      1 newsletter par semaine.<br />
+      1 sujet. Des pratiques concrètes.
+    </h2>
+    <div class="divider mx-auto mt-5" style="background-color: var(--color-surface);"></div>
+
+    <p class="mt-6 text-[var(--color-surface)]/80">
+      Chaque semaine, reçois des conseils en nutrition, mouvement, gestion du stress, bien-être et santé holistique (detox, sommeil, respiration, système nerveux, rythmes, émotions, mindset…). Rejoins près de 20 000 abonnés.
     </p>
-    <form class="mx-auto mt-10 flex max-w-md flex-col gap-3 sm:flex-row">
-      <input
-        type="email"
-        placeholder={t("newsletter.placeholder")}
-        required
-        class="flex-1 border border-[var(--color-border)] bg-[var(--color-surface)] px-5 py-3 text-sm focus:border-[var(--color-primary)] focus:outline-none"
-      />
-      <button type="submit" class="btn-primary whitespace-nowrap">
-        {t("newsletter.cta")}
-      </button>
-    </form>
+
+    <SubscribeForm
+      intent="newsletter"
+      theme="dark"
+      cta="Rejoindre"
+      extraFields={["name"]}
+      nameLabel="Prénom"
+      namePlaceholder="Ton prénom"
+      emailLabel="Email"
+      emailPlaceholder="Ton adresse email"
+      buttonClass="btn-accent whitespace-nowrap leading-tight w-full hover:!bg-[var(--color-warm)] hover:!text-[var(--color-primary)] hover:!border-[var(--color-warm)]"
+      class="mt-6 max-w-md md:max-w-none"
+    />
   </div>
 </section>

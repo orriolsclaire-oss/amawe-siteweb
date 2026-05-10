@@ -2,35 +2,35 @@
 
 /* ===========================
    AMAWE — Global Styles
-   Direction artistique : Melissa Ambrosini + Hormozi conversion
-   Palette : warm neutrals, terracotta, sage green, charcoal
+   Direction artistique : Palette Amawe 2026
+   Couleurs : Prune, Terracotta, Vert Signature, Olive Sauge, Sable Dore, Pierre, Lin, Ivoire, Gres
    =========================== */
 
 @theme {
-  /* Warm neutral palette */
-  --color-primary: #2c2c2c;
-  --color-secondary: #6b8f6b;
-  --color-background: #faf8f5;
-  --color-surface: #ffffff;
-  --color-warm: #f5efe8;
-  --color-warm-dark: #ebe3d7;
-  --color-text: #2c2c2c;
-  --color-text-light: #8a8a8a;
-  --color-text-medium: #5a5a5a;
-  --color-border: #e8e4de;
+  /* Palette Amawe 2026 */
+  --color-primary: #1A1A1A;        /* Noir — texte, headings, fonds sombres */
+  --color-secondary: #005850;      /* Vert Signature — nature, confiance */
+  --color-background: #F8F3F0;     /* Ivoire Rose — fond de page */
+  --color-surface: #FFFFFF;        /* Blanc — cards, overlays */
+  --color-warm: #F5EFE7;           /* Lin Naturel — fond chaud */
+  --color-warm-dark: #E8D5B5;      /* Sable Dore — fond chaud soutenu */
+  --color-text: #1A1A1A;           /* Noir — texte principal */
+  --color-text-light: #8A7268;     /* Gres — sous-titres, captions */
+  --color-text-medium: #8A7268;    /* Gres — texte secondaire */
+  --color-border: #E8E0D8;         /* Pierre Claire — bordures, separateurs */
 
-  /* Terracotta — used sparingly for CTAs, urgency, accents */
-  --color-accent: #c4704b;
-  --color-accent-light: #f0ddd4;
-  --color-accent-dark: #a85a3a;
+  /* Terracotta — CTAs, boutons, urgence, highlights */
+  --color-accent: #CE766A;
+  --color-accent-light: #E8D5B5;   /* Sable Dore */
+  --color-accent-dark: #8B5A7A;    /* Prune Signature */
 
-  /* Sage green — nature, trust, included, certifications */
-  --color-sage: #6b8f6b;
-  --color-sage-light: #e5ede2;
-  --color-sage-dark: #4a6b4a;
+  /* Olive Sauge — badges, check marks, nature douce */
+  --color-sage: #9CAF88;
+  --color-sage-light: #F5EFE7;     /* Lin Naturel */
+  --color-sage-dark: #005850;      /* Vert Signature */
 
-  /* Blush — soft accent */
-  --color-blush: #d4b8a0;
+  /* Prune Signature — accent premium */
+  --color-blush: #8B5A7A;
 }
 
 /* Base styles */
@@ -40,7 +40,7 @@ html {
 
 body {
   font-family:
-    "Inter",
+    "Lato",
     system-ui,
     -apple-system,
     BlinkMacSystemFont,
@@ -48,44 +48,52 @@ body {
     Roboto,
     sans-serif;
   font-weight: 300;
+  font-size: 1.1em;
   color: var(--color-text);
   background-color: var(--color-background);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  line-height: 1.7;
+  line-height: 1.9;
+  /* Compensation pour le bandeau actu fixe en haut (32px) */
+  padding-top: 32px;
 }
 
-/* Typography — Cormorant Garamond for headings (serif, elegant) */
+/* Typography — Josefin Sans for headings */
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  font-family: "Cormorant Garamond", "Georgia", serif;
+  font-family: "Josefin Sans", system-ui, sans-serif;
   font-weight: 300;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.02em;
   line-height: 1.2;
 }
 
 h1 {
-  font-size: 3.5rem;
-  font-weight: 300;
+  font-size: 4em;
+  font-weight: 200;
+  letter-spacing: 0.02em;
 }
 
 h2 {
-  font-size: 2.5rem;
-  font-weight: 300;
+  font-size: clamp(1.5rem, 2.4vw, 2.125rem);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: var(--color-text-light);
 }
 
 h3 {
-  font-size: 1.75rem;
+  font-size: clamp(1.25rem, 1.8vw, 1.625rem);
   font-weight: 400;
+  letter-spacing: 0.01em;
+  color: var(--color-text-light);
 }
 
 /* Section labels — uppercase sans-serif */
 .section-label {
-  font-family: "Inter", system-ui, sans-serif;
+  font-family: "Lato", system-ui, sans-serif;
   font-size: 0.75rem;
   font-weight: 400;
   letter-spacing: 0.2em;
@@ -93,14 +101,28 @@ h3 {
   color: var(--color-text-light);
 }
 
-/* Elegant blockquotes */
-blockquote {
-  font-family: "Cormorant Garamond", "Georgia", serif;
+/* Labels dans les sections (pas le menu/header) — un peu plus grands */
+section .section-label {
+  font-size: 0.875rem;
+}
+
+/* Elegant blockquotes (default — overridable per-instance) */
+blockquote:not([class*="testimonial-quote"]) {
+  font-family: "Josefin Sans", system-ui, sans-serif;
   font-style: italic;
   font-size: 1.5rem;
   font-weight: 300;
   line-height: 1.5;
   color: var(--color-text-medium);
+}
+
+/* Compact testimonial card citation — barely larger than the author name (14px) */
+.testimonial-quote {
+  font-family: "Lato", system-ui, sans-serif;
+  font-style: normal;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.55;
 }
 
 /* Links */
@@ -114,8 +136,8 @@ a {
 
 .btn-primary {
   display: inline-block;
-  padding: 0.875rem 2.5rem;
-  font-family: "Inter", system-ui, sans-serif;
+  padding: 0.75rem 2rem;
+  font-family: "Lato", system-ui, sans-serif;
   font-size: 0.75rem;
   font-weight: 400;
   letter-spacing: 0.15em;
@@ -123,6 +145,7 @@ a {
   color: var(--color-surface);
   background-color: var(--color-primary);
   border: 1px solid var(--color-primary);
+  border-radius: 9999px;
   transition: all 0.3s ease;
   cursor: pointer;
 }
@@ -134,8 +157,8 @@ a {
 
 .btn-secondary {
   display: inline-block;
-  padding: 0.875rem 2.5rem;
-  font-family: "Inter", system-ui, sans-serif;
+  padding: 0.75rem 2rem;
+  font-family: "Lato", system-ui, sans-serif;
   font-size: 0.75rem;
   font-weight: 400;
   letter-spacing: 0.15em;
@@ -143,6 +166,7 @@ a {
   color: var(--color-primary);
   background-color: transparent;
   border: 1px solid var(--color-primary);
+  border-radius: 9999px;
   transition: all 0.3s ease;
   cursor: pointer;
 }
@@ -155,15 +179,16 @@ a {
 /* Terracotta CTA — high-conversion button */
 .btn-accent {
   display: inline-block;
-  padding: 1rem 3rem;
-  font-family: "Inter", system-ui, sans-serif;
-  font-size: 0.8rem;
+  padding: 0.75rem 2rem;
+  font-family: "Lato", system-ui, sans-serif;
+  font-size: 0.75rem;
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--color-surface);
   background-color: var(--color-accent);
   border: 2px solid var(--color-accent);
+  border-radius: 9999px;
   transition: all 0.3s ease;
   cursor: pointer;
 }
@@ -177,7 +202,7 @@ a {
 .btn-nav {
   display: inline-block;
   padding: 0.4rem 1.2rem;
-  font-family: "Inter", system-ui, sans-serif;
+  font-family: "Lato", system-ui, sans-serif;
   font-size: 0.65rem;
   font-weight: 400;
   letter-spacing: 0.15em;
@@ -185,6 +210,7 @@ a {
   color: var(--color-primary);
   background-color: transparent;
   border: 1px solid var(--color-border);
+  border-radius: 9999px;
   transition: all 0.3s ease;
 }
 
@@ -202,7 +228,7 @@ a {
 .badge-urgency {
   display: inline-block;
   padding: 0.35rem 1rem;
-  font-family: "Inter", system-ui, sans-serif;
+  font-family: "Lato", system-ui, sans-serif;
   font-size: 0.65rem;
   font-weight: 500;
   letter-spacing: 0.1em;
@@ -216,7 +242,7 @@ a {
 .badge-included {
   display: inline-block;
   padding: 0.35rem 1rem;
-  font-family: "Inter", system-ui, sans-serif;
+  font-family: "Lato", system-ui, sans-serif;
   font-size: 0.65rem;
   font-weight: 500;
   letter-spacing: 0.1em;
@@ -296,11 +322,14 @@ a {
    UTILITY
    =========================== */
 
-/* Images */
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
+/* Images — bord arrondi par défaut (override-able via classes Tailwind comme rounded-full) */
+@layer base {
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 1rem;
+  }
 }
 
 /* Selection */
@@ -321,7 +350,7 @@ section {
   align-items: center;
   justify-content: center;
   color: var(--color-text-light);
-  font-family: "Inter", system-ui, sans-serif;
+  font-family: "Lato", system-ui, sans-serif;
   font-size: 0.75rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -340,8 +369,8 @@ section {
   inset: 0;
   background: linear-gradient(
     to right,
-    rgba(44, 44, 44, 0.85) 0%,
-    rgba(44, 44, 44, 0.5) 50%,
+    rgba(26, 26, 26, 0.85) 0%,
+    rgba(26, 26, 26, 0.5) 50%,
     transparent 100%
   );
 }
@@ -362,4 +391,59 @@ section {
 
 .faq-icon {
   transition: transform 0.3s ease;
+}
+
+/* Marquee — bande photo auto-scrolling pilotée en JS */
+.marquee-wrapper {
+  overflow: hidden;
+}
+
+.marquee-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 44px;
+  height: 44px;
+  border-radius: 9999px;
+  background-color: rgba(255, 255, 255, 0.92);
+  color: var(--color-sage-dark);
+  font-size: 1.75rem;
+  font-weight: 300;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.marquee-btn:hover {
+  background-color: var(--color-surface);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.marquee-btn-prev {
+  left: 0.75rem;
+}
+
+.marquee-btn-next {
+  right: 0.75rem;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+}
+
+.marquee-wrapper:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
 }

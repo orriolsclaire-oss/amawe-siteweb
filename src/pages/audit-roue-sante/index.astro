@@ -1,0 +1,174 @@
+---
+import Layout from "~/layouts/Layout.astro"
+import Header from "~/components/Header.astro"
+import Footer from "~/components/Footer.astro"
+import SubscribeForm from "~/components/SubscribeForm.astro"
+
+const steps = [
+  { num: "01", verb: "Note", text: "1-10, 15 min" },
+  { num: "02", verb: "Marque", text: "points sur les axes" },
+  { num: "03", verb: "Relie", text: "toile d'araignée" },
+  { num: "04", verb: "Lis", text: "regarde la forme" },
+]
+
+const after = [
+  {
+    icon: "📩",
+    title: "Newsletter Amawé",
+    text: "1 mail/semaine, gratuit",
+    href: "/ressources/",
+  },
+  {
+    icon: "🌳",
+    title: "Summer Camp",
+    text: "11-14 juillet 2026, Sud Aveyron",
+    href: "/summer-camp/",
+  },
+  {
+    icon: "💌",
+    title: "Contact direct",
+    text: "@amawefrance · hello@amawe.com",
+    href: "/contact/",
+  },
+]
+---
+
+<Layout
+  title="L'Audit de ta Roue de la Santé — Amawé"
+  description="Un PDF d'auto-évaluation pour photographier honnêtement ton équilibre — 16 domaines, 4 axes."
+>
+  <Header />
+  <main class="pt-20">
+    <!-- ============================================
+         1. HERO
+         ============================================ -->
+    <section class="bg-[var(--color-warm)] py-20 md:py-28">
+      <div class="mx-auto max-w-3xl px-6 text-center">
+        <p class="section-label mb-6 text-[var(--color-accent-dark)]">
+          AMAWÉ · LEAD MAGNET
+        </p>
+        <h1 class="hero-title">L'Audit de ta Roue de la Santé</h1>
+        <p
+          class="mt-6 font-['Josefin_Sans',sans-serif] text-lg italic text-[var(--color-text-medium)] md:text-xl"
+        >
+          16 domaines · 4 axes · une photographie honnête de ton équilibre
+        </p>
+        <p class="mt-10 text-lg leading-relaxed text-[var(--color-primary)]">
+          La santé n'est pas une checklist. C'est un écosystème.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================================
+         2. MODE D'EMPLOI — 4 verbes
+         ============================================ -->
+    <section class="py-20 md:py-24">
+      <div class="mx-auto max-w-5xl px-6">
+        <div class="grid gap-6 sm:grid-cols-2 md:grid-cols-4 md:gap-8">
+          {
+            steps.map((step) => (
+              <div class="border border-[var(--color-border)] bg-[var(--color-surface)] p-8 text-center">
+                <p class="font-['Josefin_Sans',sans-serif] text-3xl font-light text-[var(--color-sage-dark)]">
+                  {step.num}
+                </p>
+                <h3 class="mt-4 text-2xl text-[var(--color-primary)]">
+                  {step.verb}
+                </h3>
+                <p class="mt-3 text-sm text-[var(--color-text-light)]">
+                  {step.text}
+                </p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         3. MOCKUP — La Roue
+         ============================================ -->
+    <section class="bg-[var(--color-sage-light)] py-20 md:py-24">
+      <div class="mx-auto max-w-3xl px-6 text-center">
+        <img
+          src="/images/roue-sante-amawe.webp"
+          alt="La Roue de la Santé Amawé — 16 domaines, 4 axes"
+          width="800"
+          height="756"
+          loading="lazy"
+          decoding="async"
+          class="mx-auto w-full max-w-md bg-[var(--color-surface)] p-8 shadow-md"
+        />
+      </div>
+    </section>
+
+    <!-- ============================================
+         4. FORM
+         ============================================ -->
+    <section class="bg-[var(--color-accent-dark)] py-20 md:py-28">
+      <div class="mx-auto max-w-2xl px-6 text-center">
+        <h2 class="text-3xl text-[var(--color-surface)] md:text-4xl">
+          Reçois le PDF dans ta boîte mail
+        </h2>
+        <div class="mt-10">
+          <SubscribeForm
+            intent="lead_audit_roue"
+            theme="dark"
+            cta="Recevoir l'audit"
+            ctaSubtext="C'est gratuit"
+            extraFields={["name"]}
+            nameLabel="Prénom"
+            namePlaceholder="Ton prénom"
+            emailLabel="Email"
+            emailPlaceholder="Ton adresse email"
+            buttonClass="btn-accent whitespace-nowrap leading-tight w-full"
+            redirectTo="/audit-roue-sante/merci/"
+            class="mx-auto max-w-md md:max-w-none"
+          />
+        </div>
+        <p class="mt-6 text-xs text-[var(--color-surface)]/50">
+          Tu reçois aussi la SuperLetter (1 email/semaine). Désinscription en 1 clic.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================================
+         5. ET APRÈS — 3 cartes
+         ============================================ -->
+    <section class="py-20 md:py-24">
+      <div class="mx-auto max-w-5xl px-6">
+        <p
+          class="text-center font-['Josefin_Sans',sans-serif] text-2xl italic text-[var(--color-text-medium)] md:text-3xl"
+        >
+          Si tu veux continuer à découvrir l'univers Amawé
+        </p>
+        <div class="mt-12 grid gap-6 sm:grid-cols-3 md:gap-8">
+          {
+            after.map((item) => (
+              <a
+                href={item.href}
+                class="group block border border-[var(--color-border)] bg-[var(--color-surface)] p-8 text-center transition-shadow hover:shadow-lg"
+              >
+                <p class="text-3xl">{item.icon}</p>
+                <h3 class="mt-4 text-xl text-[var(--color-primary)] group-hover:text-[var(--color-accent-dark)] transition-colors">
+                  {item.title}
+                </h3>
+                <p class="mt-3 text-sm text-[var(--color-text-medium)]">
+                  {item.text}
+                </p>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .hero-title {
+    font-size: clamp(2.25rem, 6vw, 3.75rem);
+    line-height: 1.1;
+    color: var(--color-primary);
+  }
+</style>

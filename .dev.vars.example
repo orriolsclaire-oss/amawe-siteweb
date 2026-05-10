@@ -1,0 +1,11 @@
+# MailerLite — secrets nécessaires pour les forms
+# Copier ce fichier vers .dev.vars (gitignored) et remplir avec les vraies valeurs.
+# En production sur Cloudflare : utiliser `bunx wrangler secret put NOM_DU_SECRET`
+
+MAILERLITE_API_KEY=
+
+# Group IDs MailerLite (numériques, à récupérer dans le dashboard)
+MAILERLITE_GROUP_LEAD_AUDIT=
+MAILERLITE_GROUP_NEWSLETTER=
+MAILERLITE_GROUP_CONTACT=
+MAILERLITE_GROUP_WAITLIST_EI=

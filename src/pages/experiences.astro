@@ -34,10 +34,10 @@ const includes = [
       <div class="mx-auto max-w-4xl px-6 text-center">
         <p class="section-label mb-6">{t("exp.label")}</p>
         <h1 class="text-5xl md:text-7xl">{t("exp.title")}</h1>
-        <p class="mx-auto mt-6 max-w-2xl font-['Cormorant_Garamond',serif] text-xl italic text-[var(--color-text-light)] md:text-2xl">
+        <p class="mx-auto mt-6 max-w-2xl font-['Josefin_Sans',sans-serif] text-xl italic text-[var(--color-text-light)] md:text-2xl">
           {t("exp.subtitle")}
         </p>
-        <div class="divider mx-auto mt-8"></div>
+        <div class="divider mx-auto mt-8" style="background-color: var(--color-sage-dark);"></div>
       </div>
     </section>
 
@@ -58,10 +58,10 @@ const includes = [
           <div>
             <p class="section-label mb-2">{t("exp.retreat.label")}</p>
             <h2 class="text-4xl md:text-5xl">{t("exp.retreat.title")}</h2>
-            <p class="mt-2 font-['Cormorant_Garamond',serif] text-lg italic text-[var(--color-text-light)]">
+            <p class="mt-2 font-['Josefin_Sans',sans-serif] text-lg italic text-[var(--color-text-light)]">
               {t("exp.retreat.edition")}
             </p>
-            <div class="divider mt-6"></div>
+            <div class="divider mt-6" style="background-color: var(--color-sage-dark);"></div>
             <p class="mt-8 text-lg leading-relaxed text-[var(--color-text-medium)]">
               {t("exp.retreat.intro")}
             </p>
@@ -83,9 +83,9 @@ const includes = [
     </section>
 
     <!-- Silence notice -->
-    <section class="border-y border-[var(--color-border)] bg-[var(--color-sage-light)] py-12">
+    <section class="border-y border-[var(--color-sage-dark)] bg-[var(--color-sage-light)] py-12">
       <div class="mx-auto max-w-3xl px-6 text-center">
-        <p class="font-['Cormorant_Garamond',serif] text-xl italic text-[var(--color-text-medium)]">
+        <p class="font-['Josefin_Sans',sans-serif] text-xl italic text-[var(--color-sage-dark)]">
           {t("exp.retreat.silence")}
         </p>
       </div>
@@ -95,11 +95,11 @@ const includes = [
     <section class="py-20 md:py-28">
       <div class="mx-auto max-w-4xl px-6">
         <p class="section-label mb-4 text-center">{t("exp.retreat.includes.label")}</p>
-        <div class="divider mx-auto mt-2 mb-12"></div>
+        <div class="divider mx-auto mt-2 mb-12" style="background-color: var(--color-sage-dark);"></div>
         <div class="grid gap-4 md:grid-cols-2">
           {includes.map((item) => (
             <div class="flex items-center gap-4 border-b border-[var(--color-border)] pb-4">
-              <span class="h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-sage)]"></span>
+              <span class="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[var(--color-sage)] text-[10px] text-white">✓</span>
               <p class="text-[var(--color-text-medium)]">{item}</p>
             </div>
           ))}
@@ -145,8 +145,8 @@ const includes = [
         <div class="order-form">
           <!-- Header sombre -->
           <div class="order-form-header">
-            <p class="font-['Inter',sans-serif] text-xs font-medium uppercase tracking-[0.2em]">Bon de commande</p>
-            <h3 class="mt-2 font-['Cormorant_Garamond',serif] text-2xl font-light text-[var(--color-surface)]">Retraite Danse & Silence</h3>
+            <p class="font-['Lato',sans-serif] text-xs font-medium uppercase tracking-[0.2em]">Bon de commande</p>
+            <h3 class="mt-2 font-['Josefin_Sans',sans-serif] text-2xl font-light text-[var(--color-surface)]">Retraite Danse & Silence</h3>
             <p class="mt-1 text-sm text-[var(--color-surface)]/70">25 — 28 fevrier 2026 · Ecolieu, Sud Aveyron</p>
           </div>
 
@@ -162,17 +162,17 @@ const includes = [
                   <p class="text-sm font-medium">Autonome</p>
                   <p class="text-xs text-[var(--color-text-light)]">Van / camping-car</p>
                 </div>
-                <p class="font-['Cormorant_Garamond',serif] text-2xl text-[var(--color-accent)]">420 EUR</p>
+                <p class="font-['Josefin_Sans',sans-serif] text-2xl text-[var(--color-accent)]">420 EUR</p>
               </div>
 
               <!-- Dortoir — COMPLET -->
               <div class="flex items-center justify-between border border-[var(--color-border)] p-4 opacity-50">
                 <div>
-                  <p class="text-sm font-medium">Dortoir partage</p>
+                   <p class="text-sm font-medium">Dortoir partage</p>
                   <p class="text-xs text-[var(--color-text-light)]">4-5 lits</p>
                 </div>
                 <div class="text-right">
-                  <p class="font-['Cormorant_Garamond',serif] text-2xl text-[var(--color-text-light)] line-through">490 EUR</p>
+                  <p class="font-['Josefin_Sans',sans-serif] text-2xl text-[var(--color-text-light)] line-through">490 EUR</p>
                   <span class="badge-urgency text-[10px]">COMPLET</span>
                 </div>
               </div>
@@ -180,11 +180,11 @@ const includes = [
               <!-- Gite — 1 place restante -->
               <div class="flex items-center justify-between border-2 border-[var(--color-accent)] p-4">
                 <div>
-                  <p class="text-sm font-medium">Gite independant partage</p>
+                   <p class="text-sm font-medium">Gite independant partage</p>
                   <p class="text-xs text-[var(--color-text-light)]">3 lits</p>
                 </div>
                 <div class="text-right">
-                  <p class="font-['Cormorant_Garamond',serif] text-2xl text-[var(--color-accent)]">560 EUR</p>
+                  <p class="font-['Josefin_Sans',sans-serif] text-2xl text-[var(--color-accent)]">560 EUR</p>
                   <span class="badge-urgency text-[10px]">1 PLACE</span>
                 </div>
               </div>
@@ -192,10 +192,10 @@ const includes = [
               <!-- Studio -->
               <div class="flex items-center justify-between border border-[var(--color-border)] p-4">
                 <div>
-                  <p class="text-sm font-medium">Studio independant</p>
+                   <p class="text-sm font-medium">Studio independant</p>
                   <p class="text-xs text-[var(--color-text-light)]">Solo ou couple (-80 EUR si couple)</p>
                 </div>
-                <p class="font-['Cormorant_Garamond',serif] text-2xl text-[var(--color-accent)]">620 EUR</p>
+                <p class="font-['Josefin_Sans',sans-serif] text-2xl text-[var(--color-accent)]">620 EUR</p>
               </div>
             </div>
 
@@ -207,7 +207,8 @@ const includes = [
               <p class="section-label mb-4">Ce qui est inclus</p>
               <div class="space-y-3">
                 {includes.map((item) => (
-                  <div class="check-icon flex items-center text-sm text-[var(--color-text-medium)]">
+                  <div class="flex items-center gap-3 text-sm text-[var(--color-text-medium)]">
+                    <span class="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[var(--color-sage)] text-[10px] text-white">✓</span>
                     {item}
                   </div>
                 ))}
@@ -225,7 +226,7 @@ const includes = [
               </div>
               <div class="reassurance-item">
                 <div class="reassurance-icon">🍽</div>
-                <span class="text-xs">Pension complete bio</span>
+                 <span class="text-xs">Pension complete bio</span>
               </div>
               <div class="reassurance-item">
                 <div class="reassurance-icon">🔒</div>
@@ -273,13 +274,14 @@ const includes = [
         <div>
           <p class="section-label mb-4">{t("exp.stage.label")}</p>
           <h2 class="text-4xl md:text-5xl">{t("exp.stage.title")}</h2>
-          <div class="divider mt-6"></div>
+          <div class="divider mt-6" style="background-color: var(--color-sage-dark);"></div>
           <p class="mt-8 text-lg leading-relaxed text-[var(--color-text-medium)]">
             {t("exp.stage.text")}
           </p>
-          <p class="mt-6 font-['Cormorant_Garamond',serif] text-lg italic text-[var(--color-accent)]">
+          <p class="mt-6 font-['Josefin_Sans',sans-serif] text-lg italic text-[var(--color-accent)]">
             {t("exp.stage.coming")}
           </p>
+          <a href="/contact/" class="btn-accent mt-8 inline-block">Decouvrir les prochaines dates</a>
         </div>
         <img
           src="/images/claire-stage.webp"

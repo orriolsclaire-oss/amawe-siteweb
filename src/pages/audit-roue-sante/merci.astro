@@ -1,0 +1,84 @@
+---
+import Layout from "~/layouts/Layout.astro"
+import Header from "~/components/Header.astro"
+import Footer from "~/components/Footer.astro"
+
+const after = [
+  {
+    icon: "📩",
+    title: "Newsletter Amawé",
+    text: "1 mail/semaine, gratuit",
+    href: "/ressources/",
+  },
+  {
+    icon: "🌳",
+    title: "Summer Camp",
+    text: "11-14 juillet 2026, Sud Aveyron",
+    href: "/summer-camp/",
+  },
+  {
+    icon: "💌",
+    title: "Contact direct",
+    text: "@amawefrance · hello@amawe.com",
+    href: "/contact/",
+  },
+]
+---
+
+<Layout
+  title="Merci — L'Audit de ta Roue de la Santé — Amawé"
+  description="Le PDF arrive dans ta boîte mail. En attendant, découvre l'univers Amawé."
+>
+  <Header />
+  <main class="pt-20">
+    <section class="bg-[var(--color-warm)] py-24 md:py-32">
+      <div class="mx-auto max-w-2xl px-6 text-center">
+        <div class="mb-8 inline-flex h-16 w-16 items-center justify-center rounded-full bg-[var(--color-sage)] text-3xl text-white">
+          ✓
+        </div>
+        <h1 class="hero-title">Merci. Le PDF arrive dans ta boîte mail.</h1>
+        <p class="mt-8 text-lg leading-relaxed text-[var(--color-text-medium)]">
+          Vérifie ton dossier promotions/spam si tu ne le trouves pas. Tu
+          reçois aussi la SuperLetter chaque mardi.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-20 md:py-24">
+      <div class="mx-auto max-w-5xl px-6">
+        <p
+          class="text-center font-['Josefin_Sans',sans-serif] text-2xl italic text-[var(--color-text-medium)] md:text-3xl"
+        >
+          Si tu veux continuer à découvrir l'univers Amawé
+        </p>
+        <div class="mt-12 grid gap-6 sm:grid-cols-3 md:gap-8">
+          {
+            after.map((item) => (
+              <a
+                href={item.href}
+                class="group block border border-[var(--color-border)] bg-[var(--color-surface)] p-8 text-center transition-shadow hover:shadow-lg"
+              >
+                <p class="text-3xl">{item.icon}</p>
+                <h3 class="mt-4 text-xl text-[var(--color-primary)] group-hover:text-[var(--color-accent-dark)] transition-colors">
+                  {item.title}
+                </h3>
+                <p class="mt-3 text-sm text-[var(--color-text-medium)]">
+                  {item.text}
+                </p>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .hero-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    line-height: 1.2;
+    color: var(--color-primary);
+  }
+</style>

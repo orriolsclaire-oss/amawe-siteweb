@@ -1,0 +1,305 @@
+---
+type Intent = "lead_audit_roue" | "newsletter" | "contact" | "waitlist_ei"
+type Theme = "light" | "dark" | "underline"
+type ExtraField = "name" | "message" | "intent_question" | "subject"
+
+interface Props {
+  intent: Intent
+  cta?: string
+  ctaSubtext?: string
+  emailPlaceholder?: string
+  emailLabel?: string
+  successMessage?: string
+  errorMessage?: string
+  redirectTo?: string
+  extraFields?: ExtraField[]
+  nameLabel?: string
+  namePlaceholder?: string
+  messageLabel?: string
+  messagePlaceholder?: string
+  intentQuestionLabel?: string
+  intentQuestionPlaceholder?: string
+  subjectLabel?: string
+  subjectPlaceholder?: string
+  theme?: Theme
+  buttonClass?: string
+  class?: string
+}
+
+const {
+  intent,
+  cta = "Envoyer",
+  ctaSubtext,
+  emailPlaceholder = "ton@email.com",
+  emailLabel = "Email",
+  successMessage = "Merci, c'est noté.",
+  errorMessage = "Une erreur est survenue. Réessaie dans un instant ?",
+  redirectTo,
+  extraFields = [],
+  nameLabel = "Prénom",
+  namePlaceholder = "Ton prénom",
+  messageLabel = "Ton message",
+  messagePlaceholder = "Écris-moi ici…",
+  intentQuestionLabel = "Qu'est-ce qui t'attire ?",
+  intentQuestionPlaceholder = "Quelques mots, comme tu le sens…",
+  subjectLabel = "Sujet",
+  subjectPlaceholder = "L'objet de ton message",
+  theme = "light",
+  buttonClass,
+  class: className = "",
+} = Astro.props as Props
+
+const formId = `subscribe-${intent}-${Math.random().toString(36).slice(2, 8)}`
+const isStacked = extraFields.length > 0
+
+const inputBase = "w-full text-sm focus:outline-none transition-colors"
+const inputClasses: Record<Theme, string> = {
+  light: `${inputBase} border border-[var(--color-border)] bg-[var(--color-surface)] px-4 py-2 text-[var(--color-primary)] placeholder:text-[var(--color-text-light)] focus:border-[var(--color-primary)]`,
+  dark: `${inputBase} border border-[var(--color-surface)]/20 bg-[var(--color-surface)] px-4 py-2 text-[var(--color-primary)] placeholder:text-[var(--color-text-light)] focus:border-[var(--color-surface)]`,
+  underline: `${inputBase} border-b border-[var(--color-border)] bg-transparent py-2 text-[var(--color-text)] placeholder:text-[var(--color-text-light)] focus:border-[var(--color-primary)]`,
+}
+const buttonClasses: Record<Theme, string> = {
+  light:
+    "inline-block whitespace-nowrap px-6 py-3 font-['Lato',system-ui,sans-serif] text-xs font-medium uppercase tracking-[0.15em] text-[var(--color-surface)] bg-[var(--color-sage-dark)] border border-[var(--color-sage-dark)] transition-all duration-300 hover:bg-[var(--color-surface)] hover:text-[var(--color-sage-dark)] cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed",
+  dark:
+    "inline-block whitespace-nowrap px-6 py-3 font-['Lato',system-ui,sans-serif] text-xs font-medium uppercase tracking-[0.15em] text-[var(--color-surface)] bg-[var(--color-sage-dark)] border border-[var(--color-sage-dark)] transition-all duration-300 hover:bg-[var(--color-surface)] hover:text-[var(--color-sage-dark)] cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed",
+  underline:
+    "btn-accent w-full disabled:opacity-50 disabled:cursor-not-allowed",
+}
+
+const labelClass =
+  theme === "dark"
+    ? "section-label mb-2 block !text-[var(--color-surface)]/80"
+    : "section-label mb-2 block"
+const statusClass =
+  theme === "dark"
+    ? "text-[var(--color-surface)]"
+    : "text-[var(--color-text-medium)]"
+---
+
+<form
+  id={formId}
+  class:list={[
+    isStacked ? "space-y-6" : "mx-auto flex max-w-md flex-col gap-3 sm:flex-row",
+    className,
+  ]}
+  data-intent={intent}
+  data-redirect-to={redirectTo ?? ""}
+  data-success-message={successMessage}
+  data-error-message={errorMessage}
+  novalidate
+>
+  {
+    extraFields.includes("name") ? (
+      <div class="grid gap-4 sm:grid-cols-2">
+        <div>
+          <label for={`${formId}-name`} class={labelClass}>
+            {nameLabel}
+          </label>
+          <input
+            id={`${formId}-name`}
+            name="name"
+            type="text"
+            required
+            placeholder={namePlaceholder}
+            class={inputClasses[theme]}
+          />
+        </div>
+        <div>
+          <label for={`${formId}-email`} class={labelClass}>
+            {emailLabel}
+          </label>
+          <input
+            id={`${formId}-email`}
+            name="email"
+            type="email"
+            required
+            placeholder={emailPlaceholder}
+            class={inputClasses[theme]}
+          />
+        </div>
+      </div>
+    ) : (
+      <div class:list={[isStacked ? "" : "flex-1"]}>
+        {isStacked && (
+          <label for={`${formId}-email`} class={labelClass}>
+            {emailLabel}
+          </label>
+        )}
+        <input
+          id={`${formId}-email`}
+          name="email"
+          type="email"
+          required
+          placeholder={emailPlaceholder}
+          class={inputClasses[theme]}
+        />
+      </div>
+    )
+  }
+
+  {
+    extraFields.includes("intent_question") && (
+      <div>
+        <label for={`${formId}-iq`} class={labelClass}>
+          {intentQuestionLabel}
+        </label>
+        <textarea
+          id={`${formId}-iq`}
+          name="intent_question"
+          rows="3"
+          placeholder={intentQuestionPlaceholder}
+          class={`${inputClasses[theme]} resize-none`}
+        />
+      </div>
+    )
+  }
+
+  {
+    extraFields.includes("subject") && (
+      <div>
+        <label for={`${formId}-subject`} class={labelClass}>
+          {subjectLabel}
+        </label>
+        <input
+          id={`${formId}-subject`}
+          name="subject"
+          type="text"
+          required
+          placeholder={subjectPlaceholder}
+          class={inputClasses[theme]}
+        />
+      </div>
+    )
+  }
+
+  {
+    extraFields.includes("message") && (
+      <div>
+        <label for={`${formId}-msg`} class={labelClass}>
+          {messageLabel}
+        </label>
+        <textarea
+          id={`${formId}-msg`}
+          name="message"
+          rows="5"
+          required
+          placeholder={messagePlaceholder}
+          class={`${inputClasses[theme]} resize-none`}
+        />
+      </div>
+    )
+  }
+
+  <button type="submit" class={buttonClass ?? buttonClasses[theme]} data-cta={cta}>
+    {ctaSubtext ? (
+      <>
+        <span class="block leading-tight">{cta}</span>
+        <span class="block text-[0.6rem] font-normal opacity-80 mt-0.5">
+          {ctaSubtext}
+        </span>
+      </>
+    ) : (
+      cta
+    )}
+  </button>
+
+  <p
+    data-status
+    class:list={["mt-2 hidden text-sm", statusClass]}
+    aria-live="polite"
+  >
+  </p>
+
+  <p class:list={["mt-3 text-center text-[11px] leading-relaxed", theme === "dark" ? "text-[var(--color-surface)]/70" : "text-[var(--color-text-light)]"]}>
+    <span aria-hidden="true">🔒</span> 100% sécurisé. Tes données restent confidentielles et ne sont jamais partagées.
+  </p>
+
+  {/* Honeypot — champ piège invisible pour bloquer les bots. Les humains ne le remplissent jamais. */}
+  <div aria-hidden="true" style="position:absolute;left:-9999px;top:-9999px;width:0;height:0;overflow:hidden;">
+    <label for={`${formId}-website`}>Site web (laisse vide)</label>
+    <input
+      type="text"
+      name="website"
+      id={`${formId}-website`}
+      tabindex="-1"
+      autocomplete="off"
+    />
+  </div>
+</form>
+
+<script>
+  function bindSubscribeForms() {
+    const forms = document.querySelectorAll<HTMLFormElement>("form[data-intent]")
+    forms.forEach((form) => {
+      if ((form as HTMLFormElement & { __bound?: boolean }).__bound) return
+      ;(form as HTMLFormElement & { __bound?: boolean }).__bound = true
+
+      const intent = form.dataset.intent || ""
+      const redirectTo = form.dataset.redirectTo || ""
+      const successMessage = form.dataset.successMessage || "Merci."
+      const errorMessage =
+        form.dataset.errorMessage || "Erreur, réessaie dans un instant."
+      const status = form.querySelector<HTMLElement>("[data-status]")
+      const submitBtn = form.querySelector<HTMLButtonElement>(
+        'button[type="submit"]',
+      )
+      const originalHTML = submitBtn?.innerHTML || ""
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault()
+        if (!submitBtn) return
+
+        submitBtn.disabled = true
+        submitBtn.textContent = "Envoi…"
+        if (status) {
+          status.classList.add("hidden")
+          status.textContent = ""
+        }
+
+        const fd = new FormData(form)
+        const payload: Record<string, unknown> = { intent }
+        for (const [k, v] of fd.entries()) {
+          if (typeof v === "string" && v.trim()) payload[k] = v.trim()
+        }
+
+        try {
+          const res = await fetch("/api/subscribe", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+          })
+          const data = (await res.json().catch(() => ({}))) as {
+            ok?: boolean
+            error?: string
+          }
+
+          if (res.ok && data?.ok) {
+            if (redirectTo) {
+              window.location.href = redirectTo
+              return
+            }
+            if (status) {
+              status.textContent = successMessage
+              status.classList.remove("hidden")
+            }
+            form.reset()
+          } else {
+            throw new Error(data?.error || "unknown")
+          }
+        } catch {
+          if (status) {
+            status.textContent = errorMessage
+            status.classList.remove("hidden")
+          }
+        } finally {
+          submitBtn.disabled = false
+          submitBtn.innerHTML = originalHTML
+        }
+      })
+    })
+  }
+
+  bindSubscribeForms()
+  document.addEventListener("astro:page-load", bindSubscribeForms)
+</script>

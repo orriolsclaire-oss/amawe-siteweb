@@ -1,5 +1,5 @@
 {
-  "baseUrl": "https://amawe.fr",
+  "baseUrl": "https://amawe.com",
   "languages": ["fr", "en"],
   "disabledRules": [
     "alt-attribute",

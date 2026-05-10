@@ -1,0 +1,836 @@
+---
+import Layout from "~/layouts/Layout.astro"
+import Header from "~/components/Header.astro"
+import Footer from "~/components/Footer.astro"
+
+const pageTitle = "Stages & Retraites Amawé — Immersions en Sud Aveyron et Montpellier"
+const pageDescription =
+  "Retrouve tous les stages, retraites et immersions Amawé : Summer Camp, Retraite Danse & Silence, Énergie Illimitée. Plus de 8 stages depuis 2022. Inscris-toi pour être prévenue des prochaines dates."
+
+// Prochaines dates — événements à venir
+const aVenir = [
+  {
+    nom: "Amawé Summer Camp",
+    dates: "11-14 juillet 2026",
+    lieu: "Sud Aveyron · Écolieu",
+    type: "Micro-festival",
+    description:
+      "4 jours en pleine nature autour du mouvement et de la santé pour recharger ton corps, nourrir ta tête, et connecter avec des gens qui cherchent la même chose. <strong class=\"font-medium text-[var(--color-primary)]\">Le rendez-vous estival incontournable.</strong>",
+    statut: "Places limitées",
+    statutAVenir: false,
+    places: "23/150 places prises",
+    cta: "Je veux faire partie de l'aventure",
+    href: "/summer-camp/",
+    image: "/images/sc-salle.webp",
+    imageAlt: "Amawé Summer Camp 2026 — la salle de pratique et les tipis blancs dans l'écolieu",
+    accent: "var(--color-sage-dark)",
+  },
+  {
+    nom: "Accompagnement Énergie Illimitée",
+    nomCourt: "Énergie Illimitée",
+    dates: "2026-2027",
+    lieu: "Montpellier + Sud Aveyron",
+    type: "Accompagnement avec stages",
+    description:
+      "2 stages en présentiel, intégrés au programme Énergie Illimitée — 3 mois pour restaurer ta vitalité physique et ton équilibre mental et émotionnel.",
+    statut: "Sur candidature",
+    statutAVenir: false,
+    places: null,
+    cta: "Je découvre Énergie Illimitée",
+    href: "/energie-illimitee/",
+    image: "/images/claire-energie-illimitee-stages-cropped.webp",
+    imageAlt: "Programme Énergie Illimitée — immersions en présentiel",
+    objectPosition: "center 25%",
+    accent: "var(--color-accent-dark)",
+  },
+  {
+    nom: "Retraite Danse & Silence",
+    dates: "Hiver 2027, date à venir",
+    lieu: "Sud Aveyron · Écolieu",
+    type: "Retraite",
+    description:
+      "Trois médecines : le silence, la danse libre, la nature. Pour celles et ceux qui ont besoin de revenir à eux-mêmes.",
+    statut: "4e édition",
+    places: null,
+    cta: "Je veux vivre cette reconnexion",
+    href: "/retraite-danse-silence-2027/",
+    image: "/images/sc-claire-portrait.webp",
+    imageAlt: "Retraite Danse & Silence — Claire dansant en pleine nature, kimono ample, écolieu Sud Aveyron",
+    objectPosition: "center 30%",
+    accent: "var(--color-accent)",
+  },
+]
+
+// Historique — stages, retraites et immersions passés
+const historique = [
+  {
+    annee: "2026",
+    evenements: [
+      {
+        nom: "Amawé Summer Camp",
+        date: "Juillet 2026",
+        lieu: "Sud Aveyron",
+        thematique: "Se rassembler, se recharger, autour du mouvement et de la santé naturelle",
+        isFuture: true,
+        href: "/summer-camp/",
+      },
+      {
+        nom: "Stage 2 Énergie Illimitée",
+        date: "Mars 2026",
+        lieu: "Sud Aveyron",
+        thematique: "Énergie, vitalité et renforcement physique, mental et émotionnel",
+      },
+      {
+        nom: "Retraite Danse & Silence — 3e édition",
+        date: "Février 2026",
+        lieu: "Sud Aveyron",
+        thematique: "Silence, danse libre, immersion nature, profonde libération et reconnexion",
+      },
+    ],
+  },
+  {
+    annee: "2025",
+    evenements: [
+      {
+        nom: "Stage 1 Énergie Illimitée",
+        date: "Octobre 2025",
+        lieu: "Montpellier",
+        thematique: "Énergie, vitalité et renforcement physique, mental et émotionnel",
+      },
+      {
+        nom: "Retraite Danse & Silence — 2e édition",
+        date: "Mars 2025",
+        lieu: "Sud Aveyron",
+        thematique: "Silence, danse libre, immersion nature, profonde libération et reconnexion",
+      },
+    ],
+  },
+  {
+    annee: "2024",
+    evenements: [
+      {
+        nom: "Stage Santé Holistique, Mouvement Libre et Naturel",
+        date: "Octobre 2024",
+        lieu: "Montpellier",
+        thematique: "Santé globale, MovNat, danse libre",
+      },
+      {
+        nom: "Retraite Danse & Silence — 1ère édition",
+        date: "Mars 2024",
+        lieu: "Sud Aveyron",
+        thematique: "Silence, danse libre, immersion nature, profonde libération et reconnexion",
+      },
+    ],
+  },
+  {
+    annee: "2023",
+    evenements: [
+      {
+        nom: "Stage Voyage au Cœur de Soi",
+        date: "Octobre 2023",
+        lieu: "Sud Aveyron",
+        thematique: "Santé holistique, alimentation, MovNat, développement personnel, introspection",
+      },
+      {
+        nom: "Stage Détox Douce",
+        date: "Juin 2023",
+        lieu: "Sud Aveyron",
+        thematique: "Détox, alimentation vivante, mouvement naturel, nature",
+      },
+    ],
+  },
+  {
+    annee: "2022",
+    evenements: [
+      {
+        nom: "Stage Voyage au Cœur de Soi",
+        date: "Octobre 2022",
+        lieu: "Sud Aveyron",
+        thematique: "Santé holistique, alimentation, développement personnel, introspection",
+      },
+      {
+        nom: "Stage Ressourcement & Cuisine Saine",
+        date: "Septembre 2022",
+        lieu: "Sud Aveyron",
+        thematique: "Bien-être, alimentation et cuisine, ressourcement",
+      },
+    ],
+  },
+]
+
+// Témoignages — portfolio asymétrique en grille 6 colonnes
+// Paula 1ère, Danièle dernière (bas droite). 4 rangées asymétriques sm/lg avec stacks pour combler.
+// span: "sm" = 2/6 cols, "lg" = 4/6 cols
+// type "stack" = colonne d'éléments empilés (textes + screenshots mélangés) pour matcher la hauteur de la colonne sm voisine
+const temoignages = [
+  // Row 1 — Paula (sm) | Hélène (lg, longue citation)
+  // Paula : alignée en bas (mt-auto) avec 5 étoiles dans le vide au-dessus
+  { type: "text", citation: "Un stage hors du commun duquel je sors régénérée, remplie d'énergie et d'amour. Juste un grand merci.", auteur: "Paula", contexte: "", span: "sm", stars: true, align: "end" },
+  { type: "text", citation: "Un stage qui a lancé le début de changements d'ampleur. Dès le début, il a été marqué par ce déclic : « je m'autorise à » partir en stage, m'occuper de moi, plonger aussi dans l'inconnu. Je pensais que la Détox alimentaire serait prépondérante, le stage est allé au-delà de mes attentes. Vous nous avez conçu un programme tellement complet et cohérent, respectueux de tous les participants. Le cadre proposé sécurisant et le groupe était sensas. Merci pour tout.", auteur: "Hélène", contexte: "", span: "lg" },
+  // Row 2 — Stack [Carine + Séverine + Céline] (lg) | Joëlle (sm haute, crop top autorisé)
+  {
+    type: "stack",
+    span: "lg",
+    items: [
+      { kind: "text", citation: "Plus d'une semaine après être rentrée, je reste sur ma première impression : c'était réellement le plus beau cadeau que je pouvais m'offrir. Je me sens respirer, mes épaules sont davantage ouvertes, je pose plus aisément des mots sur mes ressentis.", auteur: "Carine", contexte: "" },
+      { kind: "screenshot", src: "/images/temoignage-severine.webp", alt: "Témoignage de Séverine après un stage Amawé — ateliers libérateurs, rencontres merveilleuses, début d'un nouveau chapitre" },
+      { kind: "text", citation: "Merci encore pour ce stage qui m'a apporté une vision globale de ma santé. Je ne vous remercierai jamais assez pour tout ce que j'ai appris chez vous !", auteur: "Céline", contexte: "" },
+    ],
+  },
+  { type: "screenshot", src: "/images/temoignage-joelle.webp", alt: "Témoignage de Joëlle après le stage Voyage au Cœur de Soi Amawé — partager, rire, pleurer, méditer, ressentir", span: "sm", crop: "top" },
+  // Row 3 — Clélia (sm, plus petite car rangée raccourcie) | Stack [Lydia seule] (lg)
+  { type: "screenshot", src: "/images/temoignage-clelia.webp", alt: "Témoignage de Clélia après une retraite Amawé — impression de rajeunir, silence révélateur, retour transformée et pleine d'énergie", span: "sm" },
+  {
+    type: "stack",
+    span: "lg",
+    items: [
+      { kind: "text", citation: "Explorer, se recentrer, se laisser guider, se purifier… Le silence m'a permis d'aller chercher au plus profond mes émotions, mes besoins. Grâce à la force du groupe nous avons été portés et pu aller jusqu'au bout de cette belle aventure. Les séances de danse ont été intenses et libératrices. Les repas nous ont régalé les papilles et les yeux. Ces quelques jours de déconnexion avec le quotidien rempli de sur-stimulations m'aura permis de me recentrer sur les choses importantes et de me reconnecter avec la nature. Je repars de cette retraite avec une nouvelle énergie, l'esprit apaisé et le cœur rempli de joie. C'est un magnifique cadeau que je me suis offert. Merci Claire et merci au groupe.", auteur: "Lydia", contexte: "" },
+    ],
+  },
+  // Row 4 — Solenn (sm, plus de place) | Stack [Nathalie + Laurence + Danièle] (lg) — Danièle = dernier visuel
+  { type: "screenshot", src: "/images/temoignage-solenn.webp", alt: "Témoignage de Solenn après une retraite Amawé — silence, ancrage, danse, ressourcement", span: "sm" },
+  {
+    type: "stack",
+    span: "lg",
+    items: [
+      { kind: "screenshot", src: "/images/temoignage-nathalie.webp", alt: "Témoignage de Nathalie après un stage Amawé — sortir de sa zone de confort, repas parfaits, vivre l'instant présent et écouter son corps en pleine conscience" },
+      { kind: "screenshot", src: "/images/temoignage-laurence.webp", alt: "Témoignage de Laurence après la Retraite Danse & Silence Amawé — traverser le deuil dans la nature, douceur, bienveillance, sentiment de plénitude et déposer sa peine" },
+      { kind: "screenshot", src: "/images/temoignage-daniele.webp", alt: "Témoignage de Danièle après un stage Amawé — la plus belle expérience, simplicité et amour inconditionnel envers la nature, reconnexion à la nature et au mouvement" },
+    ],
+  },
+]
+
+// Compte total des avis textes pour le JSON-LD (les screenshots ne sont pas des reviews structurées)
+const reviewCount = temoignages.reduce((sum, t) => {
+  if (t.type === "text") return sum + 1
+  if (t.type === "stack") return sum + t.items.filter((it) => it.kind === "text").length
+  return sum
+}, 0)
+
+// JSON-LD Review/AggregateRating schema pour SEO (rich snippets Google)
+const reviewsSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Stages & Retraites Amawé",
+  description: "Stages, retraites et immersions de santé holistique en pleine nature dirigés par Claire Orriols",
+  provider: {
+    "@type": "Person",
+    name: "Claire Orriols",
+    url: "https://amawe.com",
+  },
+  areaServed: { "@type": "Country", name: "France" },
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "5",
+    reviewCount: String(reviewCount),
+    bestRating: "5",
+    worstRating: "5",
+  },
+  review: temoignages.flatMap((t) => {
+    if (t.type === "text") {
+      return [{
+        "@type": "Review",
+        author: { "@type": "Person", name: t.auteur },
+        reviewBody: t.citation,
+        reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+        ...(t.contexte ? { itemReviewed: { "@type": "Service", name: t.contexte } } : {}),
+      }]
+    }
+    if (t.type === "stack") {
+      return t.items
+        .filter((it) => it.kind === "text")
+        .map((it) => ({
+          "@type": "Review",
+          author: { "@type": "Person", name: it.auteur },
+          reviewBody: it.citation,
+          reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+          ...(it.contexte ? { itemReviewed: { "@type": "Service", name: it.contexte } } : {}),
+        }))
+    }
+    return []
+  }),
+}
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <Header />
+  <main class="pt-20">
+    <!-- Hero -->
+    <section class="pt-12 pb-12 md:pt-16 md:pb-16">
+      <div class="mx-auto max-w-4xl px-6 text-center">
+        <p class="section-label mb-6 text-[var(--color-sage-dark)]">Amawé en présentiel</p>
+        <h1 class="!text-5xl md:!text-7xl">Stages & Retraites</h1>
+        <p class="mx-auto mt-6 max-w-2xl font-['Josefin_Sans',sans-serif] text-xl italic text-[var(--color-accent-dark)] md:text-2xl">
+          Des immersions pour se reconnecter à l'essentiel
+        </p>
+        <div class="divider mx-auto mt-8" style="background-color: var(--color-sage-dark);"></div>
+        <p class="mx-auto mt-8 max-w-3xl text-lg leading-relaxed text-[var(--color-text-medium)]">
+          Depuis 2022, je propose des stages, retraites et immersions pour
+          incarner ce que je transmets en ligne ; une meilleure santé sur
+          tous les plans ; <strong class="font-medium">et ce qui ne peut se vivre qu'en vrai</strong>. Dans différents lieux, dont l'écolieu dans lequel
+          je vis en Sud Aveyron, à Montpellier, et ailleurs.
+        </p>
+      </div>
+    </section>
+
+    <!-- MARQUEE — bande photo des stages passés -->
+    <section class="relative py-8 md:py-12" aria-label="Aperçu des stages passés">
+      <button
+        type="button"
+        data-marquee-prev
+        aria-label="Photo précédente"
+        class="marquee-btn marquee-btn-prev"
+      >
+        <span aria-hidden="true">‹</span>
+      </button>
+      <button
+        type="button"
+        data-marquee-next
+        aria-label="Photo suivante"
+        class="marquee-btn marquee-btn-next"
+      >
+        <span aria-hidden="true">›</span>
+      </button>
+      <div class="marquee-wrapper">
+        <div class="marquee-track gap-4">
+        {(() => {
+          const photos = [
+            { src: "/images/groupe-ei-2.webp", alt: "Groupe Énergie Illimitée au coucher de soleil sur la plage" },
+            { src: "/images/stage-cuisine-mezze-vivante.webp", alt: "Plateau de mezze et dips colorés en cuisine vivante, stage Amawé" },
+            { src: "/images/stage-grand-groupe-aveyron-celebration.webp", alt: "Grand groupe en célébration devant la maison de l'écolieu Amawé en Sud Aveyron" },
+            { src: "/images/stage-claire-transmission-flipchart.webp", alt: "Claire Orriols transmettant la naturopathie au flipchart pendant un stage Amawé" },
+            { src: "/images/stage-mouvement-naturel-foret.webp", alt: "Pratique de mouvement naturel en forêt pendant un stage Amawé" },
+            { src: "/images/stage-pratique-duo-salle-voutee-pierre.webp", alt: "Pratique en duo dans la grande salle voûtée en pierre, stage Amawé" },
+            { src: "/images/stage-energy-balls-cuisine-saine.webp", alt: "Energy balls maison préparées en atelier cuisine saine pendant un stage Amawé" },
+            { src: "/images/stage-baignade-riviere-aveyron-ete.webp", alt: "Baignade collective en rivière lors d'un stage Amawé en été" },
+            { src: "/images/stage-cake-fleurs-comestibles.webp", alt: "Cake aux fleurs comestibles, cuisine d'un stage Amawé" },
+            { src: "/images/stage-mouvement-libre-celebration-groupe.webp", alt: "Mouvement libre en groupe, célébration pendant un stage Amawé" },
+            { src: "/images/stage-soupe-verte-salade-detox.webp", alt: "Soupe verte et salade détox, repas d'un stage Amawé" },
+            { src: "/images/stage-passerelle-coucher-soleil-aveyron.webp", alt: "Groupe contemplant un coucher de soleil sur une passerelle, stage Amawé" },
+            { src: "/images/stage-claire-cuisine-cake-fraises.webp", alt: "Claire Orriols préparant un cake aux fraises en atelier cuisine vivante" },
+            { src: "/images/stage-bain-froid-riviere-aveyron.webp", alt: "Bain glacé en rivière pendant un stage Amawé en hiver" },
+            { src: "/images/stage-baignade-groupe-couchant-aveyron.webp", alt: "Groupe en maillot de bain au bord de la rivière au coucher du soleil, stage Amawé" },
+            { src: "/images/stage-yoga-pieds-tapis-pratique.webp", alt: "Pratique de yoga pieds nus sur tapis lors d'un stage Amawé" },
+            { src: "/images/stage-marche-prairie-ciel-bleu.webp", alt: "Marche en groupe dans la prairie sous un ciel bleu, stage Amawé" },
+            { src: "/images/stage-arche-pierre-aveyron-groupe.webp", alt: "Groupe sous l'arche de pierre, stage Amawé en Sud Aveyron" },
+            { src: "/images/stage-ecriture-cercle-salle-aveyron.webp", alt: "Atelier d'écriture en cercle dans la salle de pratique de l'écolieu" },
+            { src: "/images/stage-gaufre-salee-betterave.webp", alt: "Gaufre salée avec salade et betterave, cuisine vivante d'un stage Amawé" },
+            { src: "/images/stage-repas-collectif-jus-vert.webp", alt: "Repas collectif autour d'une grande table avec jus verts, stage Amawé" },
+            { src: "/images/stage-tarte-fraises-crue-saine.webp", alt: "Tarte aux fraises crue, cuisine vivante pendant un stage Amawé" },
+            { src: "/images/stage-salle-pratique-tapis-aveyron.webp", alt: "Salle de pratique du stage Amawé avec tapis colorés et baies vitrées sur la nature" },
+            { src: "/images/stage-feu-camp-cercle-soir.webp", alt: "Cercle autour du feu de camp un soir de stage Amawé" },
+            { src: "/images/stage-mouvement-collectif-salle-tapis.webp", alt: "Mouvement libre collectif dans la salle de pratique de l'écolieu" },
+            { src: "/images/stage-grand-groupe-joyeux-treille-paysage.webp", alt: "Grand groupe joyeux sous la treille face au paysage du Sud Aveyron" },
+            { src: "/images/stage-repas-soupe-miso-makis.webp", alt: "Assiette du midi : soupe miso, makis et légumes lacto-fermentés" },
+            { src: "/images/stage-repas-collectif-table-pierre.webp", alt: "Repas collectif autour d'une table en pierre dans l'écolieu Amawé" },
+            { src: "/images/stage-connexion-groupe-paysage.webp", alt: "Trois participantes enlacées face au paysage pendant un stage Amawé" },
+            { src: "/images/stage-groupe-portrait-cuisine-aveyron.webp", alt: "Portrait de groupe à la fin d'un atelier cuisine vivante d'un stage Amawé" },
+            { src: "/images/stage-assiette-saine-quiche-legumes.webp", alt: "Assiette saine avec quiche et purée de légumes, cuisine de stage Amawé" },
+          ]
+          return photos.concat(photos.map(p => ({ ...p, alt: "" }))).map((img, i) => (
+            <img
+              src={img.src}
+              alt={img.alt}
+              aria-hidden={i >= photos.length ? "true" : undefined}
+              loading="lazy"
+              class="h-56 md:h-64 w-auto flex-shrink-0 rounded-xl object-cover"
+            />
+          ))
+        })()}
+        </div>
+      </div>
+      <script is:inline>
+        (() => {
+          const SPEED = 60 // pixels per second
+          const sections = document.querySelectorAll('[aria-label="Aperçu des stages passés"]')
+          sections.forEach((section) => {
+            const track = section.querySelector('.marquee-track')
+            const prev = section.querySelector('[data-marquee-prev]')
+            const next = section.querySelector('[data-marquee-next]')
+            if (!track || !prev || !next) return
+            const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+            let pos = 0
+            let isPaused = reduced
+            let lastTime = performance.now()
+            let resumeTimer
+            let halfWidth = 0
+            const updateHalfWidth = () => { halfWidth = track.scrollWidth / 2 }
+            updateHalfWidth()
+            window.addEventListener('resize', updateHalfWidth)
+            track.querySelectorAll('img').forEach((img) => {
+              if (img.complete) return
+              img.addEventListener('load', updateHalfWidth, { once: true })
+              img.addEventListener('error', updateHalfWidth, { once: true })
+            })
+            // Recompute periodically over first 5 seconds while images stream in
+            let recomputes = 0
+            const recomputeTimer = setInterval(() => {
+              updateHalfWidth()
+              if (++recomputes > 25) clearInterval(recomputeTimer)
+            }, 200)
+            const setTransform = () => {
+              let displayPos = pos
+              if (halfWidth > 0) {
+                displayPos = pos % halfWidth
+                if (displayPos > 0) displayPos -= halfWidth
+              }
+              track.style.transform = `translate3d(${Math.round(displayPos)}px, 0, 0)`
+            }
+            const tick = (now) => {
+              const dt = (now - lastTime) / 1000
+              lastTime = now
+              if (!isPaused) {
+                pos -= SPEED * dt
+                setTransform()
+              }
+              requestAnimationFrame(tick)
+            }
+            requestAnimationFrame((t) => { lastTime = t; tick(t) })
+            const scheduleResume = () => {
+              clearTimeout(resumeTimer)
+              resumeTimer = setTimeout(() => { isPaused = false }, 2000)
+            }
+            const nudge = (delta) => {
+              isPaused = true
+              const start = pos
+              const target = pos + delta
+              const duration = 400
+              const startTime = performance.now()
+              const easeOut = (t) => 1 - Math.pow(1 - t, 3)
+              const step = (now) => {
+                const t = Math.min(1, (now - startTime) / duration)
+                pos = start + (target - start) * easeOut(t)
+                setTransform()
+                if (t < 1) requestAnimationFrame(step)
+                else scheduleResume()
+              }
+              requestAnimationFrame(step)
+            }
+            prev.addEventListener('click', () => nudge(400))
+            next.addEventListener('click', () => nudge(-400))
+            section.addEventListener('mouseenter', () => { isPaused = true; clearTimeout(resumeTimer) })
+            section.addEventListener('mouseleave', () => { clearTimeout(resumeTimer); isPaused = false })
+          })
+        })()
+      </script>
+    </section>
+
+    <!-- L'ESPRIT D'UN STAGE -->
+    <section class="bg-[var(--color-warm)] py-12 md:py-16">
+      <div class="mx-auto max-w-3xl px-6">
+        <p class="section-label mb-3 text-center text-[var(--color-sage-dark)]">L'ESPRIT D'UN STAGE</p>
+        <div class="divider mx-auto" style="background-color: var(--color-sage-dark);"></div>
+        <div class="relative mx-auto mt-8 max-w-2xl px-8 py-6 sm:px-12 sm:py-8">
+          <span class="absolute left-0 top-0 h-10 w-[2px] bg-[var(--color-accent)]" aria-hidden="true"></span>
+          <span class="absolute left-0 top-0 h-[2px] w-10 bg-[var(--color-accent)]" aria-hidden="true"></span>
+          <span class="absolute right-0 bottom-0 h-10 w-[2px] bg-[var(--color-accent)]" aria-hidden="true"></span>
+          <span class="absolute right-0 bottom-0 h-[2px] w-10 bg-[var(--color-accent)]" aria-hidden="true"></span>
+          <div class="space-y-5 text-center text-lg leading-relaxed text-[var(--color-text-medium)]">
+            <p>
+              Un stage Amawé, c'est une communauté qui se réunit pour <strong class="font-medium text-[var(--color-primary)]">connecter, se ressourcer, faire le plein d'énergie et vivre une expérience unique</strong>. Quelques jours dans des lieux beaux, simples et confortables,
+              où le quotidien s'efface, et où ce qui compte vraiment revient au
+              centre.
+            </p>
+            <p>
+              Beaucoup de choses peuvent se transmettre en ligne : du savoir,
+              des outils, des pratiques.<br />
+              <strong class="font-medium">Mais certaines expériences ne se vivent qu'en vrai, ensemble, dans un cadre propice à la transformation.</strong>
+            </p>
+            <p>
+              À chaque stage, une thématique, pour explorer toutes les dimensions
+              de toi et de ta santé globale.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- À VENIR -->
+    <section class="py-20 md:py-28">
+      <div class="mx-auto max-w-6xl px-6">
+        <div class="max-w-3xl">
+          <p class="section-label mb-4 text-[var(--color-accent)]">LES PROCHAINES EXPÉRIENCES</p>
+          <h2 class="text-3xl md:text-4xl">À venir</h2>
+          <div class="divider mt-6" style="background-color: var(--color-accent);"></div>
+        </div>
+
+        <div class="mt-10 grid gap-x-8 gap-y-8 md:grid-cols-[260px_1fr] md:gap-y-10">
+          {aVenir.map((e) => (
+            <>
+              <a href={e.href} class="group relative block overflow-hidden rounded-xl">
+                <img
+                  src={e.image}
+                  alt={e.imageAlt}
+                  loading="lazy"
+                  class="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  style={e.objectPosition ? `object-position: ${e.objectPosition};` : ""}
+                />
+                <div class="absolute inset-x-0 bottom-0 flex items-center justify-end px-3 py-0.5" style={`background-color: ${e.accent};`}>
+                  <span class="text-[10px] font-medium uppercase tracking-[0.1em] text-[var(--color-warm)]">
+                    {e.dates}
+                  </span>
+                </div>
+              </a>
+              <a href={e.href} class="group flex flex-col justify-center">
+                <p class="font-['Josefin_Sans',sans-serif] text-2xl text-[var(--color-primary)] md:text-3xl">{e.nomCourt ?? e.nom}</p>
+                <div class="mt-2 flex flex-wrap items-center gap-2 text-xs uppercase tracking-[0.15em]">
+                  {e.type && (
+                    <span class="text-[var(--color-accent-dark)]">{e.type}</span>
+                  )}
+                  {e.type && e.statutAVenir !== false && e.statut && (
+                    <span class="text-[var(--color-text-light)]">·</span>
+                  )}
+                  {e.statutAVenir !== false && e.statut && (
+                    <span class="text-[var(--color-text-light)]">{e.statut}</span>
+                  )}
+                </div>
+                <p class="mt-3 text-base leading-relaxed text-[var(--color-text)] md:text-lg" set:html={e.description}></p>
+                <span class="mt-5 inline-flex items-center gap-3 self-start text-sm font-medium uppercase tracking-[0.15em]" style={`color: ${e.accent};`}>
+                  <span class="block h-3 w-3 rounded-full" style={`background-color: ${e.accent};`} aria-hidden="true"></span>
+                  <span class="relative pb-1">
+                    <span>{e.cta}</span>
+                    <span class="absolute bottom-0 left-0 h-[2px] w-0 transition-all duration-500 group-hover:w-full" style={`background-color: ${e.accent};`} aria-hidden="true"></span>
+                  </span>
+                </span>
+              </a>
+            </>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- TÉMOIGNAGES -->
+    <section class="bg-[var(--color-accent-dark)] py-12 md:py-16">
+      <div class="mx-auto max-w-6xl px-6">
+        <div class="max-w-3xl">
+          <p class="section-label mb-3" style="color: var(--color-warm);">ÉCHO DE LEUR EXPÉRIENCE</p>
+          <h2 class="text-3xl md:text-4xl" style="color: var(--color-warm);">Témoignages</h2>
+          <div class="divider mt-5" style="background-color: var(--color-warm);"></div>
+        </div>
+
+        <div class="mt-8 grid grid-cols-2 gap-3 md:mt-10 md:grid-cols-6 md:gap-4">
+          {temoignages.map((t) => {
+            const colClass =
+              t.span === "full"
+                ? "col-span-2 md:col-span-6"
+                : t.span === "lg"
+                ? "col-span-2 md:col-span-4"
+                : "col-span-2 md:col-span-2"
+            return (
+              <div class={colClass}>
+                {t.type === "text" ? (
+                  <div class={t.align === "end" ? "md:flex md:h-full md:flex-col" : ""}>
+                    {t.stars && (
+                      <div class="mb-3 flex items-center justify-center gap-1.5 md:mb-4" aria-label="Note 5 sur 5">
+                        {Array.from({ length: 5 }).map(() => (
+                          <svg
+                            width="20"
+                            height="20"
+                            viewBox="0 0 24 24"
+                            fill="var(--color-warm)"
+                            stroke="var(--color-warm-dark)"
+                            stroke-width="0.25"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                          >
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                          </svg>
+                        ))}
+                      </div>
+                    )}
+                    <figure class={`flex flex-col rounded-2xl bg-[var(--color-surface)] p-3 shadow-sm md:p-4 ${t.align === "end" ? "md:mt-auto" : ""}`}>
+                      <blockquote class="testimonial-quote text-[var(--color-text-medium)]">
+                        &laquo;&nbsp;{t.citation}&nbsp;&raquo;
+                      </blockquote>
+                      <figcaption class="mt-3 border-t border-[var(--color-border)] pt-2">
+                        <p class="font-['Josefin_Sans',sans-serif] text-sm leading-tight text-[var(--color-primary)]">{t.auteur}</p>
+                        {t.contexte && (
+                          <p class="mt-0.5 text-[9px] uppercase tracking-[0.15em] text-[var(--color-text-light)]">{t.contexte}</p>
+                        )}
+                      </figcaption>
+                    </figure>
+                  </div>
+                ) : t.type === "stack" ? (
+                  <div class="flex flex-col gap-3 md:gap-4">
+                    {t.items.map((it) =>
+                      it.kind === "text" ? (
+                        <figure class="flex flex-col rounded-2xl bg-[var(--color-surface)] p-3 shadow-sm md:p-4">
+                          <blockquote class="testimonial-quote text-[var(--color-text-medium)]">
+                            &laquo;&nbsp;{it.citation}&nbsp;&raquo;
+                          </blockquote>
+                          <figcaption class="mt-3 border-t border-[var(--color-border)] pt-2">
+                            <p class="font-['Josefin_Sans',sans-serif] text-sm leading-tight text-[var(--color-primary)]">{it.auteur}</p>
+                            {it.contexte && (
+                              <p class="mt-0.5 text-[9px] uppercase tracking-[0.15em] text-[var(--color-text-light)]">{it.contexte}</p>
+                            )}
+                          </figcaption>
+                        </figure>
+                      ) : (
+                        <figure class="overflow-hidden rounded-2xl bg-[var(--color-surface)] shadow-sm">
+                          <img src={it.src} alt={it.alt} loading="lazy" class="block w-full" />
+                        </figure>
+                      ),
+                    )}
+                  </div>
+                ) : (
+                  <figure class="overflow-hidden rounded-2xl bg-[var(--color-surface)] shadow-sm md:relative md:h-full">
+                    <img
+                      src={t.src}
+                      alt={t.alt}
+                      loading="lazy"
+                      class={`block w-full md:absolute md:inset-0 md:h-full md:w-full ${t.crop === "top" ? "md:object-cover md:object-bottom" : "md:object-contain"}`}
+                    />
+                  </figure>
+                )}
+              </div>
+            )
+          })}
+        </div>
+
+      </div>
+    </section>
+
+    <!-- HISTORIQUE -->
+    <section class="bg-[var(--color-warm)] py-16 md:py-20">
+      <div class="mx-auto max-w-5xl px-6">
+        <div class="max-w-3xl">
+          <p class="section-label mb-3 text-[var(--color-sage-dark)]">DEPUIS 2022</p>
+          <h2 class="text-3xl md:text-4xl">L'historique des stages Amawé</h2>
+          <div class="divider mt-5" style="background-color: var(--color-sage-dark);"></div>
+        </div>
+
+        {/* Timeline serpentin — hauteurs variables par rangée selon nombre d'events */}
+        {(() => {
+          const numRows = historique.length
+          // Hauteur de chaque rangée (= espacement vers la rangée suivante) selon le nombre d'events
+          const rowHeights = historique.map((a, i) => {
+            let h = a.evenements.length >= 3 ? 180 : 155
+            if (i === 0) h += 30  // petit espace sous la première rangée pour aérer la card
+            return h
+          })
+          // Calcul des Y de chaque ligne
+          const lineYs: number[] = []
+          let cumY = 30
+          for (let i = 0; i < numRows; i++) {
+            lineYs.push(cumY)
+            if (i < numRows - 1) cumY += rowHeights[i]
+          }
+          const totalH = lineYs[lineYs.length - 1] + 130
+          const lineLeft = 150
+          const lineRight = 880
+          let pathD = `M ${lineLeft} ${lineYs[0]} L ${lineRight} ${lineYs[0]}`
+          for (let i = 1; i < numRows; i++) {
+            const yPrev = lineYs[i - 1]
+            const y = lineYs[i]
+            const gap = y - yPrev
+            const curveOffset = (gap / 2) * 0.8  // arrondi entre-deux
+            if (i % 2 === 1) {
+              const cx = Math.min(lineRight + curveOffset, 998)
+              pathD += ` C ${cx} ${yPrev}, ${cx} ${y}, ${lineRight} ${y} L ${lineLeft} ${y}`
+            } else {
+              const cx = Math.max(lineLeft - curveOffset, 2)
+              pathD += ` C ${cx} ${yPrev}, ${cx} ${y}, ${lineLeft} ${y} L ${lineRight} ${y}`
+            }
+          }
+          return (
+            <div class="relative mt-10 hidden md:block" style={`height: ${totalH}px;`}>
+              <svg
+                class="absolute inset-0 h-full w-full"
+                viewBox={`0 0 1000 ${totalH}`}
+                preserveAspectRatio="none"
+                aria-hidden="true"
+              >
+                <path d={pathD} stroke="var(--color-accent)" stroke-width="2" fill="none" stroke-opacity="0.7" />
+                {/* Segment au-dessus de Summer Camp (1er event de 2026, futur) : on efface puis on trace en pointillés */}
+                <path d={`M ${lineLeft} ${lineYs[0]} L 380 ${lineYs[0]}`} stroke="var(--color-warm)" stroke-width="3" fill="none" />
+                <path d={`M ${lineLeft} ${lineYs[0]} L 380 ${lineYs[0]}`} stroke="var(--color-accent)" stroke-width="2" stroke-dasharray="5 5" fill="none" stroke-opacity="0.7" />
+              </svg>
+              {/* Cercle plein marquant la fin de la ligne (= début chronologique, 2022) */}
+              {(() => {
+                const lastIdx = numRows - 1
+                const endXPct = lastIdx % 2 === 0 ? "88%" : "13%"
+                const endY = lineYs[lastIdx]
+                return (
+                  <span
+                    class="absolute h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--color-accent)]"
+                    style={`top: ${endY}px; left: ${endXPct};`}
+                    aria-hidden="true"
+                  ></span>
+                )
+              })()}
+              {historique.map((annee, i) => {
+                const y = lineYs[i]
+                return (
+                  <div key={annee.annee}>
+                    <p
+                      class="absolute font-['Josefin_Sans',sans-serif] text-3xl font-light leading-none text-[var(--color-accent-dark)]"
+                      style={`top: ${y + 22}px; left: 0; width: 100px;`}
+                    >
+                      {annee.annee}
+                    </p>
+                    <div
+                      class="absolute flex flex-wrap items-start gap-5"
+                      style={`top: ${y + 22}px; left: 15%; right: 13%;`}
+                    >
+                      {annee.evenements.map((ev) => {
+                        const Tag = ev.href ? "a" : "div"
+                        const linkProps = ev.href ? { href: ev.href } : {}
+                        return (
+                          <Tag
+                            class={`relative min-w-[210px] flex-1 ${ev.isFuture ? "rounded-xl bg-[var(--color-accent-light)]/40 px-3 py-2" : ""} ${ev.href ? "block transition-shadow hover:shadow-md" : ""}`}
+                            {...linkProps}
+                          >
+                            <span
+                              class="absolute h-3 w-3 -translate-x-1/2 rounded-full border-2 border-[var(--color-accent)] bg-[var(--color-warm)]"
+                              style="top: -28px; left: 50%;"
+                              aria-hidden="true"
+                            ></span>
+                            {ev.isFuture && (
+                              <p class="mb-1 text-[10px] font-semibold uppercase tracking-[0.15em] text-[var(--color-accent-dark)]">À venir</p>
+                            )}
+                            <p class="font-['Josefin_Sans',sans-serif] text-xl text-[var(--color-primary)] leading-tight">{ev.nom}</p>
+                            <p class="mt-0.5 text-xs uppercase tracking-[0.1em] text-[var(--color-text-light)]">{ev.date} · {ev.lieu}</p>
+                            <p class="mt-1 text-base leading-snug text-[var(--color-text-medium)]">{ev.thematique}</p>
+                          </Tag>
+                        )
+                      })}
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+          )
+        })()}
+
+        {/* Mobile fallback — stack vertical simple */}
+        <div class="mt-10 space-y-6 md:hidden">
+          {historique.map((annee) => (
+            <div>
+              <p class="font-['Josefin_Sans',sans-serif] text-lg font-light leading-none text-[var(--color-accent-dark)]">{annee.annee}</p>
+              <div class="mt-3 space-y-3">
+                {annee.evenements.map((ev) => {
+                  const Tag = ev.href ? "a" : "div"
+                  const linkProps = ev.href ? { href: ev.href } : {}
+                  return (
+                    <Tag
+                      class={`${ev.isFuture ? "rounded-xl bg-[var(--color-accent-light)]/40 px-3 py-2" : "border-l-2 pl-3"} ${ev.href ? "block" : ""}`}
+                      style={ev.isFuture ? "" : "border-color: var(--color-accent);"}
+                      {...linkProps}
+                    >
+                      {ev.isFuture && (
+                        <p class="mb-1 text-[10px] font-semibold uppercase tracking-[0.15em] text-[var(--color-accent-dark)]">À venir</p>
+                      )}
+                      <p class="font-['Josefin_Sans',sans-serif] text-base text-[var(--color-primary)]">{ev.nom}</p>
+                      <p class="text-[10px] uppercase tracking-[0.1em] text-[var(--color-text-light)]">{ev.date} · {ev.lieu}</p>
+                      <p class="mt-0.5 text-sm leading-snug text-[var(--color-text-medium)]">{ev.thematique}</p>
+                    </Tag>
+                  )
+                })}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <p class="mx-auto mt-10 max-w-3xl text-center font-['Josefin_Sans',sans-serif] text-lg font-medium italic text-[var(--color-accent-dark)] md:text-xl">
+          4 ans et plus d'une centaine de personnes accompagnées en présentiel.
+        </p>
+      </div>
+    </section>
+
+    <!-- CAPTURE EMAIL — Avant-première -->
+    <section id="avant-premiere" class="bg-[var(--color-sage-dark)] py-12 md:py-16">
+      <div class="mx-auto max-w-3xl px-6 text-center">
+        <p class="section-label mb-3" style="color: var(--color-warm);">AVANT-PREMIÈRE</p>
+        <h2 class="text-3xl md:text-4xl" style="color: var(--color-warm);">
+          Être prévenu·e en avant-première des prochaines expériences
+        </h2>
+        <div class="divider mx-auto mt-5" style="background-color: var(--color-warm);"></div>
+        <p class="mt-6 text-lg leading-relaxed text-[var(--color-surface)]/85">
+          Reçois en avant-première les annonces des prochains stages, retraites
+          et événements Amawé, avant la liste publique. Pas de spam. Juste les infos quand c'est lancé.
+        </p>
+
+        <!-- TODO Claire : remplacer ce form par l'embed MailerLite "Avant-première stages" -->
+        <form
+          class="mx-auto mt-6 flex max-w-md flex-col gap-3"
+          action="#"
+          method="post"
+        >
+          <input
+            type="text"
+            placeholder="Ton prénom"
+            required
+            aria-label="Prénom pour avant-première stages"
+            class="w-full border border-[var(--color-surface)]/20 bg-[var(--color-surface)] px-5 py-3 text-sm text-[var(--color-primary)] placeholder:text-[var(--color-text-light)] focus:border-[var(--color-surface)] focus:outline-none rounded-full"
+          />
+          <input
+            type="email"
+            placeholder="Ton adresse email"
+            required
+            aria-label="Email pour avant-première stages"
+            class="w-full border border-[var(--color-surface)]/20 bg-[var(--color-surface)] px-5 py-3 text-sm text-[var(--color-primary)] placeholder:text-[var(--color-text-light)] focus:border-[var(--color-surface)] focus:outline-none rounded-full"
+          />
+          <button
+            type="submit"
+            class="btn-accent whitespace-nowrap"
+          >
+            M'inscrire
+          </button>
+        </form>
+        <p class="mt-3 text-center text-[11px] leading-relaxed text-[var(--color-surface)]/70">
+          <span aria-hidden="true">🔒</span> 100% sécurisé. Tes données restent confidentielles et ne sont jamais partagées.
+        </p>
+      </div>
+    </section>
+
+    <!-- RAPPEL FINAL — posters des prochaines dates -->
+    <section class="bg-[var(--color-warm)] py-20 md:py-28">
+      <div class="mx-auto max-w-6xl px-6">
+        <div class="max-w-3xl">
+          <p class="section-label mb-4 text-[var(--color-accent)]">VIVRE ENSEMBLE</p>
+          <h2 class="text-3xl md:text-4xl">Les prochains événements</h2>
+          <div class="divider mt-6" style="background-color: var(--color-accent);"></div>
+        </div>
+
+        <div class="mt-14 grid gap-6 md:grid-cols-3">
+          {aVenir.map((e) => (
+            <a
+              href={e.href}
+              class="group relative block aspect-[3/4] overflow-hidden rounded-2xl shadow-md transition-shadow hover:shadow-xl"
+            >
+              <img
+                src={e.image}
+                alt={e.imageAlt}
+                width="1200"
+                height="1600"
+                loading="lazy"
+                class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/10"></div>
+              {e.type && (
+                <div class="absolute inset-x-0 top-0 p-6">
+                  <span class="inline-block rounded-full bg-[var(--color-surface)]/95 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.15em] text-[var(--color-accent-dark)]">
+                    {e.type}
+                  </span>
+                </div>
+              )}
+              <div class="absolute inset-x-0 bottom-0 p-6 text-[var(--color-surface)] md:p-8">
+                <p class="text-xs uppercase tracking-[0.15em] text-[var(--color-surface)]/70">{e.statut}</p>
+                <p class="mt-3 font-['Josefin_Sans',sans-serif] text-2xl leading-tight md:text-3xl">{e.nom}</p>
+                <p class="mt-2 text-sm font-medium">{e.dates}</p>
+                <span class="mt-5 inline-flex items-start gap-3 self-start text-xs font-medium uppercase tracking-[0.15em] text-[var(--color-surface)]">
+                  <span class="mt-[5px] block h-1.5 w-1.5 shrink-0 rounded-full" style={`background-color: ${e.accent};`} aria-hidden="true"></span>
+                  <span class="underline decoration-1 decoration-transparent underline-offset-4 transition-colors duration-500 group-hover:decoration-[var(--color-surface)]">
+                    {e.cta}
+                  </span>
+                </span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+  <script type="application/ld+json" set:html={JSON.stringify(reviewsSchema)} />
+</Layout>

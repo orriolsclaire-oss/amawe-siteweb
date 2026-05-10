@@ -8,8 +8,8 @@ interface Props {
 const { quote, name, context } = Astro.props
 ---
 
-<div class="border border-[var(--color-border)] bg-[var(--color-surface)] p-8">
-  <div class="mb-4 font-['Cormorant_Garamond',serif] text-3xl leading-none text-[var(--color-accent)]">"</div>
+<div class="border border-[var(--color-border)] border-l-[3px] border-l-[var(--color-sage)] bg-[var(--color-surface)] p-8">
+  <div class="mb-4 font-['Josefin_Sans',sans-serif] text-3xl leading-none text-[var(--color-accent-dark)]">"</div>
   <p class="text-[var(--color-text-medium)] leading-relaxed">{quote}</p>
   <div class="mt-6 flex items-center gap-3">
     <div class="h-px flex-1 bg-[var(--color-border)]"></div>

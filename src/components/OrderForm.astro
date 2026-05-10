@@ -42,8 +42,8 @@ const {
 <div class="order-form mx-auto max-w-xl">
   <!-- Header -->
   <div class="order-form-header">
-    <p class="font-['Inter',sans-serif] text-xs font-medium uppercase tracking-[0.2em]">Bon de commande</p>
-    <h3 class="mt-2 font-['Cormorant_Garamond',serif] text-2xl font-light text-[var(--color-surface)]">{title}</h3>
+    <p class="font-['Lato',sans-serif] text-xs font-medium uppercase tracking-[0.2em]">Bon de commande</p>
+    <h3 class="mt-2 font-['Josefin_Sans',sans-serif] text-2xl font-light text-[var(--color-surface)]">{title}</h3>
     {subtitle && <p class="mt-1 text-sm text-[var(--color-surface)]/70">{subtitle}</p>}
   </div>
 
@@ -57,14 +57,14 @@ const {
 
     <!-- Price -->
     <div class="mb-6 text-center">
-      <p class="font-['Cormorant_Garamond',serif] text-5xl text-[var(--color-accent)]">{price}</p>
+      <p class="font-['Josefin_Sans',sans-serif] text-5xl text-[var(--color-accent)]">{price}</p>
       {priceNote && <p class="mt-1 text-xs text-[var(--color-text-light)]">{priceNote}</p>}
     </div>
 
     <!-- Payment options -->
     {(payment3x || payment5x) && (
       <div class="mb-6 space-y-2 rounded-none bg-[var(--color-warm)] p-4 text-center">
-        <p class="section-label mb-2">Facilites de paiement</p>
+        <p class="section-label mb-2">Facilités de paiement</p>
         {payment3x && <p class="text-sm text-[var(--color-text-medium)]">{payment3x}</p>}
         {payment5x && <p class="text-sm text-[var(--color-text-medium)]">{payment5x}</p>}
       </div>

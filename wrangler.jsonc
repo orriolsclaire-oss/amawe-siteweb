@@ -10,8 +10,8 @@
   },
   // Uncomment and set your custom domain when ready:
   // "routes": [
-  //   { "pattern": "amawe.fr", "custom_domain": true },
-  //   { "pattern": "www.amawe.fr", "custom_domain": true }
+  //   { "pattern": "amawe.com", "custom_domain": true },
+  //   { "pattern": "www.amawe.com", "custom_domain": true }
   // ],
   "observability": {
     "enabled": true

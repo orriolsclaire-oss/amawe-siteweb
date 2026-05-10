@@ -1,0 +1,201 @@
+---
+import Layout from "~/layouts/Layout.astro"
+import Header from "~/components/Header.astro"
+import Footer from "~/components/Footer.astro"
+import SubscribeForm from "~/components/SubscribeForm.astro"
+
+const pageTitle = "Ressources gratuites — Amawé | Audit santé, newsletter, fiches"
+const pageDescription =
+  "Toutes les ressources gratuites Amawé pour reprendre le pouvoir sur ta santé globale : audit Roue Amawé, SuperLetter hebdomadaire, fiches mémo et dossiers santé."
+
+// Ressources actuelles + à venir
+const ressourcesActuelles = [
+  {
+    label: "PDF · 10 MIN",
+    titre: "L'audit Roue Amawé",
+    sous: "Auto-évalue tes 16 fondamentaux de vitalité",
+    description:
+      "Un PDF pour identifier où tu es solide, où tu fuis, et par quel domaine commencer. Reçois-le par email, fais-le à ton rythme, garde-le pour y revenir.",
+    cta: "Recevoir l'audit",
+    href: "/audit-roue-sante/",
+    statut: "disponible",
+    image: "/images/roue-sante-amawe.webp",
+    imageAlt: "Roue de la Santé Amawé — 16 domaines à auto-évaluer",
+  },
+  {
+    label: "NEWSLETTER · HEBDO",
+    titre: "La SuperLetter",
+    sous: "1 sujet de santé globale approfondi par semaine",
+    description:
+      "Foie, sommeil, système nerveux, mouvement libre, rythmes, émotions. Du fond, pas du remplissage. Pas de spam, pas de vente quotidienne. 30 000+ abonnés.",
+    cta: "Rejoindre la SuperLetter",
+    href: "#newsletter",
+    statut: "disponible",
+    image: null,
+    imageAlt: "",
+  },
+]
+
+const ressourcesAVenir = [
+  {
+    titre: "Fiche mémo · Le foie",
+    description:
+      "L'organe invisible qui gère ton énergie, tes hormones, ton humeur. Comment le soutenir au quotidien.",
+  },
+  {
+    titre: "Fiche mémo · Le sommeil",
+    description:
+      "Ce qui se joue vraiment quand tu dors mal — et les leviers que personne ne te donne pour vraiment récupérer.",
+  },
+  {
+    titre: "Dossier santé · Le système nerveux",
+    description:
+      "Pourquoi ton SNV est la clé de tout — alimentation, émotions, relations, rythme — et comment le réguler.",
+  },
+  {
+    titre: "Fiche mémo · Le mouvement libre",
+    description:
+      "Comment réhabiter ton corps autrement que par la performance. Pratiques quotidiennes, simples, gratuites.",
+  },
+]
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <Header />
+  <main class="pt-20">
+    <!-- Hero -->
+    <section class="bg-[var(--color-warm)] py-20 md:py-28">
+      <div class="mx-auto max-w-4xl px-6 text-center">
+        <p class="section-label mb-4 text-[var(--color-sage-dark)]">RESSOURCES GRATUITES</p>
+        <h1 class="!text-3xl md:!text-5xl">
+          Entre dans l'écosystème Amawé,
+          <span class="italic text-[var(--color-accent-dark)]">à ton rythme.</span>
+        </h1>
+        <div class="divider mx-auto mt-8" style="background-color: var(--color-sage-dark);"></div>
+        <p class="mt-10 text-lg leading-relaxed text-[var(--color-text-medium)]">
+          Tout ce qu'on partage gratuitement chez Amawé : un audit pour faire le point,
+          une newsletter hebdomadaire pour creuser un sujet par semaine, et bientôt
+          des fiches mémo et des dossiers santé pour aller plus loin.
+        </p>
+        <p class="mt-3 text-lg leading-relaxed text-[var(--color-text-medium)]">
+          Pas de spam, pas d'urgence artificielle. Désinscription en 1 clic.
+        </p>
+      </div>
+    </section>
+
+    <!-- Ressources disponibles -->
+    <section class="py-20 md:py-28">
+      <div class="mx-auto max-w-6xl px-6">
+        <div class="max-w-3xl">
+          <p class="section-label mb-4">DISPONIBLES MAINTENANT</p>
+          <h2 class="text-3xl md:text-4xl">Pour démarrer</h2>
+          <div class="divider mt-6" style="background-color: var(--color-sage-dark);"></div>
+        </div>
+
+        <div class="mt-14 grid gap-10 md:grid-cols-2 md:gap-12">
+          {ressourcesActuelles.map((r) => (
+            <article class="flex flex-col bg-[var(--color-surface)] border border-[var(--color-border)] overflow-hidden">
+              {r.image && (
+                <img
+                  src={r.image}
+                  alt={r.imageAlt}
+                  width="800"
+                  height="800"
+                  loading="lazy"
+                  class="aspect-square w-full object-contain bg-[var(--color-surface)] p-8"
+                />
+              )}
+              {!r.image && (
+                <div class="aspect-square w-full bg-[var(--color-sage-dark)] flex items-center justify-center p-8">
+                  <p class="font-['Josefin_Sans',sans-serif] text-5xl text-[var(--color-surface)] text-center leading-tight">
+                    La<br/>SuperLetter
+                  </p>
+                </div>
+              )}
+              <div class="flex flex-1 flex-col p-8">
+                <p class="section-label text-[var(--color-accent)]">{r.label}</p>
+                <p class="mt-3 font-['Josefin_Sans',sans-serif] text-3xl text-[var(--color-primary)]">{r.titre}</p>
+                <p class="mt-1 text-sm italic text-[var(--color-text-light)]">{r.sous}</p>
+                <p class="mt-6 flex-1 leading-relaxed text-[var(--color-text-medium)]">{r.description}</p>
+                <a href={r.href} class="btn-accent mt-8 inline-block self-start">
+                  {r.cta}
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Bientôt -->
+    <section class="bg-[var(--color-warm)] py-20 md:py-28">
+      <div class="mx-auto max-w-5xl px-6">
+        <div class="max-w-3xl">
+          <p class="section-label mb-4 text-[var(--color-sage-dark)]">À VENIR</p>
+          <h2 class="text-3xl md:text-4xl">Bientôt dans ta boîte mail</h2>
+          <div class="divider mt-6" style="background-color: var(--color-accent);"></div>
+          <p class="mt-8 text-lg leading-relaxed text-[var(--color-text-medium)]">
+            Les ressources Amawé en préparation. Inscris-toi à la SuperLetter pour
+            être prévenue dès qu'elles sortent.
+          </p>
+        </div>
+
+        <div class="mt-12 grid gap-6 md:grid-cols-2">
+          {ressourcesAVenir.map((r) => (
+            <div class="border-l-2 bg-[var(--color-surface)] p-6" style="border-color: var(--color-accent);">
+              <p class="font-['Josefin_Sans',sans-serif] text-xl text-[var(--color-primary)]">{r.titre}</p>
+              <p class="mt-3 leading-relaxed text-[var(--color-text-medium)]">{r.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter signup -->
+    <section id="newsletter" class="bg-[var(--color-accent-dark)] py-12 md:py-16">
+      <div class="mx-auto max-w-4xl px-6 text-center">
+        <svg
+          aria-hidden="true"
+          width="44"
+          height="40"
+          viewBox="0 0 44 40"
+          fill="none"
+          stroke="var(--color-surface)"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="mx-auto mb-3"
+        >
+          <rect x="3" y="12" width="28" height="20" rx="2" />
+          <path d="M3 14 L17 25 L31 14" />
+          <path d="M34 4 C40 5 41 12 38 16 C34 16 31 13 31 9 C31 6 32 5 34 4 Z" stroke-width="1.4" fill="var(--color-surface)" fill-opacity="0.2" />
+          <line x1="34" y1="6" x2="37" y2="13" stroke-width="1" />
+        </svg>
+        <p class="section-label mb-3" style="color: var(--color-surface);">LA SUPERLETTER</p>
+        <h2 class="text-3xl text-[var(--color-surface)] md:text-4xl" style="color: var(--color-surface);">
+          1 newsletter par semaine.<br />
+          1 sujet. Des pratiques concrètes.
+        </h2>
+        <div class="divider mx-auto mt-5" style="background-color: var(--color-surface);"></div>
+
+        <p class="mt-6 text-[var(--color-surface)]/80">
+          Chaque semaine, reçois des conseils en nutrition, mouvement, gestion du stress, bien-être et santé holistique (detox, sommeil, respiration, système nerveux, rythmes, émotions, mindset…). Rejoins près de 20 000 abonnés.
+        </p>
+
+        <SubscribeForm
+          intent="newsletter"
+          theme="dark"
+          cta="Rejoindre"
+          extraFields={["name"]}
+          nameLabel="Prénom"
+          namePlaceholder="Ton prénom"
+          emailLabel="Email"
+          emailPlaceholder="Ton adresse email"
+          buttonClass="btn-accent whitespace-nowrap leading-tight w-full hover:!bg-[var(--color-warm)] hover:!text-[var(--color-primary)] hover:!border-[var(--color-warm)]"
+          class="mt-6 max-w-md md:max-w-none"
+        />
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

@@ -1,0 +1,158 @@
+---
+import Layout from "~/layouts/Layout.astro"
+import Header from "~/components/Header.astro"
+import Footer from "~/components/Footer.astro"
+
+const pageTitle = "Mur des témoignages — Amawé · Stages, programmes & retraites"
+const pageDescription =
+  "Tous les témoignages des participantes et participants Amawé : stages en présentiel, programme Énergie Illimitée, Retraite Danse & Silence, Summer Camp. Plus de 12 retours, paroles & captures."
+
+// =====================================================================
+// Témoignages — à enrichir librement par Claire (illimité)
+// type: "text" | "screenshot"
+// aspect: "narrow" (2 cols) | "wide" (4 cols) | "full" (6 cols)
+// categorie: pour le filtre/section ("Stages", "Énergie Illimitée", "Retraite Danse & Silence", "Général")
+// =====================================================================
+const temoignagesAll = [
+  // ============ STAGES PRÉSENTIELS ============
+  { categorie: "Stages", type: "text", citation: "Un stage hors du commun duquel je sors régénérée, remplie d'énergie et d'amour. Juste un grand merci.", auteur: "Paula", contexte: "", aspect: "narrow" },
+  { categorie: "Stages", type: "screenshot", src: "/images/temoignage-severine.webp", alt: "Témoignage de Séverine après un stage Amawé — ateliers libérateurs, rencontres merveilleuses, début d'un nouveau chapitre", aspect: "wide" },
+  { categorie: "Stages", type: "text", citation: "Un stage qui a lancé le début de changements d'ampleur. Dès le début, il a été marqué par ce déclic : « je m'autorise à » partir en stage, m'occuper de moi, plonger aussi dans l'inconnu. Je pensais que la Détox alimentaire serait prépondérante, le stage est allé au-delà de mes attentes. Vous nous avez conçu un programme tellement complet et cohérent, respectueux de tous les participants. Le cadre proposé sécurisant et le groupe était sensas. Merci pour tout.", auteur: "Hélène", contexte: "", aspect: "narrow" },
+  { categorie: "Stages", type: "screenshot", src: "/images/temoignage-nathalie.webp", alt: "Témoignage de Nathalie après un stage Amawé — sortir de sa zone de confort, repas parfaits, vivre l'instant présent et écouter son corps en pleine conscience", aspect: "wide" },
+  { categorie: "Stages", type: "text", citation: "Plus d'une semaine après être rentrée, je reste sur ma première impression : c'était réellement le plus beau cadeau que je pouvais m'offrir. Je me sens respirer, mes épaules sont davantage ouvertes, je pose plus aisément des mots sur mes ressentis.", auteur: "Carine", contexte: "", aspect: "narrow" },
+  { categorie: "Stages", type: "screenshot", src: "/images/temoignage-clelia.webp", alt: "Témoignage de Clélia après une retraite Amawé — impression de rajeunir, silence révélateur, retour transformée et pleine d'énergie", aspect: "narrow" },
+  { categorie: "Stages", type: "screenshot", src: "/images/temoignage-joelle.webp", alt: "Témoignage de Joëlle après le stage Voyage au Cœur de Soi Amawé — partager, rire, pleurer, méditer, ressentir", aspect: "narrow" },
+  { categorie: "Stages", type: "screenshot", src: "/images/temoignage-solenn.webp", alt: "Témoignage de Solenn après une retraite Amawé — silence, ancrage, danse, ressourcement", aspect: "narrow" },
+  { categorie: "Stages", type: "text", citation: "Merci encore pour ce stage qui m'a apporté une vision globale de ma santé. Je ne vous remercierai jamais assez pour tout ce que j'ai appris chez vous !", auteur: "Céline", contexte: "", aspect: "narrow" },
+  { categorie: "Stages", type: "screenshot", src: "/images/temoignage-daniele.webp", alt: "Témoignage de Danièle après un stage Amawé — la plus belle expérience, simplicité et amour inconditionnel envers la nature, reconnexion à la nature et au mouvement", aspect: "full" },
+
+  // ============ RETRAITE DANSE & SILENCE ============
+  { categorie: "Retraite Danse & Silence", type: "text", citation: "Explorer, se recentrer, se laisser guider, se purifier… Le silence m'a permis d'aller chercher au plus profond mes émotions, mes besoins. Grâce à la force du groupe nous avons été portés et pu aller jusqu'au bout de cette belle aventure. Les séances de danse ont été intenses et libératrices. Les repas nous ont régalé les papilles et les yeux. Ces quelques jours de déconnexion avec le quotidien rempli de sur-stimulations m'aura permis de me recentrer sur les choses importantes et de me reconnecter avec la nature. Je repars de cette retraite avec une nouvelle énergie, l'esprit apaisé et le cœur rempli de joie. C'est un magnifique cadeau que je me suis offert. Merci Claire et merci au groupe.", auteur: "Lydia", contexte: "Retraite Danse & Silence", aspect: "wide" },
+  { categorie: "Retraite Danse & Silence", type: "screenshot", src: "/images/temoignage-laurence.webp", alt: "Témoignage de Laurence après la Retraite Danse & Silence Amawé — traverser le deuil dans la nature, douceur, bienveillance, sentiment de plénitude et déposer sa peine", aspect: "wide" },
+
+  // ============ ÉNERGIE ILLIMITÉE ============
+  // À enrichir par Claire — exemples de structure :
+  // { categorie: "Énergie Illimitée", type: "text", citation: "...", auteur: "...", contexte: "Énergie Illimitée — 2025", aspect: "narrow" },
+  // { categorie: "Énergie Illimitée", type: "screenshot", src: "/images/temoignage-XXX.webp", alt: "...", aspect: "narrow" },
+
+  // ============ TÉMOIGNAGES GÉNÉRAUX ============
+  // À enrichir par Claire — témoignages transverses, pas liés à un programme spécifique
+]
+
+// Regrouper par catégorie
+const categories = ["Stages", "Retraite Danse & Silence", "Énergie Illimitée", "Général"]
+const byCategorie = categories
+  .map((cat) => ({ cat, items: temoignagesAll.filter((t) => t.categorie === cat) }))
+  .filter((g) => g.items.length > 0)
+
+const totalCount = temoignagesAll.length
+
+// JSON-LD pour SEO — page = collection de Reviews
+const reviewsSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Programmes Amawé — Stages, Retraites & Énergie Illimitée",
+  description: "Programmes de santé holistique en ligne et en présentiel dirigés par Claire Orriols",
+  provider: {
+    "@type": "Person",
+    name: "Claire Orriols",
+    url: "https://amawe.com",
+  },
+  areaServed: { "@type": "Country", name: "France" },
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "5",
+    reviewCount: String(totalCount),
+    bestRating: "5",
+    worstRating: "5",
+  },
+  review: temoignagesAll.flatMap((t) =>
+    t.type === "text"
+      ? [{
+          "@type": "Review",
+          author: { "@type": "Person", name: t.auteur },
+          reviewBody: t.citation,
+          reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+          ...(t.contexte ? { itemReviewed: { "@type": "Service", name: t.contexte } } : {}),
+        }]
+      : []
+  ),
+}
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <Header />
+  <main class="pt-20">
+    <!-- Hero -->
+    <section class="bg-[var(--color-warm)] py-16 md:py-24">
+      <div class="mx-auto max-w-4xl px-6 text-center">
+        <p class="section-label mb-4 text-[var(--color-sage-dark)]">{totalCount} TÉMOIGNAGES</p>
+        <h1 class="!text-4xl md:!text-6xl">Mur des témoignages</h1>
+        <div class="divider mx-auto mt-6" style="background-color: var(--color-sage-dark);"></div>
+        <p class="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-[var(--color-text-medium)]">
+          Ce que vivent celles et ceux qui passent par Amawé, dans leurs propres mots. Stages,
+          retraites, programmes en ligne — tous les retours rassemblés ici.
+        </p>
+      </div>
+    </section>
+
+    {byCategorie.map((group) => (
+      <section class="bg-[var(--color-accent-dark)] py-12 md:py-16">
+        <div class="mx-auto max-w-6xl px-6">
+          <div class="max-w-3xl">
+            <p class="section-label mb-3" style="color: var(--color-accent-light);">{group.items.length} TÉMOIGNAGE{group.items.length > 1 ? "S" : ""}</p>
+            <h2 class="text-3xl md:text-4xl" style="color: var(--color-accent-light);">{group.cat}</h2>
+            <div class="divider mt-5" style="background-color: var(--color-accent-light);"></div>
+          </div>
+
+          <div class="mt-8 grid grid-cols-1 items-start gap-3 md:mt-10 md:grid-cols-4 md:gap-4 lg:grid-cols-6" style="grid-auto-flow: dense;">
+            {group.items.map((t) => {
+              const span =
+                t.aspect === "full"
+                  ? "md:col-span-4 lg:col-span-6"
+                  : t.aspect === "wide"
+                  ? "md:col-span-4 lg:col-span-4"
+                  : "md:col-span-2 lg:col-span-2"
+              return (
+                <div class={span}>
+                  {t.type === "text" ? (
+                    <figure class="flex flex-col rounded-2xl bg-[var(--color-surface)] p-3 shadow-sm md:p-3.5">
+                      <blockquote class="testimonial-quote text-[var(--color-text-medium)]">
+                        &laquo;&nbsp;{t.citation}&nbsp;&raquo;
+                      </blockquote>
+                      <figcaption class="mt-2.5 border-t border-[var(--color-border)] pt-1.5">
+                        <p class="font-['Josefin_Sans',sans-serif] text-sm leading-tight text-[var(--color-primary)]">{t.auteur}</p>
+                        {t.contexte && (
+                          <p class="mt-0.5 text-[9px] uppercase tracking-[0.15em] text-[var(--color-text-light)]">{t.contexte}</p>
+                        )}
+                      </figcaption>
+                    </figure>
+                  ) : (
+                    <figure class="overflow-hidden rounded-2xl bg-[var(--color-surface)] shadow-sm">
+                      <img src={t.src} alt={t.alt} loading="lazy" class="h-full w-full object-cover" />
+                    </figure>
+                  )}
+                </div>
+              )
+            })}
+          </div>
+        </div>
+      </section>
+    ))}
+
+    <!-- CTA retour -->
+    <section class="bg-[var(--color-warm)] py-16 md:py-20">
+      <div class="mx-auto max-w-3xl px-6 text-center">
+        <p class="font-['Josefin_Sans',sans-serif] text-2xl italic text-[var(--color-accent-dark)] md:text-3xl">
+          Et si c'était votre tour ?
+        </p>
+        <div class="mt-8 flex flex-wrap justify-center gap-4">
+          <a href="/stages/" class="btn-primary">Voir les stages</a>
+          <a href="/energie-illimitee/" class="btn-secondary">Énergie Illimitée</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+  <script type="application/ld+json" set:html={JSON.stringify(reviewsSchema)} />
+</Layout>
