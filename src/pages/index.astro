@@ -152,6 +152,18 @@ const offres = [
             tout est lié.
           </p>
 
+          <!-- Photo — mobile uniquement : entre le texte et les boutons -->
+          <img
+            src="/images/claire-fenetre-lumiere.webp"
+            alt="Claire Orriols, fondatrice d'Amawé — assise pieds nus à la fenêtre dans la lumière naturelle de l'écolieu en Sud Aveyron"
+            width="800"
+            height="1200"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+            class="mx-auto mt-8 aspect-[3/4] w-full max-w-xs object-cover md:hidden"
+          />
+
           <div class="mt-8 flex flex-col gap-4 sm:flex-row">
             <a
               href="/summer-camp/"
@@ -186,7 +198,7 @@ const offres = [
           </div>
         </div>
 
-        <div class="order-1 md:order-2">
+        <div class="hidden md:order-2 md:block">
           <img
             src="/images/claire-fenetre-lumiere.webp"
             alt="Claire Orriols, fondatrice d'Amawé — assise pieds nus à la fenêtre dans la lumière naturelle de l'écolieu en Sud Aveyron"
@@ -199,6 +211,9 @@ const offres = [
           />
         </div>
       </div>
+
+      <!-- Ligne d'accent en bas du hero -->
+      <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[var(--color-accent)] via-[var(--color-accent)]/50 to-transparent"></div>
     </section>
 
     <!-- Ma vision — 2 colonnes : roue à gauche + texte à droite -->
@@ -257,7 +272,7 @@ const offres = [
           </div>
 
           <p class="mt-10 text-base md:text-lg leading-relaxed text-[var(--color-primary)]">
-            C'est pour ça que j'ai construit la <strong class="font-medium">Roue de la Santé Amawé</strong> —
+            C'est pour ça que j'ai construit la <strong class="font-medium">Roue de la Santé Amawé</strong> :
             une carte vivante en <strong class="font-medium">16 domaines</strong>, regroupés en
             <strong class="font-medium">4 axes</strong> : le corps, le cœur, l'esprit, l'ancrage.
           </p>
@@ -811,9 +826,9 @@ const offres = [
 </Layout>
 
 <style is:global>
-  /* Hover : passage du vert sapin au gris (Grès — palette Amawé) */
+  /* Hover : passage du vert sapin au prune (palette Amawé) */
   #hero-cta-summer-camp:hover {
-    background-color: var(--color-text-light);
-    border-color: var(--color-text-light);
+    background-color: var(--color-accent-dark);
+    border-color: var(--color-accent-dark);
   }
 </style>
