@@ -551,6 +551,10 @@ export const translations = {
       "You want to reinhabit your body as a space of power, pleasure and freedom — not just \"hang in there\", but create the life you truly wish to live.",
     "ei.audience.7":
       "You're engaged in something that matters: work, a project, a calling, responsibilities; and you need energy that sustains your rhythm instead of draining it.",
+    "ei.audience.8":
+      "Either you've shut down your emotional faucet to cope, and you don't feel much anymore. Or your emotions overwhelm you without you being able to read what's happening inside. You want to find a vibrant, serene emotional life, where your emotions become a compass rather than a problem that drains or destabilizes you.",
+    "ei.audience.bridge":
+      "If you recognized yourself in at least one of the points above, Unlimited Energy was designed for you.",
     "ei.audience.conclusion":
       "This program is for people who feel that their energy is the key to the next chapter of their life — and who are ready to leave survival mode or the status quo behind to find a solid, vibrant inner anchor aligned with what they truly want to create.",
     "ei.results.label": "TRANSFORMATIONS",
@@ -672,9 +676,17 @@ export const translations = {
     "ei.faq.3.a":
       "The hot seat is an individualized coaching moment within a mini group of 4 people. You bring your challenge, situation or block, and we go deep into your reality to provide concrete answers, clear pathways and custom adjustments. You're \"in the center\" for 20-30 minutes. The bonus? You can also attend others' hot seats. That's often where the biggest breakthroughs happen, through the mirror effect.",
     "ei.faq.4.q":
-      "How does the program actually work?",
+      "What will I find in the content library?",
     "ei.faq.4.a":
-      "The program is designed to adapt to your rhythm, not to add pressure. Week after week, you alternate between group coaching and individualized hot seats, with 2 in-person immersions that anchor the transformation. All replays are available if you can't attend live.",
+      "<p>The library is structured around the <strong>first 3 pillars</strong> of the program (nutrition, movement, mind & emotions) and stays with you for life, even after the 3 months of coaching.</p><p class=\"mt-3\">You'll find:</p><ul class=\"my-2 ml-5 list-disc space-y-1.5\"><li><strong>Guided videos and audios</strong> on movement, breathing, mindset, emotional regulation.</li><li><strong>Educational content</strong> to understand how your energy, nervous system, and cycles work.</li><li><strong>Concrete protocols</strong> to integrate into your daily life (routines, exercises, revitalization dietary program, etc.).</li><li><strong>Complementary resources</strong>: recipes, practical sheets, playlists.</li></ul><p class=\"mt-3\">You go at your own pace and come back to the content whenever you need, as many times as necessary.</p><p class=\"mt-3\">The <strong>4th pillar</strong> (your current priority) is addressed individually in open-coaching sessions and individual sessions.</p>",
+    "ei.faq.6.q":
+      "How do the 2 immersions work?",
+    "ei.faq.6.a":
+      "<p>The immersions are the highlights of the program. They embody in real life what we work on remotely — we go deep, we experiment, and that's where the most profound breakthroughs happen.</p><p class=\"mt-3\"><strong>1st immersion — Montpellier or another city (2 days)</strong>, at the program launch:</p><ul class=\"my-2 ml-5 list-disc space-y-1.5\"><li>We activate your body and lay the foundations: MovNat and free movement, breathing practices and body exploration, assessment of where you are and where you want to go.</li><li>Sharing time, intention alignment, meeting and bonding with the group.</li></ul><p class=\"mt-3\"><strong>2nd immersion — Aveyron (4 days in nature)</strong>, at the end of the program:</p><ul class=\"my-2 ml-5 list-disc space-y-1.5\"><li>Deep dive into nature, in an eco-village.</li><li>Body, meditative and emotional practices in a restorative setting.</li><li>The moment to integrate, anchor and durably embody what you've built over the 3 months.</li></ul><p class=\"mt-3\"><strong>Practical info:</strong></p><ul class=\"my-2 ml-5 list-disc space-y-1.5\"><li><strong>Included:</strong> the venue and practice room, all teachings and transmissions.</li><li><strong>Not included:</strong> transport, accommodation and meals. Options are provided and transport can be shared between participants.</li></ul><p class=\"mt-3\"><strong>Why it's essential:</strong> what the body understands in person, the mind cannot grasp alone remotely. The group effect, shared experience, and immersion together are accelerators that no replay can replace.</p>",
+    "ei.faq.5.q":
+      "How does the program concretely unfold?",
+    "ei.faq.5.a":
+      "<p>Week after week, you alternate between open-coaching sessions and the online content library modules. Each month, you book an individual coaching session, and you experience 2 in-person immersions that anchor the transformation (at the beginning and end of the program). All replays are available if you can't attend the open-coaching sessions live.</p>",
     "ei.contact":
       "If you have questions, contact me at hello@amawe.com",
 
