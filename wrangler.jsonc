@@ -12,6 +12,15 @@
     { "pattern": "amawe.com", "custom_domain": true },
     { "pattern": "www.amawe.com", "custom_domain": true }
   ],
+  // IDs de groupes MailerLite (non secrets). La clé API est un secret séparé
+  // (défini via : wrangler secret put MAILERLITE_API_KEY).
+  "vars": {
+    "MAILERLITE_GROUP_NEWSLETTER": "88817926",
+    "MAILERLITE_GROUP_LEAD_AUDIT": "113189749",
+    "MAILERLITE_GROUP_CONTACT": "89054306",
+    "MAILERLITE_GROUP_STAGES_AVANT_PREMIERE": "88817974",
+    "MAILERLITE_GROUP_WAITLIST_RETRAITE_SILENCE": "113189759"
+  },
   "observability": {
     "enabled": true
   }
