@@ -100,24 +100,30 @@ export const POST: APIRoute = async ({ request, locals }) => {
   if (intent_question) fields.intent_question = intent_question
   if (subject) fields.subject = subject
 
-  const mlBody: Record<string, unknown> = {
-    email,
-    groups: [groupId],
+  // API MailerLite Classic (compte Classic) :
+  // POST /api/v2/groups/{group_id}/subscribers avec header X-MailerLite-ApiKey.
+  const mlBody: Record<string, unknown> = { email }
+  if (fields.name) {
+    mlBody.name = fields.name
+    delete fields.name
   }
   if (Object.keys(fields).length > 0) {
     mlBody.fields = fields
   }
 
   try {
-    const res = await fetch("https://connect.mailerlite.com/api/subscribers", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        Authorization: `Bearer ${apiKey}`,
+    const res = await fetch(
+      `https://api.mailerlite.com/api/v2/groups/${groupId}/subscribers`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          "X-MailerLite-ApiKey": apiKey,
+        },
+        body: JSON.stringify(mlBody),
       },
-      body: JSON.stringify(mlBody),
-    })
+    )
 
     if (!res.ok) {
       const errText = await res.text().catch(() => "")
