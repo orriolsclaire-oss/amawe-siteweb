@@ -8,11 +8,10 @@
     "directory": "./dist",
     "binding": "ASSETS"
   },
-  // Uncomment and set your custom domain when ready:
-  // "routes": [
-  //   { "pattern": "amawe.com", "custom_domain": true },
-  //   { "pattern": "www.amawe.com", "custom_domain": true }
-  // ],
+  "routes": [
+    { "pattern": "amawe.com", "custom_domain": true },
+    { "pattern": "www.amawe.com", "custom_domain": true }
+  ],
   "observability": {
     "enabled": true
   }
