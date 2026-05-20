@@ -135,50 +135,54 @@ export const translations = {
     "ei.hero.text":
       "En 3 mois, tu restaures ta vitalité physique, tu clarifies ton mental, tu renforces ton équilibre émotionnel — pour arrêter de t'épuiser, retrouver un élan solide, et mettre cette énergie au service de la vie que tu veux vraiment construire.",
     "ei.hero.punchline":
-      "Quand ton niveau d'énergie change, tout redevient possible !",
+      "Quand ton niveau d'énergie change, tout s'aligne enfin.",
     "ei.cta": "Je candidate pour Énergie Illimitée",
     "ei.cta.secondary": "Prendre un appel avec Claire",
-    "ei.cta.note": "Entrée sur candidature — Places limitées",
-    "ei.badge": "Inscriptions ouvertes — Démarrage le 20 avril 2026",
+    "ei.cta.note": "Liste d'attente actuellement ouverte",
+    "ei.badge": "Prochaine ouverture fin 2026 début 2027",
 
     // Promesse
     "ei.promise.title":
-      "Retrouve une énergie profonde, stable et durable pour créer une vie qui te ressemble vraiment.",
+      "Retrouve une énergie profonde, stable et durable<br class=\"hidden md:inline\" /> pour créer une vie qui te ressemble vraiment.",
     "ei.promise.intro":
       "ÉNERGIE ILLIMITÉE est un accompagnement de 3 mois pour restaurer ta vitalité physique, clarifier ton mental et renforcer ton équilibre émotionnel.",
     "ei.promise.1":
-      "Quitter la fatigue de fond et retrouver une énergie solide, qui te porte naturellement et soutient ton rythme de vie",
+      "Quitter la fatigue de fond et retrouver une énergie solide, qui te porte naturellement et soutient ton rythme de vie et tes projets",
     "ei.promise.2":
       "Retrouver calme, clarté et stabilité à l'intérieur, où ton corps, ton mental et tes émotions fonctionnent enfin ensemble",
     "ei.promise.3":
       "Insuffler un nouvel élan à ta vie et canaliser ton énergie vers ce qui compte vraiment pour toi",
     "ei.promise.footer":
-      "Avec : coaching et mentorat hebdomadaire, stages en présentiel qui transforment, et un groupe qui te soutient pleinement dans ton évolution.",
+      "Coaching et mentorat chaque semaine, une bibliothèque de contenus pour avancer à ton rythme, du suivi individuel, des stages en présentiel, un groupe qui te soutient.",
 
     // Pour qui
-    "ei.audience.label": "POUR QUI ?",
+    "ei.audience.label": "DES SIGNES À RECONNAÎTRE",
     "ei.audience.title": "Pour qui est Énergie Illimitée ?",
     "ei.audience.intro":
-      "Cet accompagnement est pour toi si tu te reconnais dans l'un ou plusieurs des points suivants :",
+      "C'est pour toi si tu te reconnais dans <strong style=\"font-weight:500;color:var(--color-accent)\">l'un ou plusieurs</strong> des points suivants :",
     "ei.audience.1":
-      "Tu ressens une fatigue régulière — pas juste \"besoin de vacances\", mais une fatigue qui s'installe, physique ou mentale, et tu sens qu'il y a quelque chose à rééquilibrer en profondeur.",
+      "Tu ressens une fatigue qui s'installe et un épuisement, ton corps lâche peut-être par moments (sommeil, douleurs, digestion, immunité, cycles…). Tu sens que ce n'est pas juste un \"besoin de vacances\", mais quelque chose à rééquilibrer en profondeur.",
     "ei.audience.2":
-      "Tu sais, au fond, qu'un autre niveau d'énergie est possible pour toi… mais tu ne sais plus par où commencer.",
+      "Tu sais, au fond, qu'un autre niveau d'énergie est possible pour toi. Tu as peut-être déjà essayé seul·e, sans cadre, sans constance, et ça n'a pas tenu. Tu as besoin d'une méthode claire, d'outils concrets et d'un accompagnement dans la durée pour activer enfin ce que tu pressens.",
     "ei.audience.3":
-      "Tu veux arrêter de fonctionner en mode \"survie\" ou \"je tiens\" et retrouver une vitalité qui te porte, te soutient, te donne de l'élan.",
+      "Tu fonctionnes à fond sans plus rien ressentir, en mode \"je tiens\". Ton mental tourne à plein régime, ton rythme te dépasse, tu n'as plus d'espace pour toi. Tu satures. Tu veux retrouver une vitalité et un mental clair qui te porte.",
     "ei.audience.4":
-      "Tu sens que certaines choses te vident (stress, charge mentale, alimentation, manque de mouvement, pensées répétitives, procrastination ou hyper-activité…) et tu veux enfin libérer ce poids.",
+      "Tu sens que certaines choses te vident (stress, charge mentale, alimentation mal optimisée, manque de mouvement, émotions, pensées répétitives, procrastination ou hyper-activité…) et tu veux reprendre les commandes et libérer ce poids.",
     "ei.audience.5":
-      "Tu as besoin d'un cadre clair et motivant, avec des outils concrets et un accompagnement qui te soutient dans la durée pour activer une vraie transformation intérieure.",
+      "Tu veux réhabiter ton corps comme un espace de puissance, de plaisir et de liberté, pas juste \"tenir le coup\", mais créer la vie que tu souhaites vraiment vivre.",
     "ei.audience.6":
-      "Tu veux réhabiter ton corps comme un espace de puissance, de plaisir et de liberté — pas juste \"tenir le coup\", mais créer la vie que tu souhaites vraiment vivre.",
+      "Tu es engagé(e) dans quelque chose qui compte : un travail, un projet, une famille, une vocation, des responsabilités, et tu as besoin d'une énergie qui soutient ta vision et ton rythme au lieu de l'épuiser.",
     "ei.audience.7":
-      "Tu es entrepreneur(e), engagé(e) dans ton travail ou dans un projet important — et tu as besoin d'une énergie qui soutienne ton rythme au lieu de l'épuiser.",
+      "Tu as accumulé du savoir (yoga, jeûne, méditation, sport, thérapies, lectures, dev perso, formations…) et chaque pièce t'a apporté un bout. Mais aucune n'a vraiment tenu dans ta vie au quotidien. Tu veux passer de \"je sais\" à \"je vis\", arrêter de collectionner des outils et enfin incarner ce que tu sais.",
+    "ei.audience.8":
+      "Soit tu as fini par couper le robinet émotionnel pour tenir, et tu ne ressens plus grand-chose. Soit au contraire tes émotions te submergent sans que tu saches lire ce qui se joue en toi. Tu veux retrouver une vie émotionnelle vivante, sereine, où tes émotions deviennent une boussole plutôt qu'un problème qui t'épuise ou te déstabilise.",
+    "ei.audience.bridge":
+      "Si tu t'es reconnu·e dans au moins un des points ci-dessus, Énergie Illimitée a été pensé pour toi.",
     "ei.audience.conclusion":
-      "Ce programme est pour les personnes qui sentent que leur énergie est la clé du prochain chapitre de leur vie — et qui sont prêtes à sortir du mode survie ou du statu quo pour retrouver un ancrage intérieur solide, vivant et aligné avec ce qu'elles veulent vraiment créer.",
+      "Pour les personnes qui sentent que leur énergie est la clé du prochain chapitre.<br /><br />Prêtes à sortir du mode survie ou du statu quo pour retrouver un corps plus solide et ancré, un mental clair et des émotions alignées avec ce qu'elles veulent vraiment créer.",
 
     // Ce que ça va changer
-    "ei.results.label": "CE QUE ÇA VA CHANGER",
+    "ei.results.label": "TRANSFORMATIONS",
     "ei.results.title": "Ce que ça va changer concrètement dans ta vie",
     "ei.results.body.title": "Corps & Vitalité",
     "ei.results.body.1":
@@ -205,16 +209,16 @@ export const translations = {
     "ei.results.life.1":
       "Remettre ton énergie au service de ta vision, de tes projets et de ton ambition",
     "ei.results.life.2":
-      "Être plus présent(e) pour tes proches, sans t'oublier toi-même",
+      "Être plus présent(e) pour ce qui compte pour toi, sans t'oublier toi-même",
     "ei.results.life.3":
       "Avoir un socle solide pour construire ce que tu veux vraiment vivre",
 
     // 4 Piliers
     "ei.pillars.label": "LES 4 PILIERS",
-    "ei.pillars.title": "Une approche globale, pas un énième régime",
+    "ei.pillars.title": "Une approche vraiment globale",
     "ei.pillar.1.title": "Alimentation & Détox naturelle",
     "ei.pillar.1.text":
-      "Tu nourris ton corps, tu nettoies tes cellules. Une régénération profonde par l'alimentation et la naturopathie.",
+      "Tu nourris ton corps, tu nettoies tes cellules. Une revitalisation profonde par l'alimentation et la naturopathie.",
     "ei.pillar.1.benefit.1": "Vitalité digestive",
     "ei.pillar.1.benefit.2": "Baisse de l'inflammation",
     "ei.pillar.1.benefit.3": "Énergie durable",
@@ -222,17 +226,17 @@ export const translations = {
     "ei.pillar.2.text":
       "Tu (re)connectes avec ton corps pour le libérer, le renforcer, l'habiter pleinement.",
     "ei.pillar.2.benefit.1": "Fluidité et mobilité physique",
-    "ei.pillar.2.benefit.2": "Force vitale",
-    "ei.pillar.2.benefit.3": "Présence et puissance",
+    "ei.pillar.2.benefit.2": "Force vitale et confiance",
+    "ei.pillar.2.benefit.3": "Présence et renforcement",
     "ei.pillar.3.title": "Mental & Émotions",
     "ei.pillar.3.text":
-      "Stress, pensées, croyances, émotions refoulées — tu libères, tu alchimises, tu transformes.",
+      "Stress, pensées, croyances, émotions refoulées, tu libères, tu alchimises, tu transformes.",
     "ei.pillar.3.benefit.1": "Sensation de paix intérieure et clarté mentale",
     "ei.pillar.3.benefit.2": "Émotions apaisées",
-    "ei.pillar.3.benefit.3": "Reset du système nerveux",
+    "ei.pillar.3.benefit.3": "Régulation du système nerveux",
     "ei.pillar.4.title": "Ta priorité et focus du moment",
     "ei.pillar.4.text":
-      "Tu priorises enfin ce qui compte pour toi, et qui impacte directement ou indirectement ton niveau d'énergie et de vitalité.",
+      "Tu priorises enfin ce qui compte pour toi, et qui impacte directement ton niveau d'énergie et de vitalité (dans l'un des 16 domaines de la roue).",
     "ei.pillar.4.benefit.1": "Sens et cohérence",
     "ei.pillar.4.benefit.2": "Alignement et impact",
     "ei.pillar.4.benefit.3": "Sensation de réalisation",
@@ -240,7 +244,7 @@ export const translations = {
     // Format
     "ei.format.label": "LE PROGRAMME",
     "ei.format.title": "1 coaching en direct/semaine pendant 3 mois + 2 immersions en présentiel",
-    "ei.format.start": "Démarrage le 20 avril 2026",
+    "ei.format.start": "Prochaine ouverture fin 2026 début 2027",
     "ei.format.coaching.title": "1 coaching de groupe tous les 15 jours",
     "ei.format.coaching.subtitle": "Un mardi sur deux à 20h",
     "ei.format.coaching.text":
@@ -250,13 +254,13 @@ export const translations = {
     "ei.format.hotseat.text":
       "Un coaching individualisé où tu présentes tes besoins, ta problématique, tes avancées et on va en profondeur dans les solutions et l'adaptation à ton cas particulier. Ici, on focus sur le 4ème pilier : TA priorité du moment. Les sessions de hot seat assurent un suivi personnalisé tout au long des 3 mois.",
     "ei.format.immersion.title": "2 immersions en présentiel",
-    "ei.format.immersion.subtitle": "Comme un stage intensif — inclus dans l'accompagnement. Des moments de transformation et des espaces de pratique où on se retrouve, on partage et on crée de vrais liens.",
-    "ei.format.immersion.1.title": "Immersion 1 — Montpellier",
+    "ei.format.immersion.subtitle": "Comme un stage intensif, inclus dans l'accompagnement. Des moments de transformation et des espaces de pratique où on se retrouve, on partage et on crée de vrais liens.",
+    "ei.format.immersion.1.title": "Immersion 1 : Montpellier",
     "ei.format.immersion.1.text":
-      "2 jours d'immersion à Montpellier, 2-3 mai 2026",
-    "ei.format.immersion.2.title": "Immersion 2 — Écolieu, Sud Aveyron",
+      "2 jours d'immersion à Montpellier",
+    "ei.format.immersion.2.title": "Immersion 2 : Écolieu, Sud Aveyron",
     "ei.format.immersion.2.text":
-      "4 jours en pleine nature dans notre écolieu, 17-20 juillet 2026 (à 1h30 de Montpellier, 2h30 de Toulouse)",
+      "4 jours en pleine nature dans notre écolieu (à 1h30 de Montpellier, 2h30 de Toulouse)",
     "ei.format.hybrid":
       "Un format hybride, en ligne et en présentiel pour une transformation qui s'ancre vraiment.",
     "ei.format.hybrid.text":
@@ -265,8 +269,8 @@ export const translations = {
 
     // Dates
     "ei.dates.label": "DATES",
-    "ei.dates.start": "Début : 20 avril 2026",
-    "ei.dates.end": "Fin : 20 juillet 2026",
+    "ei.dates.start": "Prochaine ouverture fin 2026 début 2027",
+    "ei.dates.end": "",
     "ei.dates.duration": "3 mois d'accompagnement",
 
     // Tarifs
@@ -288,33 +292,38 @@ export const translations = {
 
     // Bonus
     "ei.bonus.label": "BONUS INCLUS",
-    "ei.bonus.1": "Interventions d'autres expert(e)s",
-    "ei.bonus.2": "Ressources complémentaires entre les sessions lives",
-    "ei.bonus.3":
-      "Bibliothèque de contenus spécifiques sur le mouvement (séances guidées en vidéo) + recettes santé",
+    "ei.bonus.1": "Masterclasses d'invités pour approfondir certains sujets spécifiques",
     "ei.bonus.4": "Accès au groupe WhatsApp privé d'échanges entre participant(e)s",
     "ei.bonus.5":
       "Une session live \"Cercle de Suivi\" post-programme à M+1",
     "ei.bonus.6":
-      "Accès privilégié à une 3ème rencontre en présentiel avec tous les participants de cette édition + tous les anciens d'Énergie Illimitée, env. 2-3 mois après la fin du programme",
+      "Accès privilégié à une 3ème rencontre en présentiel avec tous les participants de cette édition + tous les anciens d'Énergie Illimitée, env. 3 à 6 mois après la fin du programme",
 
     // FAQ
-    "ei.faq.label": "QUESTIONS FRÉQUENTES",
+    "ei.faq.label": "ON Y RÉPOND",
     "ei.faq.1.q":
       "Est-ce possible de ne faire que les coachings en ligne ou uniquement les immersions en présentiel ?",
     "ei.faq.1.a":
-      "Non, ce n'est pas possible. ÉNERGIE ILLIMITÉE est un parcours pensé comme un tout cohérent et transformateur. Les coachings en ligne t'apportent la régularité, l'ancrage, les clés concrètes et l'intégration dans ton quotidien. Les immersions sont des moments puissants de transformation, de reconnexion et de bascule intérieure, qui ne peuvent être remplacés à distance. Participer à l'ensemble du parcours est essentiel pour vivre une vraie régénération, en profondeur et sur la durée.",
+      "<p>ÉNERGIE ILLIMITÉE est un programme pensé comme un tout cohérent et transformateur.</p><ul class=\"my-3 ml-5 list-disc space-y-2\"><li>Les <strong>coachings en ligne</strong> t'apportent la régularité, l'ancrage, les clés concrètes et l'intégration dans ton quotidien.</li><li>Les <strong>immersions</strong> sont des moments puissants de transformation, de reconnexion et de bascule intérieure, qui ne peuvent être remplacés à distance. Participer à l'ensemble du parcours est essentiel pour vivre une vraie expérience, en profondeur et sur la durée.</li></ul><p class=\"mt-3\">Il n'est pas possible de s'inscrire qu'aux immersions sans suivre le parcours en ligne.</p><p class=\"mt-3\">Les immersions sont incluses et vivement recommandées au-delà des coachings et de la bibliothèque en ligne, mais si tu n'es pas disponible pour une immersion, on comprend, cela arrive.</p>",
     "ei.faq.2.q":
-      "Et si je ne peux pas être là à tous les coachings en live ?",
+      "Et si je ne peux pas être là à tous les open-coachings ?",
     "ei.faq.2.a":
-      "Pas de souci : tous les coachings sont enregistrés et disponibles en replay. Tu pourras les regarder à ton rythme, et rester dans le fil du programme. Et si tu ne passes pas en hot seat une semaine, tu peux aussi assister aux autres et bénéficier des effets miroirs (souvent très puissants !).",
-    "ei.faq.3.q": "Qu'est-ce que le format \"hot seat\" ?",
+      "<p>Pas de souci : tous les open-coachings sont enregistrés et disponibles en replay. Tu pourras les regarder à ton rythme, et rester dans le fil du programme.</p>",
+    "ei.faq.3.q": "Qu'est-ce que le format open-coaching ?",
     "ei.faq.3.a":
-      "Le hot seat, c'est un moment de coaching individualisé au sein d'un mini groupe de 4 personnes. Tu viens avec ta problématique, ta situation ou ton blocage, et on va en profondeur dans ta réalité, pour t'apporter des réponses concrètes, des pistes claires et des ajustements sur-mesure. Tu es \"au centre\" pendant 20 à 30 minutes. Le bonus ? Tu peux aussi assister aux hot seats des autres du mini-groupe. C'est souvent là que naissent les plus grands déclics, grâce à l'effet miroir.",
+      "<p>L'open-coaching est un format de coaching collectif où chacun·e peut poser sa question, partager une situation ou un blocage en live, et tout le groupe en profite.</p><p class=\"mt-3\">Concrètement :</p><ul class=\"my-2 ml-5 list-disc space-y-1.5\"><li>Tu viens avec ton sujet du moment (ou tu écoutes celui des autres si tu n'es pas prêt·e ce jour-là).</li><li>On creuse ta situation ensemble : je te pose des questions, je t'apporte des clés concrètes et des pistes adaptées à ta réalité.</li><li>Les autres participant·e·s assistent et bénéficient des effets miroirs, souvent très puissants : ce que tu travailles fait écho à ce qu'ils traversent aussi.</li></ul><p class=\"mt-3\">C'est un espace vivant, spontané, où les bénéfices se font sentir à la fois individuellement et collectivement. Sur Zoom.</p>",
     "ei.faq.4.q":
-      "Comment se déroule concrètement le programme ?",
+      "Qu'est-ce que je vais retrouver dans la bibliothèque de contenus ?",
     "ei.faq.4.a":
-      "Le programme a été pensé pour s'adapter à ton rythme, pas pour rajouter de la pression. Semaine après semaine, tu alternes entre coaching de groupe et hot seat individualisé, avec 2 immersions en présentiel qui viennent ancrer la transformation. Tous les replays sont disponibles si tu ne peux pas être en live.",
+      "<p>La bibliothèque est structurée autour des <strong>3 premiers piliers</strong> du programme (alimentation, mouvement, mental &amp; émotions) et te suit à vie, même après les 3 mois d'accompagnement.</p><p class=\"mt-3\">Tu y trouves :</p><ul class=\"my-2 ml-5 list-disc space-y-1.5\"><li><strong>Des vidéos et audios</strong> guidés sur le mouvement, la respiration, le mindset, la régulation émotionnelle.</li><li><strong>Des contenus pédagogiques</strong> pour comprendre comment fonctionne ton énergie, ton système nerveux, tes cycles.</li><li><strong>Des protocoles concrets</strong> à intégrer ponctuellement ou dans ton quotidien (routines, exercices, cure alimentaire de revitalisation, etc.).</li><li><strong>Des ressources complémentaires</strong> : recettes, fiches pratiques, playlists.</li></ul><p class=\"mt-3\">Tu avances à ton rythme et tu reviens sur les contenus quand tu en as besoin, autant de fois que nécessaire.</p><p class=\"mt-3\">Le <strong>4ème pilier</strong> (ta priorité du moment) est abordé individuellement dans les sessions d'open-coachings et les sessions individuelles.</p>",
+    "ei.faq.6.q":
+      "Comment se déroulent les 2 immersions ?",
+    "ei.faq.6.a":
+      "<p>Les immersions sont les temps forts du programme. Elles incarnent dans le réel ce qu'on travaille à distance, on creuse en profondeur, on expérimente et c'est là que les déclics les plus profonds arrivent.</p><p class=\"mt-3\"><strong>1ère immersion — Montpellier ou autre ville (2 jours)</strong>, au lancement du programme :</p><ul class=\"my-2 ml-5 list-disc space-y-1.5\"><li>On active ton corps et on pose les bases : MovNat et mouvement libre, pratiques respiratoires et exploration de ton corps, bilan d'où tu en es et où tu veux aller.</li><li>Temps de partage, alignement de ton intention, rencontre et liens avec le groupe.</li></ul><p class=\"mt-3\"><strong>2ème immersion — Aveyron (4 jours en nature)</strong>, en fin de programme :</p><ul class=\"my-2 ml-5 list-disc space-y-1.5\"><li>Plongée profonde dans la nature, en éco-lieu.</li><li>Pratiques corporelles, méditatives et émotionnelles dans un cadre ressourçant.</li><li>Le moment d'intégrer, d'ancrer, d'incarner durablement ce que tu as construit pendant les 3 mois.</li></ul><p class=\"mt-3\"><strong>Côté pratique :</strong></p><ul class=\"my-2 ml-5 list-disc space-y-1.5\"><li><strong>Inclus dans le tarif :</strong> le lieu et la salle de pratique qui nous accueille, toutes les transmissions et les enseignements.</li><li><strong>Non inclus :</strong> transport, hébergement et repas. Des options sont proposées et le transport peut être mutualisé entre participants.</li></ul><p class=\"mt-3\"><strong>Pourquoi c'est essentiel :</strong> ce que le corps comprend en présentiel, le mental ne peut pas le saisir seul à distance. L'effet groupe, l'expérience partagée, l'immersion ensemble sont des accélérateurs qu'aucun replay ne peut remplacer.</p>",
+    "ei.faq.5.q":
+      "Comment se déroule concrètement le programme ?",
+    "ei.faq.5.a":
+      "<p>Semaine après semaine, tu alternes entre open-coachings et les modules en ligne de la bibliothèque de contenus. Chaque mois, tu réserves une session de coaching individuel, et tu vis 2 immersions en présentiel qui viennent ancrer la transformation (en début et en fin de programme). Tous les replays sont disponibles si tu ne peux pas être présent·e aux open-coachings.</p>",
     "ei.contact":
       "Si tu as des questions, contacte-moi à hello@amawe.com",
 
@@ -507,24 +516,24 @@ export const translations = {
     "ei.hero.text":
       "In 3 months, you restore your physical vitality, clarify your mind, strengthen your emotional balance — to stop burning out, find solid momentum, and channel your energy toward the life you truly want to build.",
     "ei.hero.punchline":
-      "When your energy level changes, everything becomes possible again!",
+      "When your energy level changes, everything finally aligns.",
     "ei.cta": "Apply to Unlimited Energy",
     "ei.cta.secondary": "Book a call with Claire",
-    "ei.cta.note": "Application-based entry — Limited spots",
-    "ei.badge": "Enrollment open — Starting April 20, 2026",
+    "ei.cta.note": "Waitlist currently open",
+    "ei.badge": "Next opening late 2026 – early 2027",
     "ei.promise.title":
       "Find deep, stable, lasting energy to create a life that truly reflects who you are.",
     "ei.promise.intro":
       "UNLIMITED ENERGY is a 3-month program to restore your physical vitality, clarify your mind and strengthen your emotional balance.",
     "ei.promise.1":
-      "Leave behind chronic fatigue and find solid energy that naturally supports your rhythm of life",
+      "Leave behind chronic fatigue and find solid energy that naturally supports your rhythm of life and your projects",
     "ei.promise.2":
       "Find calm, clarity and stability within, where your body, mind and emotions finally work together",
     "ei.promise.3":
       "Breathe new momentum into your life and channel your energy toward what truly matters to you",
     "ei.promise.footer":
-      "With: weekly coaching and mentoring, transformative in-person retreats, and a group that fully supports your evolution.",
-    "ei.audience.label": "WHO IS THIS FOR?",
+      "Weekly coaching and mentoring, a content library to move at your own pace, individual follow-up, in-person retreats, a group that supports you.",
+    "ei.audience.label": "SIGNS TO RECOGNIZE",
     "ei.audience.title": "Who is Unlimited Energy for?",
     "ei.audience.intro":
       "This program is for you if you recognize yourself in one or more of the following:",
@@ -541,10 +550,10 @@ export const translations = {
     "ei.audience.6":
       "You want to reinhabit your body as a space of power, pleasure and freedom — not just \"hang in there\", but create the life you truly wish to live.",
     "ei.audience.7":
-      "You're an entrepreneur, committed to your work or an important project — and you need energy that supports your rhythm instead of depleting it.",
+      "You're engaged in something that matters: work, a project, a calling, responsibilities; and you need energy that sustains your rhythm instead of draining it.",
     "ei.audience.conclusion":
       "This program is for people who feel that their energy is the key to the next chapter of their life — and who are ready to leave survival mode or the status quo behind to find a solid, vibrant inner anchor aligned with what they truly want to create.",
-    "ei.results.label": "WHAT WILL CHANGE",
+    "ei.results.label": "TRANSFORMATIONS",
     "ei.results.title": "What will concretely change in your life",
     "ei.results.body.title": "Body & Vitality",
     "ei.results.body.1":
@@ -571,14 +580,14 @@ export const translations = {
     "ei.results.life.1":
       "Put your energy at the service of your vision, your projects and your ambition",
     "ei.results.life.2":
-      "Be more present for your loved ones, without forgetting yourself",
+      "Be more present for what matters to you, without forgetting yourself",
     "ei.results.life.3":
       "Have a solid foundation to build the life you truly want to live",
     "ei.pillars.label": "THE 4 PILLARS",
-    "ei.pillars.title": "A holistic approach, not another diet",
+    "ei.pillars.title": "A truly holistic approach",
     "ei.pillar.1.title": "Nutrition & Natural Detox",
     "ei.pillar.1.text":
-      "You nourish your body, you cleanse your cells. A deep regeneration through food and naturopathy.",
+      "You nourish your body, you cleanse your cells. A deep revitalization through food and naturopathy.",
     "ei.pillar.1.benefit.1": "Digestive vitality",
     "ei.pillar.1.benefit.2": "Reduced inflammation",
     "ei.pillar.1.benefit.3": "Lasting energy",
@@ -586,23 +595,23 @@ export const translations = {
     "ei.pillar.2.text":
       "You (re)connect with your body to free it, strengthen it, fully inhabit it.",
     "ei.pillar.2.benefit.1": "Physical fluidity and mobility",
-    "ei.pillar.2.benefit.2": "Vital strength",
-    "ei.pillar.2.benefit.3": "Presence and power",
+    "ei.pillar.2.benefit.2": "Vital strength and confidence",
+    "ei.pillar.2.benefit.3": "Presence and strengthening",
     "ei.pillar.3.title": "Mind & Emotions",
     "ei.pillar.3.text":
       "Stress, thoughts, beliefs, repressed emotions — you release, you alchemize, you transform.",
     "ei.pillar.3.benefit.1": "Inner peace and mental clarity",
     "ei.pillar.3.benefit.2": "Soothed emotions",
-    "ei.pillar.3.benefit.3": "Nervous system reset",
+    "ei.pillar.3.benefit.3": "Nervous system regulation",
     "ei.pillar.4.title": "Your priority and current focus",
     "ei.pillar.4.text":
-      "You finally prioritize what matters to you, what directly or indirectly impacts your energy and vitality level.",
+      "You finally prioritize what matters to you, what directly impacts your energy and vitality level.",
     "ei.pillar.4.benefit.1": "Meaning and coherence",
     "ei.pillar.4.benefit.2": "Alignment and impact",
     "ei.pillar.4.benefit.3": "Sense of fulfillment",
     "ei.format.label": "THE PROGRAM",
     "ei.format.title": "1 live coaching/week for 3 months + 2 in-person immersions",
-    "ei.format.start": "Starting April 20, 2026",
+    "ei.format.start": "Next opening late 2026 – early 2027",
     "ei.format.coaching.title": "Group coaching every 2 weeks",
     "ei.format.coaching.subtitle": "Every other Tuesday at 8pm",
     "ei.format.coaching.text":
@@ -612,21 +621,21 @@ export const translations = {
     "ei.format.hotseat.text":
       "An individualized coaching session where you present your needs, challenges and progress and we go deep into solutions tailored to your situation. Here, we focus on the 4th pillar: YOUR current priority. Hot seat sessions ensure personalized follow-up throughout the 3 months.",
     "ei.format.immersion.title": "2 in-person immersions",
-    "ei.format.immersion.subtitle": "Like an intensive retreat — included in the program. Moments of transformation and practice spaces where we meet, share and create real bonds.",
-    "ei.format.immersion.1.title": "Immersion 1 — Montpellier",
+    "ei.format.immersion.subtitle": "Like an intensive retreat, included in the program. Moments of transformation and practice spaces where we meet, share and create real bonds.",
+    "ei.format.immersion.1.title": "Immersion 1: Montpellier",
     "ei.format.immersion.1.text":
-      "2-day immersion in Montpellier, May 2-3, 2026",
-    "ei.format.immersion.2.title": "Immersion 2 — Eco-village, South Aveyron",
+      "2-day immersion in Montpellier",
+    "ei.format.immersion.2.title": "Immersion 2: Eco-village, South Aveyron",
     "ei.format.immersion.2.text":
-      "4 days in nature at our eco-village, July 17-20, 2026 (1.5h from Montpellier, 2.5h from Toulouse)",
+      "4 days in nature at our eco-village (1.5h from Montpellier, 2.5h from Toulouse)",
     "ei.format.hybrid":
       "A hybrid format, online and in-person for a transformation that truly anchors.",
     "ei.format.hybrid.text":
       "All coaching sessions and immersions are designed to bring you targeted, actionable teachings and practices, concrete answers to your questions, and spaces for exchange and sharing with the group.",
     "ei.format.rhythm": "= 1 session per week total",
     "ei.dates.label": "DATES",
-    "ei.dates.start": "Start: April 20, 2026",
-    "ei.dates.end": "End: July 20, 2026",
+    "ei.dates.start": "Next opening late 2026 – early 2027",
+    "ei.dates.end": "",
     "ei.dates.duration": "3 months of guidance",
     "ei.pricing.label": "PRICING",
     "ei.pricing.earlybird": "€1,350",
@@ -644,16 +653,13 @@ export const translations = {
     "ei.pricing.payment.info":
       "Secure payment by card or bank transfer. Pay in 1x, 3x or 5x interest-free. 14-day legal cooling-off period.",
     "ei.bonus.label": "BONUSES INCLUDED",
-    "ei.bonus.1": "Guest expert sessions",
-    "ei.bonus.2": "Complementary resources between live sessions",
-    "ei.bonus.3":
-      "Library of movement-specific content (guided video sessions) + healthy recipes",
+    "ei.bonus.1": "Guest masterclasses to dive deeper into specific topics",
     "ei.bonus.4": "Access to the private WhatsApp group for participants",
     "ei.bonus.5":
       "A live \"Follow-up Circle\" session post-program at M+1",
     "ei.bonus.6":
-      "Exclusive access to a 3rd in-person gathering with all participants of this edition + all Unlimited Energy alumni, approx. 2-3 months after the program ends",
-    "ei.faq.label": "FAQ",
+      "Exclusive access to a 3rd in-person gathering with all participants of this edition + all Unlimited Energy alumni, approx. 3 to 6 months after the program ends",
+    "ei.faq.label": "WE ANSWER",
     "ei.faq.1.q":
       "Can I do only the online coaching or only the in-person immersions?",
     "ei.faq.1.a":

@@ -65,29 +65,28 @@ const principes = [
   },
 ]
 
-// Témoignages — placeholders à remplacer par de vrais avis
-// TODO Claire : fournir prénom + métier + contexte (programme / date) + citation réelle
+// Témoignages — extraits du mur des témoignages
 const temoignages = [
   {
-    citation:
-      "J'ai arrêté de chercher LA méthode. J'ai compris que la santé, c'est un écosystème — et que j'avais sous-estimé le lien entre mon sommeil et ma relation à mon travail.",
-    prenom: "Marion",
-    metier: "pharmacienne",
-    contexte: "Énergie Illimitée — 2025",
+    type: "screenshot",
+    src: "/images/temoignage-emma-20220125.webp",
+    alt: "Témoignage d'Emma — l'approche Amawé propose une vision globale des choses, on apprend beaucoup sur soi",
+    prenom: "Emma",
+    contexte: "Communauté Amawé",
   },
   {
+    type: "text",
     citation:
-      "Ce qui m'a touchée chez Claire, c'est qu'elle refuse les dogmes. Elle t'aide à trouver TA version, pas à appliquer la sienne. C'est rare.",
-    prenom: "Stéphanie",
-    metier: "kinésithérapeute",
-    contexte: "BMD Détox — 2023",
+      "Le programme n'est pas encore terminé mais déjà : +20% d'énergie, et c'est déjà colossal.",
+    prenom: "Grégoire",
+    contexte: "Énergie Illimitée",
   },
   {
-    citation:
-      "4 jours en montagne qui ont recalibré mon année entière. Le silence, le mouvement, la nature — et un groupe qui tient vraiment la profondeur.",
-    prenom: "Julie",
-    metier: "entrepreneure",
-    contexte: "Summer Camp — 2024",
+    type: "screenshot",
+    src: "/images/temoignage-blandine-2023.webp",
+    alt: "Témoignage de Blandine après un stage Amawé — superbe expérience, superbe ambiance, beaucoup d'émotions, on en revient régénéré",
+    prenom: "Blandine",
+    contexte: "Stage & Retraite",
   },
 ]
 
@@ -98,7 +97,7 @@ const offres = [
     titre: "Amawé Summer Camp",
     sous: "Le 1er festival Amawé",
     texte:
-      "4 jours en pleine nature, dans notre écolieu. Se rassembler, se recharger et vivre les fondamentaux : mouvement, alimentation, repos, joie, communauté.",
+      "4 jours en pleine nature, dans notre écolieu. Se rassembler, se recharger et vivre les fondamentaux : mouvement, santé naturelle, repos, joie, communauté.",
     cta: "Je découvre le Summer Camp",
     href: "/summer-camp/",
     image: "/images/sc-salle.webp",
@@ -107,20 +106,20 @@ const offres = [
   {
     label: "PROCHAINE ÉDITION FIN 2026",
     titre: "Accompagnement Énergie Illimitée",
-    sous: "3 mois d'accompagnement",
+    sous: "3 mois d'accompagnement (coaching + immersions)",
     texte:
-      "Restaurer ta vitalité physique, clarifier ton mental, renforcer ton équilibre émotionnel. Sortir du mode survie.",
+      "Restaurer ta vitalité physique, clarifier ton mental, renforcer ton équilibre émotionnel. Sortir du mode survie et mettre cette énergie au service de ce qui compte vraiment pour toi !",
     cta: "Rejoindre la liste d'attente",
     href: "/energie-illimitee/",
-    image: "/images/claire-ei-portrait.webp",
-    alt: "Programme Énergie Illimitée — Claire Orriols et les 4 piliers : alimentation, mental, mouvement, focus",
+    image: "/images/claire-ei-hero-coaching.webp",
+    alt: "Programme Énergie Illimitée — Claire Orriols en animation, transmission en présentiel",
   },
   {
     label: "ÉDITION 2027 — DATE À VENIR",
     titre: "Retraite Danse & Silence",
-    sous: "4 jours dans l'écolieu",
+    sous: "Une parenthèse hors du temps",
     texte:
-      "Trois médecines : le silence, le mouvement libre, la nature. Pour celles et ceux qui ont besoin de revenir à eux-mêmes.",
+      "Trois médecines : le silence, la danse libre, la nature. Pour celles et ceux qui ont besoin de revenir à eux-mêmes.",
     cta: "M'inscrire en avant-première",
     href: "/stages/",
     image: "/images/sc-claire-portrait.webp",
@@ -316,7 +315,7 @@ const offres = [
               />
               <div class="flex flex-1 flex-col p-6">
                 <p class="section-label text-[var(--color-accent)]">{o.label}</p>
-                <p class="mt-3 font-['Josefin_Sans',sans-serif] text-3xl text-[var(--color-primary)]">{o.titre}</p>
+                <p class="mt-3 font-['Josefin_Sans',sans-serif] text-3xl text-[var(--color-accent-dark)]" style="font-weight: 400;">{o.titre}</p>
                 <p class="mt-1 text-sm italic text-[var(--color-text-light)]">{o.sous}</p>
                 <p class="mt-6 flex-1 leading-relaxed text-[var(--color-text-medium)]">{o.texte}</p>
                 <span class="mt-8 inline-flex items-center gap-2 text-sm font-medium uppercase tracking-[0.15em] text-[var(--color-accent-dark)] transition-transform group-hover:translate-x-1">
@@ -330,18 +329,54 @@ const offres = [
       </div>
     </section>
 
-    <!-- Mon approche — 4 principes -->
-    <section class="bg-[var(--color-warm)] py-20 md:py-28">
+    <!-- Mon approche — 4 principes (compactée) -->
+    <section class="bg-[var(--color-warm)] py-12 md:py-16">
       <div class="mx-auto max-w-5xl px-6">
         <div>
           <p class="section-label">MON APPROCHE</p>
         </div>
 
-        <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {principes.map((p) => (
-            <div class="border-l-2 bg-[var(--color-surface)] p-6 rounded-r-2xl" style="border-color: var(--color-accent);">
-              <p class="font-['Josefin_Sans',sans-serif] text-xl text-[var(--color-accent-dark)]" style="font-weight: 600;">{p.titre}</p>
-              <p class="mt-3 text-sm leading-relaxed text-[var(--color-text-medium)]">{p.texte}</p>
+        <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {principes.map((p, i) => (
+            <div class="border-l-2 bg-[var(--color-surface)] p-4 rounded-r-2xl" style="border-color: var(--color-accent);">
+              <svg width="34" height="34" viewBox="0 0 44 44" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="mb-3">
+                {i === 0 && (
+                  <>
+                    <circle cx="22" cy="22" r="13" fill="var(--color-accent)" fill-opacity="0.15" />
+                    <circle cx="22" cy="22" r="6" />
+                    <circle cx="22" cy="22" r="2" fill="var(--color-accent)" />
+                    <line x1="22" y1="3" x2="22" y2="9" />
+                    <line x1="22" y1="35" x2="22" y2="41" />
+                    <line x1="3" y1="22" x2="9" y2="22" />
+                    <line x1="35" y1="22" x2="41" y2="22" />
+                  </>
+                )}
+                {i === 1 && (
+                  <>
+                    <circle cx="22" cy="22" r="14" fill="var(--color-accent)" fill-opacity="0.15" />
+                    <path d="M22 9 L26 22 L22 26 L18 22 Z" fill="var(--color-accent)" />
+                    <path d="M22 35 L22 26" />
+                  </>
+                )}
+                {i === 2 && (
+                  <>
+                    <circle cx="22" cy="11" r="4" fill="var(--color-accent)" fill-opacity="0.15" />
+                    <path d="M22 15 L22 30" />
+                    <path d="M22 19 L14 26" />
+                    <path d="M22 19 L30 26" />
+                    <path d="M22 30 L17 38" />
+                    <path d="M22 30 L27 38" />
+                  </>
+                )}
+                {i === 3 && (
+                  <>
+                    <path d="M22 35 Q10 24 10 16 Q10 10 16 10 Q20 10 22 14 Q24 10 28 10 Q34 10 34 16 Q34 24 22 35 Z" fill="var(--color-accent)" fill-opacity="0.15" />
+                    <circle cx="22" cy="18" r="2.5" fill="var(--color-accent)" />
+                  </>
+                )}
+              </svg>
+              <p class="font-['Josefin_Sans',sans-serif] text-lg text-[var(--color-accent-dark)]" style="font-weight: 600;">{p.titre}</p>
+              <p class="mt-2 text-sm leading-relaxed text-[var(--color-text-medium)]">{p.texte}</p>
             </div>
           ))}
         </div>
@@ -381,10 +416,6 @@ const offres = [
               redirectTo="/audit-roue-sante/merci/"
               class="mt-8 max-w-md md:max-w-none"
             />
-            <p class="mt-4 text-xs text-[var(--color-surface)]/50">
-              Tu reçois aussi la SuperLetter (1 email/semaine). Désinscription en
-              1 clic.
-            </p>
           </div>
 
           <div class="md:col-span-2">
@@ -407,7 +438,7 @@ const offres = [
       <div class="mx-auto max-w-4xl px-6">
         <div class="text-center">
           <p class="section-label mb-3">CE QUE TU VAS ÉVALUER</p>
-          <h2 class="text-2xl md:text-3xl">4 axes, 16 domaines.</h2>
+          <h2 class="text-2xl md:text-3xl">La roue de la santé : 4 axes, 16 domaines.</h2>
         </div>
 
         <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -426,7 +457,7 @@ const offres = [
           ))}
         </div>
 
-        <p class="mx-auto mt-8 text-center font-['Josefin_Sans',sans-serif] text-lg italic text-[var(--color-accent-dark)] md:text-xl">
+        <p class="mx-auto mt-8 text-center font-['Josefin_Sans',sans-serif] text-lg text-[var(--color-accent-dark)] md:text-xl">
           Une cartographie plus complète de ce qui influence ton bien-être et ta santé.
         </p>
 
@@ -448,7 +479,7 @@ const offres = [
           height="800"
           loading="lazy"
           decoding="async"
-          class="aspect-square w-full rounded-full bg-[var(--color-warm)] object-contain md:col-span-2"
+          class="aspect-square w-full rounded-full bg-[var(--color-warm)] object-cover md:col-span-2"
         />
         <div class="md:col-span-3">
           <p class="section-label mb-4">QUI SUIS-JE</p>
@@ -491,28 +522,48 @@ const offres = [
     </section>
 
     <!-- Témoignages -->
-    <section class="bg-[var(--color-surface)] py-20 md:py-28">
+    <section class="bg-[var(--color-surface)] py-14 md:py-20">
       <div class="mx-auto max-w-6xl px-6">
         <div class="mx-auto max-w-3xl text-center">
-          <p class="section-label mb-4">CE QU'ELLES ET ILS EN DISENT</p>
-          <h2 class="text-3xl md:text-4xl">Des chemins, pas des miracles</h2>
-          <div class="divider mx-auto mt-6" style="background-color: var(--color-text-light);"></div>
+          <p class="section-label mb-3">CE QU'ELLES ET ILS EN DISENT</p>
+          <h2 class="text-3xl md:text-4xl">Témoignages</h2>
+          <div class="divider mx-auto mt-5" style="background-color: var(--color-text-light);"></div>
         </div>
 
-        <div class="mt-16 grid gap-8 md:grid-cols-3">
+        <div class="mt-10 grid gap-6 md:grid-cols-3">
           {temoignages.map((t) => (
-            <figure class="flex flex-col border-t-2 bg-[var(--color-warm)] p-8" style="border-color: var(--color-accent);">
-              <blockquote class="flex-1 font-['Josefin_Sans',sans-serif] text-lg leading-relaxed italic text-[var(--color-primary)]">
-                « {t.citation} »
-              </blockquote>
-              <figcaption class="mt-6 border-t border-[var(--color-border)] pt-4">
-                <p class="font-['Josefin_Sans',sans-serif] text-xl text-[var(--color-primary)]">
-                  {t.prenom} <span class="text-[var(--color-text-light)]">— {t.metier}</span>
-                </p>
-                <p class="mt-1 text-xs uppercase tracking-[0.15em] text-[var(--color-text-light)]">{t.contexte}</p>
+            <figure class="flex flex-col border-t-2 rounded-b-2xl bg-[var(--color-warm)] p-6" style="border-color: var(--color-accent);">
+              {t.type === "screenshot" ? (
+                <div class="flex-1 flex items-center justify-center">
+                  <img src={t.src} alt={t.alt} loading="lazy" class="w-full rounded-md" />
+                </div>
+              ) : (
+                <blockquote class="testimonial-quote flex-1 text-[var(--color-primary)]" style="font-weight: 300;">
+                  « {t.citation} »
+                </blockquote>
+              )}
+              <figcaption class="mt-4 border-t border-[var(--color-border)] pt-3">
+                <p class="font-['Josefin_Sans',sans-serif] text-base text-[var(--color-primary)]">{t.prenom}</p>
+                <p class="mt-1 text-[10px] uppercase tracking-[0.15em] text-[var(--color-text-light)]">{t.contexte}</p>
               </figcaption>
             </figure>
           ))}
+        </div>
+
+        <div class="mt-10 text-center">
+          <a
+            href="/mur-des-temoignages/"
+            class="group inline-flex items-center gap-3 text-base font-light text-[var(--color-accent-dark)] transition-colors hover:text-[var(--color-accent)]"
+          >
+            <span class="relative pb-1">
+              Découvre le mur des témoignages
+              <span class="absolute bottom-0 left-0 h-px w-0 bg-[var(--color-accent)] transition-all duration-500 group-hover:w-full" aria-hidden="true"></span>
+            </span>
+            <svg aria-hidden="true" width="18" height="12" viewBox="0 0 24 16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300 group-hover:translate-x-1">
+              <line x1="1" y1="8" x2="22" y2="8" />
+              <polyline points="16 2 22 8 16 14" />
+            </svg>
+          </a>
         </div>
       </div>
     </section>
@@ -557,7 +608,7 @@ const offres = [
           namePlaceholder="Ton prénom"
           emailLabel="Email"
           emailPlaceholder="Ton adresse email"
-          buttonClass="btn-accent whitespace-nowrap leading-tight w-full hover:!bg-[var(--color-warm)] hover:!text-[var(--color-primary)] hover:!border-[var(--color-warm)]"
+          buttonClass="btn-accent whitespace-nowrap leading-tight !text-sm !px-8 !py-3.5 !bg-[var(--color-sage-dark)] !border-[var(--color-sage-dark)] hover:!bg-[var(--color-warm)] hover:!text-[var(--color-primary)] hover:!border-[var(--color-warm)]"
           class="mt-6 max-w-md md:max-w-none"
         />
       </div>
@@ -624,8 +675,10 @@ const offres = [
             class="mx-auto block w-full max-w-[240px] overflow-hidden rounded-2xl shadow-md transition-shadow hover:shadow-xl"
           >
             <img
-              src="/images/instagram-amawefrance-galerie.webp"
-              alt="Aperçu du compte Instagram @amawefrance — galerie de posts santé naturelle"
+              src="/images/instagram-amawefrance-grid-2026.webp"
+              alt="Aperçu du compte Instagram @amawefrance — grille de reels santé naturelle 2026"
+              width="800"
+              height="1373"
               loading="lazy"
               class="w-full"
             />
@@ -634,45 +687,121 @@ const offres = [
       </div>
     </section>
 
-    <!-- CTA finale / manifeste -->
+    <!-- CTA finale / manifeste — posters style stage -->
     <section class="bg-[var(--color-surface)] py-20 md:py-28">
-      <div class="mx-auto max-w-3xl px-6 text-center">
-        <p class="font-['Josefin_Sans',sans-serif] text-2xl font-light italic text-[var(--color-primary)] md:text-3xl">
-          Reprends le pouvoir sur ta santé globale,<br />
-          déploie la vie que tu souhaites vraiment.
-        </p>
-        <div class="divider mx-auto mt-8" style="background-color: var(--color-accent);"></div>
-
-        <p class="mt-10 text-lg leading-relaxed text-[var(--color-text-medium)]">
-          3 façons d'avancer avec Amawé — à ton rythme.
-        </p>
-
-        <div class="mx-auto mt-12 grid max-w-4xl gap-6 sm:grid-cols-3">
-          <div class="flex flex-col items-center">
-            <p class="section-label mb-3 text-[var(--color-sage-dark)]">GRATUIT · 10 MIN</p>
-            <a href="/audit-roue-sante/" class="btn-secondary w-full text-center">
-              Audit Roue Amawé
-            </a>
-            <p class="mt-3 text-xs text-[var(--color-text-light)]">PDF auto-évaluation</p>
-          </div>
-          <div class="flex flex-col items-center">
-            <p class="section-label mb-3 text-[var(--color-sage-dark)]">GRATUIT · HEBDO</p>
-            <a href="#newsletter" class="btn-secondary w-full text-center">
-              La SuperLetter
-            </a>
-            <p class="mt-3 text-xs text-[var(--color-text-light)]">1 sujet approfondi / semaine</p>
-          </div>
-          <div class="flex flex-col items-center">
-            <p class="section-label mb-3 text-[var(--color-accent-dark)]">ENGAGEMENT · JUILLET</p>
-            <a href="/summer-camp/" class="btn-accent w-full text-center">
-              Summer Camp 2026
-            </a>
-            <p class="mt-3 text-xs text-[var(--color-text-light)]">4 jours dans l'écolieu</p>
-          </div>
+      <div class="mx-auto max-w-6xl px-6">
+        <div class="text-center max-w-3xl mx-auto">
+          <p class="font-['Josefin_Sans',sans-serif] text-2xl font-light text-[var(--color-primary)] md:text-3xl">
+            Reprends le pouvoir sur ta santé globale,<br />
+            déploie la vie que tu souhaites vraiment.
+          </p>
+          <div class="divider mx-auto mt-8" style="background-color: var(--color-accent);"></div>
+          <p class="mt-10 text-lg leading-relaxed text-[var(--color-text-medium)]">
+            3 façons d'avancer avec Amawé, à ton rythme.
+          </p>
         </div>
 
-        <p class="mt-10 text-sm text-[var(--color-text-light)]">
-          Besoin d'un échange ? <a href="https://instagram.com/amawefrance" target="_blank" rel="noopener" class="text-[var(--color-accent-dark)] underline decoration-dotted underline-offset-4 hover:text-[var(--color-accent)]">DM sur @amawefrance</a>, je lis tout. 💛
+        <div class="mt-14 grid gap-6 md:grid-cols-3">
+          <!-- Poster 1 : Audit Roue -->
+          <a
+            href="/audit-roue-sante/"
+            class="group relative block aspect-[3/4] overflow-hidden rounded-2xl shadow-md transition-shadow hover:shadow-xl"
+          >
+            <img
+              src="/images/audit-roue-sante-mockup.webp"
+              alt="Audit Roue de la Santé Amawé — PDF d'auto-évaluation"
+              width="1200"
+              height="1600"
+              loading="lazy"
+              class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/10"></div>
+            <div class="absolute inset-x-0 top-0 p-6">
+              <span class="inline-block rounded-full bg-[var(--color-surface)]/95 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.15em] text-[var(--color-sage-dark)]">
+                Gratuit · 10 minutes
+              </span>
+            </div>
+            <div class="absolute inset-x-0 bottom-0 p-6 text-[var(--color-surface)] md:p-8">
+              <p class="text-xs uppercase tracking-[0.15em] text-[var(--color-surface)]/70">PDF d'auto-évaluation</p>
+              <p class="mt-3 font-['Josefin_Sans',sans-serif] text-2xl leading-tight md:text-3xl">Audit Roue<br />de la Santé</p>
+              <p class="mt-2 text-sm font-medium">16 fondamentaux de vitalité</p>
+              <span class="mt-5 inline-flex items-start gap-3 self-start text-xs font-medium uppercase tracking-[0.15em] text-[var(--color-surface)]">
+                <span class="mt-[5px] block h-1.5 w-1.5 shrink-0 rounded-full" style="background-color: var(--color-sage-dark);" aria-hidden="true"></span>
+                <span class="underline decoration-1 decoration-transparent underline-offset-4 transition-colors duration-500 group-hover:decoration-[var(--color-surface)]">
+                  Je fais mon audit
+                </span>
+              </span>
+            </div>
+          </a>
+
+          <!-- Poster 2 : Summer Camp (au milieu) -->
+          <a
+            href="/summer-camp/"
+            class="group relative block aspect-[3/4] overflow-hidden rounded-2xl shadow-md transition-shadow hover:shadow-xl"
+          >
+            <img
+              src="/images/sc-salle.webp"
+              alt="Amawé Summer Camp 2026 — la salle de pratique et les tipis blancs dans l'écolieu"
+              width="1200"
+              height="1600"
+              loading="lazy"
+              class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/10"></div>
+            <div class="absolute inset-x-0 top-0 p-6">
+              <span class="inline-block rounded-full bg-[var(--color-surface)]/95 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.15em] text-[var(--color-accent)]">
+                11-14 juillet 2026
+              </span>
+            </div>
+            <div class="absolute inset-x-0 bottom-0 p-6 text-[var(--color-surface)] md:p-8">
+              <p class="text-xs uppercase tracking-[0.15em] text-[var(--color-surface)]/70">4 jours dans l'écolieu — mouvement, santé naturelle</p>
+              <p class="mt-3 font-['Josefin_Sans',sans-serif] text-2xl leading-tight md:text-3xl">Summer Camp<br />2026</p>
+              <p class="mt-2 text-sm font-medium">Le rendez-vous estival incontournable</p>
+              <span class="mt-5 inline-flex items-start gap-3 self-start text-xs font-medium uppercase tracking-[0.15em] text-[var(--color-surface)]">
+                <span class="mt-[5px] block h-1.5 w-1.5 shrink-0 rounded-full" style="background-color: var(--color-accent);" aria-hidden="true"></span>
+                <span class="underline decoration-1 decoration-transparent underline-offset-4 transition-colors duration-500 group-hover:decoration-[var(--color-surface)]">
+                  Je rejoins l'aventure
+                </span>
+              </span>
+            </div>
+          </a>
+
+          <!-- Poster 3 : Énergie Illimitée -->
+          <a
+            href="/energie-illimitee/"
+            class="group relative block aspect-[3/4] overflow-hidden rounded-2xl shadow-md transition-shadow hover:shadow-xl"
+          >
+            <img
+              src="/images/claire-ei-hero-coaching.webp"
+              alt="Programme Énergie Illimitée — Claire Orriols en animation, transmission en présentiel"
+              width="1200"
+              height="1600"
+              loading="lazy"
+              class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+              style="object-position: center 25%;"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/10"></div>
+            <div class="absolute inset-x-0 top-0 p-6">
+              <span class="inline-block rounded-full bg-[var(--color-surface)]/95 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.15em] text-[var(--color-accent-dark)]">
+                fin 2026 / début 2027
+              </span>
+            </div>
+            <div class="absolute inset-x-0 bottom-0 p-6 text-[var(--color-surface)] md:p-8">
+              <p class="text-xs uppercase tracking-[0.15em] text-[var(--color-surface)]/70">3 mois d'accompagnement (coaching + immersions)</p>
+              <p class="mt-3 font-['Josefin_Sans',sans-serif] text-2xl leading-tight md:text-3xl">Énergie<br />Illimitée</p>
+              <p class="mt-2 text-sm font-medium">Inscriptions ouvertes en liste d'attente</p>
+              <span class="mt-5 inline-flex items-start gap-3 self-start text-xs font-medium uppercase tracking-[0.15em] text-[var(--color-surface)]">
+                <span class="mt-[5px] block h-1.5 w-1.5 shrink-0 rounded-full" style="background-color: var(--color-accent-dark);" aria-hidden="true"></span>
+                <span class="underline decoration-1 decoration-transparent underline-offset-4 transition-colors duration-500 group-hover:decoration-[var(--color-surface)]">
+                  Je découvre le programme
+                </span>
+              </span>
+            </div>
+          </a>
+        </div>
+
+        <p class="mt-10 text-center text-sm text-[var(--color-text-light)]">
+          Besoin d'un échange ? <a href="https://instagram.com/amawefrance" target="_blank" rel="noopener" class="text-[var(--color-accent-dark)] underline decoration-dotted underline-offset-4 hover:text-[var(--color-accent)]">MP sur @amawefrance</a>, je lis tout. 💛
         </p>
       </div>
     </section>

@@ -5,13 +5,25 @@ import { getLangFromUrl, useTranslations, getLocalizedPath } from "~/i18n/utils"
 interface Props {
   title?: string
   description?: string
+  ogImage?: string
+  ogType?: string
+  jsonLd?: object
 }
 
 const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
 
-const { title = t("seo.title"), description = t("seo.description") } =
-  Astro.props
+const {
+  title = t("seo.title"),
+  description = t("seo.description"),
+  ogImage,
+  ogType = "website",
+  jsonLd,
+} = Astro.props
+
+const ogImageURL = ogImage
+  ? new URL(ogImage, Astro.site).href
+  : undefined
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site)
 const alternateURL = new URL(
@@ -52,13 +64,18 @@ const alternateURL = new URL(
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:locale" content={lang === "fr" ? "fr_FR" : "en_US"} />
+    {ogImageURL && <meta property="og:image" content={ogImageURL} />}
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    {ogImageURL && <meta name="twitter:image" content={ogImageURL} />}
+
+    <!-- JSON-LD structured data -->
+    {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

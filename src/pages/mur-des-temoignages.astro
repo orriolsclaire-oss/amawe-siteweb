@@ -14,36 +14,88 @@ const pageDescription =
 // categorie: pour le filtre/section ("Stages", "Énergie Illimitée", "Retraite Danse & Silence", "Général")
 // =====================================================================
 const temoignagesAll = [
-  // ============ STAGES PRÉSENTIELS ============
-  { categorie: "Stages", type: "text", citation: "Un stage hors du commun duquel je sors régénérée, remplie d'énergie et d'amour. Juste un grand merci.", auteur: "Paula", contexte: "", aspect: "narrow" },
-  { categorie: "Stages", type: "screenshot", src: "/images/temoignage-severine.webp", alt: "Témoignage de Séverine après un stage Amawé — ateliers libérateurs, rencontres merveilleuses, début d'un nouveau chapitre", aspect: "wide" },
-  { categorie: "Stages", type: "text", citation: "Un stage qui a lancé le début de changements d'ampleur. Dès le début, il a été marqué par ce déclic : « je m'autorise à » partir en stage, m'occuper de moi, plonger aussi dans l'inconnu. Je pensais que la Détox alimentaire serait prépondérante, le stage est allé au-delà de mes attentes. Vous nous avez conçu un programme tellement complet et cohérent, respectueux de tous les participants. Le cadre proposé sécurisant et le groupe était sensas. Merci pour tout.", auteur: "Hélène", contexte: "", aspect: "narrow" },
-  { categorie: "Stages", type: "screenshot", src: "/images/temoignage-nathalie.webp", alt: "Témoignage de Nathalie après un stage Amawé — sortir de sa zone de confort, repas parfaits, vivre l'instant présent et écouter son corps en pleine conscience", aspect: "wide" },
-  { categorie: "Stages", type: "text", citation: "Plus d'une semaine après être rentrée, je reste sur ma première impression : c'était réellement le plus beau cadeau que je pouvais m'offrir. Je me sens respirer, mes épaules sont davantage ouvertes, je pose plus aisément des mots sur mes ressentis.", auteur: "Carine", contexte: "", aspect: "narrow" },
-  { categorie: "Stages", type: "screenshot", src: "/images/temoignage-clelia.webp", alt: "Témoignage de Clélia après une retraite Amawé — impression de rajeunir, silence révélateur, retour transformée et pleine d'énergie", aspect: "narrow" },
-  { categorie: "Stages", type: "screenshot", src: "/images/temoignage-joelle.webp", alt: "Témoignage de Joëlle après le stage Voyage au Cœur de Soi Amawé — partager, rire, pleurer, méditer, ressentir", aspect: "narrow" },
-  { categorie: "Stages", type: "screenshot", src: "/images/temoignage-solenn.webp", alt: "Témoignage de Solenn après une retraite Amawé — silence, ancrage, danse, ressourcement", aspect: "narrow" },
-  { categorie: "Stages", type: "text", citation: "Merci encore pour ce stage qui m'a apporté une vision globale de ma santé. Je ne vous remercierai jamais assez pour tout ce que j'ai appris chez vous !", auteur: "Céline", contexte: "", aspect: "narrow" },
-  { categorie: "Stages", type: "screenshot", src: "/images/temoignage-daniele.webp", alt: "Témoignage de Danièle après un stage Amawé — la plus belle expérience, simplicité et amour inconditionnel envers la nature, reconnexion à la nature et au mouvement", aspect: "full" },
+  // ============ PROGRAMME FLOW ============
+  { categorie: "Programme Flow", type: "text", citation: "J'ai beaucoup apprécié la mise en mouvement aujourd'hui. J'ai pris conscience qu'il fallait que je déverrouille mon bassin, que je lui redonne de l'énergie pour que l'énergie aille dans mes membres inférieurs, et du coup j'ai une lueur d'espoir que mes cuisses s'embellissent avec cette prise de conscience. J'ai pu ressentir et faire les mouvements au rythme que souhaitait mon corps. Merci.", auteur: "Sandra", contexte: "", aspect: "wide" },
+  { categorie: "Programme Flow", type: "text", citation: "Merci pour nous avoir permis de nous montrer un chemin pour nous reconnecter à notre conscience de notre puissance intérieure ! Gratitude pour ta générosité et ta capacité à rendre notre monde meilleur ! Prenez tou.te.s soin de vous.", auteur: "Anonyme", contexte: "", aspect: "narrow" },
+  { categorie: "Programme Flow", type: "text", citation: "Bonjour à tou.te.s et merci à Amawé pour ce beau parcours ! Tout était parfait, tout en douceur, chacun.e à son rythme. Toutes les thématiques permettent de se reconnecter à soi. Pareil pour le premier jour… ralentir… point de départ essentiel ! Gratitude pour tous les exercices que j'ai refait plusieurs fois… tellement utiles, faciles et dans le concret. Merciiii.", auteur: "Anne-Michèle", contexte: "", aspect: "wide" },
+  { categorie: "Programme Flow", type: "text", citation: "Merci pour ce programme de grande qualité… que je commence tout juste !", auteur: "Anonyme", contexte: "", aspect: "narrow" },
+  { categorie: "Programme Flow", type: "screenshot", src: "/images/temoignage-amelie-flow-2025.webp", alt: "Témoignage d'Amélie sur le Programme Flow Amawé — prendre du temps pour soi, se reconnecter à son corps, prendre du recul", aspect: "wide" },
+  { categorie: "Programme Flow", type: "text", citation: "J'ai adoré le fait que ce soit des audios courts à écouter tous les jours, qu'il y ait de la réflexion, j'ai aussi adoré les thématiques proposées. J'ai compris que je peux remettre plus de mouvement dans ma vie mais de manière appropriée, à mon rythme. J'ai vraiment besoin encore de travailler sur l'éveil de l'énergie et la libération des tensions émotionnelles. Je pense me bloquer des créneaux pas forcément longs mais réguliers pour expérimenter et refaire des exercices.", auteur: "Amélie", contexte: "", aspect: "wide" },
+  { categorie: "Programme Flow", type: "text", citation: "Je suis quelqu'un de très active. J'apprends à ralentir et à plus m'écouter. Découvrir le mouvement lent et apaisant est un vrai joyau. Merci.", auteur: "Sandrine", contexte: "", aspect: "narrow" },
 
-  // ============ RETRAITE DANSE & SILENCE ============
-  { categorie: "Retraite Danse & Silence", type: "text", citation: "Explorer, se recentrer, se laisser guider, se purifier… Le silence m'a permis d'aller chercher au plus profond mes émotions, mes besoins. Grâce à la force du groupe nous avons été portés et pu aller jusqu'au bout de cette belle aventure. Les séances de danse ont été intenses et libératrices. Les repas nous ont régalé les papilles et les yeux. Ces quelques jours de déconnexion avec le quotidien rempli de sur-stimulations m'aura permis de me recentrer sur les choses importantes et de me reconnecter avec la nature. Je repars de cette retraite avec une nouvelle énergie, l'esprit apaisé et le cœur rempli de joie. C'est un magnifique cadeau que je me suis offert. Merci Claire et merci au groupe.", auteur: "Lydia", contexte: "Retraite Danse & Silence", aspect: "wide" },
-  { categorie: "Retraite Danse & Silence", type: "screenshot", src: "/images/temoignage-laurence.webp", alt: "Témoignage de Laurence après la Retraite Danse & Silence Amawé — traverser le deuil dans la nature, douceur, bienveillance, sentiment de plénitude et déposer sa peine", aspect: "wide" },
+  // ============ STAGES & RETRAITES ============
+  // Retraite Danse & Silence en tête
+  { categorie: "Stages & Retraites", type: "text", citation: "Explorer, se recentrer, se laisser guider, se purifier… Le silence m'a permis d'aller chercher au plus profond mes émotions, mes besoins. Grâce à la force du groupe nous avons été portés et pu aller jusqu'au bout de cette belle aventure. Les séances de danse ont été intenses et libératrices. Les repas nous ont régalé les papilles et les yeux. Ces quelques jours de déconnexion avec le quotidien rempli de sur-stimulations m'aura permis de me recentrer sur les choses importantes et de me reconnecter avec la nature. Je repars de cette retraite avec une nouvelle énergie, l'esprit apaisé et le cœur rempli de joie. C'est un magnifique cadeau que je me suis offert. Merci Claire et merci au groupe.", auteur: "Lydia", contexte: "", aspect: "wide" },
+  { categorie: "Stages & Retraites", type: "screenshot", src: "/images/temoignage-blandine-2023.webp", alt: "Témoignage de Blandine après un stage Amawé — superbe expérience, superbe ambiance, beaucoup d'émotions, on en revient régénéré", aspect: "wide" },
+  { categorie: "Stages & Retraites", type: "screenshot", src: "/images/temoignage-laurence.webp", alt: "Témoignage de Laurence après la Retraite Danse & Silence Amawé — traverser le deuil dans la nature, douceur, bienveillance, sentiment de plénitude et déposer sa peine", aspect: "wide" },
+  // Stages présentiels
+  { categorie: "Stages & Retraites", type: "text", citation: "Un stage hors du commun duquel je sors régénérée, remplie d'énergie et d'amour. Juste un grand merci.", auteur: "Paula", contexte: "", aspect: "narrow" },
+  { categorie: "Stages & Retraites", type: "screenshot", src: "/images/temoignage-severine.webp", alt: "Témoignage de Séverine après un stage Amawé — ateliers libérateurs, rencontres merveilleuses, début d'un nouveau chapitre", aspect: "wide" },
+  { categorie: "Stages & Retraites", type: "text", citation: "Un stage qui a lancé le début de changements d'ampleur. Dès le début, il a été marqué par ce déclic : « je m'autorise à » partir en stage, m'occuper de moi, plonger aussi dans l'inconnu. Je pensais que la Détox alimentaire serait prépondérante, le stage est allé au-delà de mes attentes. Vous nous avez conçu un programme tellement complet et cohérent, respectueux de tous les participants. Le cadre proposé sécurisant et le groupe était sensas. Merci pour tout.", auteur: "Hélène", contexte: "", aspect: "narrow" },
+  { categorie: "Stages & Retraites", type: "text", citation: "J'ai vraiment apprécié la qualité globale de toute la retraite et l'immense sensibilité dont tu fais preuve pour nous avoir permis, grâce au silence, de retrouver l'essentiel : ce qui nous constitue, ce qui est fondamental pour nous et ce que l'on veut et on doit lâcher. Une vraie déconnexion salvatrice. Cette retraite m'a réappris à cultiver la lenteur et l'importance vitale pour moi de la nature et de savoir lire ses enseignements. La qualité du site, des logements et des repas complètent le sentiment de perfection que l'on ressent quand on veut en faire le bilan. Quelle générosité en ton authenticité — attire le meilleur des personnes qui m'ont portée durant ce moment.", auteur: "Marie-Pierre", contexte: "", aspect: "wide" },
+  { categorie: "Stages & Retraites", type: "screenshot", src: "/images/temoignage-nathalie.webp", alt: "Témoignage de Nathalie après un stage Amawé — sortir de sa zone de confort, repas parfaits, vivre l'instant présent et écouter son corps en pleine conscience", aspect: "wide" },
+  { categorie: "Stages & Retraites", type: "text", citation: "Plus d'une semaine après être rentrée, je reste sur ma première impression : c'était réellement le plus beau cadeau que je pouvais m'offrir. Je me sens respirer, mes épaules sont davantage ouvertes, je pose plus aisément des mots sur mes ressentis.", auteur: "Carine", contexte: "", aspect: "narrow" },
+  { categorie: "Stages & Retraites", type: "screenshot", src: "/images/temoignage-clelia.webp", alt: "Témoignage de Clélia après une retraite Amawé — impression de rajeunir, silence révélateur, retour transformée et pleine d'énergie", aspect: "narrow", compact: true },
+  { categorie: "Stages & Retraites", type: "screenshot", src: "/images/temoignage-joelle.webp", alt: "Témoignage de Joëlle après le stage Voyage au Cœur de Soi Amawé — partager, rire, pleurer, méditer, ressentir", aspect: "trio" },
+  { categorie: "Stages & Retraites", type: "screenshot", src: "/images/temoignage-solenn.webp", alt: "Témoignage de Solenn après une retraite Amawé — silence, ancrage, danse, ressourcement", aspect: "trio" },
+  { categorie: "Stages & Retraites", type: "text", citation: "Merci encore pour ce stage qui m'a apporté une vision globale de ma santé. Je ne vous remercierai jamais assez pour tout ce que j'ai appris chez vous !", auteur: "Céline", contexte: "", aspect: "narrow" },
+  { categorie: "Stages & Retraites", type: "screenshot", src: "/images/temoignage-solenn-2026.webp", alt: "Témoignage de Solenn après une retraite Amawé — besoin de silence, prendre le temps de respirer, choisir de répondre aux notifications, se reconnecter à ses sensations, lieu magique", aspect: "trio" },
+  { categorie: "Stages & Retraites", type: "screenshot", src: "/images/temoignage-daniele.webp", alt: "Témoignage de Danièle après un stage Amawé — la plus belle expérience, simplicité et amour inconditionnel envers la nature, reconnexion à la nature et au mouvement", aspect: "full" },
 
   // ============ ÉNERGIE ILLIMITÉE ============
-  // À enrichir par Claire — exemples de structure :
-  // { categorie: "Énergie Illimitée", type: "text", citation: "...", auteur: "...", contexte: "Énergie Illimitée — 2025", aspect: "narrow" },
-  // { categorie: "Énergie Illimitée", type: "screenshot", src: "/images/temoignage-XXX.webp", alt: "...", aspect: "narrow" },
+  { categorie: "Énergie Illimitée", type: "text", citation: "J'ai décidé de faire Énergie Illimitée car je sentais qu'il y avait des choses qui me bloquaient et pour une fois, j'ai décidé de ME choisir, de prendre soin de moi, de penser à moi avant de penser aux autres. Car si je ne prends pas soin de moi, qui le fera ? Cela m'a permis de comprendre ce qui est essentiel, de changer de point de vue sur ma vie et surtout prendre conscience de ce qui me traverse chaque jour en essayant de comprendre.", auteur: "Pauline", contexte: "", aspect: "wide" },
+  { categorie: "Énergie Illimitée", type: "screenshot", src: "/images/temoignage-cendrine-ei-2026.webp", alt: "Témoignage de Cendrine sur le programme Énergie Illimitée Amawé — première immersion à Montpellier, émotions, harmonie avec la nature, danser sans jamais avoir fait, reconnexion à soi", aspect: "narrow", large: true },
+  { categorie: "Énergie Illimitée", type: "text", citation: "Le programme Énergie Illimitée est le plus beau cadeau que je pouvais me faire. Claire est une personne très bienveillante, qui est à l'écoute et sait s'adapter à notre niveau d'énergie et de conscience. Elle a une connaissance très impressionnante du corps dans tous ses états — microbiote, alimentation, système nerveux, hormones, gestion des émotions et du mental. Elle sait adapter les mouvements en fonction de chacun pour nous aider à progresser. J'ai 68 ans et je repars motivée, enthousiaste, avec une meilleure connaissance de moi-même. On apprend à ne plus être dans la tête mais dans le corps. C'est une aventure que je recommande à 1000%. Merci Claire.", auteur: "Annie", contexte: "", aspect: "wide" },
+  { categorie: "Énergie Illimitée", type: "text", citation: "La première chose qui me vient en parlant du programme Énergie Illimitée est combien ça m'a permis de gagner en compréhension globale sur le fonctionnement de l'énergie dans le corps.", auteur: "Cendrine", contexte: "", aspect: "narrow" },
+  { categorie: "Énergie Illimitée", type: "text", citation: "L'immersion à Montpellier a été un magnifique moment de rencontres, d'expérimentation, de vie. Elle nous a permis de poser nos intentions de base au sein de ce programme. Des vrais moments de connexion aux autres, à soi et à l'environnement. Personnellement ce week-end a été le pied à l'étrier pour reconquérir ma capacité à grimper et sauter en confiance (en sachant mieux réguler mon système nerveux).", auteur: "Cendrine", contexte: "", aspect: "wide" },
+  { categorie: "Énergie Illimitée", type: "screenshot", src: "/images/temoignage-david-ei-2026.webp", alt: "Témoignage de David sur le programme Énergie Illimitée Amawé — mieux aborder le stress, gestion au quotidien, se ressourcer en collectif, meilleure compréhension de son corps", aspect: "narrow" },
+  { categorie: "Énergie Illimitée", type: "text", citation: "Le programme n'est pas encore terminé mais déjà : +20% d'énergie, ce qui est déjà pas mal, mais surtout elle est plus stable. Meilleure capacité à accueillir les vagues de la vie, à déployer un petit truc de régulation, shaking, trampoline, petite respiration, masser le ventre… +20/25% d'énergie et c'est déjà colossal.", auteur: "Grégoire", contexte: "", aspect: "wide" },
+  { categorie: "Énergie Illimitée", type: "text", citation: "Plan physique, alimentation, énergie : je suis plus régulièrement en mouvement, que 5 minutes c'est déjà mieux que zéro. L'alimentation a évolué en conscience et dans l'ensemble je me sens mieux côté énergie. Sur le plan émotionnel/mindset, ce programme a été une grande révélation : trouver des outils pour coucher mes émotions, ne plus me laisser submerger ou alors trouver une solution pour ma plus exploser. J'arrive et je m'arrête de mieux en mieux à poser mes limites et à dire non. Hallelujah !", auteur: "Pauline", contexte: "", aspect: "wide" },
+  { categorie: "Énergie Illimitée", type: "text", citation: "J'étais déjà pas mal stable mais je sens que j'honore mieux l'hypersensible en moi, aux endroits qui ont besoin de care. Il y a moins ce narratif « on ne m'aime pas, on ne me comprend pas, on ne voit pas mes qualités ». Ça, c'est cool.", auteur: "Grégoire", contexte: "", aspect: "narrow" },
+  { categorie: "Énergie Illimitée", type: "text", citation: "Pour ce que cela m'a apporté, une nouvelle vision des choses, plus apaisée avec une meilleure gestion de mon impulsivité. Plus de bienveillance et j'arrive plus souvent à sortir de ma zone de confort même si cela est challengeant parfois !", auteur: "Anonyme", contexte: "", aspect: "wide" },
+  { categorie: "Énergie Illimitée", type: "text", citation: "Un accompagnement qui responsabilise, donne des outils de remise en question, interroge les patterns, les habitudes, qui demande d'être honnête envers soi et les autres. Les 4 points que je retiens : un groupe bienveillant, des chemins de vie et enjeux variés, s'enrichissant mutuellement, l'immersion m'a permis de mieux sentir la communauté, le soutien du groupe. L'irremplaçable présence physique, comme activateur/accélérateur de processus. J'ai trouvé que la formation était un phare dans la brume hivernale :) Navigation entre la théorie et l'hyper concret en permanence pour ne pas rester sur des intentions/idéaux non mis en pratique. Personnellement, j'ai gagné en clarté et compétence sur divers domaines !", auteur: "Anonyme", contexte: "", aspect: "wide" },
 
   // ============ TÉMOIGNAGES GÉNÉRAUX ============
-  // À enrichir par Claire — témoignages transverses, pas liés à un programme spécifique
+  { categorie: "Général", type: "screenshot", src: "/images/temoignage-anonyme3-2024.webp", alt: "Témoignage anonyme — prendre du temps pour se recentrer avant de centrer sur les autres, vision globale Amawé", aspect: "wide" },
+  { categorie: "Général", type: "screenshot", src: "/images/temoignage-maelle-2024.webp", alt: "Témoignage de Maëlle — enseignements Amawé qui portent leurs fruits sur le niveau d'énergie et de vitalité", aspect: "narrow" },
+  { categorie: "Général", type: "text", citation: "Depuis que nous avons découvert Amawé, je n'ai plus d'hypertension, sans médicaments…", auteur: "Anonyme", contexte: "", aspect: "narrow" },
+  { categorie: "Général", type: "text", citation: "Extra, bravo à l'équipe pour ce mail et ce lien avec notre réalité. Votre travail de fond est fantastique. Encore bravo à vous tous et merci de nous partager votre travail.", auteur: "Cat", contexte: "", aspect: "narrow" },
+  { categorie: "Général", type: "text", citation: "Tu as changé mon rapport à la nourriture et ma façon de cuisiner… et pour cela je te remercie. J'ai encore une bonne marge de progression quand même, mais l'essentiel n'est pas le but, c'est le chemin. Je te souhaite ainsi qu'à toute ton équipe une bonne année 2022 !", auteur: "Anonyme", contexte: "", aspect: "wide" },
+  { categorie: "Général", type: "text", citation: "Merci Amawé, fidèle depuis le début ! Vous avez révolutionné ma façon de m'alimenter.", auteur: "Anonyme", contexte: "", aspect: "narrow" },
+  { categorie: "Général", type: "screenshot", src: "/images/temoignage-anonyme-20250221.webp", alt: "Témoignage anonyme — challenge Amawé hyper cool, je retenterai, travail dingue", aspect: "wide" },
+  { categorie: "Général", type: "text", citation: "J'en profite pour vous dire merci à toute l'équipe Amawé. Tous vos programmes, les données gratuites sur internet, les newsletters me permettent de mieux comprendre mon corps et les différents piliers de la santé. Et je me sens en meilleure santé depuis que je vous suis.", auteur: "Anonyme", contexte: "", aspect: "wide" },
+  { categorie: "Général", type: "text", citation: "Merci Amawé, pour vos partages, pour les clés santé, pour le soin que vous nous permettez de développer davantage, envers nos corps et envers la planète. Bravo d'être à l'écoute de vos cycles et très belle route pour la suite.", auteur: "Camille", contexte: "", aspect: "wide" },
+  { categorie: "Général", type: "screenshot", src: "/images/temoignage-emma-20220125.webp", alt: "Témoignage d'Emma — l'approche Amawé propose une vision globale des choses, on apprend beaucoup sur soi", aspect: "wide" },
+  { categorie: "Général", type: "text", citation: "Bonjour Claire, AMAWÉ est apparu un jour sur mon fil d'actualité FB durant une période où j'avais des problèmes médicaux. Comme j'aime à le dire, ça a été un SIGNE, que je devais certainement attendre inconsciemment. Depuis janvier 2021, AMAWÉ a amélioré ma santé et donc agréablement changé ma vie. Alors MERCI à toi, à vous pour cette philosophie de vie amawéenne. Belle et bonne aventure à toi.", auteur: "Anonyme", contexte: "", aspect: "wide" },
+  { categorie: "Général", type: "text", citation: "Tellement inspirant ✨ on se rencontrera un jour 💗 j'en suis persuadée. Merci pour ce que vous faites pour la planète, pour l'amour entre les personnes, pour la santé 🙏 — de voir des initiatives comme la vôtre me fait chaud au cœur. Il y a de l'humanité.", auteur: "Caroline", contexte: "", aspect: "wide" },
+  { categorie: "Général", type: "text", citation: "Je pratique la méthode Amawé depuis bientôt 2 ans et je ne changerai pour rien au monde. J'ai appris combien c'était bien de se nourrir. Claire et toute l'équipe Amawé sont très sensibles à l'environnement, au bien-être, du corps et de l'esprit. J'ai retrouvé de la sérénité et surtout pris soin de mon corps et de mon esprit. Pour moi, c'est du bonheur.", auteur: "Cookino", contexte: "", aspect: "wide" },
+  { categorie: "Général", type: "text", citation: "J'ai adoré et depuis que je pratique AMAWÉ : –5 kgs, je me sens bien (légère) et pour le sport que je pratique en compétition, c'est top — donc je continue et je convaincs mes amies. Un GRAND MERCI.", auteur: "Florence", contexte: "", aspect: "narrow" },
+  { categorie: "Général", type: "text", citation: "Bonjour, juste un petit message pour vous féliciter et vous dire un MERCIII pour vos newsletters… que j'adore. Namasté.", auteur: "Souraya", contexte: "", aspect: "narrow" },
+  { categorie: "Général", type: "screenshot", src: "/images/temoignage-valerie-20220118.webp", alt: "Témoignage de Valerie — opportunité de mieux-manger, mieux-être, mieux-tout, démarche bienveillante et abordable, recettes et conseils délicieux", aspect: "narrow" },
+  { categorie: "Général", type: "text", citation: "Pour ceux et celles qui douteraient encore, inscrivez-vous vite, votre corps vous dira merci et votre cœur aussi. Amawé, c'est le diapason de notre santé, le Jiminy Cricket de nos jours heureux, le goût associé à la raison, l'équilibre à la portée de tous.", auteur: "Catherine", contexte: "", aspect: "narrow" },
+  { categorie: "Général", type: "screenshot", src: "/images/temoignage-ana-newsletter.webp", alt: "Témoignage d'Ana sur la newsletter Amawé — courrier excellent, sujets intéressants, immense apport à nos connaissances", aspect: "narrow" },
+  { categorie: "Général", type: "screenshot", src: "/images/temoignage-cindy-challenge-detox.webp", alt: "Témoignage de Cindy après le Challenge Détox Amawé — clarté du travail, professionnalisme, pédagogie dans la transmission des connaissances", aspect: "wide" },
 ]
 
 // Regrouper par catégorie
-const categories = ["Stages", "Retraite Danse & Silence", "Énergie Illimitée", "Général"]
+const categories = ["Général", "Énergie Illimitée", "Programme Flow", "Stages & Retraites"]
 const byCategorie = categories
   .map((cat) => ({ cat, items: temoignagesAll.filter((t) => t.categorie === cat) }))
   .filter((g) => g.items.length > 0)
+
+// Thèmes de section alternés — sobres, fond clair
+const sectionThemes = [
+  { bg: "var(--color-background)", accent: "var(--color-accent-dark)" }, // ivoire rose + prune
+  { bg: "var(--color-warm)", accent: "var(--color-sage-dark)" },         // lin naturel + vert signature
+]
+
+// Labels personnalisés par catégorie (sinon "X TÉMOIGNAGES")
+const sectionLabels: Record<string, string> = {
+  "Général": "LA COMMUNAUTÉ AMAWÉ TÉMOIGNE",
+  "Énergie Illimitée": "COACHING + IMMERSIONS",
+  "Programme Flow": "EN LIGNE",
+  "Stages & Retraites": "EN PRÉSENTIEL",
+}
 
 const totalCount = temoignagesAll.length
 
@@ -85,70 +137,138 @@ const reviewsSchema = {
   <main class="pt-20">
     <!-- Hero -->
     <section class="bg-[var(--color-warm)] py-16 md:py-24">
-      <div class="mx-auto max-w-4xl px-6 text-center">
-        <p class="section-label mb-4 text-[var(--color-sage-dark)]">{totalCount} TÉMOIGNAGES</p>
+      <div class="mx-auto max-w-6xl px-6 text-center">
+        <p class="section-label mb-4 text-[var(--color-sage-dark)]">1000 MERCIS</p>
         <h1 class="!text-4xl md:!text-6xl">Mur des témoignages</h1>
         <div class="divider mx-auto mt-6" style="background-color: var(--color-sage-dark);"></div>
-        <p class="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-[var(--color-text-medium)]">
-          Ce que vivent celles et ceux qui passent par Amawé, dans leurs propres mots. Stages,
-          retraites, programmes en ligne — tous les retours rassemblés ici.
+        <p class="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-[var(--color-text-medium)] md:max-w-none md:whitespace-nowrap">
+          Ce que vivent celles et ceux qui passent par Amawé, dans leurs propres mots.<br />
+          Stages, retraites, programmes en ligne, accompagnement… un aperçu de quelques retours rassemblés ici.
         </p>
       </div>
     </section>
 
-    {byCategorie.map((group) => (
-      <section class="bg-[var(--color-accent-dark)] py-12 md:py-16">
+    {byCategorie.map((group, idx) => {
+      const fullItems = group.items.filter((t) => t.aspect === "full")
+      const wideItems = group.items.filter((t) => t.aspect === "wide")
+      const narrowItems = group.items.filter((t) => t.aspect === "narrow")
+      const trioItems = group.items.filter((t) => t.aspect === "trio")
+      const theme = sectionThemes[idx % sectionThemes.length]
+      return (
+      <section class="py-12 md:py-16" style={`background-color: ${theme.bg};`}>
         <div class="mx-auto max-w-6xl px-6">
           <div class="max-w-3xl">
-            <p class="section-label mb-3" style="color: var(--color-accent-light);">{group.items.length} TÉMOIGNAGE{group.items.length > 1 ? "S" : ""}</p>
-            <h2 class="text-3xl md:text-4xl" style="color: var(--color-accent-light);">{group.cat}</h2>
-            <div class="divider mt-5" style="background-color: var(--color-accent-light);"></div>
+            <p class="section-label mb-3" style="color: var(--color-sage-dark);">{sectionLabels[group.cat] || `${group.items.length} TÉMOIGNAGE${group.items.length > 1 ? "S" : ""}`}</p>
+            <h2 class="text-3xl md:text-4xl" style="color: var(--color-sage-dark);">{group.cat}</h2>
+            <div class="divider mt-5" style="background-color: var(--color-sage-dark);"></div>
           </div>
 
-          <div class="mt-8 grid grid-cols-1 items-start gap-3 md:mt-10 md:grid-cols-4 md:gap-4 lg:grid-cols-6" style="grid-auto-flow: dense;">
-            {group.items.map((t) => {
-              const span =
-                t.aspect === "full"
-                  ? "md:col-span-4 lg:col-span-6"
-                  : t.aspect === "wide"
-                  ? "md:col-span-4 lg:col-span-4"
-                  : "md:col-span-2 lg:col-span-2"
-              return (
-                <div class={span}>
-                  {t.type === "text" ? (
-                    <figure class="flex flex-col rounded-2xl bg-[var(--color-surface)] p-3 shadow-sm md:p-3.5">
-                      <blockquote class="testimonial-quote text-[var(--color-text-medium)]">
+          <div class="mt-8 space-y-3 md:mt-10 md:space-y-4">
+            {fullItems.map((t) => (
+              t.type === "text" ? (
+                <figure class="flex flex-col rounded-2xl bg-[var(--color-surface)] p-3 shadow-sm md:p-3.5">
+                  <blockquote class="testimonial-quote text-[var(--color-text-medium)]">
+                    &laquo;&nbsp;{t.citation}&nbsp;&raquo;
+                  </blockquote>
+                  <figcaption class="mt-2.5 flex flex-wrap items-baseline gap-x-2 gap-y-0.5 border-t border-[var(--color-border)] pt-1.5">
+                    <p class="font-['Josefin_Sans',sans-serif] text-sm leading-tight text-[var(--color-primary)]">{t.auteur}</p>
+                    {t.contexte && (
+                      <p class="text-[9px] uppercase leading-tight tracking-[0.15em] text-[var(--color-text-light)]">{t.contexte}</p>
+                    )}
+                  </figcaption>
+                </figure>
+              ) : (
+                <figure class="overflow-hidden rounded-2xl bg-[var(--color-surface)] shadow-sm">
+                  <img src={t.src} alt={t.alt} loading="lazy" class="h-full w-full object-cover" />
+                </figure>
+              )
+            ))}
+
+            {(wideItems.length > 0 || narrowItems.length > 0) && (
+              <div class="grid grid-cols-1 gap-3 md:grid-cols-3 md:gap-4">
+                <div class="space-y-3 md:col-span-2 md:space-y-4">
+                  {wideItems.map((t) => (
+                    t.type === "text" ? (
+                      <figure class="flex flex-col rounded-2xl bg-[var(--color-surface)] p-3 shadow-sm md:p-3.5">
+                        <blockquote class="testimonial-quote text-[var(--color-text-medium)]">
+                          &laquo;&nbsp;{t.citation}&nbsp;&raquo;
+                        </blockquote>
+                        <figcaption class="mt-2.5 flex flex-wrap items-baseline gap-x-2 gap-y-0.5 border-t border-[var(--color-border)] pt-1.5">
+                          <p class="font-['Josefin_Sans',sans-serif] text-sm leading-tight text-[var(--color-primary)]">{t.auteur}</p>
+                          {t.contexte && (
+                            <p class="text-[9px] uppercase leading-tight tracking-[0.15em] text-[var(--color-text-light)]">{t.contexte}</p>
+                          )}
+                        </figcaption>
+                      </figure>
+                    ) : (
+                      <figure class="overflow-hidden rounded-2xl bg-[var(--color-surface)] shadow-sm">
+                        <img src={t.src} alt={t.alt} loading="lazy" class="block w-full" />
+                      </figure>
+                    )
+                  ))}
+                </div>
+                <div class="space-y-3 md:col-span-1 md:space-y-4">
+                  {narrowItems.map((t) => (
+                    t.type === "text" ? (
+                      <figure class="flex flex-col rounded-2xl bg-[var(--color-surface)] p-3 shadow-sm md:p-3.5">
+                        <blockquote class="testimonial-quote text-[var(--color-text-medium)]">
+                          &laquo;&nbsp;{t.citation}&nbsp;&raquo;
+                        </blockquote>
+                        <figcaption class="mt-2.5 flex flex-wrap items-baseline gap-x-2 gap-y-0.5 border-t border-[var(--color-border)] pt-1.5">
+                          <p class="font-['Josefin_Sans',sans-serif] text-sm leading-tight text-[var(--color-primary)]">{t.auteur}</p>
+                          {t.contexte && (
+                            <p class="text-[9px] uppercase leading-tight tracking-[0.15em] text-[var(--color-text-light)]">{t.contexte}</p>
+                          )}
+                        </figcaption>
+                      </figure>
+                    ) : (
+                      <figure class="flex justify-center overflow-hidden rounded-2xl bg-[var(--color-surface)] shadow-sm">
+                        <img src={t.src} alt={t.alt} loading="lazy" class:list={["block max-w-full", t.compact ? "max-h-72" : (t.large ? "" : "max-h-56")]} />
+                      </figure>
+                    )
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {trioItems.length > 0 && (
+              <div class="grid grid-cols-2 gap-2 sm:grid-cols-3 md:gap-3">
+                {trioItems.map((t) => (
+                  t.type === "text" ? (
+                    <figure class="flex aspect-[3/4] flex-col rounded-2xl bg-[var(--color-surface)] p-3 shadow-sm md:p-3.5">
+                      <blockquote class="testimonial-quote flex-1 overflow-hidden text-[var(--color-text-medium)]">
                         &laquo;&nbsp;{t.citation}&nbsp;&raquo;
                       </blockquote>
-                      <figcaption class="mt-2.5 border-t border-[var(--color-border)] pt-1.5">
+                      <figcaption class="mt-2.5 flex flex-wrap items-baseline gap-x-2 gap-y-0.5 border-t border-[var(--color-border)] pt-1.5">
                         <p class="font-['Josefin_Sans',sans-serif] text-sm leading-tight text-[var(--color-primary)]">{t.auteur}</p>
                         {t.contexte && (
-                          <p class="mt-0.5 text-[9px] uppercase tracking-[0.15em] text-[var(--color-text-light)]">{t.contexte}</p>
+                          <p class="text-[9px] uppercase leading-tight tracking-[0.15em] text-[var(--color-text-light)]">{t.contexte}</p>
                         )}
                       </figcaption>
                     </figure>
                   ) : (
-                    <figure class="overflow-hidden rounded-2xl bg-[var(--color-surface)] shadow-sm">
-                      <img src={t.src} alt={t.alt} loading="lazy" class="h-full w-full object-cover" />
+                    <figure class="aspect-[3/4] overflow-hidden rounded-2xl bg-[var(--color-surface)] shadow-sm">
+                      <img src={t.src} alt={t.alt} loading="lazy" class="block h-full w-full object-contain" />
                     </figure>
-                  )}
-                </div>
-              )
-            })}
+                  )
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </section>
-    ))}
+      )
+    })}
 
     <!-- CTA retour -->
     <section class="bg-[var(--color-warm)] py-16 md:py-20">
       <div class="mx-auto max-w-3xl px-6 text-center">
-        <p class="font-['Josefin_Sans',sans-serif] text-2xl italic text-[var(--color-accent-dark)] md:text-3xl">
-          Et si c'était votre tour ?
+        <p class="font-['Josefin_Sans',sans-serif] text-2xl text-[var(--color-accent-dark)] md:text-3xl">
+          Et si c'était ton tour ?
         </p>
         <div class="mt-8 flex flex-wrap justify-center gap-4">
-          <a href="/stages/" class="btn-primary">Voir les stages</a>
-          <a href="/energie-illimitee/" class="btn-secondary">Énergie Illimitée</a>
+          <a href="/stages/" class="inline-block whitespace-nowrap rounded-full border-2 border-[var(--color-sage-dark)] bg-[var(--color-sage-dark)] px-8 py-3 text-center font-['Lato',system-ui,sans-serif] text-xs font-medium uppercase tracking-[0.12em] text-[var(--color-surface)] transition-all duration-300 hover:bg-transparent hover:text-[var(--color-sage-dark)]">Voir les stages</a>
+          <a href="/energie-illimitee/" class="inline-block whitespace-nowrap rounded-full border-2 border-[var(--color-accent-dark)] bg-transparent px-8 py-3 text-center font-['Lato',system-ui,sans-serif] text-xs font-medium uppercase tracking-[0.12em] text-[var(--color-accent-dark)] transition-all duration-300 hover:bg-[var(--color-accent-dark)] hover:text-[var(--color-surface)]">Énergie Illimitée</a>
         </div>
       </div>
     </section>

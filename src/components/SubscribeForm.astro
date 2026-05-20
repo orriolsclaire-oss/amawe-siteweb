@@ -1,7 +1,13 @@
 ---
-type Intent = "lead_audit_roue" | "newsletter" | "contact" | "waitlist_ei"
+type Intent =
+  | "lead_audit_roue"
+  | "newsletter"
+  | "contact"
+  | "waitlist_ei"
+  | "waitlist_retraite_silence"
+  | "stages_avant_premiere"
 type Theme = "light" | "dark" | "underline"
-type ExtraField = "name" | "message" | "intent_question" | "subject"
+type ExtraField = "name" | "phone" | "message" | "intent_question" | "subject"
 
 interface Props {
   intent: Intent
@@ -15,6 +21,8 @@ interface Props {
   extraFields?: ExtraField[]
   nameLabel?: string
   namePlaceholder?: string
+  phoneLabel?: string
+  phonePlaceholder?: string
   messageLabel?: string
   messagePlaceholder?: string
   intentQuestionLabel?: string
@@ -38,6 +46,8 @@ const {
   extraFields = [],
   nameLabel = "Prénom",
   namePlaceholder = "Ton prénom",
+  phoneLabel = "Téléphone",
+  phonePlaceholder = "+33 6 12 34 56 78",
   messageLabel = "Ton message",
   messagePlaceholder = "Écris-moi ici…",
   intentQuestionLabel = "Qu'est-ce qui t'attire ?",
@@ -90,7 +100,52 @@ const statusClass =
   novalidate
 >
   {
-    extraFields.includes("name") ? (
+    extraFields.includes("name") && extraFields.includes("phone") ? (
+      <>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div>
+            <label for={`${formId}-name`} class={labelClass}>
+              {nameLabel}
+            </label>
+            <input
+              id={`${formId}-name`}
+              name="name"
+              type="text"
+              required
+              placeholder={namePlaceholder}
+              class={inputClasses[theme]}
+            />
+          </div>
+          <div>
+            <label for={`${formId}-phone`} class={labelClass}>
+              {phoneLabel}
+            </label>
+            <input
+              id={`${formId}-phone`}
+              name="phone"
+              type="tel"
+              required
+              autocomplete="tel"
+              placeholder={phonePlaceholder}
+              class={inputClasses[theme]}
+            />
+          </div>
+        </div>
+        <div>
+          <label for={`${formId}-email`} class={labelClass}>
+            {emailLabel}
+          </label>
+          <input
+            id={`${formId}-email`}
+            name="email"
+            type="email"
+            required
+            placeholder={emailPlaceholder}
+            class={inputClasses[theme]}
+          />
+        </div>
+      </>
+    ) : extraFields.includes("name") ? (
       <div class="grid gap-4 sm:grid-cols-2">
         <div>
           <label for={`${formId}-name`} class={labelClass}>
@@ -132,6 +187,25 @@ const statusClass =
           type="email"
           required
           placeholder={emailPlaceholder}
+          class={inputClasses[theme]}
+        />
+      </div>
+    )
+  }
+
+  {
+    extraFields.includes("phone") && !extraFields.includes("name") && (
+      <div>
+        <label for={`${formId}-phone`} class={labelClass}>
+          {phoneLabel}
+        </label>
+        <input
+          id={`${formId}-phone`}
+          name="phone"
+          type="tel"
+          required
+          autocomplete="tel"
+          placeholder={phonePlaceholder}
           class={inputClasses[theme]}
         />
       </div>
@@ -211,7 +285,7 @@ const statusClass =
   >
   </p>
 
-  <p class:list={["mt-3 text-center text-[11px] leading-relaxed", theme === "dark" ? "text-[var(--color-surface)]/70" : "text-[var(--color-text-light)]"]}>
+  <p class:list={["mt-2 text-center text-[11px] leading-relaxed", theme === "dark" ? "text-[var(--color-surface)]/70" : "text-[var(--color-text-light)]"]}>
     <span aria-hidden="true">🔒</span> 100% sécurisé. Tes données restent confidentielles et ne sont jamais partagées.
   </p>
 

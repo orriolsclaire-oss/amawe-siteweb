@@ -2,13 +2,21 @@ import type { APIRoute } from "astro"
 
 export const prerender = false
 
-type Intent = "lead_audit_roue" | "newsletter" | "contact" | "waitlist_ei"
+type Intent =
+  | "lead_audit_roue"
+  | "newsletter"
+  | "contact"
+  | "waitlist_ei"
+  | "waitlist_retraite_silence"
+  | "stages_avant_premiere"
 
 const INTENT_TO_GROUP_ENV: Record<Intent, string> = {
   lead_audit_roue: "MAILERLITE_GROUP_LEAD_AUDIT",
   newsletter: "MAILERLITE_GROUP_NEWSLETTER",
   contact: "MAILERLITE_GROUP_CONTACT",
   waitlist_ei: "MAILERLITE_GROUP_WAITLIST_EI",
+  waitlist_retraite_silence: "MAILERLITE_GROUP_WAITLIST_RETRAITE_SILENCE",
+  stages_avant_premiere: "MAILERLITE_GROUP_STAGES_AVANT_PREMIERE",
 }
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -26,6 +34,7 @@ interface SubscribePayload {
   intent: Intent
   email: string
   name?: string
+  phone?: string
   message?: string
   intent_question?: string
   subject?: string
@@ -54,7 +63,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
     return json({ ok: false, error: "invalid_body" }, 400)
   }
 
-  const { intent, email, name, message, intent_question, subject, website } = body ?? {}
+  const { intent, email, name, phone, message, intent_question, subject, website } = body ?? {}
 
   // Honeypot : si le champ caché "website" est rempli, c'est un bot.
   // On retourne ok:true silencieusement pour qu'il pense avoir réussi (= ne réessaie pas).
@@ -86,6 +95,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
 
   const fields: Record<string, string> = {}
   if (name) fields.name = titleCaseName(name)
+  if (phone) fields.phone = phone.trim()
   if (message) fields.message = message
   if (intent_question) fields.intent_question = intent_question
   if (subject) fields.subject = subject

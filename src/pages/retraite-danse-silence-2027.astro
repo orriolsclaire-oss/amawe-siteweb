@@ -2,6 +2,24 @@
 import Layout from "~/layouts/Layout.astro"
 import Header from "~/components/Header.astro"
 import Footer from "~/components/Footer.astro"
+import TestimonialCard from "~/components/TestimonialCard.astro"
+import NewsletterSignup from "~/components/NewsletterSignup.astro"
+import SubscribeForm from "~/components/SubscribeForm.astro"
+import { getLangFromUrl, useTranslations } from "~/i18n/utils"
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+
+// ============ V2 (importé de experiences.astro pour comparaison) ============
+const includesV2 = [
+  t("exp.retreat.includes.1"),
+  t("exp.retreat.includes.2"),
+  t("exp.retreat.includes.3"),
+  t("exp.retreat.includes.4"),
+  t("exp.retreat.includes.5"),
+  t("exp.retreat.includes.6"),
+  t("exp.retreat.includes.7"),
+]
 
 const pageTitle =
   "Retraite Danse & Silence 2027 — 4ème édition | Amawé"
@@ -11,14 +29,14 @@ const pageDescription =
 // Programme — sections principales
 const programme = [
   {
-    titre: "Connexion à la nature",
-    texte:
-      "Environnement calme, nature préservée. Recharge énergétique et présence dans l'instant. Randonnées et marches quotidiennes pour s'imprégner du vivant.",
-  },
-  {
     titre: "Mouvement et danse libre",
     texte:
       "Se reconnecter au corps, à la force vitale et au plaisir du mouvement. Libération des tensions physiques, mentales et émotionnelles. Le mouvement sera le langage privilégié durant cette retraite silencieuse — pour une vraie libération. Séance de danse libre quotidienne.",
+  },
+  {
+    titre: "Marches et randonnées en nature",
+    texte:
+      "Environnement calme, nature préservée. Recharge énergétique et présence dans l'instant. Randonnées et marches quotidiennes pour s'imprégner du vivant.",
   },
   {
     titre: "Pratiques de respiration et méditation",
@@ -28,7 +46,7 @@ const programme = [
   {
     titre: "Temps d'introspection",
     texte:
-      "En autonomie ou guidé. Pour trouver des réponses aux problématiques actuelles.",
+      "Pour trouver des réponses à tes questionnements, problématiques ou flou actuel.",
   },
   {
     titre: "Partage et convivialité",
@@ -36,70 +54,95 @@ const programme = [
       "Même en silence la majeure partie du temps, la convivialité et les liens sont présents — simples et authentiques. Soirées cocooning au coin du feu.",
   },
   {
-    titre: "Cercles d'échange",
+    titre: "Cercles de paroles",
     texte:
       "Partager l'expérience, écouter les autres, s'enrichir mutuellement.",
+    note: "(avant/après retraite)",
   },
   {
     titre: "Temps libre",
     texte:
-      "Balades en nature, repos, contemplation, méditation, créativité — selon tes besoins.",
+      "Balades en nature, repos, contemplation, méditation, créativité — selon tes besoins. Il n'y a rien à faire, juste à laisser être et profiter !",
   },
   {
-    titre: "Nourriture saine, joyeuse et savoureuse",
+    titre: "Nourriture saine et savoureuse",
     texte:
       "Pension complète avec produits bio, locaux, de saison, cuisinés avec soin.",
   },
 ]
 
-// Témoignages des éditions précédentes
+// Témoignages liés à la retraite silencieuse — reprenant ceux du Mur des témoignages
 const temoignages = [
   {
-    titre: "UNE VISION GLOBALE DE MA SANTÉ",
+    titre: "LE SILENCE M'A PERMIS D'ALLER AU PLUS PROFOND",
     citation:
-      "Merci encore pour ce stage qui m'a apporté une vision globale de santé. Je ne vous remercierai jamais assez !",
-    auteur: "Céline",
+      "Explorer, se recentrer, se laisser guider, se purifier… Le silence m'a permis d'aller chercher au plus profond mes émotions, mes besoins. Grâce à la force du groupe nous avons été portés et pu aller jusqu'au bout de cette belle aventure. Les séances de danse ont été intenses et libératrices. Ces quelques jours de déconnexion avec le quotidien rempli de sur-stimulations m'aura permis de me recentrer sur les choses importantes et de me reconnecter avec la nature. Je repars de cette retraite avec une nouvelle énergie, l'esprit apaisé et le cœur rempli de joie. C'est un magnifique cadeau que je me suis offert. Merci Claire et merci au groupe.",
+    auteur: "Lydia",
   },
   {
-    titre: "JE ME SOUVIENDRAI DE CE STAGE TOUTE MA VIE",
+    titre: "UNE VRAIE RESPIRATION DANS MA VIE",
     citation:
-      "J'ai adoré ce stage et ces rencontres merveilleuses ! Les ateliers étaient pile ce dont j'avais besoin, libérateurs ! Le cadre sublime, le groupe sensationnel, on a tellement ri ! Ce stage a été déclencheur…",
-    auteur: "Séverine",
+      "Cette retraite a été une vraie respiration dans ma vie très active. Elle m'a permis de me couper du monde, de me déconnecter des écrans, et surtout de ralentir. Prendre le temps de vivre la journée pleinement, d'observer, de ressentir, de savourer chaque moment. Le silence m'a offert un espace précieux pour me recentrer sur moi, mes besoins, mes envies et mes objectifs.",
+    auteur: "Solenn",
   },
   {
-    titre: "NATURE, AUTHENTIQUE",
+    titre: "RETROUVER L'ESSENTIEL",
     citation:
-      "J'ai aimé la vie en communauté simple, nature et authentique. J'ai retenu de rester moi-même, de m'aimer comme je suis.",
-    auteur: "Cendrine",
+      "J'ai vraiment apprécié la qualité globale de toute la retraite et l'immense sensibilité dont tu fais preuve pour nous avoir permis, grâce au silence, de retrouver l'essentiel : ce qui nous constitue, ce qui est fondamental pour nous. Une vraie déconnexion salvatrice. Cette retraite m'a réappris à cultiver la lenteur et l'importance vitale pour moi de la nature.",
+    auteur: "Marie-Pierre",
   },
   {
-    titre: "UN STAGE QUI A LANCÉ LE DÉBUT DE CHANGEMENTS D'AMPLEUR",
+    titre: "JE SUIS RENTRÉE TRANSFORMÉE",
     citation:
-      "Le stage continue à infuser… J'ai trouvé tellement de réconfort. Je prends mon courage à deux mains et me suis autorisée à mettre fin à des situations qui ne me conviennent pas… Je vis un peu plus près du sol et de mes ressentis, je danse un peu toute seule…",
-    auteur: "Hélène",
+      "J'ai eu l'impression de rajeunir, de revenir à l'essentiel dans cette nature préservée et ce silence révélateur. Je suis rentrée transformée, calme, silencieuse, bienveillante et pleine d'énergie. Je suis encore habitée par cette expérience privilégiée et à jamais riche de mes prises de conscience intérieures. Un seul bémol : cette parenthèse inattendue me manque déjà.",
+    auteur: "Clélia",
+  },
+  {
+    titre: "CETTE RETRAITE RÉSONNERA EN MOI À VIE",
+    citation:
+      "Cette retraite résonnera en moi à vie c'est sûr ! Je le sens déjà, le besoin de davantage de silence, de prendre le temps de respirer, de choisir de répondre aux notifications, et non de me laisser happer par les écrans. J'y repenserai aussi souvent je pense, pour me reconnecter à ces sensations et à ce lieu juste magique.",
+    auteur: "Solenn",
+  },
+  {
+    titre: "UN SENTIMENT DE GRANDE PLÉNITUDE",
+    citation:
+      "Cette retraite est arrivée à point nommée dans ma vie. Dans les 8 mois qui l'ont précédée, j'ai perdu ma Maman et mon frère aîné. Je savais que ce moment de silence dans ce lieu de nature entourée de belles personnes m'était nécessaire, voire vital. J'y ai trouvé la douceur, la bienveillance, le partage, l'écoute, la liberté, la protection. J'ai dansé, réfléchi, souri, médité, pleuré, partagé, marché, respiré, j'ai bien dormi (incroyable pour une insomniaque) et très bien mangé. Au bout du compte, j'ai ressenti un sentiment de grande plénitude, de soulagement qui m'a permis de déposer ma peine.",
+    auteur: "Laurence",
+  },
+  {
+    titre: "UN AVANT/APRÈS CETTE RETRAITE",
+    citation:
+      "Ici aussi je pense à cette petite bulle que Claire nous a permis d'intégrer il y a près d'un mois. En vérité, pas un jour ne passe sans que j'y pense ! Il y a un avant/après cette retraite et l'envie de prolonger ces moments privilégiés est clairement là.",
+    auteur: "Anonyme",
+  },
+  {
+    titre: "UNE EXPÉRIENCE HORS DU COMMUN",
+    citation:
+      "J'avais besoin de me ressourcer et de faire un break alors je me suis laissée tenter… sans vraiment savoir à quoi m'attendre ! Une fois sur place, chaque moment a été unique. Le séjour s'est déroulé dans un climat doux, apaisant, ressourçant. La danse fut pour moi une expérience hors du commun (moi le balai qui danse, je me suis surprise à me déhancher et lever les bras au ciel !). Les repas étaient succulents, sains, variés et copieux ! L'énergie dégagée par le groupe était palpable. Plus d'une semaine après être rentrée, je reste sur ma première impression : c'était réellement le plus beau cadeau que je pouvais m'offrir. Je me sens respirer, mes épaules sont davantage ouvertes, je pose plus aisément des mots sur mes ressentis. Je me sens enrichie des petits bonheurs de la vie. Merci Claire, merci Baptiste et merci les filles. Je vous suis à jamais reconnaissante !",
+    auteur: "Carine",
   },
 ]
 
 const faqs = [
   {
     q: "Ce qui est compris dans le tarif",
-    a: "All-inclusive sauf transport : hébergement 3 nuits, pension complète (petit-déjeuner, déjeuner, dîner, collations, boissons — bio, local, de saison), draps couette coussins, toutes les activités, pratiques et espaces.",
+    a: "All-inclusive sauf transport : hébergement, pension complète (petit-déjeuner, déjeuner, dîner, collations, boissons — bio, local, de saison), draps couette coussins, toutes les activités, pratiques et espaces.",
   },
   {
     q: "Ce qui n'est pas compris",
-    a: "Le transport aller-retour. Les soins individuels supplémentaires (sur demande, places limitées) — par ex. séance de réflexologie plantaire à 50 €, à spécifier dans le formulaire.",
+    a: "Le transport aller-retour. Les soins individuels supplémentaires le cas échéant (sur demande, places limitées) — par ex. massage ou réflexologie.",
   },
   {
     q: "Lieu et accessibilité",
-    a: "Saint Félix de Sorgues (12400), Sud Aveyron. Adresse précise communiquée après réservation. En voiture : 1h30 de Montpellier, 2h30 de Toulouse. Covoiturage possible (groupe WhatsApp). En train : Gare Montpaon (15 min) ou Tournemire-Roquefort (20 min).",
+    a: "Bientôt révélé.",
   },
   {
     q: "Réservation pour 2 personnes",
-    a: "Remplir 2 fois le formulaire (noms et infos de chaque participant·e). Tarif couple : -80 €.",
+    a: "Remplir 2 fois le formulaire (noms et infos de chaque participant·e).",
   },
   {
     q: "Engagement et respect du silence",
-    a: "Cette retraite est une retraite silencieuse. T'inscrire t'engage à respecter strictement la volonté de rester en silence sur les temps prévus au programme. Cet engagement vaut aussi pour les autres participants.",
+    a: "Cette retraite est une retraite silencieuse. T'inscrire t'engage à respecter strictement la volonté de rester en silence sur les temps prévus au programme. Cet engagement vaut aussi pour le respect des autres participants.",
   },
   {
     q: "Allergies et intolérances alimentaires",
@@ -111,11 +154,7 @@ const faqs = [
   },
   {
     q: "Conditions d'annulation",
-    a: "Entre la réservation et 31 jours avant : acompte non remboursable (40 % du montant dû). Moins de 30 jours ou non-présentation : 100 % du montant dû. Possibilité de transférer ta place à un proche.",
-  },
-  {
-    q: "Force majeure",
-    a: "Désistement participant 21 jours avant ou plus : remboursement de l'acompte. Annulation Amawé : remboursement intégral de l'acompte. Décision sanitaire : retraite reportée ultérieurement. Toute retraite commencée est due intégralement.",
+    a: "Entre la réservation et 31 jours avant : acompte non remboursable. Moins de 30 jours ou non-présentation : 100 % du montant dû. Possibilité de transférer ta place à un proche. Cas de force majeure ou motif médical (avec certificat) : remboursement accepté. Si annulation Amawé : remboursement intégral. Toute retraite commencée est due intégralement.",
   },
 ]
 
@@ -125,41 +164,36 @@ const formulaireUrl = "https://forms.gle/g7HdkpQsQqmzmHef7"
 <Layout title={pageTitle} description={pageDescription}>
   <Header />
   <main class="pt-20">
-    <!-- HERO -->
-    <section class="relative bg-[var(--color-warm)] py-16 md:py-24">
-      <div class="mx-auto max-w-4xl px-6 text-center">
-        <p class="section-label mb-4 text-[var(--color-accent)]">AVANT-PREMIÈRE — 4ème ÉDITION</p>
+    <!-- HERO — V1 (page retraite 2027) -->
+    <section class="relative py-10 md:py-14">
+      <div class="mx-auto max-w-6xl px-6 text-center">
+        <p class="section-label mb-3 text-[var(--color-accent)]">4ème ÉDITION</p>
         <h1 class="!text-3xl md:!text-5xl">
           Retraite Danse & Silence
-          <span class="block italic text-[var(--color-accent-dark)]">— hiver 2027</span>
         </h1>
-        <div class="divider mx-auto mt-8" style="background-color: var(--color-accent);"></div>
-        <p class="mx-auto mt-10 max-w-2xl text-lg leading-relaxed text-[var(--color-text-medium)]">
-          3 médecines puissantes pour se retrouver, se ressourcer et faire une vraie pause régénératrice.
+        <div class="divider mx-auto mt-5" style="background-color: var(--color-primary);"></div>
+        <p class="mx-auto mt-6 max-w-2xl text-lg italic leading-relaxed text-[var(--color-accent-dark)] md:max-w-none md:whitespace-nowrap">
+          3 médecines puissantes pour se retrouver, se ressourcer et faire une vraie pause régénératrice.<br />
+          Une retraite où le silence est fécond, le mouvement libérateur et la nature apaisante.
         </p>
-        <p class="mx-auto mt-3 max-w-2xl text-lg italic leading-relaxed text-[var(--color-accent-dark)]">
-          Une retraite où le silence sera fécond, le mouvement libérateur et la nature apaisante.
+        <p class="mt-5 font-['Josefin_Sans',sans-serif] text-lg text-[var(--color-accent-dark)] md:text-xl">
+          Hiver 2027
         </p>
-        <p class="mt-8 font-['Josefin_Sans',sans-serif] text-2xl text-[var(--color-accent-dark)] md:text-3xl">
-          Hiver 2027 — date à venir
-        </p>
-        <p class="mt-2 text-sm uppercase tracking-[0.15em] text-[var(--color-text-light)]">Sud Aveyron · Écolieu</p>
-        <a href="#reservation" class="btn-accent mt-10 inline-block">Réserver ma place</a>
+        <a href="#reservation" class="btn-accent mt-6 inline-block">Pré-réserver ma place</a>
       </div>
     </section>
 
-    <!-- GALERIE HERO — 3 photos d'ambiance -->
-    <section class="py-8 md:py-10">
-      <div class="mx-auto max-w-6xl px-6">
-        <div class="grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-5">
-          <img src="/images/retraite-silence-meditation-amawe.webp" alt="Méditation en cercle silencieux pendant la retraite Danse & Silence Amawé" loading="lazy" class="aspect-[3/2] w-full rounded-2xl object-cover" />
-          <img src="/images/retraite-silence-meditation-cercle.webp" alt="Cercle de silence et méditation lors de la retraite Amawé" loading="lazy" class="aspect-[3/2] w-full rounded-2xl object-cover" />
-          <img src="/images/retraite-claire-danse-libre.webp" alt="Claire en danse libre lors de la retraite silencieuse en Sud Aveyron" loading="lazy" class="aspect-[3/2] w-full rounded-2xl object-cover" />
-        </div>
-      </div>
-    </section>
+    <!-- Photo hero pleine largeur — Claire en danse libre (Kateline Durand) -->
+    <img
+      src="/images/retraite-silence-danse-libre-claire.webp"
+      alt="Claire en danse libre lors d'une retraite Amawé — mouvement, présence, expression libre en plein air (photo Kateline Durand)"
+      width="1200"
+      height="1800"
+      loading="eager"
+      class="aspect-[16/9] w-full object-cover"
+    />
 
-    <!-- INTRO — 3 médecines -->
+    <!-- INTRO — 3 médecines — V1 -->
     <section class="py-16 md:py-20">
       <div class="mx-auto max-w-3xl px-6">
         <p class="text-lg leading-relaxed text-[var(--color-text-medium)]">
@@ -168,11 +202,11 @@ const formulaireUrl = "https://forms.gle/g7HdkpQsQqmzmHef7"
         <ul class="mt-6 space-y-3 text-lg leading-relaxed text-[var(--color-text-medium)]">
           <li class="flex gap-3">
             <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-accent)]" aria-hidden="true"></span>
-            <span><strong class="font-medium text-[var(--color-primary)]">Connexion profonde à soi</strong> — vide, calme mental, présence, clarté, écoute, paix.</span>
+            <span><strong class="font-medium text-[var(--color-primary)]">Connexion profonde à soi</strong> — vide, calme mental, écoute, présence, clarté d'esprit, conscience, paix.</span>
           </li>
           <li class="flex gap-3">
             <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-accent)]" aria-hidden="true"></span>
-            <span><strong class="font-medium text-[var(--color-primary)]">Libération corporelle</strong> via la danse libre et le mouvement naturel.</span>
+            <span><strong class="font-medium text-[var(--color-primary)]">Libération corporelle et émotionnelle</strong> via la danse libre et le mouvement naturel.</span>
           </li>
           <li class="flex gap-3">
             <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-accent)]" aria-hidden="true"></span>
@@ -185,25 +219,42 @@ const formulaireUrl = "https://forms.gle/g7HdkpQsQqmzmHef7"
       </div>
     </section>
 
-    <!-- PROGRAMME -->
-    <section class="bg-[var(--color-warm)] py-16 md:py-24">
+
+    <!-- PROGRAMME — V1 -->
+    <section class="bg-[var(--color-warm)] py-10 md:py-14">
       <div class="mx-auto max-w-5xl px-6">
         <div class="max-w-3xl">
-          <p class="section-label mb-4 text-[var(--color-sage-dark)]">LE PROGRAMME</p>
-          <h2 class="text-3xl md:text-4xl">Ce qu'il s'y vit</h2>
-          <div class="divider mt-6" style="background-color: var(--color-sage-dark);"></div>
+          <p class="section-label mb-2 text-[var(--color-sage-dark)]">À QUOI S'ATTENDRE</p>
+          <h2 class="text-2xl md:text-3xl">Le programme</h2>
+          <div class="divider mt-4" style="background-color: var(--color-text-light);"></div>
         </div>
-        <div class="mt-12 grid gap-8 md:grid-cols-2 md:gap-10">
-          {programme.map((item) => (
-            <div class="border-l-2 pl-5" style="border-color: var(--color-accent);">
-              <h3 class="font-['Josefin_Sans',sans-serif] text-xl text-[var(--color-primary)]">{item.titre}</h3>
-              <p class="mt-2 leading-relaxed text-[var(--color-text-medium)]">{item.texte}</p>
-            </div>
-          ))}
+        <!-- Timeline verticale alternée -->
+        <div class="relative mt-8 mx-auto max-w-3xl">
+          <!-- Trait vertical : à gauche sur mobile, au centre sur desktop -->
+          <div class="absolute left-2 top-0 h-full w-px bg-[var(--color-accent)]/30 md:left-1/2 md:-translate-x-1/2" aria-hidden="true"></div>
+          <ul class="space-y-4 md:space-y-3">
+            {programme.map((item, i) => {
+              const isLeft = i % 2 === 0
+              return (
+                <li class="relative pl-8 md:pl-0">
+                  <!-- Point sur la ligne -->
+                  <span class="absolute left-[3px] top-[7px] h-2 w-2 rounded-full bg-[var(--color-accent)] md:left-1/2 md:-translate-x-1/2" aria-hidden="true"></span>
+                  <!-- Contenu : pleine largeur sur mobile, alterné sur desktop -->
+                  <div class={`md:w-[calc(50%-1rem)] ${isLeft ? "md:mr-auto md:pr-6 md:text-right" : "md:ml-auto md:pl-6 md:text-left"}`}>
+                    <h3 class="font-['Josefin_Sans',sans-serif] text-sm text-[var(--color-primary)] md:text-base">{item.titre}</h3>
+                    <p class="mt-0.5 text-xs leading-snug text-[var(--color-text-medium)] md:text-sm">{item.texte}</p>
+                    {item.note && (
+                      <p class="mt-0.5 text-[10px] italic text-[var(--color-text-light)] md:text-xs">{item.note}</p>
+                    )}
+                  </div>
+                </li>
+              )
+            })}
+          </ul>
         </div>
 
         <!-- Galerie programme — 5 photos -->
-        <div class="mt-12 grid grid-cols-2 gap-3 md:grid-cols-5 md:gap-4">
+        <div class="mt-8 grid grid-cols-2 gap-2 md:grid-cols-5 md:gap-3">
           <img src="/images/retraite-silence-ambiance-ecolieu.webp" alt="Ambiance générale de la retraite à l'écolieu" loading="lazy" class="aspect-square w-full rounded-xl object-cover" />
           <img src="/images/retraite-meditation-groupe.webp" alt="Méditation en groupe en silence" loading="lazy" class="aspect-square w-full rounded-xl object-cover" />
           <img src="/images/retraite-silence-nature-aveyron.webp" alt="Immersion en nature dans le Sud Aveyron" loading="lazy" class="aspect-square w-full rounded-xl object-cover" />
@@ -212,71 +263,73 @@ const formulaireUrl = "https://forms.gle/g7HdkpQsQqmzmHef7"
         </div>
 
         <!-- Dates et horaires -->
-        <div class="mt-12 rounded-2xl bg-[var(--color-surface)] p-6 md:p-8">
-          <p class="section-label mb-3 text-[var(--color-accent-dark)]">DATES ET HORAIRES</p>
-          <p class="text-lg text-[var(--color-primary)]">Hiver 2027 — date à venir</p>
-          <p class="mt-2 text-sm text-[var(--color-text-medium)]">
-            Durée : 4 jours / 3 nuits · Arrivée 14h–16h · Départ 14h–16h
+        <div class="mt-8 rounded-2xl bg-[var(--color-surface)] p-4 md:p-5">
+          <p class="section-label mb-2 text-[var(--color-accent-dark)]">DATES ET HORAIRES</p>
+          <p class="text-base text-[var(--color-primary)]">Hiver 2027 — date à venir</p>
+        </div>
+
+        <!-- CTA Pré-inscription -->
+        <div class="mt-10 mb-8 flex flex-col items-center gap-2 text-center md:mt-12 md:mb-10">
+          <a href="#reservation" class="btn-accent inline-block">Pré-inscription</a>
+          <p class="text-sm italic text-[var(--color-text-light)]">
+            pour tout savoir et être sûr(e) d'avoir une place
           </p>
         </div>
       </div>
     </section>
 
-    <!-- TÉMOIGNAGES -->
-    <section class="bg-[var(--color-accent-dark)] py-16 md:py-24">
+    <!-- TÉMOIGNAGES — V1 compacté -->
+    <section class="bg-[var(--color-accent-dark)] py-10 md:py-14">
       <div class="mx-auto max-w-6xl px-6">
         <div class="max-w-3xl">
-          <p class="section-label mb-4" style="color: var(--color-accent-light);">CE QU'ELLES EN DISENT</p>
-          <h2 class="text-3xl md:text-4xl" style="color: var(--color-accent-light);">Témoignages</h2>
-          <div class="divider mt-6" style="background-color: var(--color-accent-light);"></div>
+          <p class="section-label mb-2" style="color: var(--color-accent-light);">LEURS RETOURS</p>
+          <h2 class="text-2xl md:text-3xl" style="color: var(--color-accent-light);">Témoignages</h2>
+          <div class="divider mt-4" style="background-color: var(--color-accent-light);"></div>
         </div>
-        <div class="mt-12 grid gap-6 md:grid-cols-2">
+        <div class="mt-6 columns-1 gap-3 md:columns-2 md:gap-4">
           {temoignages.map((t) => (
-            <figure class="flex flex-col rounded-2xl bg-[var(--color-surface)] p-6 shadow-sm md:p-8">
+            <figure class="mb-3 flex break-inside-avoid flex-col rounded-r-2xl border border-[var(--color-border)] border-l-[3px] border-l-[var(--color-sage-dark)] bg-[var(--color-surface)] p-3 md:mb-4">
               <p class="text-xs font-semibold uppercase tracking-[0.15em] text-[var(--color-accent-dark)]">{t.titre}</p>
-              <blockquote class="mt-3 flex-1 italic leading-relaxed text-[var(--color-text-medium)]">
-                « {t.citation} »
+              <blockquote class="testimonial-quote mt-1.5 !text-[13px] leading-snug text-[var(--color-text-medium)]">
+                {t.citation}
               </blockquote>
-              <figcaption class="mt-4 font-['Josefin_Sans',sans-serif] text-lg text-[var(--color-primary)]">— {t.auteur}</figcaption>
+              <figcaption class="mt-2 flex items-center gap-2">
+                <div class="h-px flex-1 bg-[var(--color-border)]"></div>
+                <p class="text-right text-[11px] font-medium text-[var(--color-primary)]">{t.auteur}</p>
+              </figcaption>
             </figure>
           ))}
         </div>
       </div>
     </section>
 
-    <!-- DANS NOTRE ÉCOLIEU -->
+
+    <!-- LE LIEU — 4ème édition (lieu à révéler) -->
     <section class="py-16 md:py-24">
-      <div class="mx-auto max-w-5xl px-6">
-        <div class="max-w-3xl">
-          <p class="section-label mb-4 text-[var(--color-accent)]">DANS NOTRE ÉCOLIEU</p>
-          <h2 class="text-3xl md:text-4xl">Le lieu</h2>
-          <div class="divider mt-6" style="background-color: var(--color-accent);"></div>
-        </div>
-        <div class="mt-10 grid gap-10 md:grid-cols-2">
+      <div class="mx-auto max-w-6xl px-6">
+        <div class="grid items-center gap-10 md:grid-cols-2 md:gap-14">
+          <img
+            src="/images/retraite-silence-salle-pratique.webp"
+            alt="Cercle de partage en silence le soir dans la salle de pratique — souvenir des éditions précédentes de la Retraite Danse & Silence Amawé"
+            loading="lazy"
+            class="aspect-[4/3] w-full rounded-2xl object-cover"
+          />
           <div>
-            <p class="leading-relaxed text-[var(--color-text-medium)]">
-              Dans la belle vallée de la Sorgues, en Sud Aveyron, au sein du parc naturel des Grands Causses : un hameau dans un écrin de verdure préservée.
+            <p class="section-label mb-4 text-[var(--color-text-light)]">UN NOUVEAU LIEU À DÉCOUVRIR</p>
+            <h2 class="text-3xl md:text-4xl">Le lieu</h2>
+            <div class="divider mt-6" style="background-color: var(--color-text-light);"></div>
+            <p class="mt-8 text-lg leading-relaxed text-[var(--color-text-medium)]">
+              Les 3 précédentes éditions se sont déroulées dans la belle vallée de la Sorgue, en Sud Aveyron, au sein du parc naturel des Grands Causses — un hameau dans un écrin de verdure préservée. <strong class="font-medium text-[var(--color-primary)]">On change de lieu pour cette 4ème édition !</strong>
             </p>
-            <p class="mt-4 italic text-[var(--color-text-medium)]">
-              C'est chez nous, à Saint Félix de Sorgues (12400).
+            <p class="mt-6 font-['Josefin_Sans',sans-serif] text-xl italic text-[var(--color-accent-dark)] md:text-2xl">
+              Le lieu de l'édition 2027 sera bientôt révélé.
             </p>
-            <ul class="mt-6 space-y-2 text-[var(--color-text-medium)]">
-              <li>• Hameau historique en pierres locales</li>
-              <li>• Tiny-houses et bâtiments bio-climatiques</li>
-              <li>• Salle de pratique 120 m² en bois avec baies vitrées sur la nature</li>
-              <li>• Rivière à proximité — pour contempler ou s'immerger</li>
-              <li>• Salon cosy avec poêle à bois</li>
-              <li>• Salle à manger avec grande table conviviale</li>
-            </ul>
-            <p class="mt-6 text-sm italic text-[var(--color-text-light)]">
-              Adresse complète communiquée après réservation.
-            </p>
-          </div>
-          <div class="grid gap-3 md:grid-cols-2">
-            <img src="/images/retraite-silence-salle-pratique.webp" alt="Salle de pratique 120m² en bois de l'écolieu Amawé" loading="lazy" class="aspect-square w-full rounded-2xl object-cover" />
-            <img src="/images/retraite-silence-la-margue-vue.webp" alt="Vue de la Margue, écolieu Amawé en Sud Aveyron" loading="lazy" class="aspect-square w-full rounded-2xl object-cover" />
-            <img src="/images/retraite-silence-hameau-pierre.webp" alt="Hameau historique en pierres locales de l'écolieu" loading="lazy" class="aspect-square w-full rounded-2xl object-cover" />
-            <img src="/images/retraite-silence-vue-paysage.webp" alt="Paysage du parc naturel des Grands Causses entourant l'écolieu" loading="lazy" class="aspect-square w-full rounded-2xl object-cover" />
+            <div class="mt-14 flex flex-col items-center gap-2 text-center md:mt-16">
+              <a href="#reservation" class="btn-accent inline-block">Pré-inscription</a>
+              <p class="text-sm italic text-[var(--color-text-light)]">
+                pour tout savoir et être sûr(e) d'avoir une place
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -285,118 +338,145 @@ const formulaireUrl = "https://forms.gle/g7HdkpQsQqmzmHef7"
     <!-- À PROPOS DE CLAIRE -->
     <section class="bg-[var(--color-warm)] py-16 md:py-24">
       <div class="mx-auto max-w-5xl px-6">
-        <div class="grid gap-10 md:grid-cols-[1fr_2fr] md:gap-12">
-          <div>
-            <img src="/images/retraite-silence-claire-portrait.webp" alt="Claire Orriols, fondatrice d'Amawé" loading="lazy" class="aspect-[3/4] w-full rounded-2xl object-cover" />
-          </div>
-          <div>
-            <p class="section-label mb-4 text-[var(--color-accent)]">CLAIRE ORRIOLS</p>
-            <h2 class="text-3xl md:text-4xl">Cofondatrice d'Amawé,<br /><span class="italic text-[var(--color-accent-dark)]">coach en santé holistique.</span></h2>
-            <div class="divider mt-6" style="background-color: var(--color-accent);"></div>
+        <div class="grid gap-6 md:grid-cols-[1fr_2fr] md:gap-12">
+          <!-- Photo 1 : avant le texte sur mobile, en haut à gauche sur desktop -->
+          <img src="/images/retraite-silence-claire-portrait.webp" alt="Claire Orriols, fondatrice d'Amawé" loading="lazy" class="aspect-[3/4] w-full rounded-2xl object-cover md:col-start-1 md:row-start-1" />
+          <!-- Bio texte : spanne 3 lignes sur desktop -->
+          <div class="md:col-start-2 md:row-start-1 md:row-span-3">
+            <p class="section-label mb-4 text-[var(--color-accent)]">QUI SUIS-JE</p>
+            <h2 class="text-3xl md:text-4xl">Claire Orriols,<br /><span class="block mt-2 text-base font-normal italic text-[var(--color-accent-dark)] md:text-lg">celle qui te guide dans ce voyage hors-temps</span></h2>
+            <div class="divider mt-6" style="background-color: var(--color-text-light);"></div>
             <p class="mt-8 leading-relaxed text-[var(--color-text-medium)]">
-              <strong class="font-medium text-[var(--color-primary)]">Formations :</strong> Institute for Integrative Nutrition (nutrition holistique), CNH (Centre Naturopathie & Hormèse), MovNat.
+              Je suis si heureuse de te proposer à nouveau de plonger avec moi dans cette retraite silencieuse, notre rendez-vous hivernal annuel — car vivre cette expérience en groupe rajoute du pétillant !
             </p>
             <p class="mt-4 leading-relaxed text-[var(--color-text-medium)]">
-              Approche simple, naturelle et holistique de la santé — en prenant en compte la complexité de l'être humain.
-            </p>
-            <p class="mt-4 italic leading-relaxed text-[var(--color-text-medium)]">
-              « Le corps et l'esprit ne font qu'un. Les qualités du corps deviennent celles du mental, et vice-versa. Notre corps a son propre langage si nous voulons bien le laisser s'exprimer. »
+              Formée par l'Institute for Integrative Nutrition (école de nutrition holistique internationale), le CNH (Centre Naturopathie & Hormèse) et MovNat, je propose une approche simple, naturelle et holistique de la santé, en prenant en compte les différentes dimensions de l'être humain.
             </p>
             <p class="mt-4 leading-relaxed text-[var(--color-text-medium)]">
-              J'ai conçu cet espace de transformation et de libération avec mon approche et ma vision de la vie : une retraite silencieuse où le mouvement et la nature seront les piliers facilitateurs.
+              Dans mon quotidien, j'aime cultiver des moments seule, introspectifs, calmes et silencieux. C'est mon équilibre nécessaire pour pouvoir apprécier les moments actifs et de partage. Et pour régénérer mon énergie !
             </p>
             <p class="mt-4 leading-relaxed text-[var(--color-text-medium)]">
-              L'hiver est la période en or pour faire silence — pour reposer, se vider, revenir à soi.
+              J'aime aussi cultiver un corps souple, fort, agile, adaptable, plus libre… car le corps et l'esprit ne font qu'un. <strong class="font-medium text-[var(--color-primary)]">Les qualités du corps deviennent celles du mental et vice-versa.</strong> Par des pratiques physiques spécifiques, par du mouvement naturel et surtout par de la danse libre, nous expérimenterons ce lien corps – cœur – esprit. <em>Notre corps a son propre langage si nous voulons bien le laisser s'exprimer.</em>
+            </p>
+            <p class="mt-4 leading-relaxed text-[var(--color-text-medium)]">
+              <strong class="font-medium text-[var(--color-primary)]">J'ai conçu cet espace de transformation et de libération</strong> avec mon approche et ma vision de la vie : une retraite silencieuse où le mouvement et la nature seront les piliers facilitateurs.
+            </p>
+            <p class="mt-4 leading-relaxed text-[var(--color-text-medium)]">
+              Notre corps est fait par et pour le mouvement, honorons-le ainsi — tout comme cette Terre nourricière qui nous permet de vivre notre expérience en tant qu'humanité.
+            </p>
+            <p class="mt-4 leading-relaxed text-[var(--color-text-medium)]">
+              Je m'inspire de la nature en suivant davantage les rythmes des saisons. <strong class="font-medium text-[var(--color-primary)]">L'hiver</strong> est la période idéale pour se reposer, faire le vide, moins s'agiter, revenir à soi, laisser mourir l'ancien, avant d'accueillir le renouveau du printemps. <strong class="font-medium text-[var(--color-primary)]">LA période en or pour faire silence.</strong>
+            </p>
+            <p class="mt-4 leading-relaxed text-[var(--color-text-medium)]">
+              Enfin, ramener de la conscience, du sacré, du kiff, de l'alignement et de la simplicité dans nos quotidiens — c'est le fil que je suivrai pour te guider.
             </p>
             <p class="mt-6 font-['Josefin_Sans',sans-serif] text-xl italic text-[var(--color-accent-dark)]">
               Dans notre monde moderne, ralentir, savoir se régénérer naturellement et savourer l'état de pure présence… c'est un art de vivre. Allons-y !
             </p>
+            <p class="mt-3 text-right font-['Josefin_Sans',sans-serif] text-lg text-[var(--color-accent-dark)]">
+              — Claire
+            </p>
           </div>
+          <!-- Photos 2 et 3 : après le texte sur mobile, en colonne gauche sur desktop -->
+          <img src="/images/retraite-claire-danse-noir-blanc.webp" alt="Claire Orriols en danse libre en pleine nature — Sud Aveyron, photo Kateline Durand" loading="lazy" class="aspect-[3/4] w-full rounded-2xl object-cover md:col-start-1 md:row-start-2" />
+          <img src="/images/retraite-claire-tailleur-sunset-falaise.webp" alt="Claire en tailleur sur une falaise du Sud Aveyron face au coucher du soleil — méditation en pleine nature" loading="lazy" class="aspect-[3/4] w-full rounded-2xl object-cover md:col-start-1 md:row-start-3" />
         </div>
       </div>
     </section>
 
-    <!-- TARIFS -->
-    <section id="tarifs" class="py-16 md:py-24">
-      <div class="mx-auto max-w-5xl px-6">
-        <div class="max-w-3xl">
-          <p class="section-label mb-4 text-[var(--color-accent)]">TARIFS</p>
-          <h2 class="text-3xl md:text-4xl">Prix tout inclus</h2>
-          <div class="divider mt-6" style="background-color: var(--color-accent);"></div>
-          <p class="mt-6 leading-relaxed text-[var(--color-text-medium)]">
-            Prix par personne, tout inclus : hébergement, pension complète (repas, collations, boissons), activités et pratiques. Retraite 4 jours / 3 nuits.
+    <!-- TARIFS — Annonce à venir avec date & lieu -->
+    <section id="tarifs" class="py-10 md:py-14">
+      <div class="mx-auto max-w-3xl px-6 text-center">
+        <p class="section-label mb-2 text-[var(--color-accent)]">TARIFS</p>
+        <h2 class="text-2xl md:text-3xl">Bientôt révélés</h2>
+        <div class="divider mx-auto mt-4" style="background-color: var(--color-text-light);"></div>
+        <p class="mx-auto mt-6 text-base leading-relaxed text-[var(--color-text-medium)]">
+          Le tarif sera communiqué en même temps que la date et le lieu de l'édition 2027.<br />
+          Pour être prévenu·e en avant-première, pré-inscris-toi.
+        </p>
+        <div class="mx-auto mt-6 max-w-xl rounded-2xl bg-[var(--color-warm)] p-4 md:p-5">
+          <p class="section-label mb-2 text-[var(--color-sage-dark)]">CE QUI EST INCLUS</p>
+          <p class="text-sm leading-relaxed text-[var(--color-text-medium)]">
+            Le tarif est toujours <strong class="font-medium text-[var(--color-primary)]">all-inclusive</strong> : hébergement, pension complète bio, activités et pratiques.
+          </p>
+          <p class="mt-2 text-xs leading-relaxed text-[var(--color-text-light)]">
+            Il varie selon le lieu, la durée et le type d'hébergement choisi (van, dortoir, chambre partagée ou individuelle, studio).
           </p>
         </div>
-
-        <div class="mt-12 grid gap-6 md:grid-cols-2">
-          <div class="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6 md:p-8">
-            <p class="font-['Josefin_Sans',sans-serif] text-xl text-[var(--color-primary)]">Logement autonome</p>
-            <p class="mt-1 text-sm italic text-[var(--color-text-light)]">Van, camping-car</p>
-            <p class="mt-4 font-['Josefin_Sans',sans-serif] text-3xl text-[var(--color-accent-dark)]">420 €<span class="text-sm text-[var(--color-text-light)]"> /personne</span></p>
-            <p class="mt-3 text-sm text-[var(--color-text-medium)]">Pension complète sans hébergement. Accès sanitaires inclus.</p>
-          </div>
-          <div class="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6 md:p-8">
-            <p class="font-['Josefin_Sans',sans-serif] text-xl text-[var(--color-primary)]">Grande chambre dortoir partagée</p>
-            <p class="mt-1 text-sm italic text-[var(--color-text-light)]">4 à 5 lits simples</p>
-            <p class="mt-4 font-['Josefin_Sans',sans-serif] text-3xl text-[var(--color-accent-dark)]">490 €<span class="text-sm text-[var(--color-text-light)]"> /personne</span></p>
-          </div>
-          <div class="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6 md:p-8">
-            <p class="font-['Josefin_Sans',sans-serif] text-xl text-[var(--color-primary)]">Gîte indépendant partagé</p>
-            <p class="mt-1 text-sm italic text-[var(--color-text-light)]">3 personnes, lits simples</p>
-            <p class="mt-4 font-['Josefin_Sans',sans-serif] text-3xl text-[var(--color-accent-dark)]">560 €<span class="text-sm text-[var(--color-text-light)]"> /personne</span></p>
-          </div>
-          <div class="rounded-2xl border border-[var(--color-accent)] bg-[var(--color-surface)] p-6 md:p-8">
-            <p class="font-['Josefin_Sans',sans-serif] text-xl text-[var(--color-primary)]">Studio indépendant</p>
-            <p class="mt-1 text-sm italic text-[var(--color-text-light)]">Seul·e ou en couple, lit double</p>
-            <p class="mt-4 font-['Josefin_Sans',sans-serif] text-3xl text-[var(--color-accent-dark)]">620 €<span class="text-sm text-[var(--color-text-light)]"> /personne</span></p>
-            <p class="mt-3 text-sm font-medium text-[var(--color-accent-dark)]">−80 € si couple</p>
-          </div>
-        </div>
-
-        <div class="mt-10 rounded-2xl bg-[var(--color-warm)] p-6 md:p-8">
-          <p class="font-medium text-[var(--color-primary)]">Conditions de paiement</p>
-          <ul class="mt-3 space-y-1 text-[var(--color-text-medium)]">
-            <li>• <strong class="text-[var(--color-primary)]">Acompte</strong> : 200 € à la réservation</li>
-            <li>• Paiement en plusieurs fois possible — contacter <a href="mailto:hello@amawe.com" class="underline">hello@amawe.com</a></li>
-            <li>• <strong class="text-[var(--color-primary)]">Solde</strong> : à régler sur place en espèces</li>
-            <li>• ⚠️ Pas de paiement CB sur place. Distributeur à 15 km.</li>
-          </ul>
-        </div>
+        <a href="#reservation" class="btn-accent mt-6 inline-block">Pré-inscription</a>
       </div>
     </section>
 
-    <!-- RÉSERVATION -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- Silence notice -->
+    <section class="border-y border-[var(--color-sage-dark)] bg-[var(--color-sage-light)] py-10 md:py-12">
+      <div class="mx-auto max-w-5xl px-6 text-center">
+        <p class="font-['Josefin_Sans',sans-serif] text-base italic leading-relaxed text-[var(--color-sage-dark)] md:text-lg">
+          Ceci est une retraite silencieuse articulée autour de trois médecines : le Silence, le Mouvement (danse libre) et la Nature.<br />
+          Les participants s'engagent à respecter le silence durant l'intégralité du séjour.
+        </p>
+      </div>
+    </section>
+
+
+    <!-- PRÉ-INSCRIPTION — Avant-première (sans paiement) -->
     <section id="reservation" class="bg-[var(--color-sage-dark)] py-16 md:py-24">
-      <div class="mx-auto max-w-3xl px-6 text-center">
-        <p class="section-label mb-4" style="color: var(--color-warm);">RÉSERVATION</p>
+      <div class="mx-auto max-w-6xl px-6 text-center">
+        <p class="section-label mb-4" style="color: var(--color-warm);">PRÉ-INSCRIPTION</p>
         <h2 class="text-3xl md:text-4xl" style="color: var(--color-warm);">Inscris-toi en avant-première</h2>
         <div class="divider mx-auto mt-8" style="background-color: var(--color-warm);"></div>
-        <p class="mt-8 text-lg leading-relaxed text-[var(--color-surface)]/85">
-          La date exacte de l'hiver 2027 sera communiquée prochainement.<br />
-          Inscris-toi en avant-première pour être prévenu·e en premier et garantir ta place.
+        <p class="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-[var(--color-surface)]/85 md:max-w-none md:whitespace-nowrap">
+          La date exacte et le lieu de la <strong class="font-medium text-[var(--color-warm)]">retraite Danse & Silence 2027</strong> seront communiqués prochainement.<br />
+          Inscris-toi dès maintenant pour être prévenu·e <strong class="text-[var(--color-warm)]">en avant-première</strong>.
         </p>
-        <ol class="mx-auto mt-10 max-w-md space-y-4 text-left text-[var(--color-surface)]/85">
-          <li><strong class="text-[var(--color-warm)]">1.</strong> Remplis le <a href={formulaireUrl} class="underline" target="_blank" rel="noopener">formulaire d'inscription</a>.</li>
-          <li><strong class="text-[var(--color-warm)]">2.</strong> Règle l'acompte (lien de paiement envoyé par email sous 48h).</li>
-          <li><strong class="text-[var(--color-warm)]">3.</strong> Place réservée. Confirmation par email + invitation au groupe WhatsApp.</li>
-        </ol>
-        <p class="mt-8 text-sm text-[var(--color-surface)]/70">
-          Places limitées · Réservations par ordre chronologique · Le paiement de l'acompte valide l'inscription
+        <div class="mx-auto mt-10 max-w-xl rounded-2xl bg-[var(--color-warm)] p-6 text-left text-[var(--color-text-medium)] md:p-8">
+          <p class="font-['Josefin_Sans',sans-serif] text-xl italic text-[var(--color-sage-dark)]">
+            Comment ça marche
+          </p>
+          <ul class="mt-4 space-y-3 text-base leading-relaxed">
+            <li>· Tu laisses ton email et ton numéro dans le formulaire ci-dessous.</li>
+            <li>· Tu reçois un email de confirmation.</li>
+            <li>· Dès que la date et le lieu sont confirmés, tu es prévenu·e <strong class="font-medium text-[var(--color-sage-dark)]">avant tout le monde</strong> pour réserver ta place (par mail et SMS pour éviter de tomber dans les spams).</li>
+          </ul>
+          <p class="mt-5 text-sm italic text-[var(--color-text-light)]">
+            Cette pré-inscription ne t'engage à rien et n'implique aucun paiement à ce stade. Elle te garantit juste l'accès aux infos en priorité.
+          </p>
+        </div>
+        <p class="mt-8 text-base text-[var(--color-surface)]/80 md:text-lg">
+          Chaque édition est rapidement complète · Places limitées · Inscriptions par ordre chronologique dès l'ouverture
         </p>
-        <p class="mt-2 text-sm text-[var(--color-surface)]/70">
+
+        <!-- Formulaire pré-inscription : prénom + email + téléphone -->
+        <div class="mx-auto mt-10 max-w-md text-left">
+          <SubscribeForm
+            intent="waitlist_retraite_silence"
+            theme="dark"
+            cta="Je me pré-inscris"
+            extraFields={["name", "phone"]}
+            nameLabel="Prénom *"
+            namePlaceholder="Ton prénom"
+            emailLabel="Email *"
+            emailPlaceholder="ton@email.com"
+            phoneLabel="Téléphone *"
+            phonePlaceholder="+33 6 12 34 56 78"
+            successMessage="C'est noté ! Tu reçois un email de confirmation et seras prévenu·e en avant-première dès que la date et le lieu sont confirmés."
+            buttonClass="btn-accent w-full"
+          />
+        </div>
+
+        <p class="mt-6 text-sm text-[var(--color-surface)]/70">
           Contact : <a href="mailto:hello@amawe.com" class="underline">hello@amawe.com</a>
         </p>
-        <a href={formulaireUrl} target="_blank" rel="noopener" class="btn-accent mt-10 inline-block">Je m'inscris en avant-première</a>
       </div>
     </section>
 
-    <!-- FAQ -->
+    <!-- FAQ — V1 (pas d'équivalent V2) -->
     <section class="py-16 md:py-24">
       <div class="mx-auto max-w-3xl px-6">
         <div class="max-w-3xl">
           <p class="section-label mb-4 text-[var(--color-accent)]">À RETENIR</p>
           <h2 class="text-3xl md:text-4xl">Questions fréquentes</h2>
-          <div class="divider mt-6" style="background-color: var(--color-accent);"></div>
+          <div class="divider mt-6" style="background-color: var(--color-text-light);"></div>
         </div>
         <div class="mt-10 space-y-3">
           {faqs.map((f) => (
@@ -408,6 +488,34 @@ const formulaireUrl = "https://forms.gle/g7HdkpQsQqmzmHef7"
               <p class="mt-3 leading-relaxed text-[var(--color-text-medium)]">{f.a}</p>
             </details>
           ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- GALERIE HERO — 3 photos d'ambiance (en pied de page à la place de la newsletter) -->
+    <section class="py-8 md:py-10">
+      <div class="mx-auto max-w-6xl px-6">
+        <div class="grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-5">
+          <img src="/images/retraite-silence-meditation-amawe.webp" alt="Méditation en cercle silencieux pendant la retraite Danse & Silence Amawé" loading="lazy" class="aspect-[3/2] w-full rounded-2xl object-cover" />
+          <img src="/images/retraite-silence-meditation-cercle.webp" alt="Cercle de silence et méditation lors de la retraite Amawé" loading="lazy" class="aspect-[3/2] w-full rounded-2xl object-cover" />
+          <div class="aspect-[3/2] w-full overflow-hidden rounded-2xl">
+            <img src="/images/retraite-claire-danse-libre.webp" alt="Claire en danse libre lors de la retraite silencieuse en Sud Aveyron" loading="lazy" class="h-full w-full origin-[20%_50%] scale-[1.5] object-cover object-[20%_50%]" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA final : Pré-inscription Retraite Danse & Silence -->
+    <section class="py-12 md:py-16">
+      <div class="mx-auto max-w-3xl px-6 text-center">
+        <p class="font-['Josefin_Sans',sans-serif] text-2xl font-medium text-[var(--color-accent-dark)] md:text-3xl">
+          Prêt·e à plonger dans la Retraite Danse & Silence ?
+        </p>
+        <div class="mt-8 flex flex-col items-center gap-2">
+          <a href="#reservation" class="btn-accent inline-block">Pré-inscription</a>
+          <p class="text-sm italic text-[var(--color-text-light)]">
+            pour tout savoir et être sûr(e) d'avoir une place
+          </p>
         </div>
       </div>
     </section>

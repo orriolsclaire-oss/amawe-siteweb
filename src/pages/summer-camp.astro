@@ -150,7 +150,7 @@ const eventSchema = JSON.stringify({
         <p class="font-['Josefin_Sans',sans-serif] text-xs uppercase tracking-[0.3em] text-[var(--color-accent-light)] sm:text-sm md:text-base">
           Festival santé, mouvement, nature
         </p>
-        <h1 class="mt-4 font-['Josefin_Sans',sans-serif] font-200 uppercase tracking-[0.04em] text-4xl leading-[0.95] text-white sm:text-5xl md:text-7xl lg:text-8xl">
+        <h1 class="mt-4 font-['Josefin_Sans',sans-serif] uppercase tracking-[0.04em] text-4xl leading-[0.95] text-white sm:text-5xl md:text-7xl lg:text-8xl drop-shadow-[0_4px_24px_rgba(0,0,0,0.25)]" style="font-weight: 250;">
           Amawé<br/>Summer Camp
         </h1>
         <p class="mt-4 font-['Josefin_Sans',sans-serif] text-lg text-[var(--color-accent-light)] sm:text-xl md:text-2xl">
@@ -255,16 +255,16 @@ const eventSchema = JSON.stringify({
       <div class="mx-auto max-w-6xl px-6">
         <div class="grid grid-cols-2 grid-rows-[200px_200px] gap-3 sm:grid-cols-3 sm:grid-rows-[220px_220px] sm:gap-4 md:grid-cols-4 md:grid-rows-[250px_250px]">
           <div class="col-span-2 row-span-2 overflow-hidden rounded-lg">
-            <img src="/images/sc-nature.webp" alt="Nature luxuriante en Aveyron — arbres et verdure" class="h-full w-full object-cover" loading="lazy" decoding="async" width="1000" height="1333" />
+            <img src="/images/sc-rassemblement.webp" alt="Rassemblement sous grande tente blanche au cœur de la nature — ambiance Summer Camp Amawé" class="h-full w-full object-cover" loading="lazy" decoding="async" width="1200" height="1800" />
           </div>
           <div class="overflow-hidden rounded-lg">
-            <img src="/images/sc-riviere.webp" alt="Rivière de la Sorgues — baignade en pleine nature" class="h-full w-full object-cover" loading="lazy" decoding="async" width="800" height="1422" />
+            <img src="/images/sc-nature.webp" alt="Nature luxuriante en Aveyron — arbres et verdure" class="h-full w-full object-cover" loading="lazy" decoding="async" width="1000" height="1333" />
           </div>
           <div class="overflow-hidden rounded-lg">
             <img src="/images/sc-movnat.webp" alt="Pratique de mouvement naturel MovNat en extérieur" class="h-full w-full object-cover" loading="lazy" decoding="async" width="800" height="1220" />
           </div>
           <div class="overflow-hidden rounded-lg">
-            <img src="/images/sc-food1.webp" alt="Tablée partagée — repas sains et conviviaux" class="h-full w-full object-cover" loading="lazy" decoding="async" width="800" height="819" />
+            <img src="/images/sc-riviere.webp" alt="Rivière de la Sorgues — baignade en pleine nature" class="h-full w-full object-cover" loading="lazy" decoding="async" width="800" height="1422" />
           </div>
           <div class="overflow-hidden rounded-lg">
             <img src="/images/sc-nature1.webp" alt="Chemin de nature en Sud Aveyron — espace de ressourcement" class="h-full w-full object-cover" loading="lazy" decoding="async" width="1200" height="1600" />
@@ -710,23 +710,43 @@ const eventSchema = JSON.stringify({
             </div>
           </div>
 
-          <!-- Placeholders artistes -->
-          {Array.from({length: 2}).map((_, i) => (
-            <div class="flex gap-4 sm:gap-5">
-              <div class="flex-shrink-0">
-                <div class="flex h-20 w-20 items-center justify-center rounded-full bg-[var(--color-border)]">
-                  <span class="text-2xl text-[var(--color-text-light)]">?</span>
-                </div>
-              </div>
-              <div>
-                <p class="font-['Josefin_Sans',sans-serif] text-[1.3rem] font-semibold tracking-wide text-[var(--color-primary)]">À venir</p>
-                <p class="mt-0.5 text-sm text-[var(--color-accent)]">...</p>
-                <p class="mt-2 text-sm text-[var(--color-text-light)] italic leading-relaxed">
-                  Programmation en cours
-                </p>
+          <!-- Jam Session -->
+          <div class="flex gap-4 sm:gap-5">
+            <div class="flex-shrink-0">
+              <img
+                src="/images/sc-scene-ouverte.webp"
+                alt="Scène ouverte au Summer Camp Amawé — performance acoustique intime au ukulélé sous les guirlandes lumineuses"
+                class="h-20 w-20 rounded-full object-cover shadow-sm"
+                loading="lazy"
+                decoding="async"
+                width="160"
+                height="160"
+              />
+            </div>
+            <div>
+              <p class="font-['Josefin_Sans',sans-serif] text-[1.3rem] font-semibold tracking-wide text-[var(--color-primary)]">Scène ouverte</p>
+              <p class="mt-0.5 text-sm text-[var(--color-accent)]">Impro & diversité</p>
+              <p class="mt-2 text-sm text-[var(--color-text)] leading-relaxed">
+                Une scène ouverte aux volontaires, musique, danse, théâtre, performance… Toutes les expressions artistiques sont bienvenues. On se rassemble, on se laisse surprendre, ça se crée dans l'instant, un moment de partage spontané qui fait vibrer le camp.
+              </p>
+            </div>
+          </div>
+
+          <!-- Placeholder artiste à venir -->
+          <div class="flex gap-4 sm:gap-5">
+            <div class="flex-shrink-0">
+              <div class="flex h-20 w-20 items-center justify-center rounded-full bg-[var(--color-border)]">
+                <span class="text-2xl text-[var(--color-text-light)]">?</span>
               </div>
             </div>
-          ))}
+            <div>
+              <p class="font-['Josefin_Sans',sans-serif] text-[1.3rem] font-semibold tracking-wide text-[var(--color-primary)]">À venir</p>
+              <p class="mt-0.5 text-sm text-[var(--color-accent)]">...</p>
+              <p class="mt-2 text-sm text-[var(--color-text-light)] italic leading-relaxed">
+                Programmation en cours
+              </p>
+            </div>
+          </div>
 
         </div>
 
@@ -930,75 +950,18 @@ const eventSchema = JSON.stringify({
 
 
     <!-- ============================================
-         11. POUR QUI
+         11. TU REPARS — bloc final court
          ============================================ -->
-    <section class="py-12 sm:py-16 md:py-20">
-      <div class="mx-auto max-w-6xl px-6 lg:max-w-7xl">
-        <h2 class="text-center text-2xl sm:text-3xl md:text-4xl text-[var(--color-primary)]">C'est pour toi si&hellip;</h2>
-        <p class="mx-auto mt-3 max-w-3xl text-center text-base italic text-[var(--color-text-light)] sm:mt-4 sm:text-lg">
-          Le Summer Camp est fait pour toi si tu réponds OUI à une ou plusieurs de ces affirmations.
-        </p>
-
-        <div class="mt-10 grid gap-x-8 gap-y-7 sm:mt-12 md:grid-cols-2 md:gap-x-12 md:gap-y-8">
-          <div class="border-l-2 border-[var(--color-accent)] pl-5">
-            <p class="font-['Josefin_Sans',sans-serif] text-base font-medium leading-snug text-[var(--color-primary)] sm:text-lg">Tu tournes à vide ou à plein régime depuis trop longtemps</p>
-            <p class="mt-1 text-sm text-[var(--color-text-light)] leading-relaxed">Il te faut une vraie coupure, un espace ressourçant, loin du bruit, des écrans et du quotidien.</p>
-          </div>
-
-          <div class="border-l-2 border-[var(--color-accent)] pl-5">
-            <p class="font-['Josefin_Sans',sans-serif] text-base font-medium leading-snug text-[var(--color-primary)] sm:text-lg">Tu t'intéresses à ta santé, ton corps, ton énergie</p>
-            <p class="mt-1 text-sm text-[var(--color-text-light)] leading-relaxed">Mais tu as l'impression de tourner en rond sans jamais vraiment passer à l'action.</p>
-          </div>
-
-          <div class="border-l-2 border-[var(--color-accent)] pl-5">
-            <p class="font-['Josefin_Sans',sans-serif] text-base font-medium leading-snug text-[var(--color-primary)] sm:text-lg">Tu manques d'un environnement et de gens soutenants</p>
-            <p class="mt-1 text-sm text-[var(--color-text-light)] leading-relaxed">Pour ancrer un nouvel état d'esprit, des changements ou des pratiques dans le concret.</p>
-          </div>
-
-          <div class="border-l-2 border-[var(--color-accent)] pl-5">
-            <p class="font-['Josefin_Sans',sans-serif] text-base font-medium leading-snug text-[var(--color-primary)] sm:text-lg">Tu as du monde autour de toi, et pourtant tu te sens souvent seul·e</p>
-            <p class="mt-1 text-sm text-[var(--color-text-light)] leading-relaxed">Dans ce que tu traverses. Tu as soif de quelque chose de plus profond.</p>
-          </div>
-
-          <div class="border-l-2 border-[var(--color-accent)] pl-5">
-            <p class="font-['Josefin_Sans',sans-serif] text-base font-medium leading-snug text-[var(--color-primary)] sm:text-lg">Tu es engagé·e dans une démarche de santé globale depuis longtemps</p>
-            <p class="mt-1 text-sm text-[var(--color-text-light)] leading-relaxed">Tu connais les bases. Tu veux maintenant rencontrer des pairs et des facilitateurs qui ont eux aussi fait du chemin, et approfondir en présentiel plutôt qu'en ligne.</p>
-          </div>
-
-          <div class="border-l-2 border-[var(--color-accent)] pl-5">
-            <p class="font-['Josefin_Sans',sans-serif] text-base font-medium leading-snug text-[var(--color-primary)] sm:text-lg">Tu veux ressentir, rire aux éclats, t'émouvoir, t'émerveiller</p>
-            <p class="mt-1 text-sm text-[var(--color-text-light)] leading-relaxed">Tu réalises que ça fait longtemps que tu ne t'es pas vraiment laissé·e aller à vivre des moments qui comptent.</p>
-          </div>
-
-          <div class="border-l-2 border-[var(--color-accent)] pl-5">
-            <p class="font-['Josefin_Sans',sans-serif] text-base font-medium leading-snug text-[var(--color-primary)] sm:text-lg">Tu vis beaucoup dans ta tête</p>
-            <p class="mt-1 text-sm text-[var(--color-text-light)] leading-relaxed">Tu sens qu'il est temps de redescendre dans ton corps, dans le présent, dans le vivant.</p>
-          </div>
-
-          <div class="border-l-2 border-[var(--color-accent)] pl-5">
-            <p class="font-['Josefin_Sans',sans-serif] text-base font-medium leading-snug text-[var(--color-primary)] sm:text-lg">Tu vis une période intense</p>
-            <p class="mt-1 text-sm text-[var(--color-text-light)] leading-relaxed">Tu as besoin de te reposer ET de te remotiver, les deux en même temps.</p>
-          </div>
-
-          <div class="border-l-2 border-[var(--color-accent)] pl-5">
-            <p class="font-['Josefin_Sans',sans-serif] text-base font-medium leading-snug text-[var(--color-primary)] sm:text-lg">Ça fait longtemps que tu ne t'es pas vraiment accordé·e du temps</p>
-            <p class="mt-1 text-sm text-[var(--color-text-light)] leading-relaxed">Et tu remets ça à plus tard depuis trop longtemps.</p>
-          </div>
-
-          <div class="border-l-2 border-[var(--color-accent)] pl-5">
-            <p class="font-['Josefin_Sans',sans-serif] text-base font-medium leading-snug text-[var(--color-primary)] sm:text-lg">Tu veux repartir avec des pratiques, des outils, de l'inspiration</p>
-            <p class="mt-1 text-sm text-[var(--color-text-light)] leading-relaxed">Et peut-être des personnes importantes dans ta vie.</p>
-          </div>
-        </div>
-
-        <div class="mt-12 rounded-lg bg-[var(--color-warm)] p-6 text-center sm:mt-14 sm:p-8">
-          <p class="text-base text-[var(--color-text)] sm:text-lg">
+    <section class="py-10 sm:py-14 md:py-16">
+      <div class="mx-auto max-w-3xl px-6">
+        <div class="rounded-lg bg-[var(--color-warm)] p-8 text-center sm:p-10">
+          <p class="text-lg text-[var(--color-text)] sm:text-xl md:text-2xl">
             Que tu viennes seul·e, en famille, entre amis… tu repars :
           </p>
-          <div class="mt-5 flex flex-wrap justify-center gap-3 sm:mt-7 sm:gap-5">
-            <span class="rounded-full bg-[var(--color-sage)]/20 px-7 py-3 font-['Josefin_Sans',sans-serif] text-base text-[var(--color-secondary)] sm:px-9 sm:py-3.5 sm:text-lg">nourri·e</span>
-            <span class="rounded-full bg-[var(--color-accent)]/15 px-7 py-3 font-['Josefin_Sans',sans-serif] text-base text-[var(--color-accent)] sm:px-9 sm:py-3.5 sm:text-lg">inspiré·e</span>
-            <span class="rounded-full bg-[var(--color-blush)]/15 px-7 py-3 font-['Josefin_Sans',sans-serif] text-base text-[var(--color-blush)] sm:px-9 sm:py-3.5 sm:text-lg">rechargé·e</span>
+          <div class="mt-6 flex flex-wrap justify-center gap-3 sm:mt-8 sm:gap-5">
+            <span class="rounded-full bg-[var(--color-sage)]/20 px-8 py-3.5 font-['Josefin_Sans',sans-serif] text-lg text-[var(--color-secondary)] sm:px-10 sm:py-4 sm:text-xl md:text-2xl">nourri·e</span>
+            <span class="rounded-full bg-[var(--color-accent)]/15 px-8 py-3.5 font-['Josefin_Sans',sans-serif] text-lg text-[var(--color-accent)] sm:px-10 sm:py-4 sm:text-xl md:text-2xl">inspiré·e</span>
+            <span class="rounded-full bg-[var(--color-blush)]/15 px-8 py-3.5 font-['Josefin_Sans',sans-serif] text-lg text-[var(--color-blush)] sm:px-10 sm:py-4 sm:text-xl md:text-2xl">rechargé·e</span>
           </div>
         </div>
       </div>

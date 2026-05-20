@@ -3,25 +3,15 @@ import Layout from "~/layouts/Layout.astro"
 import Header from "~/components/Header.astro"
 import Footer from "~/components/Footer.astro"
 import TestimonialCard from "~/components/TestimonialCard.astro"
-import NewsletterSignup from "~/components/NewsletterSignup.astro"
 import { getLangFromUrl, useTranslations } from "~/i18n/utils"
 
 const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
 
 const formUrl = "https://forms.gle/V8KsRaoJNLQnAi6c8"
+const waitlistUrl = "https://forms.gle/tkNQmmHcy4XdVW6n7"
 const calendarUrl = "https://calendar.app.google/FHzZyGNn5zqd1ZJq9"
 const videoUrl = "https://www.youtube.com/embed/8rZzKqrOTsQ"
-
-const audiencePoints = [
-  t("ei.audience.1"),
-  t("ei.audience.2"),
-  t("ei.audience.3"),
-  t("ei.audience.4"),
-  t("ei.audience.5"),
-  t("ei.audience.6"),
-  t("ei.audience.7"),
-]
 
 const resultBlocks = [
   {
@@ -78,30 +68,19 @@ const pillars = [
 ]
 
 const bonuses = [
-  t("ei.bonus.1"),
-  t("ei.bonus.2"),
-  t("ei.bonus.3"),
-  t("ei.bonus.4"),
-  t("ei.bonus.5"),
-  t("ei.bonus.6"),
-]
-
-const valueStackItems = [
-  { label: "12 séances de coaching de groupe", value: "1 200 €" },
-  { label: "6 coachings individualisés hot seat", value: "600 €" },
-  { label: "Immersion 2 jours à Montpellier", value: "400 €" },
-  { label: "Immersion 4 jours en nature (Aveyron)", value: "800 €" },
-  { label: "Bibliothèque vidéos mouvement + recettes santé", value: "350 €" },
-  { label: "Groupe WhatsApp privé", value: "Offert" },
-  { label: "Suivi post-programme M+1", value: "150 €" },
-  { label: "6 bonus (experts, réunion alumni...)", value: "300 €" },
+  { text: t("ei.bonus.1"), badge: "Offert" },
+  { text: t("ei.bonus.4"), badge: "Offert" },
+  { text: t("ei.bonus.5"), badge: "Offert" },
+  { text: t("ei.bonus.6"), badge: "VIP" },
 ]
 
 const faqs = [
   { q: t("ei.faq.1.q"), a: t("ei.faq.1.a") },
-  { q: t("ei.faq.2.q"), a: t("ei.faq.2.a") },
+  { q: t("ei.faq.6.q"), a: t("ei.faq.6.a") },
   { q: t("ei.faq.3.q"), a: t("ei.faq.3.a") },
+  { q: t("ei.faq.2.q"), a: t("ei.faq.2.a") },
   { q: t("ei.faq.4.q"), a: t("ei.faq.4.a") },
+  { q: t("ei.faq.5.q"), a: t("ei.faq.5.a") },
 ]
 ---
 
@@ -116,48 +95,60 @@ const faqs = [
          1. HERO — 2 colonnes : texte + photo Claire
          ============================================ -->
     <section class="relative min-h-[85vh] flex items-center overflow-hidden" style="background: linear-gradient(135deg, #CE766A 0%, #8B5A7A 50%, #1A1A1A 100%);">
-      <div class="relative z-10 mx-auto grid max-w-7xl items-center gap-8 px-6 py-24 md:grid-cols-2 md:gap-12 md:py-32 lg:gap-16">
+      <div class="relative z-10 mx-auto max-w-7xl px-6 py-24 md:py-32">
+
+        <!-- Titre chapeau -->
+        <h1 class="text-center font-['Josefin_Sans',sans-serif] tracking-tight uppercase text-6xl text-[var(--color-surface)] md:text-8xl lg:text-9xl leading-[0.9] drop-shadow-[0_4px_24px_rgba(0,0,0,0.25)]" style="font-weight: 250;">{t("ei.title")}</h1>
+
+        <div class="mt-12 grid items-start gap-8 md:mt-16 md:grid-cols-2 md:gap-12 lg:gap-16">
 
         <!-- Colonne gauche : texte -->
         <div class="order-2 md:order-1">
 
-          <h1 class="font-['Josefin_Sans',sans-serif] font-bold tracking-[0.02em] uppercase text-5xl text-[var(--color-surface)] md:text-7xl lg:text-8xl leading-[0.95]">{t("ei.title")}</h1>
-
-          <!-- Sous-titre -->
-          <p class="mt-8 font-['Josefin_Sans',sans-serif] text-xl text-[var(--color-accent-light)] md:text-2xl">
-            {t("ei.hero.subtitle")}
-          </p>
-
           <!-- Texte descriptif -->
-          <p class="mt-6 max-w-xl text-[var(--color-surface)]/80 leading-relaxed">
-            En 3 mois, tu <strong class="text-[var(--color-surface)] font-semibold">restaures ta vitalite physique</strong>, tu <strong class="text-[var(--color-surface)] font-semibold">clarifies ton mental</strong>, tu <strong class="text-[var(--color-surface)] font-semibold">renforces ton equilibre emotionnel</strong>
+          <p class="max-w-xl text-lg font-semibold text-[var(--color-surface)] leading-relaxed md:text-xl">
+            En 3 mois, tu :
           </p>
-          <p class="mt-3 max-w-xl text-[var(--color-surface)]/80 leading-relaxed">
-            — pour arreter de t'epuiser, retrouver un elan solide, et mettre cette energie au service de la vie que tu veux vraiment construire.
+          <ul class="mt-3 max-w-xl space-y-2.5">
+            <li class="flex items-start gap-3">
+              <span class="mt-[0.65em] h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[var(--color-warm-dark)]"></span>
+              <span class="text-lg leading-relaxed text-[var(--color-surface)] md:text-xl"><strong class="font-semibold">restaures ta vitalité physique</strong></span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-[0.65em] h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[var(--color-warm-dark)]"></span>
+              <span class="text-lg leading-relaxed text-[var(--color-surface)] md:text-xl"><strong class="font-semibold">clarifies ton mental</strong></span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-[0.65em] h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[var(--color-warm-dark)]"></span>
+              <span class="text-lg leading-relaxed text-[var(--color-surface)] md:text-xl"><strong class="font-semibold">renforces ton équilibre émotionnel</strong></span>
+            </li>
+          </ul>
+          <p class="mt-5 max-w-xl text-lg text-[var(--color-surface)]/80 leading-relaxed md:text-xl">
+            Pour arrêter de t'épuiser, retrouver un élan solide, et mettre cette énergie au service de la vie que tu veux vraiment construire.
           </p>
 
           <!-- Punchline -->
           <div class="mt-8 border-l-4 border-[var(--color-accent)] pl-6">
-            <p class="font-['Josefin_Sans',sans-serif] text-xl text-[var(--color-accent-light)] md:text-2xl lg:text-3xl">
+            <p class="font-['Josefin_Sans',sans-serif] text-lg text-[var(--color-accent-light)] md:text-xl">
               {t("ei.hero.punchline")}
             </p>
           </div>
 
           <!-- CTA -->
-          <div class="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
-            <a href={formUrl} target="_blank" rel="noopener noreferrer" class="btn-accent text-center hover:!bg-[var(--color-accent-light)] hover:!border-[var(--color-accent-light)] hover:!text-[var(--color-primary)]">{t("ei.cta")}</a>
-            <p class="text-sm text-[var(--color-surface)]/50">{t("ei.cta.note")}</p>
+          <div class="mt-10 flex flex-col items-center gap-3">
+            <a href={waitlistUrl} target="_blank" rel="noopener noreferrer" class="btn-accent text-center leading-tight !bg-[var(--color-accent)] !border-[var(--color-accent)] hover:!bg-[var(--color-accent-light)] hover:!border-[var(--color-accent-light)] hover:!text-[var(--color-primary)]" set:html={lang === 'fr' ? 'Je candidate<br/>pour Énergie Illimitée' : t("ei.cta")}></a>
+            <p class="text-sm text-center text-[var(--color-surface)]/50">{t("ei.cta.note")}</p>
           </div>
 
           <!-- Social Proof -->
           <div class="mt-10 flex flex-wrap items-center gap-6 border-t border-[var(--color-surface)]/10 pt-6 md:gap-8">
             <div>
-              <p class="font-['Josefin_Sans',sans-serif] text-2xl text-[var(--color-accent-light)] md:text-3xl">3 500+</p>
-              <p class="text-[10px] text-[var(--color-surface)]/50 uppercase tracking-wider">personnes accompagnees</p>
+              <p class="font-['Josefin_Sans',sans-serif] text-2xl text-[var(--color-accent-light)] md:text-3xl">9,5<span class="text-base text-[var(--color-accent-light)]/60 md:text-lg">/10</span></p>
+              <p class="text-[10px] text-[var(--color-surface)]/50 uppercase tracking-wider">satisfaction participants</p>
             </div>
             <div class="h-6 w-px bg-[var(--color-surface)]/15 hidden sm:block"></div>
             <div>
-              <p class="font-['Josefin_Sans',sans-serif] text-2xl text-[var(--color-surface)]/80 md:text-3xl">3 mois</p>
+              <p class="font-['Josefin_Sans',sans-serif] text-2xl text-[var(--color-accent-light)] md:text-3xl">3 mois</p>
               <p class="text-[10px] text-[var(--color-surface)]/50 uppercase tracking-wider">d'accompagnement</p>
             </div>
             <div class="h-6 w-px bg-[var(--color-surface)]/15 hidden sm:block"></div>
@@ -168,18 +159,21 @@ const faqs = [
           </div>
         </div>
 
-        <!-- Colonne droite : video -->
+        <!-- Colonne droite : photo (vidéo à remettre plus tard) -->
         <div class="order-1 flex items-center md:order-2">
-          <div class="relative w-full overflow-hidden rounded-lg shadow-2xl" style="aspect-ratio: 16/9;">
-            <iframe
-              src={videoUrl}
-              title="Energie Illimitee — Presentation du programme"
-              class="absolute inset-0 h-full w-full"
+          <div class="relative w-full overflow-hidden rounded-lg shadow-2xl" style="aspect-ratio: 4/3;">
+            <img
+              src="/images/claire-ei-hero-coaching.webp"
+              alt="Claire Orriols en animation — Programme Énergie Illimitée, transmission en présentiel"
+              width="1600"
+              height="1200"
               loading="eager"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-            ></iframe>
+              decoding="async"
+              fetchpriority="high"
+              class="absolute inset-0 h-full w-full object-cover"
+            />
           </div>
+        </div>
         </div>
       </div>
 
@@ -191,7 +185,12 @@ const faqs = [
          3. PROMESSE — Texte + photo portrait
          ============================================ -->
     <section class="py-20 md:py-28">
-      <div class="mx-auto grid max-w-6xl items-center gap-12 px-6 md:grid-cols-2 md:gap-20">
+      <div class="mx-auto max-w-6xl px-6">
+        <!-- Titre chapeau -->
+        <p class="section-label mb-3 text-center text-[var(--color-accent)] tracking-[0.25em]">{lang === 'fr' ? "L'INTENTION" : 'THE INTENTION'}</p>
+        <h2 class="text-center text-4xl md:text-5xl" set:html={t("ei.promise.title")}></h2>
+
+        <div class="mt-14 grid items-center gap-12 md:mt-16 md:grid-cols-2 md:gap-20">
         <!-- Photo portrait (mobile : en premier) -->
         <div class="order-1 md:order-2">
           <img
@@ -226,150 +225,285 @@ const faqs = [
               <p class="text-[var(--color-text-medium)]"><strong class="font-semibold text-[var(--color-accent)]">Construire</strong> {t("ei.promise.3")}</p>
             </div>
           </div>
-          <p class="mt-10 font-['Josefin_Sans',sans-serif] text-lg italic text-[var(--color-text-medium)]">
-            {t("ei.promise.footer")}
-          </p>
-          <!-- CTA ajouté -->
-          <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <a href={formUrl} target="_blank" rel="noopener noreferrer" class="btn-accent">{t("ei.cta")}</a>
-            <p class="text-xs text-[var(--color-text-light)]">{t("ei.cta.note")}</p>
+          <div class="mt-10 rounded-lg border border-[var(--color-border)] bg-[var(--color-warm)] p-6 sm:p-7">
+            <p class="mb-4 text-xs font-semibold uppercase tracking-[0.15em] text-[var(--color-accent)]">{lang === 'fr' ? 'Ce que ça inclut' : 'What\'s included'}</p>
+            <ul class="space-y-3">
+              <li class="flex items-start gap-3">
+                <span class="mt-[0.55em] h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[var(--color-accent)]"></span>
+                <span class="text-base text-[var(--color-text-medium)]"><strong class="font-medium text-[var(--color-primary)]">{lang === 'fr' ? 'Coaching et mentorat' : 'Coaching and mentoring'}</strong> {lang === 'fr' ? 'chaque semaine' : 'every week'}</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="mt-[0.55em] h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[var(--color-accent)]"></span>
+                <span class="text-base text-[var(--color-text-medium)]"><strong class="font-medium text-[var(--color-primary)]">{lang === 'fr' ? 'Bibliothèque de contenus' : 'Content library'}</strong> {lang === 'fr' ? 'pour avancer à ton rythme' : 'to move at your own pace'}</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="mt-[0.55em] h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[var(--color-accent)]"></span>
+                <span class="text-base text-[var(--color-text-medium)]"><strong class="font-medium text-[var(--color-primary)]">{lang === 'fr' ? 'Suivi individuel' : 'Individual follow-up'}</strong></span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="mt-[0.55em] h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[var(--color-accent)]"></span>
+                <span class="text-base text-[var(--color-text-medium)]"><strong class="font-medium text-[var(--color-primary)]">{lang === 'fr' ? 'Stages en présentiel' : 'In-person retreats'}</strong></span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="mt-[0.55em] h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[var(--color-accent)]"></span>
+                <span class="text-base text-[var(--color-text-medium)]"><strong class="font-medium text-[var(--color-primary)]">{lang === 'fr' ? 'Un groupe qui te soutient' : 'A supportive group'}</strong></span>
+              </li>
+            </ul>
           </div>
+        </div>
+        </div>
+        <!-- CTA centré dans la section entière -->
+        <div class="mt-12 flex justify-center md:mt-16">
+          <a href={waitlistUrl} target="_blank" rel="noopener noreferrer" class="btn-accent">{lang === 'fr' ? "Rejoindre la liste d'attente" : 'Join the waitlist'}</a>
         </div>
       </div>
     </section>
 
-    <!-- Bandeau promesse -->
-    <div class="bg-[var(--color-warm)] py-4">
-      <div class="mx-auto max-w-5xl px-6 text-center">
-        <h3 class="text-2xl md:text-3xl font-light text-[var(--color-sage-dark)] tracking-wide">{t("ei.promise.title")}</h3>
-      </div>
-    </div>
-
     <!-- ============================================
          4. POUR QUI
          ============================================ -->
-    <section class="bg-[var(--color-text-medium)] py-20 md:py-28">
-      <div class="mx-auto max-w-4xl px-6">
-        <p class="section-label mb-4 text-center text-[var(--color-accent)]">{t("ei.audience.label")}</p>
-        <h2 class="text-center text-4xl text-[var(--color-surface)] md:text-5xl">{t("ei.audience.title")}</h2>
-        <p class="mt-6 text-center text-[var(--color-surface)]/60">{t("ei.audience.intro")}</p>
-        <div class="mt-12 space-y-4">
-          {audiencePoints.map((point, i) => (
-            <div class="flex items-start gap-5 border-l-2 border-[var(--color-accent)] bg-[var(--color-warm)] px-6 py-5 transition-colors hover:bg-[var(--color-background)]">
-              <span class="mt-0.5 shrink-0 font-['Josefin_Sans',sans-serif] text-3xl font-light text-[var(--color-accent)]">{String(i + 1).padStart(2, "0")}</span>
-              <p class="text-[var(--color-text)] leading-relaxed">{point}</p>
+    <section class="bg-[var(--color-surface)] py-20 md:py-28">
+      <div class="mx-auto max-w-5xl px-6">
+        <p class="section-label mb-3 text-center text-[var(--color-accent)] tracking-[0.25em]">{t("ei.audience.label")}</p>
+        <h2 class="text-center text-4xl md:text-5xl">{t("ei.audience.title")}</h2>
+        <p class="mx-auto mt-6 max-w-5xl text-center text-sm italic text-[var(--color-text-medium)] md:text-base md:whitespace-nowrap" set:html={t("ei.audience.intro")}></p>
+
+        <div class="mt-12 grid gap-x-8 gap-y-2 md:mt-14 md:grid-cols-2">
+          {[
+            { title: "Ton corps tire la sonnette d'alarme", text: t("ei.audience.1"), color: "var(--color-accent)" },
+            { title: "Tu sais qu'un autre niveau est possible", text: t("ei.audience.2"), color: "var(--color-warm-dark)" },
+            { title: "Ton mental ne s'arrête jamais", text: t("ei.audience.3"), color: "var(--color-sage)" },
+            { title: "Tes émotions t'anesthésient ou débordent", text: t("ei.audience.8"), color: "var(--color-blush)" },
+            { title: "Tu veux arrêter de subir les fuites d'énergie", text: t("ei.audience.4"), color: "var(--color-accent)" },
+            { title: "Tu veux réhabiter ton corps", text: t("ei.audience.5"), color: "var(--color-warm-dark)" },
+            { title: "Tu construis quelque chose qui mérite ta meilleure énergie", text: t("ei.audience.6"), color: "var(--color-sage)" },
+            { title: "Tu sais, mais tu n'incarnes pas", text: t("ei.audience.7"), color: "var(--color-blush)" },
+          ].map((item, i) => (
+            <div class="flex items-start gap-5 border-b border-[var(--color-border)] py-5 transition-all hover:bg-[var(--color-warm)] hover:px-4 hover:rounded-lg">
+              <span class="flex-shrink-0 mt-1 font-['Josefin_Sans',sans-serif] text-xl font-light leading-none sm:text-2xl" style={`color: ${item.color}`}>{String(i + 1).padStart(2, '0')}</span>
+              <div>
+                <p class="font-medium text-base text-[var(--color-primary)] md:text-lg">{item.title}</p>
+                <p class="mt-1.5 text-sm leading-relaxed text-[var(--color-text-medium)]">{item.text}</p>
+              </div>
             </div>
           ))}
         </div>
-        <div class="mt-10 border border-[var(--color-sage)] bg-[var(--color-sage)]/10 px-6 py-5">
-          <p class="text-center text-sm text-[var(--color-sage-light)] leading-relaxed">
-            {t("ei.audience.conclusion")}
-          </p>
-        </div>
-        <!-- CTA ajouté -->
-        <div class="mt-10 text-center">
-          <a href={formUrl} target="_blank" rel="noopener noreferrer" class="btn-accent hover:!bg-[var(--color-accent-light)] hover:!border-[var(--color-accent-light)] hover:!text-[var(--color-primary)]">{t("ei.cta")}</a>
-        </div>
-      </div>
-    </section>
 
-    <!-- Image intermédiaire — Claire portrait + citation -->
-    <section class="py-20 md:py-28">
-      <div class="mx-auto grid max-w-6xl items-center gap-12 px-6 md:grid-cols-2 md:gap-20">
-        <!-- Citation -->
-        <div class="order-2 md:order-1">
-          <div class="h-px w-16 bg-[var(--color-accent)] mb-8"></div>
-          <p class="font-['Josefin_Sans',sans-serif] text-3xl italic leading-snug text-[var(--color-primary)] md:text-4xl">
-            "Quand ton niveau d'énergie change, tout redevient possible."
-          </p>
-          <p class="mt-6 text-sm text-[var(--color-text-light)]">— Claire Orriols</p>
-          <div class="mt-10">
-            <a href={formUrl} target="_blank" rel="noopener noreferrer" class="btn-accent">{t("ei.cta")}</a>
-          </div>
-        </div>
-        <!-- Photo portrait nouvelle (fév 2026) -->
-        <div class="order-1 md:order-2">
-          <img
-            src="/images/claire-ei-portrait.webp"
-            alt="Claire Orriols — coach en santé holistique, fondatrice du programme Énergie Illimitée"
-            width="800"
-            height="1200"
-            loading="lazy"
-            decoding="async"
-            class="mx-auto aspect-[2/3] w-full max-w-md object-cover shadow-lg"
-          />
+        <p class="mx-auto mt-12 max-w-3xl text-center text-base text-[var(--color-primary)] md:text-lg">
+          {t("ei.audience.bridge")}
+        </p>
+
+        <div class="mt-8 mx-auto max-w-4xl rounded-lg border-l-4 border-[var(--color-sage-dark)] bg-[var(--color-sage)]/25 px-7 py-7 sm:px-10 sm:py-9">
+          <p class="text-center text-base font-medium text-[var(--color-sage-dark)] leading-relaxed sm:text-lg md:text-xl" set:html={t("ei.audience.conclusion")}></p>
         </div>
       </div>
     </section>
 
     <!-- ============================================
-         5. CE QUE ÇA VA CHANGER
+         5. 4 PILIERS (Méthode — montée pour cohérence page de vente)
          ============================================ -->
-    <section class="bg-[var(--color-sage-light)] py-20 md:py-28">
+    <section class="bg-[var(--color-warm)] py-20 md:py-28">
+      <div class="mx-auto max-w-6xl px-6">
+        <p class="section-label mb-3 text-center">{t("ei.pillars.label")}</p>
+        <h2 class="text-center text-4xl md:text-5xl">{t("ei.pillars.title")}</h2>
+        <div class="divider mx-auto mt-6 mb-12" style="background-color: var(--color-accent);"></div>
+
+        <!-- Grille 4 colonnes desktop, format vertical compact -->
+        <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
+          {pillars.map((pillar, i) => {
+            const colors = ['var(--color-sage)', 'var(--color-blush)', 'var(--color-accent)', 'var(--color-primary)'];
+            const c = colors[i];
+            return (
+              <div class="flex flex-col rounded-lg border border-[var(--color-border)] border-t-[3px] bg-[var(--color-surface)] p-5 shadow-sm transition-all hover:shadow-md sm:p-6" style={`border-top-color: ${c}`}>
+                <!-- Numero + Picto SVG -->
+                <div class="mb-4 flex items-center justify-between">
+                  <span class="font-['Josefin_Sans',sans-serif] text-4xl font-light" style={`color: ${c}`}>{pillar.num}</span>
+                  <svg width="30" height="30" viewBox="0 0 44 44" fill="none" stroke={c} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    {i === 0 && (
+                      <>
+                        <path d="M22 36 Q14 32 11 24 Q9 15 17 9 Q22 6 27 9 Q35 15 33 24 Q30 32 22 36 Z" fill={c} fill-opacity="0.15" />
+                        <path d="M22 36 L22 15" />
+                      </>
+                    )}
+                    {i === 1 && (
+                      <>
+                        <circle cx="22" cy="9" r="3" fill={c} fill-opacity="0.15" />
+                        <line x1="22" y1="12" x2="22" y2="22" />
+                        <path d="M22 15 q-7 3 -10 10" />
+                        <path d="M22 15 q7 3 10 10" />
+                        <path d="M11 29 c 4 -5 18 -5 22 0 c -4 5 -18 5 -22 0 Z" />
+                      </>
+                    )}
+                    {i === 2 && (
+                      <>
+                        <path d="M22 11 Q18 8 14 10 Q10 12 11 16 Q8 18 9 22 Q9 26 12 27 Q12 31 16 32 Q19 34 22 33 Q25 34 28 32 Q32 31 32 27 Q35 26 35 22 Q36 18 33 16 Q34 12 30 10 Q26 8 22 11 Z" fill={c} fill-opacity="0.15" />
+                        <line x1="22" y1="11" x2="22" y2="33" />
+                      </>
+                    )}
+                    {i === 3 && (
+                      <>
+                        <circle cx="22" cy="22" r="13" fill={c} fill-opacity="0.15" />
+                        <circle cx="22" cy="22" r="6" />
+                        <circle cx="22" cy="22" r="2" fill={c} />
+                      </>
+                    )}
+                  </svg>
+                </div>
+                <h3 class="text-lg leading-snug" style={`color: ${c}`}>
+                  {i === 2 ? (
+                    pillar.title
+                  ) : (
+                    <>
+                      {pillar.title.split('&')[0].trim()}
+                      {pillar.title.includes('&') && (
+                        <span class="font-light opacity-75"> & {pillar.title.split('&')[1].trim()}</span>
+                      )}
+                    </>
+                  )}
+                </h3>
+                <p class="mt-2 text-sm leading-relaxed text-[var(--color-text-medium)]">{pillar.text}</p>
+                <div class="mt-4 space-y-1.5 border-t border-[var(--color-border)] pt-3">
+                  {pillar.benefits.map((benefit) => (
+                    <p class="flex items-start gap-2 text-xs text-[var(--color-text-medium)]">
+                      <span class="mt-[3px] flex h-3 w-3 shrink-0 items-center justify-center rounded-full text-[7px] text-white" style={`background-color: ${c}`}>✓</span>
+                      <span>{benefit}</span>
+                    </p>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        <!-- Roue de la santé + Photo méditation -->
+        <div class="mt-16 grid items-center justify-items-center gap-8 md:grid-cols-2 md:gap-10">
+          <img
+            src="/images/roue-sante-amawe.webp"
+            alt="La Roue de la Santé Holistique, les 16 domaines évalués dans Énergie Illimitée"
+            width="800"
+            height="756"
+            loading="lazy"
+            decoding="async"
+            class="w-full max-w-lg bg-[var(--color-surface)] p-6 rounded-2xl md:h-[480px] md:object-contain md:w-auto"
+          />
+          <img
+            src="/images/claire-orriols-meditation-yoga-aveyron-energie-illimitee.webp"
+            alt="Claire Orriols en posture de méditation yoga en pleine nature en Aveyron — Programme Énergie Illimitée, santé holistique"
+            width="1000"
+            height="1500"
+            loading="lazy"
+            decoding="async"
+            class="w-full max-w-sm rounded-2xl md:h-[480px] md:w-auto md:object-cover"
+          />
+        </div>
+
+        <!-- CTA déplacé depuis la citation -->
+        <div class="mt-12 flex flex-col items-center md:mt-16">
+          <a href={waitlistUrl} target="_blank" rel="noopener noreferrer" class="btn-accent !text-sm !px-9 !py-4 md:!text-base md:!px-11 md:!py-5">{lang === 'fr' ? "Je m'inscris sur la liste d'attente" : 'Join the waitlist'}</a>
+          <p class="mt-3 text-sm italic text-[var(--color-text-medium)]">{lang === 'fr' ? "Pour recevoir toutes les infos en avant-première" : 'To get all the info in early access'}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bannière citation — pleine largeur, fond dégradé hero, compacte -->
+    <section class="py-10 md:py-12" style="background: linear-gradient(135deg, #CE766A 0%, #8B5A7A 50%, #1A1A1A 100%);">
+      <div class="mx-auto max-w-3xl px-6 text-center">
+        <div class="h-px w-12 bg-[var(--color-warm-dark)] mx-auto mb-5"></div>
+        <p class="font-['Josefin_Sans',sans-serif] text-xl leading-snug text-[var(--color-surface)] md:text-2xl lg:text-3xl">
+          "Ton énergie est à la base de tout<br/>ce que tu peux créer dans ta vie."
+        </p>
+        <p class="mt-3 text-xs uppercase tracking-[0.2em] text-[var(--color-warm-dark)]">Énergie Illimitée</p>
+      </div>
+    </section>
+
+    <!-- ============================================
+         6. CE QUE ÇA VA CHANGER (Transformations — résultats de la méthode)
+         ============================================ -->
+    <section class="py-20 md:py-28">
       <div class="mx-auto max-w-6xl px-6">
         <p class="section-label mb-4 text-center text-[var(--color-sage-dark)]">{t("ei.results.label")}</p>
         <h2 class="text-center text-4xl md:text-5xl">{t("ei.results.title")}</h2>
         <div class="divider mx-auto mt-6 mb-16" style="background-color: var(--color-sage);"></div>
 
-        <div class="grid gap-8 md:grid-cols-2">
-          <!-- Corps — bordure sage -->
-          <div class="border-t-4 border-[var(--color-sage)] bg-[var(--color-surface)] p-8 shadow-sm">
-            <div class="flex items-center gap-3 mb-5">
-              <span class="text-2xl">{resultBlocks[0].icon}</span>
-              <h3 class="text-2xl text-[var(--color-sage)]">{resultBlocks[0].title}</h3>
+        <div class="grid gap-5 sm:gap-6 md:grid-cols-2">
+          <!-- Corps — feuilles, sage -->
+          <div class="rounded-lg border border-[var(--color-border)] border-t-[3px] border-t-[var(--color-sage)] bg-[var(--color-surface)] p-4 shadow-sm sm:p-5">
+            <div class="flex items-center gap-2.5 mb-3">
+              <svg width="34" height="31" viewBox="0 0 44 40" fill="none" stroke="var(--color-sage)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M22 34 Q14 30 11 22 Q9 13 17 7 Q22 4 27 7 Q35 13 33 22 Q30 30 22 34 Z" fill="var(--color-sage)" fill-opacity="0.15" />
+                <path d="M22 34 L22 13" />
+                <path d="M22 22 Q18 20 16 18" />
+                <path d="M22 22 Q26 20 28 18" />
+              </svg>
+              <h3 class="text-base text-[var(--color-sage)] sm:text-lg">{resultBlocks[0].title}</h3>
             </div>
-            <ul class="space-y-3">
+            <ul class="space-y-2">
               {resultBlocks[0].items.map((item) => (
-                <li class="flex items-start gap-3 text-[var(--color-text-medium)]">
-                  <span class="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[var(--color-sage)] text-[10px] text-white">✓</span>
+                <li class="flex items-start gap-2.5 text-[15px] text-[var(--color-text-medium)] leading-relaxed">
+                  <span class="mt-[3px] flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-full bg-[var(--color-sage)] text-[8px] text-white">✓</span>
                   {item}
                 </li>
               ))}
             </ul>
           </div>
 
-          <!-- Mental — bordure accent (terracotta) -->
-          <div class="border-t-4 border-[var(--color-accent)] bg-[var(--color-surface)] p-8 shadow-sm">
-            <div class="flex items-center gap-3 mb-5">
-              <span class="text-2xl">{resultBlocks[1].icon}</span>
-              <h3 class="text-2xl text-[var(--color-accent)]">{resultBlocks[1].title}</h3>
+          <!-- Mental — cerveau, blush (violet/prune) -->
+          <div class="rounded-lg border border-[var(--color-border)] border-t-[3px] border-t-[var(--color-blush)] bg-[var(--color-surface)] p-4 shadow-sm sm:p-5">
+            <div class="flex items-center gap-2.5 mb-3">
+              <svg width="34" height="31" viewBox="0 0 44 40" fill="none" stroke="var(--color-blush)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M22 9 Q18 6 14 8 Q10 10 11 14 Q8 16 9 20 Q9 24 12 25 Q12 29 16 30 Q19 32 22 31 Q25 32 28 30 Q32 29 32 25 Q35 24 35 20 Q36 16 33 14 Q34 10 30 8 Q26 6 22 9 Z" fill="var(--color-blush)" fill-opacity="0.15" />
+                <line x1="22" y1="9" x2="22" y2="31" />
+                <path d="M16 15 Q18 16 18 18" />
+                <path d="M28 15 Q26 16 26 18" />
+                <path d="M16 24 Q18 23 18 21" />
+                <path d="M28 24 Q26 23 26 21" />
+              </svg>
+              <h3 class="text-base text-[var(--color-blush)] sm:text-lg">{resultBlocks[1].title}</h3>
             </div>
-            <ul class="space-y-3">
+            <ul class="space-y-2">
               {resultBlocks[1].items.map((item) => (
-                <li class="flex items-start gap-3 text-[var(--color-text-medium)]">
-                  <span class="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[var(--color-accent)] text-[10px] text-white">✓</span>
+                <li class="flex items-start gap-2.5 text-[15px] text-[var(--color-text-medium)] leading-relaxed">
+                  <span class="mt-[3px] flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-full bg-[var(--color-blush)] text-[8px] text-white">✓</span>
                   {item}
                 </li>
               ))}
             </ul>
           </div>
 
-          <!-- Émotions — bordure blush -->
-          <div class="border-t-4 border-[var(--color-blush)] bg-[var(--color-surface)] p-8 shadow-sm">
-            <div class="flex items-center gap-3 mb-5">
-              <span class="text-2xl">{resultBlocks[2].icon}</span>
-              <h3 class="text-2xl text-[var(--color-blush)]">{resultBlocks[2].title}</h3>
+          <!-- Émotions — cœur, accent (terracotta) -->
+          <div class="rounded-lg border border-[var(--color-border)] border-t-[3px] border-t-[var(--color-accent)] bg-[var(--color-surface)] p-4 shadow-sm sm:p-5">
+            <div class="flex items-center gap-2.5 mb-3">
+              <svg width="34" height="31" viewBox="0 0 44 40" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M22 33 C 13 26, 6 20, 6 13 C 6 8, 12 5, 16 8 C 18 10, 22 13, 22 13 C 22 13, 26 10, 28 8 C 32 5, 38 8, 38 13 C 38 20, 31 26, 22 33 Z" fill="var(--color-accent)" fill-opacity="0.15" />
+              </svg>
+              <h3 class="text-base text-[var(--color-accent)] sm:text-lg">{resultBlocks[2].title}</h3>
             </div>
-            <ul class="space-y-3">
+            <ul class="space-y-2">
               {resultBlocks[2].items.map((item) => (
-                <li class="flex items-start gap-3 text-[var(--color-text-medium)]">
-                  <span class="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[var(--color-blush)] text-[10px] text-white">✓</span>
+                <li class="flex items-start gap-2.5 text-[15px] text-[var(--color-text-medium)] leading-relaxed">
+                  <span class="mt-[3px] flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-full bg-[var(--color-accent)] text-[8px] text-white">✓</span>
                   {item}
                 </li>
               ))}
             </ul>
           </div>
 
-          <!-- Vie — bordure primary (charcoal) -->
-          <div class="border-t-4 border-[var(--color-primary)] bg-[var(--color-surface)] p-8 shadow-sm">
-            <div class="flex items-center gap-3 mb-5">
-              <span class="text-2xl">{resultBlocks[3].icon}</span>
-              <h3 class="text-2xl text-[var(--color-primary)]">{resultBlocks[3].title}</h3>
+          <!-- Vie — fusée, primary (charcoal) -->
+          <div class="rounded-lg border border-[var(--color-border)] border-t-[3px] border-t-[var(--color-primary)] bg-[var(--color-surface)] p-4 shadow-sm sm:p-5">
+            <div class="flex items-center gap-2.5 mb-3">
+              <svg width="34" height="31" viewBox="0 0 44 40" fill="none" stroke="var(--color-primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M22 5 Q27 10 27 19 L27 26 L17 26 L17 19 Q17 10 22 5 Z" fill="var(--color-primary)" fill-opacity="0.15" />
+                <circle cx="22" cy="16" r="2.5" />
+                <path d="M17 23 L13 30 L17 28" />
+                <path d="M27 23 L31 30 L27 28" />
+                <path d="M20 30 Q22 36 24 30" stroke-dasharray="1.5 2" />
+              </svg>
+              <h3 class="text-base text-[var(--color-primary)] sm:text-lg">{resultBlocks[3].title}</h3>
             </div>
-            <ul class="space-y-3">
+            <ul class="space-y-2">
               {resultBlocks[3].items.map((item) => (
-                <li class="flex items-start gap-3 text-[var(--color-text-medium)]">
-                  <span class="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[var(--color-primary)] text-[10px] text-white">✓</span>
+                <li class="flex items-start gap-2.5 text-[15px] text-[var(--color-text-medium)] leading-relaxed">
+                  <span class="mt-[3px] flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-full bg-[var(--color-primary)] text-[8px] text-white">✓</span>
                   {item}
                 </li>
               ))}
@@ -378,9 +512,10 @@ const faqs = [
         </div>
 
         <!-- CTA après la grille -->
-        <div class="mt-14 text-center">
-          <p class="mb-6 font-['Josefin_Sans',sans-serif] text-2xl italic text-[var(--color-primary)] md:text-3xl">Prête à vivre ces changements ?</p>
-          <a href={formUrl} target="_blank" rel="noopener noreferrer" class="btn-accent">{t("ei.cta")}</a>
+        <div class="mt-14 flex flex-col items-center text-center">
+          <p class="mb-6 font-['Josefin_Sans',sans-serif] text-2xl italic text-[var(--color-primary)] md:text-3xl">Prêt(e) à vivre ces changements ?</p>
+          <a href={waitlistUrl} target="_blank" rel="noopener noreferrer" class="btn-accent">{lang === 'fr' ? "Je veux plus d'infos" : 'I want more info'}</a>
+          <p class="mt-3 text-sm text-[var(--color-text-light)]">{lang === 'fr' ? "Liste d'attente ouverte" : 'Waitlist open'}</p>
         </div>
       </div>
     </section>
@@ -388,121 +523,204 @@ const faqs = [
     <!-- ============================================
          6. TÉMOIGNAGES
          ============================================ -->
-    <section class="bg-[var(--color-warm)] py-20 md:py-28">
+    <section class="bg-[var(--color-warm-dark)] py-20 md:py-28">
       <div class="mx-auto max-w-6xl px-6">
         <p class="section-label mb-4 text-center">CE QUE ÇA A CHANGÉ CHEZ EUX</p>
         <h2 class="text-center text-4xl md:text-5xl">Témoignages</h2>
-        <div class="divider mx-auto mt-6 mb-12"></div>
+        <div class="divider mx-auto mt-6 mb-12" style="background-color: var(--color-accent);"></div>
 
-        <div class="grid gap-8 md:grid-cols-2">
-          <TestimonialCard
-            quote="Ce stage a été déclencheur pour moi, beaucoup de changements ont été entrepris. Claire m'avait dit que je ressortirais différente à la fin de ce stage. OUI, je me souviendrai de ce stage toute ma vie !"
-            name="Séverine"
-            context="Stage Amawe"
-          />
-          <TestimonialCard
-            quote="Un stage qui a lancé le début de changements d'ampleur. Je vis un peu plus près du sol et de mes ressentis, je danse un peu toute seule... J'intègre ce mantra : I am everything I want to be."
-            name="Hélène"
-            context="Stage & Retraite"
-          />
-          <TestimonialCard
-            quote="Merci pour ce stage qui m'a apporté une vision globale de ma santé. Je ne vous remercierai jamais assez pour tout ce que j'ai appris !"
-            name="Céline"
-            context="Stage santé holistique"
-          />
-          <TestimonialCard
-            quote="J'ai retrouvé le goût de cuisiner, des plats savoureux. On est loin des régimes ! Et pourtant -10 kilos ! Tout ça sans privation, c'est juste incroyable !"
-            name="Izadora"
-            context="Programme nutrition"
-          />
+        <div class="columns-1 gap-5 md:columns-2 lg:columns-3 lg:gap-6">
+          <!-- 1. Annie — TERRACOTTA -->
+          <div class="mb-3 break-inside-avoid rounded-lg border-l-[3px] border-l-[var(--color-accent)] border border-[var(--color-border)] bg-[var(--color-surface)] p-6 shadow-sm transition-shadow hover:shadow-md">
+            <div class="font-['Josefin_Sans',sans-serif] text-3xl leading-none text-[var(--color-accent)]">"</div>
+            <p class="mt-1 text-[15px] leading-relaxed text-[var(--color-text-medium)]">
+              Le programme Énergie Illimitée est <strong class="text-[var(--color-primary)]">le plus beau cadeau que je pouvais me faire</strong>. Claire a une connaissance très impressionnante du corps dans tous ses états. J'ai 68 ans et je repars motivée, enthousiaste, avec une meilleure connaissance de moi-même. On apprend à ne plus être dans la tête mais dans le corps. C'est une aventure que je recommande à 1000%.
+            </p>
+            <div class="mt-4 flex items-center gap-2 border-t border-[var(--color-border)] pt-3">
+              <span class="h-1.5 w-1.5 rounded-full bg-[var(--color-accent)]"></span>
+              <p class="text-sm font-medium text-[var(--color-primary)]">Annie</p>
+            </div>
+          </div>
+
+          <!-- 2. Screenshot immersion Montpellier — PRUNE -->
+          <div class="mb-3 break-inside-avoid rounded-lg border-l-[3px] border-l-[var(--color-accent-dark)] border border-[var(--color-border)] bg-[var(--color-surface)] p-3 shadow-sm transition-shadow hover:shadow-md">
+            <img
+              src="/images/temoignage-ei-immersion-montpellier.webp"
+              alt="Témoignage Énergie Illimitée — l'immersion à Montpellier a été le tremplin, le détonateur pour remettre de la vie dans la vie"
+              width="708"
+              height="158"
+              loading="lazy"
+              decoding="async"
+              class="w-full rounded-md"
+            />
+          </div>
+
+          <!-- 3. Grégoire +20% — GRES -->
+          <div class="mb-3 break-inside-avoid rounded-lg border-l-[3px] border-l-[var(--color-text-light)] border border-[var(--color-border)] bg-[var(--color-surface)] p-6 shadow-sm transition-shadow hover:shadow-md">
+            <div class="font-['Josefin_Sans',sans-serif] text-3xl leading-none text-[var(--color-text-light)]">"</div>
+            <p class="mt-1 text-[15px] leading-relaxed text-[var(--color-text-medium)]">
+              Le programme n'est pas encore terminé mais déjà : <strong class="text-[var(--color-primary)]">+20% d'énergie</strong>, et surtout elle est plus stable. Meilleure capacité à accueillir les vagues de la vie. <strong class="text-[var(--color-primary)]">+20/25% d'énergie et c'est déjà colossal.</strong>
+            </p>
+            <div class="mt-4 flex items-center gap-2 border-t border-[var(--color-border)] pt-3">
+              <span class="h-1.5 w-1.5 rounded-full bg-[var(--color-text-light)]"></span>
+              <p class="text-sm font-medium text-[var(--color-primary)]">Grégoire</p>
+            </div>
+          </div>
+
+          <!-- 4. Screenshot compréhension énergie — TERRACOTTA -->
+          <div class="mb-3 break-inside-avoid rounded-lg border-l-[3px] border-l-[var(--color-accent)] border border-[var(--color-border)] bg-[var(--color-surface)] p-3 shadow-sm transition-shadow hover:shadow-md">
+            <img
+              src="/images/temoignage-ei-comprehension.webp"
+              alt="Témoignage Énergie Illimitée — compréhension globale du fonctionnement de l'énergie dans le corps"
+              width="690"
+              height="184"
+              loading="lazy"
+              decoding="async"
+              class="w-full rounded-md"
+            />
+          </div>
+
+          <!-- 5. Anonyme apaisée — PRUNE -->
+          <div class="mb-3 break-inside-avoid rounded-lg border-l-[3px] border-l-[var(--color-accent-dark)] border border-[var(--color-border)] bg-[var(--color-surface)] p-6 shadow-sm transition-shadow hover:shadow-md">
+            <div class="font-['Josefin_Sans',sans-serif] text-3xl leading-none text-[var(--color-accent-dark)]">"</div>
+            <p class="mt-1 text-[15px] leading-relaxed text-[var(--color-text-medium)]">
+              Une nouvelle vision des choses, <strong class="text-[var(--color-primary)]">plus apaisée avec une meilleure gestion de mon impulsivité</strong>. Plus de bienveillance et j'arrive plus souvent à sortir de ma zone de confort même si cela est challengeant parfois !
+            </p>
+            <div class="mt-4 flex items-center gap-2 border-t border-[var(--color-border)] pt-3">
+              <span class="h-1.5 w-1.5 rounded-full bg-[var(--color-accent-dark)]"></span>
+              <p class="text-sm font-medium text-[var(--color-primary)]">Pauline</p>
+            </div>
+          </div>
+
+          <!-- 6. Screenshot prise de conscience (Annie longue) — GRES -->
+          <div class="mb-3 break-inside-avoid rounded-lg border-l-[3px] border-l-[var(--color-text-light)] border border-[var(--color-border)] bg-[var(--color-surface)] p-3 shadow-sm transition-shadow hover:shadow-md">
+            <img
+              src="/images/temoignage-ei-prise-de-conscience.webp"
+              alt="Témoignage Énergie Illimitée — prise de conscience de l'impact du mouvement et de la respiration sur la gestion des émotions"
+              width="714"
+              height="458"
+              loading="lazy"
+              decoding="async"
+              class="w-full rounded-md"
+            />
+          </div>
+
+          <!-- 7. Pauline ME choisir — TERRACOTTA -->
+          <div class="mb-3 break-inside-avoid rounded-lg border-l-[3px] border-l-[var(--color-accent)] border border-[var(--color-border)] bg-[var(--color-surface)] p-6 shadow-sm transition-shadow hover:shadow-md">
+            <div class="font-['Josefin_Sans',sans-serif] text-3xl leading-none text-[var(--color-accent)]">"</div>
+            <p class="mt-1 text-[15px] leading-relaxed text-[var(--color-text-medium)]">
+              J'ai décidé de faire Énergie Illimitée car je sentais qu'il y avait des choses qui me bloquaient. Pour une fois, <strong class="text-[var(--color-primary)]">j'ai décidé de ME choisir</strong>, de prendre soin de moi. Cela m'a permis de comprendre ce qui est essentiel, de changer de point de vue sur ma vie.
+            </p>
+            <div class="mt-4 flex items-center gap-2 border-t border-[var(--color-border)] pt-3">
+              <span class="h-1.5 w-1.5 rounded-full bg-[var(--color-accent)]"></span>
+              <p class="text-sm font-medium text-[var(--color-primary)]">Pauline</p>
+            </div>
+          </div>
+
+          <!-- 8. Screenshot tonicité — PRUNE -->
+          <div class="mb-3 break-inside-avoid rounded-lg border-l-[3px] border-l-[var(--color-accent-dark)] border border-[var(--color-border)] bg-[var(--color-surface)] p-3 shadow-sm transition-shadow hover:shadow-md">
+            <img
+              src="/images/temoignage-ei-tonicite.webp"
+              alt="Témoignage Énergie Illimitée — plus de tonicité, super conseils et challenges adaptés"
+              width="678"
+              height="134"
+              loading="lazy"
+              decoding="async"
+              class="w-full rounded-md"
+            />
+          </div>
+
+          <!-- 9. Cendrine immersion — GRES -->
+          <div class="mb-3 break-inside-avoid rounded-lg border-l-[3px] border-l-[var(--color-text-light)] border border-[var(--color-border)] bg-[var(--color-surface)] p-6 shadow-sm transition-shadow hover:shadow-md">
+            <div class="font-['Josefin_Sans',sans-serif] text-3xl leading-none text-[var(--color-text-light)]">"</div>
+            <p class="mt-1 text-[15px] leading-relaxed text-[var(--color-text-medium)]">
+              L'immersion à Montpellier a été <strong class="text-[var(--color-primary)]">un magnifique moment de rencontres, d'expérimentation, de vie</strong>. Des vrais moments de connexion aux autres, à soi et à l'environnement. Le pied à l'étrier pour reconquérir ma capacité à grimper et sauter en confiance.
+            </p>
+            <div class="mt-4 flex items-center gap-2 border-t border-[var(--color-border)] pt-3">
+              <span class="h-1.5 w-1.5 rounded-full bg-[var(--color-text-light)]"></span>
+              <p class="text-sm font-medium text-[var(--color-primary)]">Cendrine</p>
+            </div>
+          </div>
+
+          <!-- 10. David screenshot — GRES -->
+          <div class="mb-3 break-inside-avoid rounded-lg border-l-[3px] border-l-[var(--color-text-light)] border border-[var(--color-border)] bg-[var(--color-surface)] p-3 shadow-sm transition-shadow hover:shadow-md">
+            <img
+              src="/images/temoignage-david-ei-2026.webp"
+              alt="Témoignage de David sur le programme Énergie Illimitée Amawé — mieux aborder le stress, gestion au quotidien, se ressourcer en collectif, meilleure compréhension de son corps"
+              width="804"
+              height="559"
+              loading="lazy"
+              decoding="async"
+              class="w-full rounded-md"
+            />
+          </div>
+
+          <!-- 11. Cendrine phare — TERRACOTTA -->
+          <div class="mb-3 break-inside-avoid rounded-lg border-l-[3px] border-l-[var(--color-accent)] border border-[var(--color-border)] bg-[var(--color-surface)] p-6 shadow-sm transition-shadow hover:shadow-md">
+            <div class="font-['Josefin_Sans',sans-serif] text-3xl leading-none text-[var(--color-accent)]">"</div>
+            <p class="mt-1 text-[15px] leading-relaxed text-[var(--color-text-medium)]">
+              Un accompagnement qui <strong class="text-[var(--color-primary)]">responsabilise</strong>, donne des outils de remise en question, interroge les patterns. <strong class="text-[var(--color-primary)]">Un groupe bienveillant</strong>, l'immersion en présentiel comme activateur. <strong class="text-[var(--color-primary)]">Navigation permanente entre théorie et hyper concret</strong>, pas d'idéaux non mis en pratique. Personnellement, j'ai gagné en clarté et compétence.
+            </p>
+            <div class="mt-4 flex items-center gap-2 border-t border-[var(--color-border)] pt-3">
+              <span class="h-1.5 w-1.5 rounded-full bg-[var(--color-accent)]"></span>
+              <p class="text-sm font-medium text-[var(--color-primary)]">Cendrine</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pauline Hallelujah + Grégoire screenshot — ligne dédiée 1+2 cols sur desktop -->
+        <div class="grid grid-cols-1 gap-5 lg:grid-cols-3 lg:gap-6 lg:-mt-7">
+          <!-- Pauline Hallelujah — PRUNE -->
+          <div class="rounded-lg border-l-[3px] border-l-[var(--color-accent-dark)] border border-[var(--color-border)] bg-[var(--color-surface)] p-6 shadow-sm transition-shadow hover:shadow-md">
+            <div class="font-['Josefin_Sans',sans-serif] text-3xl leading-none text-[var(--color-accent-dark)]">"</div>
+            <p class="mt-1 text-[15px] leading-relaxed text-[var(--color-text-medium)]">
+              <strong class="text-[var(--color-primary)]">Sur le plan émotionnel et mindset, ce programme a été une grande révélation</strong> : trouver des outils pour accueillir mes émotions, ne plus me laisser submerger. J'arrive de mieux en mieux à poser mes limites et à dire non. <em>Hallelujah !</em>
+            </p>
+            <div class="mt-4 flex items-center gap-2 border-t border-[var(--color-border)] pt-3">
+              <span class="h-1.5 w-1.5 rounded-full bg-[var(--color-accent-dark)]"></span>
+              <p class="text-sm font-medium text-[var(--color-primary)]">Pauline</p>
+            </div>
+          </div>
+
+          <!-- Grégoire screenshot — TERRACOTTA — span 2 cols (compensé pour pas chevaucher cols 2-3) -->
+          <div class="lg:col-span-2 lg:mt-10 lg:self-start rounded-lg border-l-[3px] border-l-[var(--color-accent)] border border-[var(--color-border)] bg-[var(--color-surface)] p-3 shadow-sm transition-shadow hover:shadow-md">
+            <img
+              src="/images/temoignage-ei-gregoire.webp"
+              alt="Témoignage de Grégoire sur Énergie Illimitée — j'honore mieux l'hypersensible en moi"
+              width="1254"
+              height="180"
+              loading="lazy"
+              decoding="async"
+              class="w-full rounded-md"
+            />
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ============================================
-         7. LE FORMAT — Comment ça se passe
-         ============================================ -->
-    <section class="py-20 md:py-28">
-      <div class="mx-auto max-w-6xl px-6">
-        <p class="section-label mb-4 text-center">{t("ei.format.label")}</p>
-        <h2 class="text-center text-3xl md:text-4xl">{t("ei.format.title")}</h2>
-        <p class="mt-4 text-center font-['Josefin_Sans',sans-serif] text-xl italic text-[var(--color-accent)]">
-          {t("ei.format.start")}
-        </p>
-        <div class="divider mx-auto mt-6 mb-16"></div>
-
-        <div class="grid gap-12 md:grid-cols-3">
-          <!-- Coaching de groupe -->
-          <div class="border border-[var(--color-border)] bg-[var(--color-surface)] p-8">
-            <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[var(--color-sage-light)] text-xl">
-              👥
-            </div>
-            <h3 class="text-lg">{t("ei.format.coaching.title")}</h3>
-            <p class="mt-1 text-xs text-[var(--color-text-light)] italic">{t("ei.format.coaching.subtitle")}</p>
-            <p class="mt-4 text-sm text-[var(--color-text-medium)] leading-relaxed">
-              {t("ei.format.coaching.text")}
-            </p>
-          </div>
-
-          <!-- Hot seat -->
-          <div class="border border-[var(--color-border)] bg-[var(--color-surface)] p-8">
-            <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[var(--color-accent-light)] text-xl">
-              🎯
-            </div>
-            <h3 class="text-lg">{t("ei.format.hotseat.title")}</h3>
-            <p class="mt-1 text-xs text-[var(--color-text-light)] italic">{t("ei.format.hotseat.subtitle")}</p>
-            <p class="mt-4 text-sm text-[var(--color-text-medium)] leading-relaxed">
-              {t("ei.format.hotseat.text")}
-            </p>
-          </div>
-
-          <!-- Immersions -->
-          <div class="border border-[var(--color-border)] bg-[var(--color-surface)] p-8">
-            <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[var(--color-warm)] text-xl">
-              🌿
-            </div>
-            <h3 class="text-lg">{t("ei.format.immersion.title")}</h3>
-            <p class="mt-1 text-xs text-[var(--color-text-light)] italic">{t("ei.format.immersion.subtitle")}</p>
-            <div class="mt-4 space-y-3 text-sm text-[var(--color-text-medium)]">
-              <p><strong class="text-[var(--color-primary)]">🏙️ {t("ei.format.immersion.1.title")}</strong><br/>{t("ei.format.immersion.1.text")}</p>
-              <p><strong class="text-[var(--color-primary)]">🌿 {t("ei.format.immersion.2.title")}</strong><br/>{t("ei.format.immersion.2.text")}</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Rythme résumé -->
-        <div class="mt-10 bg-[var(--color-sage-light)] px-6 py-4 text-center">
-          <p class="font-medium text-[var(--color-sage-dark)]">{t("ei.format.rhythm")}</p>
-        </div>
-
-        <!-- Format hybride -->
-        <div class="mt-10 mx-auto max-w-3xl text-center">
-          <p class="font-['Josefin_Sans',sans-serif] text-xl italic text-[var(--color-text-medium)]">
-            {t("ei.format.hybrid")}
-          </p>
-          <p class="mt-4 text-sm text-[var(--color-text-light)]">
-            {t("ei.format.hybrid.text")}
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Images intermédiaires — Grille bento asymétrique -->
+    <!-- Images intermédiaires — Grille bento asymétrique (placée après Témoignages) -->
     <section class="py-8">
       <div class="mx-auto max-w-6xl px-6">
-        <!-- Desktop : grille bento 3 colonnes, portraits span 2 rows -->
+        <!-- Grille 1 : 5 landscapes même taille, movnat-saut col-span-2 pour combler ligne 2 -->
         <div class="grid grid-cols-2 gap-3 md:grid-cols-3 md:grid-rows-2 md:gap-4">
-          <!-- Paysage : claire paysage (1024x682) — top-left -->
           <img
-            src="/images/claire-ei-paysage.webp"
-            alt="Claire Orriols animant une séance de coaching Énergie Illimitée"
-            width="1024"
-            height="682"
+            src="/images/ei-stage-repas-mandala.webp"
+            alt="Repas en groupe en extérieur lors d'une immersion Énergie Illimitée — convivialité et nature"
+            width="1600"
+            height="1200"
             loading="lazy"
             decoding="async"
-            class="col-span-2 aspect-[3/2] w-full object-cover md:col-span-1 md:row-start-1"
+            class="aspect-[4/3] w-full object-cover md:col-start-1 md:row-start-1"
           />
-          <!-- Paysage : groupe coaching (1200x900) — top-center -->
+          <img
+            src="/images/ei-stage-brunch-maison.webp"
+            alt="Brunch en groupe lors d'une immersion Énergie Illimitée — convivialité en plein air"
+            width="1600"
+            height="1200"
+            loading="lazy"
+            decoding="async"
+            class="aspect-[4/3] w-full object-cover md:col-start-2 md:row-start-1"
+          />
           <img
             src="/images/groupe-ei-2.webp"
             alt="Séance de groupe en présentiel lors d'une immersion Énergie Illimitée"
@@ -510,33 +728,39 @@ const faqs = [
             height="900"
             loading="lazy"
             decoding="async"
-            class="aspect-[3/2] w-full object-cover md:row-start-1"
+            class="aspect-[4/3] w-full object-cover md:col-start-3 md:row-start-1"
           />
-          <!-- Portrait : stage-groupe (750x1000) — right, span 2 rows -->
           <img
-            src="/images/stage-groupe.webp"
-            alt="Groupe en présentiel lors d'une immersion Énergie Illimitée"
-            width="750"
-            height="1000"
+            src="/images/ei-stage-danse-libre.webp"
+            alt="Séance de danse libre en groupe lors d'une immersion Énergie Illimitée"
+            width="1600"
+            height="1200"
             loading="lazy"
             decoding="async"
-            class="aspect-[3/4] w-full object-cover md:row-span-2 md:row-start-1 md:col-start-3"
+            class="aspect-[4/3] w-full object-cover md:col-start-1 md:row-start-2"
           />
-          <!-- Paysage : claire stage (1198x800) — bottom-left -->
           <img
-            src="/images/claire-stage.webp"
-            alt="Immersion Énergie Illimitée à Montpellier avec Claire Orriols"
-            width="1198"
-            height="800"
+            src="/images/ei-stage-movnat-saut.webp"
+            alt="Pratique MovNat en forêt — saut et mouvement naturel lors d'une immersion Énergie Illimitée"
+            width="1600"
+            height="1200"
             loading="lazy"
             decoding="async"
-            class="aspect-[3/2] w-full object-cover md:row-start-2 md:col-start-1"
+            class="col-span-2 aspect-[8/3] w-full object-cover md:col-span-2 md:col-start-2 md:row-start-2"
           />
         </div>
 
-        <!-- 2e rangée : MovNat + nature + groupe -->
-        <div class="mt-3 grid grid-cols-2 gap-3 md:mt-4 md:grid-cols-3 md:gap-4">
-          <!-- Portrait : movnat (750x1000) -->
+        <!-- Grille 2 : 4 portraits alignés même taille (movnat-arbre-groupe en dernier) -->
+        <div class="mt-3 grid grid-cols-2 gap-3 md:mt-4 md:grid-cols-4 md:gap-4">
+          <img
+            src="/images/ei-stage-movnat-arbre-solo.webp"
+            alt="Participante grimpant un arbre — pratique MovNat lors d'une immersion Énergie Illimitée"
+            width="1200"
+            height="1600"
+            loading="lazy"
+            decoding="async"
+            class="aspect-[3/4] w-full object-cover"
+          />
           <img
             src="/images/movnat-1.webp"
             alt="Séance de mouvement naturel MovNat en plein air — Programme Énergie Illimitée"
@@ -546,74 +770,85 @@ const faqs = [
             decoding="async"
             class="aspect-[3/4] w-full object-cover"
           />
-          <!-- Paysage : claire danse libre (1024x684) -->
           <img
-            src="/images/claire-danse-libre.webp"
-            alt="Claire Orriols — séance de mouvement et danse libre"
-            width="1024"
-            height="684"
+            src="/images/ei-stage-ecriture.webp"
+            alt="Temps d'introspection et d'écriture lors d'une immersion Énergie Illimitée"
+            width="1200"
+            height="1600"
             loading="lazy"
             decoding="async"
-            class="aspect-[3/2] w-full object-cover md:col-span-2"
+            class="aspect-[3/4] w-full object-cover"
+          />
+          <img
+            src="/images/ei-stage-movnat-arbre-groupe.webp"
+            alt="Pratique MovNat lors d'une immersion Énergie Illimitée — entraide pour grimper un arbre"
+            width="1200"
+            height="1600"
+            loading="lazy"
+            decoding="async"
+            class="aspect-[3/4] w-full object-cover"
           />
         </div>
       </div>
     </section>
 
     <!-- ============================================
-         8. 4 PILIERS
+         7. LE FORMAT — Teaser nouveau format janvier 2027
+         (Version cohorte classique archivée dans
+          3 - CASQUETTE/1 - AMAWE/Energie Illimitee/sections-archivees/2026-05-16_ei-section-format-3cards-cohorte.md)
          ============================================ -->
-    <section class="py-20 md:py-28">
-      <div class="mx-auto max-w-6xl px-6">
-        <p class="section-label mb-4 text-center">{t("ei.pillars.label")}</p>
-        <h2 class="text-center text-4xl md:text-5xl">{t("ei.pillars.title")}</h2>
-        <div class="divider mx-auto mt-6 mb-16"></div>
+    <section id="format" class="bg-[var(--color-surface)] py-20 md:py-28 scroll-mt-20">
+      <div class="mx-auto max-w-5xl px-6 text-center">
+        <p class="section-label mb-4 text-[var(--color-accent)]">Le format</p>
+        <h2 class="text-3xl md:text-4xl">Énergie Illimitée s'enrichit</h2>
+        <div class="divider mx-auto mt-6 mb-10" style="background-color: var(--color-accent);"></div>
 
-        <div class="grid gap-8 md:grid-cols-2">
-          {pillars.map((pillar) => (
-            <div class="border border-[var(--color-border)] bg-[var(--color-surface)] p-8 transition-shadow duration-300 hover:shadow-lg">
-              <div class="flex items-center gap-4 mb-4">
-                <span class="text-2xl">{pillar.icon}</span>
-                <span class="font-['Josefin_Sans',sans-serif] text-4xl font-light text-[var(--color-border)]">{pillar.num}</span>
-              </div>
-              <h3 class="text-xl">{pillar.title}</h3>
-              <p class="mt-3 text-[var(--color-text-medium)]">{pillar.text}</p>
-              <div class="mt-4 space-y-2">
-                {pillar.benefits.map((benefit) => (
-                  <p class="flex items-center gap-2 text-sm text-[var(--color-sage-dark)]">
-                    <span class="text-[var(--color-sage)]">✔️</span>
-                    {benefit}
-                  </p>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
+        <p class="mb-6 text-lg leading-relaxed text-[var(--color-text-medium)]">
+          Pour la prochaine ouverture <strong class="text-[var(--color-accent)]">fin 2026 — début 2027</strong>, le programme prend une nouvelle forme.<br />
+          3 mois d'accompagnement intensif et 2 immersions en présentiel, avec de nouveaux moyens d'avancer à ton rythme.
+        </p>
 
-        <!-- Roue de la santé -->
-        <div class="mt-16 text-center">
-          <img
-            src="/images/roue-sante-amawe.webp"
-            alt="La Roue de la Santé Holistique — Les 16 domaines évalués dans Énergie Illimitée"
-            width="800"
-            height="756"
-            loading="lazy"
-            decoding="async"
-            class="mx-auto max-w-lg w-full bg-[var(--color-surface)] p-6 rounded-2xl"
-          />
-        </div>
+        <ul class="mx-auto mb-14 max-w-4xl space-y-4 text-left">
+          <li class="flex items-start gap-8">
+            <span class="mt-[0.55em] h-2 w-2 flex-shrink-0 rounded-full bg-[var(--color-accent)]"></span>
+            <span class="text-base text-[var(--color-text-medium)]">Une <strong>bibliothèque de contenus</strong> structurée sur les 3 piliers (alimentation, mouvement, mental &amp; émotions), <strong>accès illimité, même après les 3 mois</strong></span>
+          </li>
+          <li class="flex items-start gap-8">
+            <span class="mt-[0.55em] h-2 w-2 flex-shrink-0 rounded-full bg-[var(--color-accent)]"></span>
+            <span class="text-base text-[var(--color-text-medium)]">
+              Des <strong>sessions open-coaching hebdomadaires</strong> pour avancer ensemble : questions, partages et explorations en groupe
+              <span class="mt-1 block text-xs italic text-[var(--color-text-light)]">open-coaching = chacun·e peut poser sa question en live, tout le groupe en profite</span>
+            </span>
+          </li>
+          <li class="flex items-start gap-8">
+            <span class="mt-[0.55em] h-2 w-2 flex-shrink-0 rounded-full bg-[var(--color-accent)]"></span>
+            <span class="text-base text-[var(--color-text-medium)]">Des <strong>sessions de coaching individuel</strong> avec Claire pour assurer ton suivi et tes priorités</span>
+          </li>
+          <li class="flex items-start gap-8">
+            <span class="mt-[0.55em] h-2 w-2 flex-shrink-0 rounded-full bg-[var(--color-accent)]"></span>
+            <span class="text-base text-[var(--color-text-medium)]"><strong>Deux immersions en présentiel</strong> en France (Montpellier et sud Aveyron) pour ancrer la transformation</span>
+          </li>
+        </ul>
+
+        <p class="mb-12 text-base italic font-semibold text-[var(--color-text-light)]">
+          Détails complets, tarif et dates partagés à la liste d'attente.
+        </p>
+
+        <a href={waitlistUrl} target="_blank" rel="noopener noreferrer" class="btn-accent">
+          Rejoindre la liste d'attente
+        </a>
       </div>
     </section>
 
     <!-- ============================================
          9. DATES BAR
          ============================================ -->
-    <section class="border-y border-[var(--color-accent)] bg-[var(--color-accent-light)] py-10">
+    <section class="border-y border-[var(--color-accent-dark)] bg-[var(--color-accent-dark)] py-10">
       <div class="mx-auto flex max-w-4xl flex-col items-center gap-4 px-6 text-center md:flex-row md:justify-center md:gap-12">
-        <p class="section-label text-[var(--color-accent-dark)]">{t("ei.dates.label")}</p>
-        <p class="text-lg">{t("ei.dates.start")}</p>
-        <span class="hidden text-[var(--color-accent)] md:inline">—</span>
-        <p class="text-lg">{t("ei.dates.end")}</p>
+        <p class="section-label !text-[var(--color-warm-dark)]">{t("ei.dates.label")}</p>
+        <p class="text-lg text-[var(--color-warm-dark)]">{t("ei.dates.start")}</p>
+        {t("ei.dates.end") && <span class="hidden text-[var(--color-warm-dark)] md:inline">—</span>}
+        {t("ei.dates.end") && <p class="text-lg text-[var(--color-warm-dark)]">{t("ei.dates.end")}</p>}
         <span class="badge-urgency">{t("ei.dates.duration")}</span>
       </div>
     </section>
@@ -621,15 +856,15 @@ const faqs = [
     <!-- ============================================
          10. BONUS
          ============================================ -->
-    <section class="bg-[var(--color-sage-light)] py-20 md:py-28">
+    <section class="bg-[var(--color-surface)] py-12 md:py-16">
       <div class="mx-auto max-w-4xl px-6">
-        <p class="section-label mb-4 text-center text-[var(--color-sage-dark)]">{t("ei.bonus.label")}</p>
-        <div class="divider mx-auto mt-2 mb-12" style="background-color: var(--color-sage);"></div>
+        <p class="section-label mb-3 text-center text-[var(--color-accent-dark)]">{t("ei.bonus.label")}</p>
+        <div class="divider mx-auto mt-2 mb-8" style="background-color: var(--color-accent-dark);"></div>
         <div class="grid gap-4 md:grid-cols-2">
           {bonuses.map((bonus) => (
-            <div class="flex items-start gap-4 bg-[var(--color-surface)] px-6 py-5">
-              <span class="badge-included shrink-0 mt-0.5">Offert</span>
-              <p class="text-sm text-[var(--color-text-medium)]">{bonus}</p>
+            <div class="flex items-start gap-4 rounded-lg border-l-[3px] border-l-[var(--color-accent-dark)] border border-[var(--color-border)] bg-[var(--color-warm)] p-5 shadow-sm transition-shadow hover:shadow-md">
+              <span class="badge-included shrink-0 mt-0.5">{bonus.badge}</span>
+              <p class="text-sm leading-relaxed text-[var(--color-text-medium)]">{bonus.text}</p>
             </div>
           ))}
         </div>
@@ -637,101 +872,46 @@ const faqs = [
     </section>
 
     <!-- ============================================
-         11. VALUE STACK + PRIX
+         11. TARIF — Teaser ouverture fin 2026 / début 2027
          ============================================ -->
-    <section class="bg-[var(--color-primary)] py-20 md:py-28">
-      <div class="mx-auto max-w-4xl px-6">
-        <p class="section-label mb-4 text-center text-[var(--color-accent)]">LA VALEUR DE CE PROGRAMME</p>
-        <h2 class="text-center text-4xl text-[var(--color-surface)] md:text-5xl">Tout ce que tu reçois</h2>
-        <div class="divider mx-auto mt-6 mb-12" style="background-color: var(--color-accent);"></div>
+    <section class="bg-[var(--color-warm-dark)] py-12 md:py-16">
+      <div class="mx-auto max-w-7xl px-6 text-center">
+        <p class="section-label mb-3 text-[var(--color-accent-dark)]">POUR T'ENGAGER</p>
+        <h2 class="text-3xl text-[var(--color-primary)] md:text-4xl">Le tarif</h2>
+        <div class="divider mx-auto mt-4 mb-8" style="background-color: var(--color-accent-dark);"></div>
 
-        <!-- Value Stack inline -->
-        <div class="mx-auto max-w-2xl">
-          <div class="space-y-3">
-            {valueStackItems.map((item) => (
-              <div class="flex items-center justify-between border-b border-[var(--color-surface)]/10 pb-3">
-                <span class="check-icon flex items-center text-[var(--color-surface)]/80">{item.label}</span>
-                <span class="text-sm font-medium text-[var(--color-surface)]/40">{item.value}</span>
-              </div>
-            ))}
-          </div>
+        <p class="mb-5 text-base leading-relaxed text-[var(--color-text-medium)] md:text-lg">
+          La prochaine ouverture d'Énergie Illimitée aura lieu <strong class="text-[var(--color-text-light)]">fin 2026 — début 2027</strong>,<br />
+          avec un <strong class="text-[var(--color-text-light)]">tarif early bird réservé aux premières inscriptions</strong>.
+        </p>
 
-          <!-- Total -->
-          <div class="mt-6 flex items-center justify-between border-t-2 border-[var(--color-accent)] pt-4">
-            <span class="section-label text-[var(--color-accent)]">Valeur totale</span>
-            <span class="font-['Josefin_Sans',sans-serif] text-2xl text-[var(--color-surface)]">3 800 €</span>
-          </div>
-        </div>
+        <p class="mb-8 text-base leading-relaxed text-[var(--color-text-medium)] md:text-lg md:whitespace-nowrap">
+          Pour être informé(e) du tarif détaillé, des modalités et des places limitées : rejoins la liste d'attente.
+        </p>
 
-        <!-- Prix + Badge économie -->
-        <div class="mt-14 text-center">
-          <p class="text-sm text-[var(--color-surface)]/50 uppercase tracking-wider">Ton investissement aujourd'hui</p>
-          <div class="mt-4 flex items-center justify-center gap-6">
-            <span class="font-['Josefin_Sans',sans-serif] text-3xl text-[var(--color-surface)]/30 line-through">2 000 €</span>
-            <span class="font-['Josefin_Sans',sans-serif] text-6xl text-[var(--color-accent)] md:text-7xl">1 350 €</span>
-          </div>
-          <div class="mt-4 inline-flex items-center gap-2 rounded-full bg-[var(--color-accent)] px-5 py-2">
-            <span class="text-sm font-semibold text-white">Économise 650 €</span>
-            <span class="text-xs text-white/70">— Tarif early bird</span>
-          </div>
-
-          <!-- Facilités de paiement -->
-          <div class="mt-8 flex flex-col items-center gap-2 sm:flex-row sm:justify-center sm:gap-6">
-            <p class="text-sm text-[var(--color-surface)]/60">
-              <span class="text-[var(--color-surface)]/80 font-medium">3x 450 €</span> sans frais
-            </p>
-            <span class="hidden text-[var(--color-surface)]/20 sm:inline">|</span>
-            <p class="text-sm text-[var(--color-surface)]/60">
-              <span class="text-[var(--color-surface)]/80 font-medium">5x 270 €</span> sans frais
-            </p>
-          </div>
-        </div>
-
-        <!-- Double CTA full-width -->
-        <div class="mt-12 flex flex-col items-center gap-4 sm:flex-row sm:justify-center sm:gap-6">
-          <a href={formUrl} target="_blank" rel="noopener noreferrer" class="btn-accent w-full text-center sm:w-auto sm:px-12 sm:py-4 sm:text-lg">{t("ei.cta")}</a>
-          <a href={calendarUrl} target="_blank" rel="noopener noreferrer" class="btn-secondary w-full border-[var(--color-surface)]/30 text-center text-[var(--color-surface)] hover:bg-[var(--color-surface)] hover:text-[var(--color-primary)] sm:w-auto sm:px-10 sm:py-4">
-            {t("ei.cta.secondary")}
-          </a>
-        </div>
-        <p class="mt-4 text-center text-xs text-[var(--color-surface)]/40">{t("ei.cta.note")}</p>
-
-        <!-- Modalités en accordion -->
-        <div class="mt-12 mx-auto max-w-2xl">
-          <details class="group border border-[var(--color-surface)]/10">
-            <summary class="flex cursor-pointer items-center justify-between px-6 py-4 text-[var(--color-surface)]/70 hover:text-[var(--color-surface)]">
-              <span class="text-sm font-medium uppercase tracking-wider">Modalités & détails</span>
-              <span class="text-xl text-[var(--color-accent)] transition-transform group-open:rotate-45">+</span>
-            </summary>
-            <div class="space-y-3 px-6 pb-6 text-sm text-[var(--color-surface)]/60">
-              <p>{t("ei.pricing.includes")}</p>
-              <p>{t("ei.pricing.immersion.included")}</p>
-              <p class="text-[var(--color-surface)]/40 italic">{t("ei.pricing.immersion.notincluded")}</p>
-              <div class="h-px w-full bg-[var(--color-surface)]/10"></div>
-              <p>{t("ei.pricing.payment.info")}</p>
-            </div>
-          </details>
-        </div>
+        <a href={waitlistUrl} target="_blank" rel="noopener noreferrer" class="btn-accent">
+          Rejoindre la liste d'attente
+        </a>
       </div>
     </section>
 
     <!-- ============================================
          12. FAQ
          ============================================ -->
-    <section class="bg-[var(--color-warm)] py-20 md:py-28">
+    <section class="bg-[var(--color-background)] py-20 md:py-28">
       <div class="mx-auto max-w-3xl px-6">
         <p class="section-label mb-4 text-center">{t("ei.faq.label")}</p>
         <h2 class="text-center text-4xl md:text-5xl">Des questions ?</h2>
-        <div class="divider mx-auto mt-6 mb-12"></div>
-        <div class="space-y-4">
+        <div class="divider mx-auto mt-6 mb-12" style="background-color: var(--color-accent);"></div>
+        <div class="space-y-2.5">
           {faqs.map((faq) => (
             <details class="faq-item group border border-[var(--color-border)] bg-[var(--color-background)]">
-              <summary class="flex cursor-pointer items-center justify-between p-6">
-                <h3 class="text-lg pr-4">{faq.q}</h3>
-                <span class="faq-icon text-xl text-[var(--color-accent)]">+</span>
+              <summary class="flex cursor-pointer items-center justify-between px-5 py-4">
+                <h3 class="pr-4" style="font-size: 1.1rem; font-weight: 500;">{faq.q}</h3>
+                <span class="faq-icon text-lg text-[var(--color-accent)]">+</span>
               </summary>
-              <div class="px-6 pb-6">
-                <p class="text-[var(--color-text-medium)] leading-relaxed">{faq.a}</p>
+              <div class="bg-[var(--color-warm)] px-5 py-4">
+                <div class="text-base text-[var(--color-text-medium)] leading-relaxed" set:html={faq.a}></div>
               </div>
             </details>
           ))}
@@ -742,28 +922,21 @@ const faqs = [
     <!-- ============================================
          13. CTA FINAL
          ============================================ -->
-    <section class="bg-[var(--color-primary)] py-20 md:py-28">
-      <div class="mx-auto max-w-3xl px-6 text-center">
-        <p class="font-['Josefin_Sans',sans-serif] text-3xl italic text-[var(--color-surface)] md:text-4xl">
-          "Quand ton niveau d'énergie change, tout redevient possible."
+    <section class="py-20 md:py-28" style="background: linear-gradient(135deg, #CE766A 0%, #8B5A7A 50%, #1A1A1A 100%);">
+      <div class="mx-auto max-w-5xl px-6 text-center">
+        <p class="font-['Josefin_Sans',sans-serif] text-2xl font-medium text-[var(--color-surface)] md:text-3xl md:whitespace-nowrap">
+          "Quand ton niveau d'énergie change, tout s'aligne enfin."
         </p>
-        <p class="mt-4 text-sm text-[var(--color-surface)]/60">— Claire Orriols</p>
+        <p class="mt-4 text-sm text-[var(--color-surface)]/60">Énergie Illimitée</p>
         <div class="mt-10 flex flex-col items-center gap-4">
-          <a href={formUrl} target="_blank" rel="noopener noreferrer" class="btn-accent">{t("ei.cta")}</a>
-          <a href={calendarUrl} target="_blank" rel="noopener noreferrer" class="btn-secondary border-[var(--color-surface)]/30 text-[var(--color-surface)] hover:bg-[var(--color-surface)] hover:text-[var(--color-primary)]">
-            {t("ei.cta.secondary")}
+          <a href={waitlistUrl} target="_blank" rel="noopener noreferrer" class="btn-accent !bg-[var(--color-accent)] !border-[var(--color-accent)] hover:!bg-[var(--color-warm-dark)] hover:!border-[var(--color-warm-dark)] hover:!text-[var(--color-primary)]">{t("ei.cta")}</a>
+          <a href="mailto:hello@amawe.com" class="btn-secondary !bg-[var(--color-warm-dark)] !border-[var(--color-warm-dark)] !text-[var(--color-primary)] hover:!bg-[var(--color-primary)] hover:!border-[var(--color-primary)] hover:!text-[var(--color-surface)]">
+            Questions ? envoyer un email
           </a>
         </div>
-        <p class="mt-6 text-xs text-[var(--color-surface)]/40">
-          {t("ei.contact")}
-        </p>
       </div>
     </section>
 
-    <!-- ============================================
-         14. Newsletter
-         ============================================ -->
-    <NewsletterSignup />
   </main>
   <Footer />
 </Layout>

@@ -11,16 +11,16 @@ const pageDescription =
 // Ressources actuelles + à venir
 const ressourcesActuelles = [
   {
-    label: "PDF · 10 MIN",
-    titre: "L'audit Roue Amawé",
-    sous: "Auto-évalue tes 16 fondamentaux de vitalité",
+    label: "PDF · 10 PAGES · 10 MIN",
+    titre: "L'audit Roue de la Santé Amawé",
+    sous: "Auto-évalue tes 16 fondamentaux et influenceurs de ta vitalité",
     description:
-      "Un PDF pour identifier où tu es solide, où tu fuis, et par quel domaine commencer. Reçois-le par email, fais-le à ton rythme, garde-le pour y revenir.",
+      "Je te guide avec un PDF pour auto-évaluer ton niveau de santé sur les 16 domaines, identifier tes forces et tes zones de travail, et savoir par quel domaine commencer en priorité. Envoyé par email.",
     cta: "Recevoir l'audit",
     href: "/audit-roue-sante/",
     statut: "disponible",
-    image: "/images/roue-sante-amawe.webp",
-    imageAlt: "Roue de la Santé Amawé — 16 domaines à auto-évaluer",
+    image: "/images/audit-roue-sante-mockup.webp",
+    imageAlt: "Audit Roue Amawé — PDF mockup des 16 fondamentaux de vitalité",
     fit: "contain",
   },
   {
@@ -28,12 +28,24 @@ const ressourcesActuelles = [
     titre: "La SuperLetter",
     sous: "1 sujet de santé globale approfondi par semaine",
     description:
-      "Foie, sommeil, système nerveux, mouvement libre, rythmes, émotions. Du fond, pas du remplissage. Pas de spam, pas de vente quotidienne. 30 000+ abonnés.",
-    cta: "Rejoindre la SuperLetter",
+      "Chaque semaine, reçois des conseils en nutrition, mouvement, gestion du stress, bien-être et santé holistique (detox, sommeil, respiration, système nerveux, rythmes, émotions, mindset…). Rejoins près de 20 000 abonnés.",
+    cta: "Recevoir la SuperLetter",
     href: "#newsletter",
     statut: "disponible",
     image: null,
     imageAlt: "",
+  },
+  {
+    label: "PDF + VIDÉOS · BIENTÔT",
+    titre: "Snacks de mouvement",
+    sous: "Bouger en quelques minutes, plusieurs fois par jour",
+    description:
+      "Des micro-pratiques de mouvement à intégrer dans ta journée, sans tapis, sans tenue, sans excuse. À grignoter quand tu veux.",
+    cta: "Bientôt disponible",
+    href: "#newsletter",
+    statut: "à venir",
+    image: "/images/snacks-mouvement.webp",
+    imageAlt: "Claire Orriols en MovNat — mouvement naturel en pleine nature, pratique au quotidien",
   },
 ]
 
@@ -58,98 +70,46 @@ const ressourcesAVenir = [
   <Header />
   <main class="pt-20">
     <!-- Hero -->
-    <section class="bg-[var(--color-warm)] py-20 md:py-28">
+    <section class="bg-[var(--color-surface)] py-12 md:py-16">
       <div class="mx-auto max-w-4xl px-6 text-center">
-        <p class="section-label mb-4 text-[var(--color-sage-dark)]">RESSOURCES GRATUITES</p>
+        <p class="section-label mb-3 text-[var(--color-sage-dark)]">RESSOURCES GRATUITES</p>
         <h1 class="!text-3xl md:!text-5xl">
           Entre dans l'écosystème Amawé,
-          <span class="italic text-[var(--color-accent-dark)]">à ton rythme.</span>
+          <span class="block italic text-[var(--color-accent-dark)]">à ton rythme.</span>
         </h1>
-        <div class="divider mx-auto mt-8" style="background-color: var(--color-sage-dark);"></div>
-        <p class="mt-10 text-lg leading-relaxed text-[var(--color-text-medium)]">
+        <div class="divider mx-auto mt-5" style="background-color: var(--color-sage-dark);"></div>
+        <p class="mt-6 text-base leading-relaxed text-[var(--color-text-medium)] md:text-lg">
           Tout ce qu'on partage gratuitement chez Amawé : un audit pour faire le point,
           une newsletter hebdomadaire pour creuser un sujet par semaine, et bientôt
           d'autres ressources pour aller plus loin.
         </p>
-        <p class="mt-3 text-lg leading-relaxed text-[var(--color-text-medium)]">
-          Pas de spam, pas d'urgence artificielle. Désinscription en 1 clic.
-        </p>
       </div>
     </section>
 
+
     <!-- Ressources disponibles -->
-    <section class="py-20 md:py-28">
-      <div class="mx-auto max-w-6xl px-6">
+    <section class="bg-[var(--color-warm)] pt-14 pb-20 md:pt-20 md:pb-28">
+      <div class="mx-auto max-w-5xl px-6">
         <div class="max-w-3xl">
           <p class="section-label mb-4">DISPONIBLES MAINTENANT</p>
           <h2 class="text-3xl md:text-4xl">Pour démarrer</h2>
           <div class="divider mt-6" style="background-color: var(--color-sage-dark);"></div>
         </div>
 
-        <div class="mt-14 grid gap-6 sm:grid-cols-2 md:gap-8 lg:grid-cols-3">
-          {ressourcesActuelles.map((r) => (
-            <a
-              href={r.href}
+        <div class="mt-10 space-y-4 sm:space-y-5">
+          {ressourcesActuelles.map((r) => {
+            const isComingSoon = r.statut === "à venir"
+            const Tag = isComingSoon ? "div" : "a"
+            const linkProps = isComingSoon ? {} : { href: r.href }
+            return (
+            <Tag
+              {...linkProps}
               class:list={[
-                "group relative block aspect-[3/4] overflow-hidden rounded-2xl shadow-md transition-shadow hover:shadow-xl",
-                r.fit === "contain" && "bg-[var(--color-warm)]",
+                "group flex flex-col gap-4 rounded-2xl bg-[var(--color-surface)] p-4 shadow-sm sm:flex-row sm:gap-5 sm:p-5",
+                isComingSoon ? "cursor-default opacity-80" : "transition-shadow hover:shadow-md",
               ]}
             >
-              {r.image && (
-                <img
-                  src={r.image}
-                  alt={r.imageAlt}
-                  width="1200"
-                  height="1600"
-                  loading="lazy"
-                  class:list={[
-                    "absolute inset-0 h-full w-full transition-transform duration-700 group-hover:scale-105",
-                    r.fit === "contain" ? "object-contain p-8" : "object-cover",
-                  ]}
-                />
-              )}
-              {!r.image && (
-                <div class="absolute inset-0 bg-[var(--color-sage-dark)]"></div>
-              )}
-              <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/10"></div>
-              <div class="absolute inset-x-0 top-0 p-5">
-                <span class="inline-block rounded-full bg-[var(--color-surface)]/95 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.15em] text-[var(--color-accent-dark)]">
-                  {r.label}
-                </span>
-              </div>
-              <div class="absolute inset-x-0 bottom-0 p-5 text-[var(--color-surface)] md:p-6">
-                <p class="font-['Josefin_Sans',sans-serif] text-xl leading-tight md:text-2xl">{r.titre}</p>
-                <p class="mt-1.5 text-xs italic text-[var(--color-surface)]/80">{r.sous}</p>
-                <p class="mt-3 text-xs leading-relaxed text-[var(--color-surface)]/85 sm:text-sm">{r.description}</p>
-                <span class="mt-4 inline-flex items-start gap-3 text-xs font-medium uppercase tracking-[0.15em] text-[var(--color-surface)]">
-                  <span class="mt-[5px] block h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-accent)]" aria-hidden="true"></span>
-                  <span class="underline decoration-1 decoration-transparent underline-offset-4 transition-colors duration-500 group-hover:decoration-[var(--color-surface)]">
-                    {r.cta}
-                  </span>
-                </span>
-              </div>
-            </a>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <!-- Pour démarrer — VARIANTE 2 (disposition horizontale) -->
-    <section class="bg-[var(--color-warm)] py-20 md:py-28">
-      <div class="mx-auto max-w-5xl px-6">
-        <div class="max-w-3xl">
-          <p class="section-label mb-4">VARIANTE 2 — DISPOSITION HORIZONTALE</p>
-          <h2 class="text-3xl md:text-4xl">Pour démarrer</h2>
-          <div class="divider mt-6" style="background-color: var(--color-sage-dark);"></div>
-        </div>
-
-        <div class="mt-12 space-y-6 sm:space-y-8">
-          {ressourcesActuelles.map((r) => (
-            <a
-              href={r.href}
-              class="group flex flex-col gap-5 rounded-2xl bg-[var(--color-surface)] p-5 shadow-sm transition-shadow hover:shadow-md sm:flex-row sm:gap-6 sm:p-6"
-            >
-              <div class="flex-shrink-0 sm:w-48 md:w-56">
+              <div class="flex-shrink-0 sm:w-36 md:w-44">
                 {r.image && (
                   <img
                     src={r.image}
@@ -159,12 +119,29 @@ const ressourcesAVenir = [
                     loading="lazy"
                     class:list={[
                       "aspect-square w-full rounded-xl",
-                      r.fit === "contain" ? "object-contain bg-[var(--color-warm)] p-4" : "object-cover",
+                      r.fit === "contain" ? "object-contain bg-[var(--color-warm)] p-1" : "object-cover",
                     ]}
                   />
                 )}
                 {!r.image && (
-                  <div class="aspect-square w-full rounded-xl bg-[var(--color-sage-dark)] flex items-center justify-center px-4">
+                  <div class="relative aspect-square w-full rounded-xl bg-[var(--color-sage-dark)] flex items-center justify-center px-4">
+                    <svg
+                      aria-hidden="true"
+                      width="48"
+                      height="44"
+                      viewBox="0 0 44 40"
+                      fill="none"
+                      stroke="var(--color-surface)"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="absolute left-3 top-3 -rotate-12"
+                    >
+                      <rect x="3" y="12" width="28" height="20" rx="2" />
+                      <path d="M3 14 L17 25 L31 14" />
+                      <path d="M34 4 C40 5 41 12 38 16 C34 16 31 13 31 9 C31 6 32 5 34 4 Z" stroke-width="1.4" fill="var(--color-surface)" fill-opacity="0.2" />
+                      <line x1="34" y1="6" x2="37" y2="13" stroke-width="1" />
+                    </svg>
                     <p class="font-['Josefin_Sans',sans-serif] text-2xl text-[var(--color-surface)] text-center leading-tight sm:text-3xl">
                       La<br/>SuperLetter
                     </p>
@@ -173,10 +150,10 @@ const ressourcesAVenir = [
               </div>
               <div class="flex flex-1 flex-col">
                 <p class="section-label text-[var(--color-accent)]">{r.label}</p>
-                <p class="mt-2 font-['Josefin_Sans',sans-serif] text-2xl leading-tight text-[var(--color-primary)] md:text-3xl">{r.titre}</p>
-                <p class="mt-1 text-sm italic text-[var(--color-text-light)]">{r.sous}</p>
-                <p class="mt-3 flex-1 text-sm leading-relaxed text-[var(--color-text-medium)] sm:text-base">{r.description}</p>
-                <span class="mt-4 inline-flex items-start gap-3 text-xs font-medium uppercase tracking-[0.15em] text-[var(--color-accent)]">
+                <p class="mt-1.5 font-['Josefin_Sans',sans-serif] text-xl leading-tight text-[var(--color-primary)] md:text-2xl">{r.titre}</p>
+                <p class="mt-1 text-xs italic text-[var(--color-text-light)] sm:text-sm">{r.sous}</p>
+                <p class="mt-2 flex-1 text-base leading-relaxed text-[var(--color-text-medium)]">{r.description}</p>
+                <span class="mt-3 inline-flex items-start gap-3 text-xs font-medium uppercase tracking-[0.15em] text-[var(--color-accent)]">
                   <span class="mt-[5px] block h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-accent)]" aria-hidden="true"></span>
                   <span class="relative pb-1">
                     <span>{r.cta}</span>
@@ -184,166 +161,40 @@ const ressourcesAVenir = [
                   </span>
                 </span>
               </div>
-            </a>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <!-- Pour démarrer — VARIANTE 3 (style éditorial / index numéroté) -->
-    <section class="py-20 md:py-28">
-      <div class="mx-auto max-w-5xl px-6">
-        <div class="max-w-3xl">
-          <p class="section-label mb-4">VARIANTE 3 — STYLE ÉDITORIAL</p>
-          <h2 class="text-3xl md:text-4xl">Pour démarrer</h2>
-          <div class="divider mt-6" style="background-color: var(--color-sage-dark);"></div>
+            </Tag>
+            )
+          })}
         </div>
 
-        <div class="mt-14 border-t border-[var(--color-border)]">
-          {ressourcesActuelles.map((r, i) => (
+        <!-- Rejoindre la communauté -->
+        <div class="mt-16 text-center sm:mt-20">
+          <p class="section-label mb-5 text-[var(--color-sage-dark)]">REJOINDRE LA COMMUNAUTÉ</p>
+          <div class="flex items-center justify-center gap-6">
             <a
-              href={r.href}
-              class="group block border-b border-[var(--color-border)] py-8 transition-colors hover:bg-[var(--color-warm)]/40 sm:py-10"
+              href="https://instagram.com/amawefrance"
+              target="_blank"
+              rel="noopener"
+              aria-label="Suivre Amawé sur Instagram"
+              class="text-[var(--color-text-medium)] transition-colors hover:text-[var(--color-accent-dark)]"
             >
-              <div class="grid gap-6 md:grid-cols-[80px_1fr_180px] md:gap-10 md:items-start">
-                <div>
-                  <p class="font-['Josefin_Sans',sans-serif] text-5xl font-light text-[var(--color-accent)]/40 md:text-6xl">
-                    {String(i + 1).padStart(2, "0")}
-                  </p>
-                </div>
-
-                <div>
-                  <p class="section-label text-[var(--color-accent)]">{r.label}</p>
-                  <h3 class="mt-2 font-['Josefin_Sans',sans-serif] text-2xl leading-tight text-[var(--color-primary)] md:text-3xl">{r.titre}</h3>
-                  <p class="mt-1 text-sm italic text-[var(--color-text-light)]">{r.sous}</p>
-                  <p class="mt-3 leading-relaxed text-[var(--color-text-medium)]">{r.description}</p>
-                  <span class="mt-4 inline-flex items-center gap-3 text-xs font-medium uppercase tracking-[0.15em] text-[var(--color-accent)]">
-                    <span class="block h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-accent)]" aria-hidden="true"></span>
-                    <span class="relative pb-0.5">
-                      <span>{r.cta}</span>
-                      <span class="absolute bottom-0 left-0 h-px w-0 bg-[var(--color-accent)] transition-all duration-500 group-hover:w-full" aria-hidden="true"></span>
-                    </span>
-                    <span class="transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true">→</span>
-                  </span>
-                </div>
-
-                <div class="hidden md:block">
-                  {r.image && (
-                    <img
-                      src={r.image}
-                      alt={r.imageAlt}
-                      width="400"
-                      height="400"
-                      loading="lazy"
-                      class:list={[
-                        "aspect-square w-full rounded-lg",
-                        r.fit === "contain" ? "object-contain bg-[var(--color-warm)] p-3" : "object-cover",
-                      ]}
-                    />
-                  )}
-                  {!r.image && (
-                    <div class="aspect-square w-full rounded-lg bg-[var(--color-sage-dark)] flex items-center justify-center px-3">
-                      <p class="font-['Josefin_Sans',sans-serif] text-xl text-[var(--color-surface)] text-center leading-tight">
-                        La<br/>SuperLetter
-                      </p>
-                    </div>
-                  )}
-                </div>
-              </div>
+              <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
             </a>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <!-- Pour démarrer — VARIANTE 4 (bento featured) -->
-    <section class="bg-[var(--color-warm)] py-20 md:py-28">
-      <div class="mx-auto max-w-6xl px-6">
-        <div class="max-w-3xl">
-          <p class="section-label mb-4">VARIANTE 4 — BENTO FEATURED</p>
-          <h2 class="text-3xl md:text-4xl">Pour démarrer</h2>
-          <div class="divider mt-6" style="background-color: var(--color-sage-dark);"></div>
-        </div>
-
-        <div class="mt-14 grid gap-5 md:grid-cols-5 md:gap-6">
-          {ressourcesActuelles.map((r, i) => (
             <a
-              href={r.href}
-              class:list={[
-                "group relative flex overflow-hidden rounded-2xl shadow-sm transition-shadow hover:shadow-lg",
-                i === 0 ? "md:col-span-3" : "md:col-span-2",
-                r.fit === "contain" ? "bg-[var(--color-warm-dark)]/30" : "bg-[var(--color-surface)]",
-              ]}
+              href="https://www.facebook.com/amawefrance"
+              target="_blank"
+              rel="noopener"
+              aria-label="Suivre Amawé sur Facebook"
+              class="text-[var(--color-text-medium)] transition-colors hover:text-[var(--color-accent-dark)]"
             >
-              {/* Image background */}
-              {r.image && (
-                <img
-                  src={r.image}
-                  alt={r.imageAlt}
-                  width="1200"
-                  height="900"
-                  loading="lazy"
-                  class:list={[
-                    "absolute inset-0 h-full w-full transition-transform duration-700 group-hover:scale-105",
-                    r.fit === "contain" ? "object-contain p-12" : "object-cover",
-                  ]}
-                />
-              )}
-              {!r.image && (
-                <div class="absolute inset-0 bg-gradient-to-br from-[var(--color-sage-dark)] to-[var(--color-secondary)]"></div>
-              )}
-
-              {/* Content overlay */}
-              <div class="relative flex min-h-[400px] w-full flex-col justify-end bg-gradient-to-t from-black/85 via-black/30 to-transparent p-6 text-[var(--color-surface)] md:min-h-[450px] md:p-8">
-                <span class="mb-3 inline-block self-start rounded-full bg-[var(--color-surface)]/95 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.15em] text-[var(--color-accent-dark)]">
-                  {r.label}
-                </span>
-                <p class:list={[
-                  "font-['Josefin_Sans',sans-serif] leading-tight",
-                  i === 0 ? "text-3xl md:text-4xl" : "text-2xl md:text-3xl",
-                ]}>{r.titre}</p>
-                <p class="mt-2 text-sm italic text-[var(--color-surface)]/85">{r.sous}</p>
-                {i === 0 && (
-                  <p class="mt-3 hidden text-sm leading-relaxed text-[var(--color-surface)]/80 md:block">{r.description}</p>
-                )}
-                <span class="mt-5 inline-flex items-center gap-3 text-xs font-medium uppercase tracking-[0.15em]">
-                  <span class="block h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-accent)]" aria-hidden="true"></span>
-                  <span class="relative pb-0.5">
-                    <span>{r.cta}</span>
-                    <span class="absolute bottom-0 left-0 h-px w-0 bg-[var(--color-surface)] transition-all duration-500 group-hover:w-full" aria-hidden="true"></span>
-                  </span>
-                </span>
-              </div>
+              <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
             </a>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <!-- Bientôt -->
-    <section class="bg-[var(--color-warm)] py-20 md:py-28">
-      <div class="mx-auto max-w-5xl px-6">
-        <div class="max-w-3xl">
-          <p class="section-label mb-4 text-[var(--color-sage-dark)]">À VENIR</p>
-          <h2 class="text-3xl md:text-4xl">Bientôt dans ta boîte mail</h2>
-          <div class="divider mt-6" style="background-color: var(--color-accent);"></div>
-          <p class="mt-8 text-lg leading-relaxed text-[var(--color-text-medium)]">
-            Les ressources Amawé en préparation. Inscris-toi à la SuperLetter pour
-            être prévenue dès qu'elles sortent.
+          </div>
+          <p class="mt-3 text-sm text-[var(--color-text-light)]">
+            <a href="https://instagram.com/amawefrance" target="_blank" rel="noopener" class="hover:text-[var(--color-accent-dark)] transition-colors">@amawefrance</a> · personnel : <a href="https://instagram.com/claireorriols" target="_blank" rel="noopener" class="hover:text-[var(--color-accent-dark)] transition-colors">@claireorriols</a>
           </p>
         </div>
-
-        <div class="mt-12 grid gap-6 md:grid-cols-2">
-          {ressourcesAVenir.map((r) => (
-            <div class="border-l-2 bg-[var(--color-surface)] p-6" style="border-color: var(--color-accent);">
-              <p class="font-['Josefin_Sans',sans-serif] text-xl text-[var(--color-primary)]">{r.titre}</p>
-              <p class="mt-3 leading-relaxed text-[var(--color-text-medium)]">{r.description}</p>
-            </div>
-          ))}
-        </div>
       </div>
     </section>
-
     <!-- Newsletter signup -->
     <section id="newsletter" class="bg-[var(--color-accent-dark)] py-12 md:py-16">
       <div class="mx-auto max-w-4xl px-6 text-center">
