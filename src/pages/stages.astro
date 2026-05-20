@@ -2,6 +2,7 @@
 import Layout from "~/layouts/Layout.astro"
 import Header from "~/components/Header.astro"
 import Footer from "~/components/Footer.astro"
+import SubscribeForm from "~/components/SubscribeForm.astro"
 
 const pageTitle = "Stages & Retraites Amawé — Immersions en Sud Aveyron et Montpellier"
 const pageDescription =
@@ -47,7 +48,7 @@ const aVenir = [
     nom: "Retraite Danse & Silence",
     dates: "Hiver 2027, date à venir",
     lieu: "Sud Aveyron · Écolieu",
-    type: "Retraite",
+    type: null,
     description:
       "Trois médecines : le silence, la danse libre, la nature. Pour celles et ceux qui ont besoin de revenir à eux-mêmes.",
     statut: "4e édition",
@@ -203,7 +204,7 @@ const temoignages = [
 // Compte total des avis textes pour le JSON-LD (les screenshots ne sont pas des reviews structurées)
 const reviewCount = temoignages.reduce((sum, t) => {
   if (t.type === "text") return sum + 1
-  if (t.type === "stack") return sum + t.items.filter((it) => it.kind === "text").length
+  if (t.type === "stack") return sum + (t.items?.filter((it) => it.kind === "text").length ?? 0)
   return sum
 }, 0)
 
@@ -237,7 +238,7 @@ const reviewsSchema = {
       }]
     }
     if (t.type === "stack") {
-      return t.items
+      return (t.items ?? [])
         .filter((it) => it.kind === "text")
         .map((it) => ({
           "@type": "Review",
@@ -416,29 +417,25 @@ const reviewsSchema = {
     </section>
 
     <!-- L'ESPRIT D'UN STAGE -->
-    <section class="bg-[var(--color-warm)] py-12 md:py-16">
-      <div class="mx-auto max-w-3xl px-6">
-        <p class="section-label mb-3 text-center text-[var(--color-sage-dark)]">L'ESPRIT D'UN STAGE</p>
+    <section class="bg-[var(--color-warm)] py-8 md:py-10">
+      <div class="mx-auto max-w-5xl px-4 md:px-6">
+        <p class="section-label mb-2 text-center text-[var(--color-sage-dark)]">L'ESPRIT D'UN STAGE</p>
         <div class="divider mx-auto" style="background-color: var(--color-sage-dark);"></div>
-        <div class="relative mx-auto mt-8 max-w-2xl px-8 py-6 sm:px-12 sm:py-8">
-          <span class="absolute left-0 top-0 h-10 w-[2px] bg-[var(--color-accent)]" aria-hidden="true"></span>
-          <span class="absolute left-0 top-0 h-[2px] w-10 bg-[var(--color-accent)]" aria-hidden="true"></span>
-          <span class="absolute right-0 bottom-0 h-10 w-[2px] bg-[var(--color-accent)]" aria-hidden="true"></span>
-          <span class="absolute right-0 bottom-0 h-[2px] w-10 bg-[var(--color-accent)]" aria-hidden="true"></span>
-          <div class="space-y-5 text-center text-lg leading-relaxed text-[var(--color-text-medium)]">
+        <div class="relative mx-auto mt-5 max-w-4xl px-6 py-4 sm:px-10 sm:py-5">
+          <span class="absolute left-0 top-0 h-8 w-[2px] bg-[var(--color-accent)]" aria-hidden="true"></span>
+          <span class="absolute left-0 top-0 h-[2px] w-8 bg-[var(--color-accent)]" aria-hidden="true"></span>
+          <span class="absolute right-0 bottom-0 h-8 w-[2px] bg-[var(--color-accent)]" aria-hidden="true"></span>
+          <span class="absolute right-0 bottom-0 h-[2px] w-8 bg-[var(--color-accent)]" aria-hidden="true"></span>
+          <div class="space-y-3 text-center text-base leading-relaxed text-[var(--color-text-medium)]">
             <p>
-              Un stage Amawé, c'est une communauté qui se réunit pour <strong class="font-medium text-[var(--color-primary)]">connecter, se ressourcer, faire le plein d'énergie et vivre une expérience unique</strong>. Quelques jours dans des lieux beaux, simples et confortables,
-              où le quotidien s'efface, et où ce qui compte vraiment revient au
-              centre.
+              Un stage Amawé, c'est une communauté qui se réunit pour <strong class="font-medium text-[var(--color-primary)]">connecter, se ressourcer, faire le plein d'énergie et vivre une expérience unique</strong>. Quelques jours dans des lieux beaux, simples et confortables, où le quotidien s'efface, et où ce qui compte vraiment revient au centre.
             </p>
             <p>
-              Beaucoup de choses peuvent se transmettre en ligne : du savoir,
-              des outils, des pratiques.<br />
-              <strong class="font-medium">Mais certaines expériences ne se vivent qu'en vrai, ensemble, dans un cadre propice à la transformation.</strong>
+              Beaucoup de choses peuvent se transmettre en ligne : du savoir, des outils, des pratiques.<br />
+              <strong class="font-medium text-[var(--color-primary)]">Mais certaines expériences ne se vivent qu'en vrai, ensemble, dans un cadre propice à la transformation.</strong>
             </p>
             <p>
-              À chaque stage, une thématique, pour explorer toutes les dimensions
-              de toi et de ta santé globale.
+              À chaque stage, une thématique, pour explorer toutes les dimensions de toi et de ta santé globale.
             </p>
           </div>
         </div>
@@ -552,7 +549,7 @@ const reviewsSchema = {
                   </div>
                 ) : t.type === "stack" ? (
                   <div class="flex flex-col gap-3 md:gap-4">
-                    {t.items.map((it) =>
+                    {(t.items ?? []).map((it) =>
                       it.kind === "text" ? (
                         <figure class="flex flex-col rounded-2xl bg-[var(--color-surface)] p-3 shadow-sm md:p-4">
                           <blockquote class="testimonial-quote text-[var(--color-text-medium)]">
@@ -661,7 +658,7 @@ const reviewsSchema = {
               {historique.map((annee, i) => {
                 const y = lineYs[i]
                 return (
-                  <div key={annee.annee}>
+                  <div>
                     <p
                       class="absolute font-['Josefin_Sans',sans-serif] text-3xl font-light leading-none text-[var(--color-accent-dark)]"
                       style={`top: ${y + 22}px; left: 0; width: 100px;`}
@@ -750,36 +747,20 @@ const reviewsSchema = {
           et événements Amawé, avant la liste publique. Pas de spam. Juste les infos quand c'est lancé.
         </p>
 
-        <!-- TODO Claire : remplacer ce form par l'embed MailerLite "Avant-première stages" -->
-        <form
-          class="mx-auto mt-6 flex max-w-md flex-col gap-3"
-          action="#"
-          method="post"
-        >
-          <input
-            type="text"
-            placeholder="Ton prénom"
-            required
-            aria-label="Prénom pour avant-première stages"
-            class="w-full border border-[var(--color-surface)]/20 bg-[var(--color-surface)] px-5 py-3 text-sm text-[var(--color-primary)] placeholder:text-[var(--color-text-light)] focus:border-[var(--color-surface)] focus:outline-none rounded-full"
+        <div class="mx-auto mt-6 max-w-md">
+          <SubscribeForm
+            intent="stages_avant_premiere"
+            theme="dark"
+            cta="M'inscrire"
+            extraFields={["name"]}
+            nameLabel="Prénom"
+            namePlaceholder="Ton prénom"
+            emailLabel="Email"
+            emailPlaceholder="Ton adresse email"
+            successMessage="C'est noté ! Tu seras prévenu·e en avant-première des prochains stages et retraites."
+            buttonClass="btn-accent w-full"
           />
-          <input
-            type="email"
-            placeholder="Ton adresse email"
-            required
-            aria-label="Email pour avant-première stages"
-            class="w-full border border-[var(--color-surface)]/20 bg-[var(--color-surface)] px-5 py-3 text-sm text-[var(--color-primary)] placeholder:text-[var(--color-text-light)] focus:border-[var(--color-surface)] focus:outline-none rounded-full"
-          />
-          <button
-            type="submit"
-            class="btn-accent whitespace-nowrap"
-          >
-            M'inscrire
-          </button>
-        </form>
-        <p class="mt-3 text-center text-[11px] leading-relaxed text-[var(--color-surface)]/70">
-          <span aria-hidden="true">🔒</span> 100% sécurisé. Tes données restent confidentielles et ne sont jamais partagées.
-        </p>
+        </div>
       </div>
     </section>
 
