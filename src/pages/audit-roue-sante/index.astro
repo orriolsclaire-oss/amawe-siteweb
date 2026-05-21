@@ -4,24 +4,17 @@ import Header from "~/components/Header.astro"
 import Footer from "~/components/Footer.astro"
 import SubscribeForm from "~/components/SubscribeForm.astro"
 
-const steps = [
-  { num: "01", verb: "Note", text: "1-10, 15 min" },
-  { num: "02", verb: "Marque", text: "points sur les axes" },
-  { num: "03", verb: "Relie", text: "toile d'araignée" },
-  { num: "04", verb: "Lis", text: "regarde la forme" },
-]
-
 const after = [
   {
     key: "ei",
     title: "Énergie Illimitée",
-    text: "Le programme d'accompagnement",
+    text: "Restaurer ta vitalité physique,<br />mentale et émotionnelle",
     href: "/energie-illimitee/",
   },
   {
     key: "summercamp",
     title: "Summer Camp",
-    text: "Festival mouvement & santé naturelle · 11-14 juillet 2026",
+    text: "Festival mouvement &amp; santé naturelle · 11-14 juillet 2026",
     href: "/summer-camp/",
   },
   {
@@ -61,73 +54,78 @@ const after = [
     </section>
 
     <!-- ============================================
-         2. LA ROUE + MODE D'EMPLOI (fusionnés)
+         2. MOCKUP AUDIT + FORMULAIRE
          ============================================ -->
-    <section class="bg-[var(--color-warm-dark)] py-20 md:py-24">
+    <section class="bg-[var(--color-accent-dark)] py-20 md:py-24">
       <div class="mx-auto max-w-6xl px-6">
         <div class="grid items-center gap-12 md:grid-cols-2 md:gap-16">
-          <!-- Roue à gauche -->
+          <!-- Mockup de l'audit à gauche -->
           <img
-            src="/images/roue-sante-amawe.webp"
-            alt="La Roue de la Santé Amawé — 16 domaines, 4 axes"
+            src="/images/audit-roue-sante-mockup.webp"
+            alt="Aperçu du PDF de l'Audit de ta Roue de la Santé Amawé"
             width="800"
             height="756"
             loading="lazy"
             decoding="async"
-            class="mx-auto w-full max-w-md bg-[var(--color-surface)] p-8 shadow-md"
+            class="mx-auto w-full max-w-md drop-shadow-2xl"
           />
 
-          <!-- Mode d'emploi à droite, compact -->
+          <!-- Formulaire à droite -->
           <div>
-            <p class="section-label mb-4 text-[var(--color-accent-dark)]">MODE D'EMPLOI</p>
-            <h2 class="!text-[var(--color-primary)] text-3xl md:text-4xl">Comment ça marche</h2>
-            <ul class="mt-8 space-y-6">
-              {
-                steps.map((step) => (
-                  <li class="flex items-start gap-5">
-                    <span class="flex h-11 w-11 flex-none items-center justify-center rounded-full border border-[var(--color-sage-dark)]/30 bg-[var(--color-surface)] font-['Josefin_Sans',sans-serif] text-lg font-light text-[var(--color-sage-dark)]">
-                      {step.num}
-                    </span>
-                    <div>
-                      <h3 class="!text-[var(--color-primary)] text-xl leading-tight">
-                        {step.verb}
-                      </h3>
-                      <p class="mt-1 text-sm text-[var(--color-text-light)]">
-                        {step.text}
-                      </p>
-                    </div>
-                  </li>
-                ))
-              }
-            </ul>
+            <h2 class="!text-[var(--color-surface)] text-3xl md:text-4xl">
+              Reçois le PDF dans ta boîte mail
+            </h2>
+            <div class="mt-8">
+              <SubscribeForm
+                intent="lead_audit_roue"
+                theme="dark"
+                cta="Recevoir l'audit"
+                ctaSubtext="C'est gratuit"
+                extraFields={["name"]}
+                nameLabel="Prénom"
+                namePlaceholder="Ton prénom"
+                emailLabel="Email"
+                emailPlaceholder="Ton adresse email"
+                buttonClass="btn-accent w-full whitespace-nowrap leading-tight !text-sm !py-3.5 !bg-[var(--color-sage-dark)] !border-[var(--color-sage-dark)] hover:!bg-[var(--color-warm)] hover:!text-[var(--color-primary)] hover:!border-[var(--color-warm)]"
+                redirectTo="/audit-roue-sante/merci/"
+              />
+            </div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ============================================
-         4. FORM
+         3. TEASER — ce que tu vas découvrir
          ============================================ -->
-    <section class="bg-[var(--color-accent-dark)] py-20 md:py-28">
-      <div class="mx-auto max-w-2xl px-6 text-center">
-        <h2 class="text-3xl !text-[var(--color-surface)] md:text-4xl">
-          Reçois le PDF dans ta boîte mail
+    <section class="bg-[var(--color-surface)] py-16 md:py-20">
+      <div class="mx-auto max-w-3xl px-6 text-center">
+        <p class="section-label text-[var(--color-accent)]">CE QUE TU VAS DÉCOUVRIR</p>
+        <h2 class="mt-4 !text-[var(--color-text-light)] text-2xl md:text-3xl">
+          Pas un test. Une photographie honnête de là où tu en es, sans jugement.
         </h2>
-        <div class="mt-10">
-          <SubscribeForm
-            intent="lead_audit_roue"
-            theme="dark"
-            cta="Recevoir l'audit"
-            ctaSubtext="C'est gratuit"
-            extraFields={["name"]}
-            nameLabel="Prénom"
-            namePlaceholder="Ton prénom"
-            emailLabel="Email"
-            emailPlaceholder="Ton adresse email"
-            buttonClass="btn-accent w-full whitespace-nowrap leading-tight !text-sm !py-3.5 !bg-[var(--color-sage-dark)] !border-[var(--color-sage-dark)] hover:!bg-[var(--color-warm)] hover:!text-[var(--color-primary)] hover:!border-[var(--color-warm)]"
-            redirectTo="/audit-roue-sante/merci/"
-            class="mx-auto max-w-md md:max-w-none"
-          />
+        <p class="mt-6 text-lg leading-relaxed text-[var(--color-text-medium)]">
+          En quelques minutes, tu obtiens une cartographie claire de ta santé globale.
+          Parce qu'un seul domaine en déséquilibre suffit à tirer toute la roue vers le bas…
+          et qu'en rééquilibrer un seul peut tout remettre en mouvement.
+        </p>
+
+        <div class="mt-10 grid gap-6 text-left sm:grid-cols-3">
+          <div class="border-t-2 border-[var(--color-accent)] pt-4">
+            <p class="text-sm leading-relaxed text-[var(--color-text-medium)]">
+              Ce qui te porte, ce qui te vide — en un coup d'œil.
+            </p>
+          </div>
+          <div class="border-t-2 border-[var(--color-accent)] pt-4">
+            <p class="text-sm leading-relaxed text-[var(--color-text-medium)]">
+              Les angles morts que tu ne regardes jamais.
+            </p>
+          </div>
+          <div class="border-t-2 border-[var(--color-accent)] pt-4">
+            <p class="text-sm leading-relaxed text-[var(--color-text-medium)]">
+              Ton prochain levier : <span class="text-[var(--color-primary)]">un seul</span> domaine, une action qui change vraiment les choses.
+            </p>
+          </div>
         </div>
       </div>
     </section>
@@ -138,7 +136,7 @@ const after = [
     <section class="py-20 md:py-24">
       <div class="mx-auto max-w-5xl px-6">
         <p
-          class="text-center font-['Josefin_Sans',sans-serif] text-2xl italic text-[var(--color-text-medium)] md:text-3xl"
+          class="text-center font-['Josefin_Sans',sans-serif] text-2xl text-[var(--color-text-medium)] md:text-3xl"
         >
           Si tu veux continuer à découvrir l'univers Amawé
         </p>
@@ -159,9 +157,6 @@ const after = [
                   class="mx-auto mb-4"
                 >
                   {item.key === "ei" && (
-                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
-                  )}
-                  {item.key === "summercamp" && (
                     <>
                       <circle cx="12" cy="12" r="5" />
                       <line x1="12" y1="1" x2="12" y2="3" />
@@ -172,6 +167,13 @@ const after = [
                       <line x1="21" y1="12" x2="23" y2="12" />
                       <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
                       <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                    </>
+                  )}
+                  {item.key === "summercamp" && (
+                    <>
+                      <path d="M12 2 L7 10 H17 Z" />
+                      <path d="M12 7 L5 17 H19 Z" />
+                      <line x1="12" y1="17" x2="12" y2="22" />
                     </>
                   )}
                   {item.key === "apropos" && (
@@ -192,9 +194,7 @@ const after = [
                   <h3 class="mt-2 text-xl !text-[var(--color-primary)] transition-colors group-hover:!text-[var(--color-accent-dark)]">
                     {item.title}
                   </h3>
-                  <p class="mt-3 text-sm text-[var(--color-text-medium)]">
-                    {item.text}
-                  </p>
+                  <p class="mt-3 text-sm text-[var(--color-text-medium)]" set:html={item.text} />
                 </a>
               ) : (
                 <div
