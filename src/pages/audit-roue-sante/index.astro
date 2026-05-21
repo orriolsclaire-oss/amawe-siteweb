@@ -98,34 +98,93 @@ const after = [
     <!-- ============================================
          3. TEASER — ce que tu vas découvrir
          ============================================ -->
-    <section class="bg-[var(--color-surface)] py-16 md:py-20">
-      <div class="mx-auto max-w-3xl px-6 text-center">
-        <p class="section-label text-[var(--color-accent)]">CE QUE TU VAS DÉCOUVRIR</p>
-        <h2 class="mt-4 !text-[var(--color-text-light)] text-2xl md:text-3xl">
-          Pas un test. Une photographie honnête de là où tu en es, sans jugement.
-        </h2>
-        <p class="mt-6 text-lg leading-relaxed text-[var(--color-text-medium)]">
-          En quelques minutes, tu obtiens une cartographie claire de ta santé globale.
-          Parce qu'un seul domaine en déséquilibre suffit à tirer toute la roue vers le bas…
-          et qu'en rééquilibrer un seul peut tout remettre en mouvement.
-        </p>
+    <section class="bg-[var(--color-warm)] py-12 md:py-14">
+      <div class="mx-auto max-w-5xl px-6">
+        <div class="mx-auto max-w-3xl text-center">
+          <p class="section-label text-[var(--color-accent)]">CE QUE TU VAS DÉCOUVRIR</p>
+          <h2 class="mt-3 !text-[var(--color-text-light)] text-2xl md:text-3xl">
+            Pas un test. Une photographie honnête de là où tu en es, sans jugement.
+          </h2>
+          <p class="mt-4 text-base leading-relaxed text-[var(--color-text-medium)]">
+            En quelques minutes, tu obtiens une cartographie claire de ta santé globale.
+            Parce que tout est lié : chaque domaine influence les autres, et c'est l'ensemble
+            qui dessine ton niveau de vitalité.
+          </p>
+        </div>
 
-        <div class="mt-10 grid gap-6 text-left sm:grid-cols-3">
-          <div class="border-t-2 border-[var(--color-accent)] pt-4">
-            <p class="text-sm leading-relaxed text-[var(--color-text-medium)]">
-              Ce qui te porte, ce qui te vide — en un coup d'œil.
+        <div class="mt-8 grid gap-5 sm:grid-cols-3 lg:gap-6">
+          <!-- Carte 1 — vert -->
+          <div class="flex flex-col rounded-2xl border border-[var(--color-border)] border-t-[3px] bg-[var(--color-surface)] p-6 shadow-sm transition-all hover:shadow-md" style="border-top-color: var(--color-sage);">
+            <div class="mb-4 flex items-center justify-between">
+              <span class="font-['Josefin_Sans',sans-serif] text-4xl font-light" style="color: var(--color-sage);">01</span>
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--color-sage)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+            </div>
+            <h3 class="text-lg leading-snug" style="color: var(--color-sage);">Tes forces et tes zones de travail</h3>
+            <p class="mt-2 text-sm leading-relaxed text-[var(--color-text-medium)]">
+              En un coup d'œil, tu repères ce qui te porte vraiment et ce qui te vide. Tes ressources, comme tes fuites d'énergie.
             </p>
           </div>
-          <div class="border-t-2 border-[var(--color-accent)] pt-4">
-            <p class="text-sm leading-relaxed text-[var(--color-text-medium)]">
-              Les angles morts que tu ne regardes jamais.
+
+          <!-- Carte 2 — prune -->
+          <div class="flex flex-col rounded-2xl border border-[var(--color-border)] border-t-[3px] bg-[var(--color-surface)] p-6 shadow-sm transition-all hover:shadow-md" style="border-top-color: var(--color-blush);">
+            <div class="mb-4 flex items-center justify-between">
+              <span class="font-['Josefin_Sans',sans-serif] text-4xl font-light" style="color: var(--color-blush);">02</span>
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--color-blush)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="11" cy="11" r="7" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg>
+            </div>
+            <h3 class="text-lg leading-snug" style="color: var(--color-blush);">Tes angles morts</h3>
+            <p class="mt-2 text-sm leading-relaxed text-[var(--color-text-medium)]">
+              Ces domaines qu'on oublie parce qu'on n'y pense jamais. La roue les met en lumière, même ceux qui dérangent ou ceux dont on n'a pas conscience.
             </p>
           </div>
-          <div class="border-t-2 border-[var(--color-accent)] pt-4">
-            <p class="text-sm leading-relaxed text-[var(--color-text-medium)]">
-              Ton prochain levier : <span class="text-[var(--color-primary)]">un seul</span> domaine, une action qui change vraiment les choses.
+
+          <!-- Carte 3 — terracotta -->
+          <div class="flex flex-col rounded-2xl border border-[var(--color-border)] border-t-[3px] bg-[var(--color-surface)] p-6 shadow-sm transition-all hover:shadow-md" style="border-top-color: var(--color-accent);">
+            <div class="mb-4 flex items-center justify-between">
+              <span class="font-['Josefin_Sans',sans-serif] text-4xl font-light" style="color: var(--color-accent);">03</span>
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="9" />
+                <circle cx="12" cy="12" r="5" />
+                <circle cx="12" cy="12" r="1.5" fill="var(--color-accent)" />
+              </svg>
+            </div>
+            <h3 class="text-lg leading-snug" style="color: var(--color-accent);">Ton prochain pas</h3>
+            <p class="mt-2 text-sm leading-relaxed text-[var(--color-text-medium)]">
+              Pas une liste sans fin. Juste où porter ton attention en premier, et une action concrète pour avancer vers une meilleure santé.
             </p>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         4. FORMULAIRE (évite de remonter)
+         ============================================ -->
+    <section class="bg-[var(--color-accent-dark)] py-20 md:py-24">
+      <div class="mx-auto max-w-2xl px-6 text-center">
+        <h2 class="text-3xl !text-[var(--color-surface)] md:text-4xl">
+          Reçois ton audit maintenant
+        </h2>
+        <div class="mt-10">
+          <SubscribeForm
+            intent="lead_audit_roue"
+            theme="dark"
+            cta="Recevoir l'audit"
+            ctaSubtext="C'est gratuit"
+            extraFields={["name"]}
+            nameLabel="Prénom"
+            namePlaceholder="Ton prénom"
+            emailLabel="Email"
+            emailPlaceholder="Ton adresse email"
+            buttonClass="btn-accent w-full whitespace-nowrap leading-tight !text-sm !py-3.5 !bg-[var(--color-sage-dark)] !border-[var(--color-sage-dark)] hover:!bg-[var(--color-warm)] hover:!text-[var(--color-primary)] hover:!border-[var(--color-warm)]"
+            redirectTo="/audit-roue-sante/merci/"
+            class="mx-auto max-w-md md:max-w-none"
+          />
         </div>
       </div>
     </section>
@@ -188,7 +247,7 @@ const after = [
               return item.href ? (
                 <a
                   href={item.href}
-                  class="group block border border-[var(--color-border)] bg-[var(--color-surface)] p-8 text-center transition-shadow hover:shadow-lg"
+                  class="group block rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-8 text-center transition-shadow hover:shadow-lg"
                 >
                   {Picto}
                   <h3 class="mt-2 text-xl !text-[var(--color-primary)] transition-colors group-hover:!text-[var(--color-accent-dark)]">
@@ -198,7 +257,7 @@ const after = [
                 </a>
               ) : (
                 <div
-                  class="block cursor-not-allowed border border-[var(--color-border)] bg-[var(--color-surface)] p-8 text-center opacity-60"
+                  class="block cursor-not-allowed rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-8 text-center opacity-60"
                   title="Bientôt disponible"
                 >
                   {Picto}
@@ -215,6 +274,7 @@ const after = [
         </div>
       </div>
     </section>
+
   </main>
   <Footer />
 </Layout>
