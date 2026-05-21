@@ -5,22 +5,28 @@ import Footer from "~/components/Footer.astro"
 
 const after = [
   {
-    icon: "📩",
     title: "Newsletter Amawé",
-    text: "1 mail/semaine, gratuit",
+    text: "1 clé concrète pour ta santé, chaque semaine. Gratuit. Déjà 20 000+ abonnés.",
+    image: "/images/claire-orriols-newsletter-superletter-amawe.webp",
+    alt: "Claire Orriols écrivant la SuperLetter, la newsletter santé d'Amawé",
+    imgClass: "object-[center_30%]",
     href: "/ressources/",
   },
   {
-    icon: "🌳",
     title: "Summer Camp",
-    text: "11-14 juillet 2026, Sud Aveyron",
+    text: "Festival mouvement &amp; santé naturelle<br />11-14 juillet 2026",
+    image: "/images/sc-rassemblement.webp",
+    imgClass: "object-[center_70%]",
+    alt: "Amawé Summer Camp — rassemblement en pleine nature, ambiance festival",
     href: "/summer-camp/",
   },
   {
-    icon: "💌",
-    title: "Contact direct",
-    text: "@amawefrance · hello@amawe.com",
-    href: "/contact/",
+    title: "Sur les réseaux",
+    text: "Rejoins-moi sur Instagram @amawefrance",
+    image: "/images/amawe-instagram-amawefrance-reseaux-sociaux.webp",
+    alt: "Le compte Instagram @amawefrance — contenus santé, mouvement et nature",
+    href: "https://www.instagram.com/amawefrance/",
+    external: true,
   },
 ]
 ---
@@ -31,40 +37,51 @@ const after = [
 >
   <Header />
   <main class="pt-20">
-    <section class="bg-[var(--color-warm)] py-24 md:py-32">
+    <section class="bg-[var(--color-warm)] py-14 md:py-20">
       <div class="mx-auto max-w-2xl px-6 text-center">
-        <div class="mb-8 inline-flex h-16 w-16 items-center justify-center rounded-full bg-[var(--color-sage)] text-3xl text-white">
+        <div class="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-full bg-[var(--color-sage)] text-2xl text-white">
           ✓
         </div>
         <h1 class="hero-title">Merci. Le PDF arrive dans ta boîte mail.</h1>
-        <p class="mt-8 text-lg leading-relaxed text-[var(--color-text-medium)]">
-          Vérifie ton dossier promotions/spam si tu ne le trouves pas. Tu
-          reçois aussi la SuperLetter chaque mardi.
+        <p class="mt-5 text-lg leading-relaxed text-[var(--color-text-medium)]">
+          Vérifie ton dossier promotions/spam si tu ne le trouves pas. Et ajoute
+          <strong class="font-normal text-[var(--color-primary)]">Amawé hello@amawe.com</strong>
+          à tes contacts pour être sûr·e de bien recevoir les emails.
         </p>
       </div>
     </section>
 
-    <section class="py-20 md:py-24">
+    <section class="py-14 md:py-16">
       <div class="mx-auto max-w-5xl px-6">
         <p
-          class="text-center font-['Josefin_Sans',sans-serif] text-2xl italic text-[var(--color-text-medium)] md:text-3xl"
+          class="text-center font-['Josefin_Sans',sans-serif] text-2xl text-[var(--color-text-medium)] md:text-3xl"
         >
           Si tu veux continuer à découvrir l'univers Amawé
         </p>
-        <div class="mt-12 grid gap-6 sm:grid-cols-3 md:gap-8">
+        <div class="mt-8 grid gap-5 sm:grid-cols-3 md:gap-6">
           {
             after.map((item) => (
               <a
                 href={item.href}
-                class="group block border border-[var(--color-border)] bg-[var(--color-surface)] p-8 text-center transition-shadow hover:shadow-lg"
+                target={item.external ? "_blank" : undefined}
+                rel={item.external ? "noopener noreferrer" : undefined}
+                class="group flex flex-col overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] transition-shadow hover:shadow-lg"
               >
-                <p class="text-3xl">{item.icon}</p>
-                <h3 class="mt-4 text-xl text-[var(--color-primary)] group-hover:text-[var(--color-accent-dark)] transition-colors">
-                  {item.title}
-                </h3>
-                <p class="mt-3 text-sm text-[var(--color-text-medium)]">
-                  {item.text}
-                </p>
+                <img
+                  src={item.image}
+                  alt={item.alt}
+                  width="600"
+                  height="450"
+                  loading="lazy"
+                  decoding="async"
+                  class={`aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-105 ${item.imgClass ?? ""}`}
+                />
+                <div class="p-5">
+                  <h3 class="text-lg !text-[var(--color-primary)] transition-colors group-hover:!text-[var(--color-accent-dark)]">
+                    {item.title}
+                  </h3>
+                  <p class="mt-1 text-sm text-[var(--color-text-medium)]" set:html={item.text} />
+                </div>
               </a>
             ))
           }
