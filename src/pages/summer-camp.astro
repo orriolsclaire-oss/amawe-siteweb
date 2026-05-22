@@ -381,24 +381,6 @@ const eventSchema = JSON.stringify({
             </div>
           </div>
 
-          <!-- Têtes d'affiche — placeholders -->
-          {Array.from({length: 2}).map((_, i) => (
-            <div class="flex gap-4 sm:gap-5">
-              <div class="flex-shrink-0">
-                <div class="flex h-20 w-20 items-center justify-center rounded-full bg-[var(--color-border)]">
-                  <span class="text-2xl text-[var(--color-text-light)]">?</span>
-                </div>
-              </div>
-              <div>
-                <p class="font-['Josefin_Sans',sans-serif] text-[1.3rem] font-semibold tracking-wide text-[var(--color-primary)]">À venir</p>
-                <p class="mt-0.5 text-lg text-[var(--color-accent)]">...</p>
-                <p class="mt-2 text-sm text-[var(--color-text-light)] italic leading-relaxed">
-                  Programmation en cours
-                </p>
-              </div>
-            </div>
-          ))}
-
           <!-- Acroyoga -->
           <div class="flex gap-4 sm:gap-5">
             <div class="flex-shrink-0">
