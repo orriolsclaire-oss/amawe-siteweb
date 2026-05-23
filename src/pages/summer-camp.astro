@@ -134,29 +134,28 @@ const eventSchema = JSON.stringify({
          ============================================ -->
     <section class="relative flex min-h-[80vh] items-center justify-center overflow-hidden">
       <img
-        src="/images/sc-hero.webp"
-        alt="Paysage de nature verdoyante en Sud Aveyron — lieu du Amawé Summer Camp 2026"
-        class="absolute inset-0 h-full w-full object-cover object-[center_52%]"
+        src="/images/sc-hero-riviere-foret.webp"
+        alt="Rivière sous la voûte des arbres en pleine forêt — lieu du Amawé Summer Camp, Sud Aveyron"
+        class="absolute inset-0 h-full w-full object-cover object-[center_63%] brightness-[1.18] saturate-[1.08]"
         loading="eager"
         fetchpriority="high"
         decoding="async"
-        width="800"
-        height="1281"
+        width="1400"
+        height="1867"
       />
-      <div class="absolute inset-0 bg-gradient-to-b from-[#1A1A1A]/80 via-[#1A1A1A]/65 to-[#1A1A1A]/90"></div>
-      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(0,0,0,0.0)_0%,_rgba(0,0,0,0.35)_100%)]"></div>
 
-      <div class="relative z-10 mx-auto max-w-6xl px-6 py-16 text-center sm:py-20 [&_p]:[text-shadow:0_2px_8px_rgba(0,0,0,0.4)] [&_h1]:[text-shadow:0_2px_12px_rgba(0,0,0,0.5)]">
-        <p class="font-['Josefin_Sans',sans-serif] text-xs uppercase tracking-[0.3em] text-[var(--color-accent-light)] sm:text-sm md:text-base">
+      <!-- Panneau plein centré : texte 100% lisible, la photo en pleine lumière respire autour -->
+      <div class="relative z-10 mx-6 max-w-2xl rounded-2xl border border-white/15 bg-[#1A1A1A]/55 px-8 py-10 text-center shadow-2xl backdrop-blur-md sm:px-14 sm:py-14">
+        <p class="font-['Josefin_Sans',sans-serif] text-sm uppercase tracking-[0.25em] text-[var(--color-accent-light)] sm:text-base">
           Festival santé, mouvement, nature
         </p>
-        <h1 class="mt-4 font-['Josefin_Sans',sans-serif] uppercase tracking-[0.04em] text-4xl leading-[0.95] text-white sm:text-5xl md:text-7xl lg:text-8xl drop-shadow-[0_4px_24px_rgba(0,0,0,0.25)]" style="font-weight: 250;">
+        <h1 class="mt-3 font-['Josefin_Sans',sans-serif] uppercase tracking-[0.04em] text-4xl leading-[0.95] text-white sm:text-5xl md:text-6xl" style="font-weight: 250;">
           Amawé<br/>Summer Camp
         </h1>
-        <p class="mt-4 font-['Josefin_Sans',sans-serif] text-lg text-[var(--color-accent-light)] sm:text-xl md:text-2xl">
+        <p class="mt-4 font-['Josefin_Sans',sans-serif] text-lg text-[var(--color-accent-light)] sm:text-xl">
           Du 11 au 14 juillet 2026
         </p>
-        <p class="mx-auto mt-6 max-w-3xl text-lg text-white/85 leading-relaxed sm:mt-8 sm:text-xl md:max-w-5xl">
+        <p class="mx-auto mt-5 max-w-xl text-base text-white/90 leading-relaxed sm:text-lg">
           4 jours en pleine nature pour recharger ton corps, nourrir ta tête, et connecter avec des gens qui cherchent la même chose que toi : vivre mieux, en pleine santé, et se reconnecter à l'essentiel.
         </p>
       </div>
@@ -1008,13 +1007,16 @@ const eventSchema = JSON.stringify({
           <strong>Tarifs réduits</strong> pour les jeunes (12-18 ans : 90&euro;) et les enfants (11 ans et moins : gratuit). Toujours sous la responsabilité des parents. Le Summer Camp proposera quelques ateliers pour les enfants, accompagnés des parents, mais ne prévoit pas d'espace &laquo;&nbsp;garderie&nbsp;&raquo;.
         </p>
 
-        <div class="mt-8 text-center sm:mt-10">
-          <a href={billetterieUrl} target="_blank" rel="noopener noreferrer" class="inline-block rounded-full border-2 border-[var(--color-accent)] bg-[var(--color-accent)] px-8 py-3 text-xs font-semibold uppercase tracking-[0.15em] text-white transition-all hover:bg-[var(--color-accent-dark)] hover:border-[var(--color-accent-dark)] hover:text-white sm:px-10 sm:py-4 sm:text-sm">
-            Je veux être au Summer Camp
-          </a>
+        <!-- Module de vente Billetweb intégré — achat depuis la page (compact, hauteur fixe + scroll interne) -->
+        <div class="mx-auto mt-8 max-w-2xl sm:mt-10">
+          <div class="overflow-hidden rounded-2xl bg-[var(--color-surface)] p-2 shadow-sm sm:p-3">
+            <a title="Vente de billets en ligne — Amawé Summer Camp" href="https://www.billetweb.fr/shop.php?event=amawe-summer-camp" class="shop_frame" target="_blank" data-src="https://www.billetweb.fr/shop.php?event=amawe-summer-camp" data-max-width="100%" data-initial-height="460" data-scrolling="yes" data-id="amawe-summer-camp" data-resize="0">Vente de billets en ligne</a>
+          </div>
         </div>
       </div>
     </section>
+
+    <script is:inline type="text/javascript" src="https://www.billetweb.fr/js/export.js"></script>
 
 
     <!-- ============================================
