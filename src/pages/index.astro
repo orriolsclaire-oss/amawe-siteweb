@@ -228,10 +228,10 @@ const offres = [
         <!-- Image Roue à gauche, sticky pour suivre le scroll -->
         <div class="md:sticky md:top-32">
           <img
-            src="/images/roue-sante-amawe.webp"
+            src="/images/amawe-roue-sante-pleine.webp"
             alt="La Roue de la Santé Amawé — 16 domaines (alimentation, mouvement, sommeil, rythme, nature, famille, couple, vie sociale, mental, croissance, expression, sens, habitat, travail, finances, contribution) regroupés en 4 axes : corps, cœur, esprit, ancrage"
-            width="800"
-            height="800"
+            width="1000"
+            height="1000"
             loading="lazy"
             class="aspect-square w-full object-contain"
           />
@@ -497,15 +497,41 @@ const offres = [
           class="aspect-square w-full rounded-full bg-[var(--color-warm)] object-cover md:col-span-2"
         />
         <div class="md:col-span-3">
-          {/* Mini-bio en cours de réécriture. Markup original sauvegardé en mémoire
-              (home_bio_section_backup.md) — à rétablir quand on travaille la bio. */}
           <p class="section-label mb-4">QUI SUIS-JE</p>
           <h2 class="text-3xl md:text-4xl">Claire Orriols</h2>
           <div class="divider mt-6" style="background-color: var(--color-text-light);"></div>
 
-          <p class="mt-10 font-['Josefin_Sans',sans-serif] text-xl italic text-[var(--color-text-light)]">
-            Présentation à venir…
-          </p>
+          <div class="mt-10 space-y-4 text-lg leading-relaxed text-[var(--color-text-medium)]">
+            <p>
+              Je vis dans un écolieu en Sud Aveyron. Je marche pieds nus, je
+              bouge avec discernement, je mange simple et brut.
+            </p>
+            <p>
+              Je ne suis pas une autorité sortie d'une école. Je suis une
+              <strong class="font-normal text-[var(--color-accent-dark)]">bâtisseuse</strong>, qui a lu, pratiqué, testé, échoué, recommencé.
+            </p>
+            <p class="text-[var(--color-primary)]">
+              J'ai fondé Amawé pour transmettre une seule intuition : tout est
+              lié.
+            </p>
+          </div>
+
+          <!-- Micro-récit de fondation -->
+          <div class="mt-10 border-l-2 pl-6" style="border-color: var(--color-accent);">
+            <p class="text-sm uppercase tracking-[0.15em] text-[var(--color-text-light)]">LE CHEMIN D'AMAWÉ</p>
+            <p class="mt-3 text-[var(--color-text-medium)] leading-relaxed">
+              Amawé existe depuis fin 2019. Cofondée avec ma sœur Amandine, la
+              marque a accompagné plus de 100 000 personnes en cinq ans —
+              Challenges Détox, Club SuperSouper, BMD Détox, un livre de
+              recettes, la SuperLetter hebdomadaire. En janvier 2026, j'ai
+              repris Amawé en solo, avec une direction plus profonde et plus
+              incarnée.
+            </p>
+          </div>
+
+          <a href="/a-propos/" class="btn-secondary mt-10 inline-block">
+            Mon histoire complète
+          </a>
         </div>
       </div>
     </section>

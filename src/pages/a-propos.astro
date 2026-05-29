@@ -8,67 +8,71 @@ const schema = generatePersonSchema()
 
 const pageTitle = "À propos — Claire Orriols | Amawé"
 const pageDescription =
-  "Derrière Amawé, il y a Claire Orriols. Bâtisseuse, ex-cofondatrice de NewWake et Amawé, praticienne MovNat & JMV. Reprends le pouvoir sur ta santé globale."
+  "Derrière Amawé, il y a Claire Orriols. Bâtisseuse, ex-cofondatrice de Newake et Amawé, praticienne MovNat & JMV. Reprends le pouvoir sur ta santé globale."
 
 const formations = [
   {
     titre: "MovNat Trainer Level 2",
-    detail: "Méthode de mouvement naturel — septembre 2024",
+    detail: "Le mouvement naturel : réveiller l'intelligence du corps, retrouver sa force, sa mobilité et son agilité, et se réapproprier toutes ces capacités physiques que la vie moderne nous a fait oublier.",
   },
   {
-    titre: "Méthode JMV",
+    titre: "Naturopraticienne — Méthode JMV",
     detail:
-      "Déprogrammation cellulaire (naturopathie, médecine chinoise, mouvements oculaires) — dans ce chemin depuis plus de 10 ans",
+      "Déprogrammation cellulaire (naturopathie, médecine chinoise, mouvements oculaires)",
   },
   {
-    titre: "Naturopathy & Hormesis Center (CNH)",
-    detail: "Sciences, philosophie, naturopathie",
+    titre: "Théorie polyvagale du système nerveux",
+    detail: "Régulation du système nerveux autonome — stress, sécurité et états internes",
+  },
+  {
+    titre: "Centre de l'Hormèse (CH)",
+    detail: "Sciences, philosophie, naturopathie, renforcement, hormèse",
   },
   {
     titre: "Institute for Integrative Nutrition (IIN)",
-    detail: "Coaching intégratif santé — formation internationale basée à New York",
+    detail: "Santé et nutrition intégrative, coaching — formation internationale basée à New York",
   },
 ]
 
 const programmesPasses = [
   {
     nom: "Challenges Détox",
-    detail: "4 jours gratuits pour alléger son corps",
+    detail: "4 jours gratuits. Une édition chaque saison, des dizaines au total. Parmi les moments les plus fédérateurs de la communauté Amawé.",
   },
   {
     nom: "Club SuperSouper",
-    detail: "Notre club recettes, vivant pendant plusieurs années",
+    detail: "Notre club recettes et plans de repas sains et zéro gaspi pour mieux manger sans prise de tête, avec une application pour y accéder",
   },
   {
     nom: "BMD Détox",
-    detail: "Programme 3 semaines de détox complète",
+    detail: "Programme de 3 semaines de détox douce. À l'époque, le programme le plus complet qui a apporté les plus belles transformations.",
   },
   {
     nom: "Dossiers Santé",
-    detail: "Cycle féminin, Microbiote, Perte de poids — formats approfondis",
+    detail: "Système nerveux, Cycle féminin, Microbiote, Perte de poids. Des formats approfondis sur des sujets spécifiques",
   },
   {
-    nom: "Livre de recettes (2022)",
-    detail: "70 recettes saines et festives pour Noël et le jour de l'an",
+    nom: "Livre de recettes",
+    detail: "500 exemplaires auto-édités en 2022.<br />70 recettes saines et festives pour Noël et les jours de fêtes",
   },
   {
-    nom: "SuperLetter",
-    detail: "Notre newsletter hebdomadaire",
+    nom: "Programme Relax et Sommeil",
+    detail: "Réguler le stress, apaiser le mental et restaurer un sommeil réparateur",
   },
 ]
 
 const metaTerritoires = [
   {
     nom: "Le corps",
-    sous: "Alimentation, mouvement, sommeil, rythme, nature",
+    sous: "Alimentation, mouvement, sommeil, rythme quotidien, nature",
   },
   {
     nom: "Le cœur",
-    sous: "Famille, couple, vie sociale",
+    sous: "Famille, couple, vie sociale, émotions",
   },
   {
     nom: "L'esprit",
-    sous: "Mental, émotions, croissance, sens, relation à soi",
+    sous: "Mental, croissance et apprentissage, sens, relation à soi",
   },
   {
     nom: "L'ancrage",
@@ -76,56 +80,26 @@ const metaTerritoires = [
   },
 ]
 
-const portes = [
-  {
-    label: "GRATUIT",
-    titre: "Ton audit Santé Globale Amawé",
-    description:
-      "Un PDF pour auto-évaluer tes 16 fondamentaux de vitalité en 10 minutes.",
-    cta: "Télécharger l'audit",
-    href: "/audit-roue-sante/",
-  },
-  {
-    label: "CHAQUE SEMAINE",
-    titre: "La SuperLetter",
-    description:
-      "1 newsletter par semaine, 1 sujet de santé globale approfondi : foie, sommeil, mouvement libre, système nerveux.",
-    cta: "Rejoindre la newsletter",
-    href: "/newsletter/",
-  },
-  {
-    label: "11-14 JUILLET 2026",
-    titre: "Summer Camp Amawé",
-    description:
-      "4 jours en montagne, dans l'écolieu, pour vivre concrètement les fondamentaux.",
-    cta: "Voir le Summer Camp",
-    href: "/summer-camp/",
-  },
-]
 ---
 
 <Layout title={pageTitle} description={pageDescription}>
   <Header />
   <main class="pt-20">
     <!-- Hero -->
-    <section class="bg-[var(--color-warm)] py-24 md:py-32">
+    <section class="bg-[var(--color-warm)] py-12 md:py-16">
       <div class="mx-auto max-w-4xl px-6 text-center">
-        <p class="section-label mb-6">À PROPOS</p>
+        <p class="section-label mb-3">À PROPOS</p>
         <h1 class="!text-3xl md:!text-5xl">Derrière Amawé, il y a Claire.</h1>
-        <div class="divider mx-auto mt-8" style="background-color: var(--color-sage-dark);"></div>
-        <p class="mt-10 text-lg leading-relaxed text-[var(--color-text-medium)]">
-          Et derrière Claire, une conviction simple :
-        </p>
-        <p class="mt-4 font-['Josefin_Sans',sans-serif] text-2xl font-light italic text-[var(--color-primary)] md:text-3xl">
-          la santé n'est pas un sujet à traiter.<br />
-          C'est un écosystème à habiter.
+        <div class="divider mx-auto mt-5" style="background-color: var(--color-sage-dark);"></div>
+        <p class="mt-6 font-['Josefin_Sans',sans-serif] text-xl italic text-[var(--color-accent-dark)] md:text-2xl">
+          La santé n'est pas un sujet à traiter. C'est un écosystème à habiter.
         </p>
       </div>
     </section>
 
     <!-- Moi aujourd'hui -->
-    <section class="bg-[var(--color-surface)] py-20 md:py-28">
-      <div class="mx-auto grid max-w-6xl items-center gap-12 px-6 md:grid-cols-2 md:gap-20">
+    <section class="bg-[var(--color-surface)] py-12 md:py-16">
+      <div class="mx-auto grid max-w-5xl items-center gap-12 px-6 md:grid-cols-2 md:gap-20">
         <img
           src="/images/claire-portrait-full.webp"
           alt="Claire Orriols — bâtisseuse, praticienne MovNat et JMV en Sud Aveyron"
@@ -136,153 +110,256 @@ const portes = [
           class="aspect-[3/4] w-full object-cover"
         />
         <div>
-          <p class="section-label mb-4">MOI, AUJOURD'HUI</p>
+          <p class="section-label mb-4">EN QUELQUES MOTS</p>
           <h2 class="text-4xl md:text-5xl">Claire Orriols</h2>
           <div class="divider mt-6"></div>
           <div class="mt-8 space-y-4 text-lg leading-relaxed text-[var(--color-text-medium)]">
-            <p>Je vis en pleine nature, dans un écolieu en Sud Aveyron.</p>
-            <p>Je construis une maison avec mon compagnon.</p>
-            <p>Je marche pieds nus le plus souvent possible.</p>
-            <p>Je bouge mon corps avec discernement — pas pour performer.</p>
-            <p>Je mange simple, brut, local — la plupart du temps.</p>
-            <p>Je dors tôt. J'écris. J'accompagne. Je transmets.</p>
+            <p>
+              La naturopathie, le mouvement et l'alimentation sont au cœur de
+              mon approche. Mais pour moi, la santé va bien au-delà.
+            </p>
+            <p>
+              Tout comme il n'y a pas que le contenu de notre assiette qui nous
+              alimente !
+            </p>
+            <p>
+              Notre énergie, notre humeur, notre stress, nos relations, notre
+              travail, notre sommeil, notre habitat, nos pensées : tout
+              influence notre niveau de vitalité.
+            </p>
+            <p class="text-[var(--color-primary)]">
+              À travers toutes mes expériences, j'ai compris que ce chemin et
+              cette quête de cohérence corps-cœur-esprit sont une dynamique
+              vivante.
+            </p>
           </div>
           <div class="mt-8 border-l-2 pl-6" style="border-color: var(--color-accent);">
             <p class="text-lg leading-relaxed text-[var(--color-primary)]">
-              Je ne suis pas une autorité sortie d'une école.
+              Je crois profondément que tout le monde peut être en meilleure
+              santé.
             </p>
-            <p class="mt-3 text-lg leading-relaxed text-[var(--color-primary)]">
-              Je suis une <strong class="font-normal text-[var(--color-accent-dark)]">bâtisseuse</strong>, qui a traversé ses propres déserts intérieurs, qui a lu, pratiqué, testé, échoué, recommencé.
-            </p>
-            <p class="mt-4 font-['Josefin_Sans',sans-serif] text-xl italic text-[var(--color-accent-dark)]">
-              Qui a fini par comprendre une chose : tout est lié.
+            <p class="mt-3 font-['Josefin_Sans',sans-serif] text-xl italic text-[var(--color-accent-dark)]">
+              Si nous nous donnons les conditions pour que la vie en nous puisse
+              mieux circuler.
             </p>
           </div>
           <p class="mt-8 text-lg leading-relaxed text-[var(--color-text-medium)]">
             C'est pour transmettre cette intuition que j'ai créé Amawé.
+          </p>
+          <p class="mt-4 text-lg leading-relaxed text-[var(--color-text-medium)]">
+            En parallèle de tous les programmes en ligne et des expériences
+            Amawé, j'accompagne en consultations individuelles avec la méthode
+            JMV à Millau (Sud Aveyron).
           </p>
         </div>
       </div>
     </section>
 
     <!-- D'où je vis — ancrage territorial et cohérence -->
-    <section class="bg-[var(--color-sage-dark)] py-20 md:py-28">
-      <div class="mx-auto max-w-6xl px-6">
+    <section class="bg-[var(--color-sage-dark)] py-12 md:py-16">
+      <div class="mx-auto max-w-5xl px-6">
         <div class="grid items-center gap-12 md:grid-cols-2 md:gap-20">
           <div class="order-2 md:order-1">
-            <p class="section-label mb-4 text-[var(--color-surface)]/60">D'OÙ JE VIS</p>
-            <h2 class="text-3xl text-[var(--color-surface)] md:text-4xl">
+            <p class="section-label mb-4 !text-[var(--color-warm)]/70">D'OÙ JE VIS</p>
+            <h2 class="text-3xl !text-[var(--color-warm)] md:text-4xl">
               Un écolieu en Sud Aveyron
             </h2>
-            <div class="divider mt-6" style="background-color: var(--color-accent);"></div>
+            <div class="divider mt-6" style="background-color: var(--color-warm);"></div>
 
-            <div class="mt-10 space-y-5 text-lg leading-relaxed text-[var(--color-surface)]/80">
+            <div class="mt-6 space-y-4 text-lg leading-relaxed text-[var(--color-surface)]/80">
               <p>
-                Un hameau en pierres, au cœur du Parc Naturel des Grands
-                Causses. Je n'y suis pas arrivée par hasard — et je n'y reste
-                pas par hasard non plus.
+                Il y a quelques années, nous nous sommes installés à plusieurs
+                dans un hameau et domaine de 21 hectares, au cœur du Parc
+                Naturel des Grands Causses. Prairies, forêts, rivière et grand
+                calme. Depuis, nous y avons construit plusieurs bâtiments
+                bioclimatiques. Une vie en collectif, en pleine nature : un
+                choix de vie conscient, car pour moi, la qualité et le cadre de
+                vie passent avant tout.
               </p>
               <p>
-                Pendant cinq ans, j'ai vécu dans une tiny house. Moins de vingt
-                mètres carrés. Juste ce qu'il faut pour dormir, cuisiner,
-                écrire, respirer. Ces cinq années m'ont appris quelque chose de
-                concret sur ce dont on a vraiment besoin pour se sentir vivant
-                — et sur tout ce qu'on accumule, en fait, pour ne pas avoir à
-                sentir.
+                Pendant cinq ans, j'y ai habité une tiny house (petit habitat
+                léger de 15 m²). Une école du minimalisme, de
+                l'adaptabilité et de l'essentiel.
               </p>
               <p>
-                Aujourd'hui, avec Baptiste, je construis une maison écologique
-                sur le territoire, <strong class="font-normal text-[var(--color-surface)]">La Kazanou</strong>. Pierre, bois, matériaux
-                biosourcés, orientation au soleil, eau récupérée. Pas pour la
-                performance environnementale — pour la cohérence.
+                Aujourd'hui, plus d'espace au programme avec la construction
+                d'un habitat écologique (fin des travaux prévus pour fin 2026),
+                et toujours la même cohérence.
               </p>
             </div>
           </div>
 
-          <img
-            src="/images/ecolieu-paysage.webp"
-            alt="Écolieu en Sud Aveyron — hameau en pierres au cœur du Parc Naturel des Grands Causses"
-            width="1400"
-            height="1050"
-            loading="lazy"
-            class="order-1 aspect-[4/3] w-full object-cover md:order-2"
-          />
+          <div class="order-1 flex flex-col gap-3 md:order-2">
+            <img
+              src="/images/claire-tiny-house-bois-ecolieu-amawe.webp"
+              alt="Claire Orriols devant sa tiny house en bois — écolieu en Sud Aveyron"
+              width="1400"
+              height="1050"
+              loading="lazy"
+              decoding="async"
+              class="aspect-[4/3] w-full object-cover"
+            />
+            <img
+              src="/images/claire-potager-collectif-ecolieu-amawe.webp"
+              alt="Claire Orriols dans le potager collectif de l'écolieu — Parc Naturel des Grands Causses, Sud Aveyron"
+              width="1050"
+              height="1400"
+              loading="lazy"
+              decoding="async"
+              class="aspect-[4/3] w-full object-cover object-[center_55%]"
+            />
+          </div>
         </div>
 
-        <div class="mx-auto mt-16 max-w-3xl">
-          <p class="font-['Josefin_Sans',sans-serif] text-2xl font-light italic text-[var(--color-accent)] md:text-3xl">
-            Parce que ce que je transmets, je le vis.
-          </p>
+      </div>
+    </section>
 
-          <div class="mt-8 space-y-5 text-lg leading-relaxed text-[var(--color-surface)]/80">
+    <!-- Ce qui m'a mise sur ce chemin -->
+    <section class="bg-[var(--color-warm)] py-12 md:py-16">
+      <div class="mx-auto max-w-5xl px-6">
+        <p class="section-label mb-4">CE QUI M'A MISE SUR CE CHEMIN</p>
+        <h2 class="text-3xl md:text-4xl">Le déclic</h2>
+        <div class="divider mt-6" style="background-color: var(--color-sage-dark);"></div>
+        <div class="mt-6 space-y-4 text-lg leading-relaxed text-[var(--color-text-medium)]">
+          <p>
+            Plusieurs opérations, un <strong class="font-normal text-[var(--color-primary)]">accident de ski</strong> (ou une chance de la
+            vie) et un passage en centre de rééducation.
+          </p>
+          <p>
+            Immobilisée pendant des semaines, une phrase me tourne en tête :
+            <span class="italic">« que ton alimentation soit ta première médecine »</span> ; oui, mais comment ?
+          </p>
+          <p>
+            La cantine du centre, je n'en voulais pas : plateaux préchauffés,
+            sauces industrielles, peu de nutriments et de vie. Alors je me
+            faisais à manger dans ma chambre (qui n'avait pas de cuisine, mais
+            juste une salle de bain). C'était l'été, j'avais de la chance : une
+            glacière à brancher, des fruits et légumes frais, un blender, et du
+            consistant qu'on me ramenait déjà cuit chaque semaine. Un geste
+            fort et symbolique, qui changeait tout : je reprenais la main sur ce
+            qui entrait dans mon corps, dans une période de reconstruction sur
+            tous les niveaux.
+          </p>
+        </div>
+      </div>
+
+      <!-- Bandeau mosaïque — parcours du déclic en images -->
+      <div class="my-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6">
+        <img src="/images/amawe-declic-parcours-1.webp" alt="Étape du parcours personnel de Claire Orriols — exploration Amawé" width="900" height="900" loading="lazy" decoding="async" class="aspect-square w-full rounded-none object-cover" />
+        <img src="/images/amawe-declic-parcours-2.webp" alt="Étape du parcours personnel de Claire Orriols — exploration Amawé" width="900" height="900" loading="lazy" decoding="async" class="aspect-square w-full rounded-none object-cover" />
+        <img src="/images/amawe-declic-parcours-3.webp" alt="Étape du parcours personnel de Claire Orriols — exploration Amawé" width="900" height="900" loading="lazy" decoding="async" class="aspect-square w-full rounded-none object-cover" />
+        <img src="/images/amawe-declic-parcours-4.webp" alt="Étape du parcours personnel de Claire Orriols — exploration Amawé" width="900" height="900" loading="lazy" decoding="async" class="aspect-square w-full rounded-none object-cover" />
+        <img src="/images/amawe-declic-parcours-5.webp" alt="Étape du parcours personnel de Claire Orriols — exploration Amawé" width="900" height="900" loading="lazy" decoding="async" class="aspect-square w-full rounded-none object-cover" />
+        <img src="/images/amawe-declic-parcours-6.webp" alt="Étape du parcours personnel de Claire Orriols — exploration Amawé" width="900" height="900" loading="lazy" decoding="async" class="aspect-square w-full rounded-none object-cover" />
+      </div>
+
+      <div class="mx-auto max-w-5xl px-6">
+        <div class="space-y-4 text-lg leading-relaxed text-[var(--color-text-medium)]">
+          <p>
+            En parallèle, quelque chose d'autre s'ouvre. Je découvre les
+            pouvoirs de l'esprit dans la guérison : où l'on porte son attention,
+            ce qu'on s'autorise à imaginer, la conversation silencieuse qu'on
+            entretient avec son corps. Je creuse les liens psychosomatiques, les
+            fascias, les traumas…
+          </p>
+          <p>
+            Un an plus tôt, un autre diagnostic m'était tombé dessus : SOPK
+            (syndrome des ovaires polykystiques — qu'on appelle désormais SMOP,
+            syndrome métabolique ovarien polyendocrinien), avec aménorrhée
+            secondaire.
+            Pour seule solution : la pilule. J'ai refusé par instinct. Et je
+            suis allée chercher ailleurs : alimentation anti-inflammatoire,
+            approche du féminin sacré, mode de vie global. Et j'en ai guéri.
+            À l'époque, le corps
+            médical ne m'avait jamais posé de questions sur ce que je considère
+            être la base. Aujourd'hui, heureusement, les choses changent un peu,
+            doucement.
+          </p>
+          <p class="text-[var(--color-primary)]">
+            Depuis 2015, j'ai commencé à creuser. Je n'ai plus arrêté.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Le mouvement — MovNat -->
+    <section class="bg-[var(--color-surface)] py-12 md:py-16">
+      <div class="mx-auto grid max-w-5xl items-center gap-12 px-6 md:grid-cols-2 md:gap-20">
+        <img
+          src="/images/claire-orriols-grimper-arbre-mouvement-naturel.webp"
+          alt="Claire Orriols grimpant un tronc d'arbre en pleine forêt — pratique du mouvement naturel"
+          width="1000"
+          height="1737"
+          loading="lazy"
+          decoding="async"
+          class="aspect-[3/4] w-full object-cover"
+        />
+        <div>
+          <p class="section-label mb-4">ÉCOUTER LE CORPS</p>
+          <h2 class="text-3xl md:text-4xl">Et puis, ma rencontre avec le mouvement</h2>
+          <div class="divider mt-6" style="background-color: var(--color-sage-dark);"></div>
+          <div class="mt-6 space-y-4 text-lg leading-relaxed text-[var(--color-text-medium)]">
+            <p>J'ai grandi dans les Pyrénées : les sports outdoor, j'adore.</p>
             <p>
-              Reprendre le pouvoir sur sa santé globale, ce n'est pas un sujet
-              à traiter à part. C'est le choix de l'environnement dans lequel
-              on place son corps, son souffle, son rythme, son regard. C'est le
-              choix de la lumière qui entre dans une pièce. C'est le choix du
-              silence ou du bruit. C'est le choix de ce qu'on mange parce qu'on
-              l'a cueilli, ou parce qu'on l'a commandé.
+              Mais c'est la rencontre avec le
+              <strong class="font-normal text-[var(--color-primary)]">MovNat</strong>,
+              le mouvement naturel, qui a marqué un tournant : une autre
+              philosophie du corps, bien au-delà du sport.
             </p>
             <p>
-              Je marche pieds nus sur la terre quand la saison le permet. Je
-              dors avec les fenêtres ouvertes. Je cuisine ce qui vient de la
-              vallée. Je me lève avec la lumière et je me couche avec elle.
-              Rien de tout ça n'est du folklore — c'est une hygiène qui me
-              permet de tenir, de sentir, de créer, et d'accompagner les
-              autres depuis un corps qui est vraiment là.
+              Après deux ans de pratique, j'ai voulu me former et passer les
+              certifications pour transmettre. Sur ce chemin, j'ai réalisé des
+              choses que je croyais hors de portée, et gagné
+              une vraie liberté dans mon quotidien. Mais aussi de la confiance en
+              moi, une solidité mentale et émotionnelle, le sentiment d'être
+              capable et un réel plaisir.
             </p>
-            <p class="text-[var(--color-surface)]">
-              L'écolieu n'est pas un décor Amawé. C'est la condition matérielle
-              de la transmission.
+            <p>
+              Et puis il y a eu la <strong class="font-normal text-[var(--color-primary)]">danse</strong>. Pas chorégraphique : une approche
+              somatique et émotionnelle, qui ouvre une autre forme de présence,
+              qui m'a appris à laisser le corps parler, à libérer ce qu'on tait,
+              dénouer ce qui s'est figé, à transformer et refaire circuler notre
+              énergie vitale.
+            </p>
+            <p class="text-[var(--color-primary)]">
+              Aujourd'hui, j'accompagne chacun à retrouver ce qui nous rend
+              profondément humains : notre capacité naturelle à bouger, à nous
+              adapter, et à ressentir.
             </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Ce qui m'a mise sur ce chemin -->
-    <section class="bg-[var(--color-warm)] py-20 md:py-28">
-      <div class="mx-auto max-w-3xl px-6">
-        <p class="section-label mb-4">LE DÉCLIC</p>
-        <h2 class="text-3xl md:text-4xl">Ce qui m'a mise sur ce chemin</h2>
-        <div class="divider mt-6" style="background-color: var(--color-sage-dark);"></div>
-        <div class="mt-10 space-y-6 text-lg leading-relaxed text-[var(--color-text-medium)]">
-          <p>Plusieurs chirurgies. Un accident de ski.</p>
-          <p>
-            Pendant la convalescence, j'ai découvert ce que l'alimentation pouvait
-            réellement changer dans un corps : l'énergie, l'humeur, la capacité de
-            réparation, le sommeil.
-          </p>
-          <p class="font-['Josefin_Sans',sans-serif] text-xl italic text-[var(--color-primary)]">
-            Ça a ouvert une question plus grande :<br />
-            si l'alimentation fait ça, qu'est-ce que le reste de la vie fait ?
-          </p>
-          <p>
-            Le mouvement. Le sommeil. Les émotions. Les relations. Le rythme.
-            L'habitat. Les choix financiers. Le sens que je donne à mes journées.
-          </p>
-          <p class="text-[var(--color-primary)]">
-            J'ai commencé à creuser. Je n'ai plus arrêté.
-          </p>
-        </div>
-      </div>
-    </section>
+    <!-- Bandeau photo — assiette vivante -->
+    <div class="relative h-56 w-full overflow-hidden sm:h-72 md:h-80">
+      <img
+        src="/images/amawe-assiette-vivante-saine.webp"
+        alt="Bol de légumes croquants, crudités colorées et vinaigrette maison — cuisine saine Amawé"
+        width="1600"
+        height="1067"
+        loading="lazy"
+        decoding="async"
+        class="h-full w-full rounded-none object-cover object-[center_55%]"
+      />
+    </div>
 
     <!-- L'aventure Amawé depuis 2019 -->
-    <section class="bg-[var(--color-surface)] py-20 md:py-28">
+    <section class="bg-[var(--color-surface)] py-12 md:py-16">
       <div class="mx-auto max-w-5xl px-6">
-        <div class="max-w-3xl">
-          <p class="section-label mb-4">DEPUIS FIN 2019</p>
-          <h2 class="text-3xl md:text-4xl">L'aventure Amawé</h2>
+        <div>
+          <p class="section-label mb-4">DEPUIS 2019</p>
+          <h2 class="text-3xl md:text-4xl">Les débuts d'Amawé</h2>
           <div class="divider mt-6" style="background-color: var(--color-sage-dark);"></div>
-          <div class="mt-10 space-y-6 text-lg leading-relaxed text-[var(--color-text-medium)]">
+          <div class="mt-6 space-y-4 text-lg leading-relaxed text-[var(--color-text-medium)]">
             <p>
-              J'ai cofondé Amawé avec ma sœur <strong class="font-normal text-[var(--color-primary)]">Amandine</strong> fin 2019.
+              J'ai créé Amawé avec ma sœur Amandine en 2019.
             </p>
             <p>
-              On voulait remettre dans les mains des gens ce qu'on nous avait
-              enlevé : la simplicité d'une alimentation vivante, le plaisir de
-              cuisiner juste, le pouvoir sur sa santé.
+              On voulait remettre dans les mains des gens ce qui nous paraissait
+              essentiel : la simplicité d'une alimentation saine, le plaisir de
+              cuisiner, le pouvoir sur sa santé par l'alimentation, avec une
+              vision déjà holistique.
             </p>
             <p>
               En 5 ans, on a accompagné <strong class="font-normal text-[var(--color-accent-dark)]">plus de 100 000 personnes</strong> à travers :
@@ -290,172 +367,228 @@ const portes = [
           </div>
         </div>
 
-        <ul class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <ul class="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {programmesPasses.map((p) => (
             <li class="border-t border-[var(--color-border)] pt-6">
               <p class="font-['Josefin_Sans',sans-serif] text-xl text-[var(--color-primary)]">{p.nom}</p>
-              <p class="mt-2 text-sm leading-relaxed text-[var(--color-text-medium)]">
-                {p.detail}
-              </p>
+              <p class="mt-2 text-sm leading-relaxed text-[var(--color-text-medium)]" set:html={p.detail} />
             </li>
           ))}
         </ul>
 
-        <p class="mt-16 max-w-3xl font-['Josefin_Sans',sans-serif] text-xl italic text-[var(--color-accent-dark)] md:text-2xl">
+        <p class="mt-20 text-lg leading-relaxed text-[var(--color-text-medium)]">
+          Aujourd'hui, ces programmes ne sont plus disponibles : ils
+          appartiennent à un chapitre que je referme avec gratitude.
+        </p>
+        <p class="mt-6 font-['Josefin_Sans',sans-serif] text-xl italic text-[var(--color-accent-dark)] md:text-2xl">
           Vous avez fait partie de cette histoire. Vos retours, vos
           transformations, votre confiance. Merci.
         </p>
       </div>
     </section>
 
-    <!-- Avant Amawé — NewWake -->
-    <section class="bg-[var(--color-sage-dark)] py-20 md:py-28">
-      <div class="mx-auto max-w-3xl px-6 text-[var(--color-surface)]">
-        <p class="section-label mb-4 text-[var(--color-surface)]/60">AVANT AMAWÉ</p>
-        <h2 class="text-3xl md:text-4xl">Il y a eu NewWake</h2>
-        <div class="divider mt-6" style="background-color: var(--color-accent);"></div>
-        <div class="mt-10 space-y-6 text-lg leading-relaxed text-[var(--color-surface)]/80">
+    <!-- Le pivot 2026 -->
+    <section class="bg-[var(--color-warm)] py-12 md:py-16">
+      <div class="mx-auto grid max-w-5xl items-center gap-12 px-6 md:grid-cols-2 md:gap-20">
+        <div class="order-2 md:order-1">
+          <p class="section-label mb-4">AMAWÉ</p>
+          <h2 class="text-3xl md:text-4xl">Aujourd'hui</h2>
+          <div class="divider mt-6" style="background-color: var(--color-sage-dark);"></div>
+          <div class="mt-6 space-y-4 text-lg leading-relaxed text-[var(--color-text-medium)]">
+            <p>
+              Début 2026, ma sœur et moi avons choisi de séparer nos chemins
+              professionnels.
+            </p>
+            <p>
+              Elle se consacre désormais pleinement à Laom, le coliving et les
+              événements de l'écolieu que nous avons cocréé en 2021 au domaine
+              de La Margue (Sud Aveyron).
+            </p>
+            <p class="font-semibold text-[var(--color-primary)]">
+              Aujourd'hui, je reprends la direction d'Amawé en solo.
+            </p>
+            <p>
+              Ces années m'ont profondément fait évoluer : comme femme, comme
+              praticienne, dans mes compétences et ma vision de la santé. Je veux
+              désormais qu'Amawé soit pleinement à l'image de qui je suis devenue.
+            </p>
+          </div>
+
+          <div class="mt-8 border-l-2 pl-6" style="border-color: var(--color-accent);">
+            <p class="font-['Josefin_Sans',sans-serif] text-2xl font-light italic text-[var(--color-primary)]">
+              La santé n'a jamais été une finalité.
+            </p>
+            <p class="mt-2 font-['Josefin_Sans',sans-serif] text-2xl font-light italic text-[var(--color-accent-dark)]">
+              C'est ce qu'elle te permet de vivre qui compte.
+            </p>
+          </div>
+
+        </div>
+        <img
+          src="/images/claire-orriols-cercle-partage-amawe.webp"
+          alt="Claire Orriols en cercle d'échange lors d'un événement Amawé à Montpellier"
+          width="1200"
+          height="801"
+          loading="lazy"
+          class="order-1 aspect-[4/3] w-full object-cover md:order-2"
+        />
+      </div>
+    </section>
+
+    <!-- Bandeau photo Newake — cours de yoga à Paris -->
+    <div class="relative h-56 w-full overflow-hidden sm:h-72 md:h-80">
+      <img
+        src="/images/amawe-newake-cours-yoga-appartement-paris.webp"
+        alt="Cours de yoga Newake dans un appartement parisien — événement Before Work d'Amawé"
+        width="1600"
+        height="1067"
+        loading="lazy"
+        decoding="async"
+        class="h-full w-full rounded-none object-cover object-[center_40%]"
+      />
+    </div>
+
+    <!-- Avant Amawé — Newake -->
+    <section class="bg-[var(--color-sage-dark)] py-12 md:py-16">
+      <div class="mx-auto max-w-5xl px-6 text-[var(--color-surface)]">
+        <p class="section-label mb-4 !text-[var(--color-accent-light)]">AVANT AMAWÉ</p>
+        <h2 class="text-3xl md:text-4xl !text-[var(--color-accent-light)]">Il y a eu les évènements matinaux</h2>
+        <div class="divider mt-6" style="background-color: var(--color-accent-light);"></div>
+        <div class="mt-6 space-y-4 text-lg leading-relaxed text-[var(--color-surface)]/80">
           <p>
-            Avant de lancer Amawé, Amandine et moi avons créé <strong class="font-normal text-[var(--color-surface)]">NewWake</strong>.
+            Pour que tu comprennes mieux d'où je viens et le parcours : avant de
+            lancer Amawé, avec ma sœur, nous avions créé Newake (à prononcer
+            <em>new-wake</em>, pour « nouveau réveil »).
           </p>
           <p>
-            Pendant <strong class="font-normal text-[var(--color-surface)]">deux ans et demi</strong>, on a organisé des événements
-            <strong class="font-normal text-[var(--color-surface)]"> Before Work</strong> de 6h30 à 9h du matin : yoga, coaching,
-            petit-déjeuner sain, réseautage — avant d'aller au bureau.
+            Pendant <strong class="font-normal text-[var(--color-surface)]">deux ans et demi</strong>, on a organisé des
+            <strong class="font-normal text-[var(--color-surface)]">événements Before Work</strong> de 6h30 à 9h du matin : yoga, coaching,
+            petit-déjeuner sain, réseautage ; avant d'aller au travail.
           </p>
           <p class="font-['Josefin_Sans',sans-serif] text-xl italic text-[var(--color-surface)]">
-            On a commencé à Montpellier. Puis Paris. Puis Bordeaux. Puis Pau.
+            On a commencé à Montpellier. Puis Paris, Pau et Bordeaux.
+          </p>
+          <p>
+            On est aussi intervenues en entreprise à Nantes et Paris. Puis à
+            Lyon pour un festival.
           </p>
           <p>
             C'est à ce moment-là que j'ai compris quelque chose d'essentiel.
           </p>
         </div>
 
-        <div class="mt-10 border-l-2 pl-6" style="border-color: var(--color-accent);">
-          <p class="font-['Josefin_Sans',sans-serif] text-2xl font-light text-[var(--color-surface)] md:text-3xl">
-            Je ne voulais pas seulement transmettre des savoirs.
+        <div class="mt-16 border-l-2 pl-6" style="border-color: var(--color-accent-light);">
+          <p class="font-['Josefin_Sans',sans-serif] text-2xl font-light text-[var(--color-surface)]">
+            On peut tout savoir, et ne rien changer.
           </p>
-          <p class="mt-3 font-['Josefin_Sans',sans-serif] text-2xl font-light italic text-[var(--color-accent)] md:text-3xl">
-            Je voulais faire vivre des expériences qui transforment.
+          <p class="mt-2 font-['Josefin_Sans',sans-serif] text-2xl font-light italic text-[var(--color-accent-light)]">
+            Moi, je voulais faire vivre des expériences qui transforment plus durablement.
           </p>
         </div>
 
-        <p class="mt-10 text-lg leading-relaxed text-[var(--color-surface)]/80">
-          Cette intuition est la même aujourd'hui. Elle porte chaque newsletter,
-          chaque programme, chaque moment que je construis avec Amawé.
+        <p class="mt-6 text-lg leading-relaxed text-[var(--color-surface)]/80">
+          C'est avec cette intention que je porte chaque programme, chaque
+          accompagnement, chaque stage que je construis avec Amawé.
         </p>
       </div>
     </section>
 
+    <!-- Bandeau mosaïque — les années Newake en images -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6">
+      <img src="/images/amawe-newake-yoga-collectif-boutique.webp" alt="Cours de yoga collectif Newake — événement Before Work d'Amawé" width="800" height="600" loading="lazy" decoding="async" class="aspect-square w-full rounded-none object-cover" />
+      <img src="/images/amawe-newake-soiree-evenement-brunch.webp" alt="Soirée événement Newake avec brunch sain et fleurs — Amawé" width="800" height="600" loading="lazy" decoding="async" class="aspect-square w-full rounded-none object-cover" />
+      <img src="/images/amawe-newake-dome-exterieur-ete.webp" alt="Rassemblement Newake en extérieur sous des dômes, en été — Amawé" width="800" height="600" loading="lazy" decoding="async" class="aspect-square w-full rounded-none object-cover" />
+      <img src="/images/amawe-newake-brunch-sain-collectif.webp" alt="Brunch sain et convivial lors d'un événement Newake — Amawé" width="800" height="600" loading="lazy" decoding="async" class="aspect-square w-full rounded-none object-cover" />
+      <img src="/images/amawe-newake-renforcement-sol-studio.webp" alt="Séance de renforcement au sol lors d'un événement Newake — Amawé" width="800" height="600" loading="lazy" decoding="async" class="aspect-square w-full rounded-none object-cover" />
+      <img src="/images/amawe-newake-stand-bouger-apprendre-mieux-manger.webp" alt="Claire et Amandine au stand Newake « Bouger, Apprendre, Mieux manger » — origines d'Amawé" width="800" height="600" loading="lazy" decoding="async" class="aspect-square w-full rounded-none object-cover object-[70%_center]" />
+    </div>
+
     <!-- Mes formations -->
-    <section class="bg-[var(--color-surface)] py-20 md:py-28">
-      <div class="mx-auto max-w-4xl px-6">
-        <p class="section-label mb-4">MES FORMATIONS</p>
-        <h2 class="text-3xl md:text-4xl">Au-delà de l'expérience</h2>
+    <section class="bg-[var(--color-surface)] py-12 md:py-16">
+      <div class="mx-auto max-w-5xl px-6">
+        <p class="section-label mb-4">AU-DELÀ DE L'EXPÉRIENCE</p>
+        <h2 class="text-3xl md:text-4xl">Mes formations</h2>
         <div class="divider mt-6" style="background-color: var(--color-sage-dark);"></div>
-        <p class="mt-8 max-w-2xl text-lg leading-relaxed text-[var(--color-text-medium)]">
-          Je me suis formée en continu, en cherchant à relier les savoirs plutôt
+        <p class="mt-5 max-w-2xl text-[var(--color-text-medium)]">
+          Je me forme en continu, en cherchant à relier les savoirs plutôt
           qu'à les collectionner.
         </p>
 
-        <div class="mt-12 space-y-6">
+        <div class="mt-8 grid gap-x-10 gap-y-5 sm:grid-cols-2">
           {formations.map((f) => (
-            <div class="flex items-start gap-5 border-b border-[var(--color-border)] pb-6">
-              <span class="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[var(--color-sage)] text-xs text-white">✓</span>
+            <div class="flex items-start gap-3 border-t border-[var(--color-border)] pt-4">
+              <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[var(--color-sage)] text-[0.6rem] text-white">✓</span>
               <div>
-                <p class="font-['Josefin_Sans',sans-serif] text-xl text-[var(--color-primary)]">{f.titre}</p>
-                <p class="mt-1 text-[var(--color-text-medium)]">{f.detail}</p>
+                <p class="font-['Josefin_Sans',sans-serif] text-base text-[var(--color-primary)]">{f.titre}</p>
+                <p class="mt-0.5 text-sm leading-snug text-[var(--color-text-medium)]" set:html={f.detail} />
               </div>
             </div>
           ))}
         </div>
 
-        <p class="mt-10 text-lg leading-relaxed text-[var(--color-text-medium)]">
-          En parallèle, j'accompagne en <strong class="font-normal text-[var(--color-primary)]">consultations JMV</strong> en local,
-          en Sud Aveyron.
-        </p>
       </div>
     </section>
 
-    <!-- Le pivot 2026 -->
-    <section class="bg-[var(--color-warm)] py-20 md:py-28">
-      <div class="mx-auto grid max-w-6xl items-center gap-12 px-6 md:grid-cols-2 md:gap-20">
-        <div class="order-2 md:order-1">
-          <p class="section-label mb-4">LE PIVOT</p>
-          <h2 class="text-3xl md:text-4xl">Janvier 2026</h2>
-          <div class="divider mt-6" style="background-color: var(--color-sage-dark);"></div>
-          <div class="mt-10 space-y-6 text-lg leading-relaxed text-[var(--color-text-medium)]">
-            <p>Amandine et moi avons fait un choix fort.</p>
-            <p>Notre collaboration professionnelle se termine.</p>
-            <p>
-              Amandine s'implique à temps plein dans
-              <a
-                href="https://laom.coliving"
-                target="_blank"
-                rel="noopener"
-                class="text-[var(--color-accent-dark)] underline decoration-dotted underline-offset-4 hover:text-[var(--color-accent)]"
-              >LaOM Coliving</a> — le coliving et les événements de l'écolieu que nous
-              avons cofondé en 2021.
-            </p>
-            <p class="text-[var(--color-primary)]">
-              Je reprends Amawé en solo, avec une nouvelle direction.
-            </p>
-          </div>
-
-          <div class="mt-8 border-l-2 pl-6" style="border-color: var(--color-accent);">
-            <p class="font-['Josefin_Sans',sans-serif] text-2xl font-light italic text-[var(--color-primary)]">
-              Ce n'est pas une fin triste.
-            </p>
-            <p class="mt-2 font-['Josefin_Sans',sans-serif] text-2xl font-light italic text-[var(--color-accent-dark)]">
-              C'est une évolution. Une mise en cohérence.
-            </p>
-          </div>
-
-          <p class="mt-8 text-lg leading-relaxed text-[var(--color-text-medium)]">
-            Nos anciens programmes ont soigné, ont transmis, ont transformé.
-            Mais ce qui nous a portées jusque-là ne peut pas être ce qui nous
-            portera demain.
-          </p>
-        </div>
-        <img
-          src="/images/claire-energie-illimitee2.webp"
-          alt="Claire Orriols — pivot 2026 d'Amawé"
-          width="683"
-          height="1024"
-          loading="lazy"
-          class="order-1 aspect-[3/4] w-full object-cover md:order-2"
-        />
-      </div>
-    </section>
+    <!-- Bandeau photo — rivière en forêt -->
+    <div class="relative h-56 w-full overflow-hidden sm:h-72 md:h-80">
+      <img
+        src="/images/amawe-nature-riviere-foret.webp"
+        alt="Rivière sous la voûte des arbres en pleine forêt — nature du Sud Aveyron, univers Amawé"
+        width="1500"
+        height="2000"
+        loading="lazy"
+        decoding="async"
+        class="h-full w-full rounded-none object-cover object-[center_55%]"
+      />
+    </div>
 
     <!-- La nouvelle Amawé — vision 2026 (roue) -->
-    <section class="bg-[var(--color-surface)] py-20 md:py-28">
-      <div class="mx-auto max-w-4xl px-6 text-center">
-        <p class="section-label mb-4">MA VISION 2026</p>
-        <h2 class="text-3xl md:text-4xl">La nouvelle Amawé</h2>
+    <section class="bg-[var(--color-surface)] py-12 md:py-16">
+      <div class="mx-auto max-w-5xl px-6 text-center">
+        <p class="section-label mb-4">RIEN N'EST ISOLÉ, AUCUN DOMAINE SEUL NE FAIT LA SANTÉ</p>
+        <h2 class="text-3xl md:text-4xl">Ma vision</h2>
         <div class="divider mx-auto mt-6" style="background-color: var(--color-sage-dark);"></div>
 
-        <div class="mt-12 space-y-5 text-lg leading-relaxed text-[var(--color-text-medium)]">
-          <p>La santé ne se joue pas seulement dans l'assiette.</p>
-          <p>Ni seulement dans le sport.</p>
-          <p>Ni même dans l'accumulation de savoir.</p>
+        <div class="mx-auto mt-8 max-w-3xl space-y-4 text-lg leading-relaxed text-[var(--color-text-medium)]">
+          <p>
+            <strong class="font-normal text-[var(--color-primary)]">La santé ne se joue pas seulement dans l'assiette.</strong> Ni seulement
+            dans le sport. Ni les deux.<br />
+            Encore moins dans l'accumulation de savoir.
+          </p>
+          <p>
+            C'est une dynamique de liens entre le dedans et le dehors : nos
+            systèmes internes et notre environnement, tout ce qui nous compose
+            et chaque domaine de notre vie. Qui demande une écoute et une
+            adaptation perpétuelle, comme tout écosystème vivant.
+          </p>
         </div>
 
-        <p class="mt-12 text-lg leading-relaxed text-[var(--color-primary)]">
-          Le vrai défi aujourd'hui, c'est :
-        </p>
-        <ul class="mx-auto mt-6 max-w-xl space-y-3 text-left text-lg text-[var(--color-text-medium)]">
-          <li>👉 notre énergie</li>
-          <li>👉 nos habitudes quotidiennes</li>
-          <li>👉 notre capacité à faire des choix alignés dans un monde qui nous épuise et nous tire vers le bas</li>
-        </ul>
+        <div class="mx-auto mt-8 max-w-2xl rounded-2xl bg-[var(--color-warm)] p-8 text-left shadow-sm md:p-10">
+          <p class="text-center font-['Josefin_Sans',sans-serif] text-xl text-[var(--color-primary)] md:text-2xl">
+            Le vrai défi aujourd'hui, c'est :
+          </p>
+          <ul class="mt-6 space-y-4 text-lg text-[var(--color-text-medium)]">
+            <li class="flex gap-3">
+              <span class="mt-1 text-xl leading-none text-[var(--color-accent)]" aria-hidden="true">→</span>
+              <span><strong class="font-normal text-[var(--color-primary)]">notre énergie</strong></span>
+            </li>
+            <li class="flex gap-3">
+              <span class="mt-1 text-xl leading-none text-[var(--color-accent)]" aria-hidden="true">→</span>
+              <span><strong class="font-normal text-[var(--color-primary)]">nos habitudes quotidiennes</strong></span>
+            </li>
+            <li class="flex gap-3">
+              <span class="mt-1 text-xl leading-none text-[var(--color-accent)]" aria-hidden="true">→</span>
+              <span><strong class="font-normal text-[var(--color-primary)]">notre capacité à faire des choix alignés</strong> dans un monde qui nous épuise et nous tire plutôt vers le bas</span>
+            </li>
+          </ul>
+        </div>
 
-        <p class="mt-14 text-lg leading-relaxed text-[var(--color-text-medium)]">
+        <p class="mt-12 text-lg leading-relaxed text-[var(--color-text-medium)]">
           Et ça se joue sur <strong class="font-normal text-[var(--color-primary)]">16 domaines interconnectés</strong>, regroupés en 4 axes :
         </p>
       </div>
 
-      <div class="mx-auto mt-14 grid max-w-5xl gap-6 px-6 sm:grid-cols-2 lg:grid-cols-4">
+      <div class="mx-auto mt-6 grid max-w-5xl gap-6 px-6 sm:grid-cols-2 lg:grid-cols-4">
         {metaTerritoires.map((m) => (
           <div class="border-t-2 pt-6" style="border-color: var(--color-accent);">
             <p class="font-['Josefin_Sans',sans-serif] text-2xl text-[var(--color-primary)]">{m.nom}</p>
@@ -464,158 +597,236 @@ const portes = [
         ))}
       </div>
 
-      <div class="mx-auto mt-16 grid max-w-6xl items-center gap-12 px-6 md:grid-cols-2 md:gap-20">
-        <img
-          src="/images/roue-sante-amawe.webp"
-          alt="La Roue de la Santé Amawé — 16 domaines interconnectés en 4 axes"
-          width="800"
-          height="756"
-          loading="lazy"
-          class="aspect-square w-full object-contain bg-[var(--color-surface)] p-4 rounded-2xl"
-        />
+      <div class="mx-auto mt-6 grid max-w-5xl items-center gap-12 px-6 md:grid-cols-2 md:gap-20">
+        <div>
+          <img
+            src="/images/amawe-roue-sante-pleine.webp"
+            alt="La Roue de la Santé Amawé — 16 domaines interconnectés en 4 axes"
+            width="1000"
+            height="1000"
+            loading="lazy"
+            class="aspect-square w-full object-contain bg-[var(--color-surface)] p-4 rounded-2xl"
+          />
+          <div class="mt-6 text-center">
+            <a
+              href="/audit-roue-sante/"
+              class="inline-block rounded-full bg-[var(--color-sage-dark)] px-5 py-2.5 text-xs font-medium uppercase tracking-[0.15em] text-[var(--color-surface)] transition-colors hover:bg-[var(--color-accent-dark)]"
+            >
+              Faire mon audit gratuit en 10 min
+            </a>
+          </div>
+        </div>
         <div>
           <p class="font-['Josefin_Sans',sans-serif] text-2xl font-light italic text-[var(--color-primary)] md:text-3xl">
             C'est ce que j'appelle la Roue de la Santé Amawé.
           </p>
           <div class="mt-8 space-y-4 text-lg leading-relaxed text-[var(--color-text-medium)]">
-            <p>Quand tu bouges un domaine, les autres bougent.</p>
-            <p>Quand tu tires un domaine vers le haut, les autres montent.</p>
+            <p>
+              Chaque domaine influence tous les autres. Et c'est leur équilibre
+              d'ensemble qui définit ton niveau de santé, de vitalité et
+              d'épanouissement.
+            </p>
+            <p class="text-[var(--color-primary)]">
+              Reprendre le pouvoir sur ta santé, ça veut dire reprendre le
+              pouvoir sur ces domaines-là, étape par étape.
+            </p>
           </div>
           <p class="mt-8 font-['Josefin_Sans',sans-serif] text-3xl italic text-[var(--color-accent-dark)] md:text-4xl">
-            Tout est lié.
+            Tout est lié. C'est ça, la santé holistique.
           </p>
         </div>
       </div>
     </section>
 
-    <!-- Mon approche — clivance par la nuance -->
-    <section class="bg-[var(--color-warm)] py-20 md:py-28">
-      <div class="mx-auto max-w-3xl px-6">
-        <p class="section-label mb-4">MON APPROCHE</p>
-        <h2 class="text-3xl md:text-4xl">Clivance par la nuance</h2>
-        <div class="divider mt-6" style="background-color: var(--color-sage-dark);"></div>
+    <!-- Mon approche — la santé est contextuelle -->
+    <section class="bg-[var(--color-warm)] py-12 md:py-16">
+      <div class="mx-auto grid max-w-5xl gap-12 px-6 md:grid-cols-[3fr_2fr] md:gap-16">
+        <div>
+          <p class="section-label mb-4">MON APPROCHE</p>
+          <h2 class="text-3xl md:text-4xl">La santé est contextuelle</h2>
+          <div class="divider mt-6" style="background-color: var(--color-sage-dark);"></div>
 
-        <div class="mt-10 space-y-4 text-lg leading-relaxed text-[var(--color-text-medium)]">
-          <p>Je ne crois pas aux dogmes.</p>
-          <p>Je ne crois pas aux régimes uniques.</p>
-          <p>Je ne crois pas qu'une molécule miracle va te sauver.</p>
-          <p>Je ne crois pas non plus que "rien ne marche" ou que "la santé est génétique".</p>
+        <div class="mt-6 space-y-4 text-lg leading-relaxed text-[var(--color-text-medium)]">
+          <p>
+            Je ne crois pas aux dogmes ni aux régimes uniques.
+          </p>
         </div>
 
-        <p class="mt-10 font-['Josefin_Sans',sans-serif] text-2xl font-light italic text-[var(--color-primary)] md:text-3xl">
-          Je crois à la nuance contextuelle.
-        </p>
+        <div class="mt-8 border-l-2 pl-6" style="border-color: var(--color-accent);">
+          <p class="font-['Josefin_Sans',sans-serif] text-2xl font-light italic text-[var(--color-primary)]">
+            Aucune méthode universelle n'existe.
+          </p>
+          <p class="mt-2 font-['Josefin_Sans',sans-serif] text-2xl font-light italic text-[var(--color-accent-dark)]">
+            Parce qu'il n'existe pas d'humain universel.
+          </p>
+        </div>
 
-        <div class="mt-10 space-y-5 text-lg leading-relaxed text-[var(--color-text-medium)]">
-          <p>La santé n'est pas conventionnelle. Ni alternative. Elle est <strong class="font-normal text-[var(--color-primary)]">contextuelle</strong>.</p>
+        <div class="mt-8 space-y-4 text-lg leading-relaxed text-[var(--color-text-medium)]">
           <p>L'alimentation idéale n'est pas vegan. Ni carnivore. Elle est <strong class="font-normal text-[var(--color-primary)]">la tienne</strong>.</p>
-          <p>Le stress n'est pas bon. Ni mauvais. Il <strong class="font-normal text-[var(--color-primary)]">dépend de quoi</strong>.</p>
+          <p>Le stress n'est pas bon. Ni mauvais. Il <strong class="font-normal text-[var(--color-primary)]">dépend du contexte et de quand</strong>.</p>
         </div>
 
-        <div class="mt-12 space-y-3 text-lg leading-relaxed text-[var(--color-primary)]">
-          <p>C'est depuis cette nuance que je parle.</p>
-          <p>C'est depuis cette nuance que je construis mes programmes.</p>
-          <p>C'est depuis cette nuance que je t'accompagne, si tu choisis de venir.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Pourquoi maintenant -->
-    <section class="bg-[var(--color-surface)] py-20 md:py-28">
-      <div class="mx-auto max-w-3xl px-6">
-        <p class="section-label mb-4">POURQUOI MAINTENANT</p>
-        <h2 class="text-3xl md:text-4xl">Dans un monde qui te veut productif et malade</h2>
-        <div class="divider mt-6" style="background-color: var(--color-sage-dark);"></div>
-        <div class="mt-10 space-y-5 text-lg leading-relaxed text-[var(--color-text-medium)]">
-          <p>Parce que le monde dans lequel on vit nous épuise.</p>
-          <p>
-            Parce qu'on cherche partout des hacks, des compléments, des méthodes
-            miracle — et on ne trouve pas.
-          </p>
-          <p>
-            Parce que la vraie santé, c'est <strong class="font-normal text-[var(--color-primary)]">un chemin</strong> — pas un programme en 8 semaines.
-          </p>
-          <p>
-            Parce que <strong class="font-normal text-[var(--color-primary)]">reprendre le pouvoir sur ta santé</strong>, c'est le socle pour déployer ta vie entière et œuvrer pour ce qui compte.
-          </p>
-        </div>
-
-        <p class="mt-12 font-['Josefin_Sans',sans-serif] text-2xl font-light italic text-[var(--color-accent-dark)] md:text-3xl">
-          Choisir sa pleine santé est un acte.
+        <p class="mt-8 text-lg leading-relaxed text-[var(--color-primary)]">
+          C'est depuis cette nuance que je construis mes programmes et que
+          j'accompagne.
         </p>
+
+        <div class="mt-8 space-y-4 text-lg leading-relaxed text-[var(--color-text-medium)]">
+          <p>
+            Dans un monde qui nous veut productifs et malades, qui nous épuise,
+            on cherche partout des hacks, des compléments, des méthodes miracle.
+          </p>
+          <p class="text-[var(--color-primary)]">Et on ne trouve pas.</p>
+          <p>Parce que la vraie santé, c'est <strong class="font-normal text-[var(--color-primary)]">un chemin</strong>.</p>
+          <p>
+            Parce que reprendre le pouvoir sur ta santé, c'est le socle pour
+            déployer ta vie entière et œuvrer pour ce qui compte.
+          </p>
+        </div>
+
+        <p class="mt-8 font-['Josefin_Sans',sans-serif] text-2xl font-light italic text-[var(--color-accent-dark)] md:text-3xl">
+          Choisir sa pleine santé est un acte d'amour et de liberté.
+        </p>
+        </div>
+
+        <div class="flex flex-col gap-4">
+          <img
+            src="/images/amawe-pratique-somatique-mouvement-collectif.webp"
+            alt="Pratique somatique et mouvement libre en groupe lors d'un stage Amawé — approche du corps en contexte"
+            width="1024"
+            height="1536"
+            loading="lazy"
+            decoding="async"
+            class="aspect-[3/4] w-full object-cover"
+          />
+          <img
+            src="/images/claire-orriols-portrait-noir-blanc-kateline-durand.webp"
+            alt="Claire Orriols en portrait noir et blanc — kimono en mouvement, contre-plongée, photographe Kateline Durand"
+            width="1200"
+            height="1800"
+            loading="lazy"
+            decoding="async"
+            class="aspect-[3/4] w-full object-cover"
+          />
+        </div>
       </div>
     </section>
 
-    <!-- Où je vais avec Amawé en 2026 -->
-    <section class="bg-[var(--color-warm)] py-20 md:py-28">
-      <div class="mx-auto max-w-4xl px-6">
-        <p class="section-label mb-4">EN 2026</p>
-        <h2 class="text-3xl md:text-4xl">Où je vais avec Amawé</h2>
-        <div class="divider mt-6" style="background-color: var(--color-sage-dark);"></div>
-
-        <ul class="mt-12 space-y-8">
-          <li class="border-l-2 pl-6" style="border-color: var(--color-accent);">
-            <p class="font-['Josefin_Sans',sans-serif] text-xl text-[var(--color-primary)]">Ce nouveau site</p>
-            <p class="mt-2 text-[var(--color-text-medium)]">Avec une vision plus claire.</p>
-          </li>
-          <li class="border-l-2 pl-6" style="border-color: var(--color-accent);">
-            <p class="font-['Josefin_Sans',sans-serif] text-xl text-[var(--color-primary)]">La newsletter hebdomadaire</p>
-            <p class="mt-2 text-[var(--color-text-medium)]">
-              Riche en contenu pédagogique — foie, sommeil, système nerveux, rythmes, émotions.
-            </p>
-          </li>
-          <li class="border-l-2 pl-6" style="border-color: var(--color-accent);">
-            <p class="font-['Josefin_Sans',sans-serif] text-xl text-[var(--color-primary)]">Le Summer Camp Amawé</p>
-            <p class="mt-2 text-[var(--color-text-medium)]">
-              4 jours en montagne, dans l'écolieu, pour vivre concrètement les fondamentaux (11-14 juillet 2026).
-            </p>
-          </li>
-          <li class="border-l-2 pl-6" style="border-color: var(--color-accent);">
-            <p class="font-['Josefin_Sans',sans-serif] text-xl text-[var(--color-primary)]">Énergie Illimitée</p>
-            <p class="mt-2 text-[var(--color-text-medium)]">Prochaine édition fin 2026 / début 2027.</p>
-          </li>
-          <li class="border-l-2 pl-6" style="border-color: var(--color-accent);">
-            <p class="font-['Josefin_Sans',sans-serif] text-xl text-[var(--color-primary)]">De nouvelles offres</p>
-            <p class="mt-2 text-[var(--color-text-medium)]">
-              Alignées avec la roue — je partage au fur et à mesure.
-            </p>
-          </li>
-        </ul>
-      </div>
-    </section>
 
     <!-- Portes d'entrée (CTAs) -->
-    <section class="bg-[var(--color-sage-dark)] py-20 md:py-28">
+    <section class="bg-[var(--color-sage-dark)] py-12 md:py-16">
       <div class="mx-auto max-w-5xl px-6">
         <div class="max-w-3xl">
-          <p class="section-label mb-4 text-[var(--color-surface)]/60">FAIRE UN BOUT DE CHEMIN</p>
-          <h2 class="text-3xl text-[var(--color-surface)] md:text-4xl">
+          <p class="section-label mb-4 !text-[var(--color-warm)]/70">FAIRE UN BOUT DE CHEMIN</p>
+          <h2 class="text-3xl !text-[var(--color-warm)] md:text-4xl">
             Si tu veux avancer avec moi
           </h2>
-          <div class="divider mt-6" style="background-color: var(--color-accent);"></div>
+          <div class="divider mt-6" style="background-color: var(--color-warm);"></div>
           <p class="mt-8 text-lg leading-relaxed text-[var(--color-surface)]/80">
             Voici les 3 portes d'entrée :
           </p>
         </div>
 
-        <div class="mt-14 grid gap-6 md:grid-cols-3">
-          {portes.map((p) => (
-            <a
-              href={p.href}
-              class="group flex flex-col border border-[var(--color-surface)]/20 bg-[var(--color-surface)]/5 p-8 backdrop-blur-sm transition-colors hover:bg-[var(--color-surface)]/10"
-            >
-              <p class="section-label mb-4 text-[var(--color-accent)]">{p.label}</p>
-              <p class="font-['Josefin_Sans',sans-serif] text-2xl text-[var(--color-surface)]">{p.titre}</p>
-              <p class="mt-4 flex-1 text-[var(--color-surface)]/70">{p.description}</p>
-              <span class="mt-8 inline-flex items-center gap-2 text-sm font-medium uppercase tracking-[0.15em] text-[var(--color-accent)] transition-transform group-hover:translate-x-1">
-                {p.cta}
-                <span aria-hidden="true">→</span>
+        <div class="mt-10 grid gap-6 md:grid-cols-3">
+          <!-- Poster 1 : Audit Roue -->
+          <a
+            href="/audit-roue-sante/"
+            class="group relative block aspect-[3/4] overflow-hidden rounded-2xl shadow-md transition-shadow hover:shadow-xl"
+          >
+            <img
+              src="/images/audit-roue-sante-mockup.webp"
+              alt="Audit Roue de la Santé Amawé — PDF d'auto-évaluation"
+              width="1200"
+              height="1600"
+              loading="lazy"
+              class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/10"></div>
+            <div class="absolute inset-x-0 top-0 p-6">
+              <span class="inline-block rounded-full bg-[var(--color-surface)]/95 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.15em] text-[var(--color-sage-dark)]">
+                Gratuit · 10 minutes
               </span>
-            </a>
-          ))}
+            </div>
+            <div class="absolute inset-x-0 bottom-0 p-6 text-[var(--color-surface)] md:p-8">
+              <p class="text-xs uppercase tracking-[0.15em] text-[var(--color-surface)]/70">PDF d'auto-évaluation</p>
+              <p class="mt-3 font-['Josefin_Sans',sans-serif] text-2xl leading-tight md:text-3xl">Audit Roue<br />de la Santé</p>
+              <p class="mt-2 text-sm font-medium">16 domaines de vitalité</p>
+              <span class="mt-5 inline-flex items-start gap-3 self-start text-xs font-medium uppercase tracking-[0.15em] text-[var(--color-surface)]">
+                <span class="mt-[5px] block h-1.5 w-1.5 shrink-0 rounded-full" style="background-color: var(--color-sage-dark);" aria-hidden="true"></span>
+                <span class="underline decoration-1 decoration-transparent underline-offset-4 transition-colors duration-500 group-hover:decoration-[var(--color-surface)]">
+                  Je fais mon audit
+                </span>
+              </span>
+            </div>
+          </a>
+
+          <!-- Poster 2 : Énergie Illimitée -->
+          <a
+            href="/energie-illimitee/"
+            class="group relative block aspect-[3/4] overflow-hidden rounded-2xl shadow-md transition-shadow hover:shadow-xl"
+          >
+            <img
+              src="/images/claire-ei-hero-coaching.webp"
+              alt="Programme Énergie Illimitée — Claire Orriols en animation, transmission en présentiel"
+              width="1200"
+              height="1600"
+              loading="lazy"
+              class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+              style="object-position: center 25%;"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/10"></div>
+            <div class="absolute inset-x-0 top-0 p-6">
+              <span class="inline-block rounded-full bg-[var(--color-surface)]/95 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.15em] text-[var(--color-accent-dark)]">
+                fin 2026 / début 2027
+              </span>
+            </div>
+            <div class="absolute inset-x-0 bottom-0 p-6 text-[var(--color-surface)] md:p-8">
+              <p class="text-xs uppercase tracking-[0.15em] text-[var(--color-surface)]/70">3 mois d'accompagnement (coaching + immersions)</p>
+              <p class="mt-3 font-['Josefin_Sans',sans-serif] text-2xl leading-tight md:text-3xl">Énergie<br />Illimitée</p>
+              <p class="mt-2 text-sm font-medium">Inscriptions ouvertes en liste d'attente</p>
+              <span class="mt-5 inline-flex items-start gap-3 self-start text-xs font-medium uppercase tracking-[0.15em] text-[var(--color-surface)]">
+                <span class="mt-[5px] block h-1.5 w-1.5 shrink-0 rounded-full" style="background-color: var(--color-accent-dark);" aria-hidden="true"></span>
+                <span class="underline decoration-1 decoration-transparent underline-offset-4 transition-colors duration-500 group-hover:decoration-[var(--color-surface)]">
+                  Je découvre le programme
+                </span>
+              </span>
+            </div>
+          </a>
+
+          <!-- Poster 3 : Stages & Retraites -->
+          <a
+            href="/stages/"
+            class="group relative block aspect-[3/4] overflow-hidden rounded-2xl shadow-md transition-shadow hover:shadow-xl"
+          >
+            <img
+              src="/images/sc-rassemblement.webp"
+              alt="Rassemblement Amawé en pleine nature — foule sous les grandes tentes, ambiance festival"
+              width="1200"
+              height="1800"
+              loading="lazy"
+              class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/10"></div>
+            <div class="absolute inset-x-0 top-0 p-6">
+              <span class="inline-block rounded-full bg-[var(--color-surface)]/95 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.15em] text-[var(--color-accent)]">
+                Stages & retraites
+              </span>
+            </div>
+            <div class="absolute inset-x-0 bottom-0 p-6 text-[var(--color-surface)] md:p-8">
+              <p class="text-xs uppercase tracking-[0.15em] text-[var(--color-surface)]/70">Des temps forts en présentiel</p>
+              <p class="mt-3 font-['Josefin_Sans',sans-serif] text-2xl leading-tight md:text-3xl">Stages<br />& Retraites</p>
+              <p class="mt-2 text-sm font-medium">Mouvement, nature, transmission — et le festival Summer Camp</p>
+              <span class="mt-5 inline-flex items-start gap-3 self-start text-xs font-medium uppercase tracking-[0.15em] text-[var(--color-surface)]">
+                <span class="mt-[5px] block h-1.5 w-1.5 shrink-0 rounded-full" style="background-color: var(--color-accent);" aria-hidden="true"></span>
+                <span class="underline decoration-1 decoration-transparent underline-offset-4 transition-colors duration-500 group-hover:decoration-[var(--color-surface)]">
+                  Je découvre les stages
+                </span>
+              </span>
+            </div>
+          </a>
         </div>
 
-        <p class="mx-auto mt-16 max-w-2xl text-center text-lg leading-relaxed text-[var(--color-surface)]/80">
+        <p class="mx-auto mt-6 max-w-2xl text-center text-lg leading-relaxed text-[var(--color-surface)]/80">
           Et si tu veux juste me dire bonjour,
           <a
             href="https://instagram.com/amawefrance"
@@ -623,19 +834,19 @@ const portes = [
             rel="noopener"
             class="text-[var(--color-accent)] underline decoration-dotted underline-offset-4 hover:text-[var(--color-surface)]"
           >viens en DM sur @amawefrance</a>.
-          Je lis tout. 💛
+          Je lis tout.
         </p>
       </div>
     </section>
 
     <!-- Closing manifest -->
-    <section class="bg-[var(--color-surface)] py-20 md:py-24">
-      <div class="mx-auto max-w-3xl px-6 text-center">
-        <p class="font-['Josefin_Sans',sans-serif] text-2xl font-light italic text-[var(--color-primary)] md:text-3xl">
-          Amawé — reprends le pouvoir sur ta santé globale,<br />
+    <section class="bg-[var(--color-surface)] py-12 md:py-16">
+      <div class="mx-auto max-w-5xl px-6 text-center">
+        <p class="font-['Josefin_Sans',sans-serif] text-2xl font-light text-[var(--color-primary)] md:text-3xl">
+          Reprends le pouvoir sur ta santé globale,<br />
           déploie la vie que tu souhaites vraiment.
         </p>
-        <p class="mt-8 section-label">CLAIRE</p>
+        <p class="mt-8 section-label">CLAIRE, FONDATRICE D'AMAWÉ</p>
       </div>
     </section>
   </main>
