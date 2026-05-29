@@ -23,7 +23,7 @@ const {
 
 const ogImageURL = ogImage
   ? new URL(ogImage, Astro.site).href
-  : undefined
+  : new URL("/og-amawe-default.jpg", Astro.site).href
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site)
 const alternateURL = new URL(
@@ -66,19 +66,26 @@ const alternateURL = new URL(
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:type" content={ogType} />
     <meta property="og:locale" content={lang === "fr" ? "fr_FR" : "en_US"} />
-    {ogImageURL && <meta property="og:image" content={ogImageURL} />}
+    <meta property="og:site_name" content="Amawé" />
+    <meta property="og:image" content={ogImageURL} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Amawé — Reprends le pouvoir sur ta santé globale" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    {ogImageURL && <meta name="twitter:image" content={ogImageURL} />}
+    <meta name="twitter:image" content={ogImageURL} />
+    <meta name="twitter:image:alt" content="Amawé — Reprends le pouvoir sur ta santé globale" />
 
     <!-- JSON-LD structured data -->
     {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
 
-    <!-- Favicon -->
+    <!-- Favicon & icons -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   </head>
   <body class="min-h-screen bg-[var(--color-background)] text-[var(--color-text)]">
     <slot />
