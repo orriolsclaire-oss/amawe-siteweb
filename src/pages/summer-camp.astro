@@ -24,7 +24,7 @@ const faqs = [
   },
   {
     q: "Ce qui est compris dans le tarif du pass",
-    a: "Le pass inclut l'accès à <strong>l'intégralité du programme</strong> et des infrastructures prévues : conférences, ateliers, pratiques, concerts, et tous les espaces partagés du domaine, chapiteau, salle de pratique, sanitaires, durant les 4 jours.",
+    a: "Le pass inclut l'accès à <strong>l'intégralité du programme</strong> et des infrastructures prévues : conférences, ateliers, pratiques, concerts, et tous les espaces partagés du domaine, chapiteau, salle de pratique, sanitaires, durant les 4 jours (ou 1 seul jour selon le pass choisi).",
   },
   {
     q: "Ce qui n'est pas compris dans le tarif du pass",
@@ -94,6 +94,14 @@ const eventSchema = JSON.stringify({
   offers: [
     {
       "@type": "Offer",
+      name: "Pass 1 jour",
+      price: "65",
+      priceCurrency: "EUR",
+      availability: "https://schema.org/InStock",
+      url: "https://www.billetweb.fr/amawe-summer-camp",
+    },
+    {
+      "@type": "Offer",
       name: "Pass Early Bird",
       price: "140",
       priceCurrency: "EUR",
@@ -105,14 +113,6 @@ const eventSchema = JSON.stringify({
       "@type": "Offer",
       name: "Pass Normal",
       price: "180",
-      priceCurrency: "EUR",
-      availability: "https://schema.org/InStock",
-      url: "https://www.billetweb.fr/amawe-summer-camp",
-    },
-    {
-      "@type": "Offer",
-      name: "Pass Soutien",
-      price: "200",
       priceCurrency: "EUR",
       availability: "https://schema.org/InStock",
       url: "https://www.billetweb.fr/amawe-summer-camp",
@@ -1077,36 +1077,39 @@ const eventSchema = JSON.stringify({
     <section class="bg-[var(--color-warm)] py-10 sm:py-14 md:py-16">
       <div class="mx-auto max-w-4xl px-6">
         <h2 class="text-center text-2xl sm:text-3xl md:text-4xl text-[var(--color-primary)]">Tarifs</h2>
-        <p class="mt-2 text-center text-base text-[var(--color-text-light)] sm:mt-3 sm:text-lg">Ton pass pour les 4 jours</p>
+        <p class="mt-2 text-center text-base text-[var(--color-text-light)] sm:mt-3 sm:text-lg">Choisis ton format</p>
 
         <div class="mt-8 grid gap-4 sm:mt-10 sm:gap-5 md:grid-cols-3">
+          <!-- 1 jour -->
+          <div class="rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] p-5 text-center sm:p-6">
+            <p class="text-[10px] font-semibold uppercase tracking-wider text-[var(--color-text-light)] sm:text-xs">Pass 1 jour</p>
+            <p class="mt-2 font-['Josefin_Sans',sans-serif] text-3xl text-[var(--color-secondary)] sm:mt-3 sm:text-4xl">65<span class="text-lg sm:text-xl">&euro;</span></p>
+            <p class="mt-1.5 text-xs text-[var(--color-text-light)] sm:text-sm">Tu choisis ton jour</p>
+          </div>
+
           <!-- Early Bird -->
           <div class="relative rounded-lg border-2 border-[var(--color-accent)] bg-[var(--color-surface)] p-5 text-center sm:p-6">
             <span class="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-[var(--color-accent)] px-4 py-1 text-[10px] font-semibold uppercase tracking-wider text-white sm:text-xs">Early Bird</span>
+            <p class="text-[10px] font-semibold uppercase tracking-wider text-[var(--color-text-light)] sm:text-xs">Pass 4 jours</p>
             <p class="mt-2 font-['Josefin_Sans',sans-serif] text-3xl text-[var(--color-accent)] sm:mt-3 sm:text-4xl">140<span class="text-lg sm:text-xl">&euro;</span></p>
             <p class="mt-1.5 text-xs text-[var(--color-text-light)] sm:text-sm">C'est les dernières places à ce prix</p>
+            <p class="mt-1 text-xs font-medium text-[var(--color-accent)] sm:text-sm">soit 35&nbsp;&euro;/jour</p>
           </div>
 
           <!-- Normal -->
           <div class="rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] p-5 text-center sm:p-6">
-            <p class="text-[10px] font-semibold uppercase tracking-wider text-[var(--color-text-light)] sm:text-xs">Tarif Normal</p>
+            <p class="text-[10px] font-semibold uppercase tracking-wider text-[var(--color-text-light)] sm:text-xs">Pass 4 jours &middot; Tarif normal</p>
             <p class="mt-2 font-['Josefin_Sans',sans-serif] text-3xl text-[var(--color-primary)] sm:mt-3 sm:text-4xl">180<span class="text-lg sm:text-xl">&euro;</span></p>
           </div>
 
-          <!-- Soutien -->
-          <div class="rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] p-5 text-center sm:p-6">
-            <p class="text-[10px] font-semibold uppercase tracking-wider text-[var(--color-text-light)] sm:text-xs">Tarif &laquo;&nbsp;Soutien&nbsp;&raquo;</p>
-            <p class="mt-2 font-['Josefin_Sans',sans-serif] text-3xl text-[var(--color-secondary)] sm:mt-3 sm:text-4xl">200<span class="text-lg sm:text-xl">&euro;</span></p>
-            <p class="mt-1.5 text-xs text-[var(--color-text-light)] sm:text-sm">Un petit extra pour soutenir cette 1<sup>ère</sup> édition</p>
-          </div>
         </div>
 
         <div class="mt-6 rounded-lg border-l-4 border-[var(--color-accent)] bg-[var(--color-surface)] p-5 sm:mt-8 sm:p-6">
           <p class="text-sm text-[var(--color-text)] leading-relaxed sm:text-base">
-            <strong class="font-medium text-[var(--color-primary)]">Le pass inclut l'accès à l'intégralité du programme pour les 4 jours</strong> : conférences, ateliers, pratiques, concerts, espaces partagés.
+            <strong class="font-medium text-[var(--color-primary)]">Le pass inclut l'accès à l'intégralité du programme</strong> : toutes les conférences, ateliers, pratiques, concerts et espaces partagés.
           </p>
           <p class="mt-3 text-sm text-[var(--color-text)] leading-relaxed sm:text-base">
-            <strong class="font-medium text-[var(--color-primary)]">Les repas</strong> (plusieurs options sur place) <strong class="font-medium text-[var(--color-primary)]">sont à régler en plus, ainsi que l'hébergement</strong> (à partir de 5&euro;/nuit).
+            <strong class="font-medium text-[var(--color-primary)]">Les repas</strong> (options sur place) <strong class="font-medium text-[var(--color-primary)]">sont à régler en plus, ainsi que l'hébergement</strong> (à partir de 5&euro;/nuit).
           </p>
         </div>
 
@@ -1193,7 +1196,7 @@ const eventSchema = JSON.stringify({
             </svg>
             <h3 class="mt-1.5 text-sm text-[var(--color-primary)] sm:mt-2 sm:text-base">Repas</h3>
             <p class="mt-1 text-xs text-[var(--color-text)] leading-relaxed sm:text-sm">
-              Diverses propositions sur place grâce à la guinguette du lieu et de possibles foodtrucks. Tu peux aussi amener ton réchaud pour quelques repas ou tes petits dej, à la bonne franquette !
+              Des options sur place seront proposées pour le petit dej, le déjeuner et le dîner. Afin de faciliter l'organisation et la gestion des stocks de notre équipe cuisine, une fois inscrit·e, tu recevras un lien pour réserver les repas de ton choix. Tu peux aussi amener ton réchaud pour quelques repas ou tes petits dej, à la bonne franquette !
             </p>
           </div>
 
