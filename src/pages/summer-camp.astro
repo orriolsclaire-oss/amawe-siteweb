@@ -31,6 +31,10 @@ const faqs = [
     a: "<ul class='mt-2 list-disc pl-5 space-y-1'><li>Le transport A/R jusqu'au lieu de l'évènement.</li><li>Les repas : des options seront proposées chaque jour sur place.</li><li>L'hébergement : 1 tente ou 1 van = 1 emplacement = 5\u202F\u20AC/nuit. S'il y a 2 tentes = 10\u202F\u20AC/nuit, etc — à régler sur place en espèces.</li><li>Les massages et soins individuels du pôle bien-être, en supplément si souhaité (sur réservation et sous réserve de disponibilité sur place).</li></ul>",
   },
   {
+    q: "Repas et hébergement, comment ça se passe ?",
+    a: "<strong>Pour les repas :</strong> des options sont proposées sur place pour le petit dej, le déjeuner et le dîner. Une fois inscrit·e, tu recevras un lien pour réserver les repas de ton choix (ça aide l'équipe cuisine à anticiper les stocks). La base des repas sera végétarienne et sans gluten pour convenir au plus grand nombre. Des options avec viande ou poisson seront proposées.<br /><br /><strong>Pour l'hébergement :</strong> tu viens avec ta tente ou ton van/camping-car et tu prends ton emplacement sur le domaine. 1 tente ou 1 van = 1 emplacement = 5 €/nuit, à régler sur place à l'arrivée. S'il y a 2 tentes = 10 €/nuit, etc.<br /><br />Il y a aussi plusieurs logements et chambres d'hôtes à proximité — demande-nous nos recommandations par email : <a href='mailto:hello@amawe.com?subject=Recommandations hébergement Summer Camp' class='text-[var(--color-secondary)] underline'>hello@amawe.com</a>.",
+  },
+  {
     q: "Lieu et accessibilité",
     a: "<strong>Adresse</strong> : La Margue, 12400 Saint-Félix-de-Sorgues.<br /><br /><strong>En voiture</strong> : à 1h30 de Montpellier, 2h30 de Toulouse. Covoiturage entre participants possible.<br /><br /><strong>En train</strong> : gare la plus proche (à 15 min) Montpaon, ou (à 20 min) Tournemire-Roquefort. Ou gares de Béziers ou Montpellier.",
   },
@@ -49,10 +53,6 @@ const faqs = [
   {
     q: "Quoi prendre dans sa valise ?",
     a: "Des vêtements confortables pour bouger, se balader en nature. Des vêtements plus chauds pour les soirées où la température se rafraîchit. Des tongs/sandales, et des chaussures confortables pour marcher. Maillot de bain + serviette de plage. Serviette de bain. Tapis de yoga. Tout le matériel de camping nécessaire au couchage en tente ou en van (chaque personne vient avec son matériel personnel, nous n'en fournissons pas sur le lieu). Une gourde. Un carnet pour prendre des notes et inspirations (très utile !). Tout autre objet/besoin personnel.",
-  },
-  {
-    q: "Envie de contribuer et faire partie des bénévoles ?",
-    a: "Le Summer Camp se construit aussi grâce à celles et ceux qui veulent y contribuer.<br /><br />Si tu as envie de donner un coup de main sur la logistique, l'accueil ou l'animation, on cherche des bénévoles motivés. En échange : ton pass + ton hébergement sur site offerts.<br /><br />Écris-nous à <a href='mailto:hello@amawe.com?subject=Bénévole Summer Camp' class='text-[var(--color-secondary)] underline'>hello@amawe.com</a> avec l'objet \"Bénévole Summer Camp\".",
   },
   {
     q: "Conditions d'annulation et règlement",
@@ -334,6 +334,24 @@ const eventSchema = JSON.stringify({
             </p>
           </div>
         </div>
+
+        <!-- Grille programme — 4 jours -->
+        <figure class="mx-auto mt-10 max-w-5xl sm:mt-14">
+          <a href="/images/sc-programme-grille.webp" target="_blank" rel="noopener noreferrer" class="block">
+            <img
+              src="/images/sc-programme-grille.webp"
+              alt="Programme détaillé du Summer Camp Amawé sur 4 jours (samedi 11 au mardi 14 juillet 2026) : conférences, ateliers, pratiques, concerts, repas et temps libres répartis sur la grille horaire"
+              class="w-full rounded-lg shadow-sm"
+              loading="lazy"
+              decoding="async"
+              width="1600"
+              height="1790"
+            />
+          </a>
+          <figcaption class="mt-3 text-center text-xs text-[var(--color-text-light)] sm:text-sm">
+            Clique sur la grille pour zoomer
+          </figcaption>
+        </figure>
 
         <p class="mx-auto mt-10 max-w-3xl text-center text-base text-[var(--color-text-light)] leading-relaxed sm:mt-14 sm:text-lg md:max-w-5xl md:text-xl">
           <strong class="font-medium">On nourrit le corps et l'esprit</strong> tout en profitant de l'environnement qui nous entoure. Chacun·e vit son Summer Camp à son rythme. Tu prends ce qui te fait du bien. Tu laisses le reste.
@@ -1114,7 +1132,7 @@ const eventSchema = JSON.stringify({
             <span class="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-[var(--color-accent)] px-4 py-1 text-[10px] font-semibold uppercase tracking-wider text-white sm:text-xs">Early Bird</span>
             <p class="text-[10px] font-semibold uppercase tracking-wider text-[var(--color-text-light)] sm:text-xs">Pass 4 jours</p>
             <p class="mt-2 font-['Josefin_Sans',sans-serif] text-3xl text-[var(--color-accent)] sm:mt-3 sm:text-4xl">140<span class="text-lg sm:text-xl">&euro;</span></p>
-            <p class="mt-1.5 text-xs text-[var(--color-text-light)] sm:text-sm">C'est les dernières places à ce prix</p>
+            <p class="mt-1.5 text-xs text-[var(--color-text-light)] sm:text-sm">C'est les dernières places à ce prix. Valable jusqu'au 21/06. Le tarif grimpe ensuite</p>
             <p class="mt-1 text-xs font-medium text-[var(--color-accent)] sm:text-sm">soit 35&nbsp;&euro;/jour</p>
           </div>
 
@@ -1218,7 +1236,7 @@ const eventSchema = JSON.stringify({
             </svg>
             <h3 class="mt-1.5 text-sm text-[var(--color-primary)] sm:mt-2 sm:text-base">Repas</h3>
             <p class="mt-1 text-xs text-[var(--color-text)] leading-relaxed sm:text-sm">
-              Des options sur place seront proposées pour le petit dej, le déjeuner et le dîner. Afin de faciliter l'organisation et la gestion des stocks de l'équipe cuisine, une fois inscrit·e, tu recevras un lien pour réserver les repas de ton choix. Tu peux aussi amener ton réchaud pour quelques repas ou tes petits dej, à la bonne franquette !
+              Des options sur place seront proposées pour le petit dej, le déjeuner et le dîner. Afin de faciliter l'organisation et la gestion des stocks de l'équipe cuisine, une fois inscrit·e, tu recevras un lien pour réserver les repas de ton choix.
             </p>
           </div>
 
