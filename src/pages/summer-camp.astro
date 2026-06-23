@@ -102,16 +102,15 @@ const eventSchema = JSON.stringify({
     },
     {
       "@type": "Offer",
-      name: "Pass Early Bird",
-      price: "140",
+      name: "Pass 2 jours",
+      price: "110",
       priceCurrency: "EUR",
-      availability: "https://schema.org/LimitedAvailability",
+      availability: "https://schema.org/InStock",
       url: "https://www.billetweb.fr/amawe-summer-camp",
-      validFrom: "2026-03-03",
     },
     {
       "@type": "Offer",
-      name: "Pass Normal",
+      name: "Pass 4 jours",
       price: "180",
       priceCurrency: "EUR",
       availability: "https://schema.org/InStock",
@@ -1124,22 +1123,23 @@ const eventSchema = JSON.stringify({
           <div class="rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] p-5 text-center sm:p-6">
             <p class="text-[10px] font-semibold uppercase tracking-wider text-[var(--color-text-light)] sm:text-xs">Pass 1 jour</p>
             <p class="mt-2 font-['Josefin_Sans',sans-serif] text-3xl text-[var(--color-secondary)] sm:mt-3 sm:text-4xl">65<span class="text-lg sm:text-xl">&euro;</span></p>
-            <p class="mt-1.5 text-xs text-[var(--color-text-light)] sm:text-sm">Tu choisis ton jour</p>
+            <p class="mt-1.5 text-xs text-[var(--color-text-light)] sm:text-sm">Tu viens le jour de ton choix</p>
           </div>
 
-          <!-- Early Bird -->
+          <!-- 4 jours (mis en avant) -->
           <div class="relative rounded-lg border-2 border-[var(--color-accent)] bg-[var(--color-surface)] p-5 text-center sm:p-6">
-            <span class="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-[var(--color-accent)] px-4 py-1 text-[10px] font-semibold uppercase tracking-wider text-white sm:text-xs">Early Bird</span>
-            <p class="text-[10px] font-semibold uppercase tracking-wider text-[var(--color-text-light)] sm:text-xs">Pass 4 jours</p>
-            <p class="mt-2 font-['Josefin_Sans',sans-serif] text-3xl text-[var(--color-accent)] sm:mt-3 sm:text-4xl">140<span class="text-lg sm:text-xl">&euro;</span></p>
-            <p class="mt-1.5 text-xs text-[var(--color-text-light)] sm:text-sm">C'est les dernières places à ce prix. Valable jusqu'au 21/06. Le tarif grimpe ensuite</p>
-            <p class="mt-1 text-xs font-medium text-[var(--color-accent)] sm:text-sm">soit 35&nbsp;&euro;/jour</p>
+            <span class="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-[var(--color-accent)] px-4 py-1 text-[10px] font-semibold uppercase tracking-wider text-white sm:text-xs">Recommandé</span>
+            <p class="mt-2 text-[10px] font-semibold uppercase tracking-wider text-[var(--color-text-light)] sm:text-xs">Pass 4 jours</p>
+            <p class="mt-2 font-['Josefin_Sans',sans-serif] text-3xl text-[var(--color-accent)] sm:mt-3 sm:text-4xl">180<span class="text-lg sm:text-xl">&euro;</span></p>
+            <p class="mt-1.5 text-xs text-[var(--color-text-light)] sm:text-sm">L'expérience complète</p>
+            <p class="mt-1 text-xs font-medium text-[var(--color-accent)] sm:text-sm">soit 45&nbsp;&euro;/jour</p>
           </div>
 
-          <!-- Normal -->
+          <!-- 2 jours -->
           <div class="rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] p-5 text-center sm:p-6">
-            <p class="text-[10px] font-semibold uppercase tracking-wider text-[var(--color-text-light)] sm:text-xs">Pass 4 jours &middot; Tarif normal</p>
-            <p class="mt-2 font-['Josefin_Sans',sans-serif] text-3xl text-[var(--color-primary)] sm:mt-3 sm:text-4xl">180<span class="text-lg sm:text-xl">&euro;</span></p>
+            <p class="text-[10px] font-semibold uppercase tracking-wider text-[var(--color-text-light)] sm:text-xs">Pass 2 jours</p>
+            <p class="mt-2 font-['Josefin_Sans',sans-serif] text-3xl text-[var(--color-secondary)] sm:mt-3 sm:text-4xl">110<span class="text-lg sm:text-xl">&euro;</span></p>
+            <p class="mt-1.5 text-xs text-[var(--color-text-light)] sm:text-sm">Tu viens 2 jours au choix</p>
           </div>
 
         </div>
