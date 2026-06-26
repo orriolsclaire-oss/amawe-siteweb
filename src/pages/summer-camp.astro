@@ -94,6 +94,22 @@ const eventSchema = JSON.stringify({
   offers: [
     {
       "@type": "Offer",
+      name: "Pass soirée-concert",
+      price: "15",
+      priceCurrency: "EUR",
+      availability: "https://schema.org/InStock",
+      url: "https://www.billetweb.fr/amawe-summer-camp",
+    },
+    {
+      "@type": "Offer",
+      name: "Pass ½ journée",
+      price: "30",
+      priceCurrency: "EUR",
+      availability: "https://schema.org/InStock",
+      url: "https://www.billetweb.fr/amawe-summer-camp",
+    },
+    {
+      "@type": "Offer",
       name: "Pass 1 jour",
       price: "65",
       priceCurrency: "EUR",
@@ -347,7 +363,7 @@ const eventSchema = JSON.stringify({
               height="1790"
             />
           </a>
-          <figcaption class="mt-3 text-center text-xs text-[var(--color-text-light)] sm:text-sm">
+          <figcaption class="mt-3 text-center text-xs font-bold text-[var(--color-text-light)] sm:text-sm">
             Clique sur la grille pour zoomer
           </figcaption>
         </figure>
@@ -1040,7 +1056,26 @@ const eventSchema = JSON.stringify({
 
 
     <!-- ============================================
-         10. BILLETTERIE (bis)
+         10. TU REPARS — bloc final court
+         ============================================ -->
+    <section class="py-10 sm:py-14 md:py-16">
+      <div class="mx-auto max-w-3xl px-6">
+        <div class="rounded-lg bg-[var(--color-warm)] p-8 text-center sm:p-10">
+          <p class="text-lg text-[var(--color-text)] sm:text-xl md:text-2xl">
+            Que tu viennes seul·e, en famille, entre amis… tu repars :
+          </p>
+          <div class="mt-6 flex flex-wrap justify-center gap-3 sm:mt-8 sm:gap-5">
+            <span class="rounded-full bg-[var(--color-sage)]/20 px-8 py-3.5 font-['Josefin_Sans',sans-serif] text-lg text-[var(--color-secondary)] sm:px-10 sm:py-4 sm:text-xl md:text-2xl">nourri·e</span>
+            <span class="rounded-full bg-[var(--color-accent)]/15 px-8 py-3.5 font-['Josefin_Sans',sans-serif] text-lg text-[var(--color-accent)] sm:px-10 sm:py-4 sm:text-xl md:text-2xl">inspiré·e</span>
+            <span class="rounded-full bg-[var(--color-blush)]/15 px-8 py-3.5 font-['Josefin_Sans',sans-serif] text-lg text-[var(--color-blush)] sm:px-10 sm:py-4 sm:text-xl md:text-2xl">rechargé·e</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================
+         11. BILLETTERIE (bis)
          ============================================ -->
     <section class="relative overflow-hidden py-10 sm:py-12" style="background: linear-gradient(135deg, #005850 0%, #1A1A1A 100%);">
       <div class="relative z-10 mx-auto max-w-3xl px-6 text-center">
@@ -1071,25 +1106,6 @@ const eventSchema = JSON.stringify({
           <a href={billetterieUrl} target="_blank" rel="noopener noreferrer" class="inline-block rounded-full border-2 border-[var(--color-accent)] bg-[var(--color-accent)] px-8 py-3 text-xs font-semibold uppercase tracking-[0.15em] text-white transition-all hover:bg-[var(--color-warm)] hover:border-[var(--color-warm)] hover:text-[var(--color-accent)] sm:px-10 sm:py-4 sm:text-sm">
             Je réserve !
           </a>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ============================================
-         11. TU REPARS — bloc final court
-         ============================================ -->
-    <section class="py-10 sm:py-14 md:py-16">
-      <div class="mx-auto max-w-3xl px-6">
-        <div class="rounded-lg bg-[var(--color-warm)] p-8 text-center sm:p-10">
-          <p class="text-lg text-[var(--color-text)] sm:text-xl md:text-2xl">
-            Que tu viennes seul·e, en famille, entre amis… tu repars :
-          </p>
-          <div class="mt-6 flex flex-wrap justify-center gap-3 sm:mt-8 sm:gap-5">
-            <span class="rounded-full bg-[var(--color-sage)]/20 px-8 py-3.5 font-['Josefin_Sans',sans-serif] text-lg text-[var(--color-secondary)] sm:px-10 sm:py-4 sm:text-xl md:text-2xl">nourri·e</span>
-            <span class="rounded-full bg-[var(--color-accent)]/15 px-8 py-3.5 font-['Josefin_Sans',sans-serif] text-lg text-[var(--color-accent)] sm:px-10 sm:py-4 sm:text-xl md:text-2xl">inspiré·e</span>
-            <span class="rounded-full bg-[var(--color-blush)]/15 px-8 py-3.5 font-['Josefin_Sans',sans-serif] text-lg text-[var(--color-blush)] sm:px-10 sm:py-4 sm:text-xl md:text-2xl">rechargé·e</span>
-          </div>
         </div>
       </div>
     </section>
@@ -1144,9 +1160,31 @@ const eventSchema = JSON.stringify({
 
         </div>
 
+        <!-- Format plus court pour une mise en bouche : 2 cards plus petites -->
+        <p class="mt-10 text-center text-base text-[var(--color-text-light)] sm:mt-12 sm:text-lg">Format plus court pour une mise en bouche</p>
+
+        <div class="mx-auto mt-4 grid max-w-lg gap-3 sm:mt-5 sm:gap-4 md:grid-cols-2">
+          <!-- 1/2 journée -->
+          <div class="rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] p-4 text-center sm:p-5">
+            <p class="text-[10px] font-semibold uppercase tracking-wider text-[var(--color-text-light)] sm:text-xs">Pass ½ journée</p>
+            <p class="mt-1.5 font-['Josefin_Sans',sans-serif] text-2xl text-[var(--color-secondary)] sm:mt-2 sm:text-3xl">30<span class="text-base sm:text-lg">&euro;</span></p>
+            <p class="mt-1 text-xs text-[var(--color-text-light)]">Pour une demi-journée au choix</p>
+          </div>
+
+          <!-- Soirée concert -->
+          <div class="rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] p-4 text-center sm:p-5">
+            <p class="text-[10px] font-semibold uppercase tracking-wider text-[var(--color-text-light)] sm:text-xs">Pass soirée-concert</p>
+            <p class="mt-1.5 font-['Josefin_Sans',sans-serif] text-2xl text-[var(--color-secondary)] sm:mt-2 sm:text-3xl">15<span class="text-base sm:text-lg">&euro;</span></p>
+            <p class="mt-1 text-xs text-[var(--color-text-light)]">Pour la soirée concert de ton choix</p>
+          </div>
+        </div>
+
         <div class="mt-6 rounded-lg border-l-4 border-[var(--color-accent)] bg-[var(--color-surface)] p-5 sm:mt-8 sm:p-6">
           <p class="text-sm text-[var(--color-text)] leading-relaxed sm:text-base">
-            <strong class="font-medium text-[var(--color-primary)]">Le pass inclut l'accès à l'intégralité du programme</strong> : toutes les conférences, ateliers, pratiques, concerts et espaces partagés.
+            <strong class="font-medium text-[var(--color-primary)]">Le pass 1, 2 ou 4 jours inclut l'accès à l'intégralité du programme</strong> : toutes les conférences, ateliers, pratiques en journée + les soirées et concerts.
+          </p>
+          <p class="mt-2 text-xs text-[var(--color-text-light)] leading-relaxed italic sm:text-sm">
+            Le pass ½ journée n'inclut pas la soirée-concert.
           </p>
           <p class="mt-3 text-sm text-[var(--color-text)] leading-relaxed sm:text-base">
             <strong class="font-medium text-[var(--color-primary)]">Les repas</strong> (options sur place) <strong class="font-medium text-[var(--color-primary)]">sont à régler en plus, ainsi que l'hébergement</strong> (à partir de 5&euro;/nuit).
@@ -1154,8 +1192,30 @@ const eventSchema = JSON.stringify({
         </div>
 
         <p class="mt-5 px-1 text-xs text-[var(--color-text)] leading-relaxed sm:mt-6 sm:text-sm">
-          <strong>Tarifs réduits</strong> pour les jeunes (12-18 ans : 90&euro;) et les enfants (11 ans et moins : gratuit). Toujours sous la responsabilité des parents. Le Summer Camp proposera quelques ateliers pour les enfants, accompagnés des parents, mais ne prévoit pas d'espace &laquo;&nbsp;garderie&nbsp;&raquo;.
+          <strong>Tarifs 4 jours réduits</strong> pour les jeunes (12-18 ans : 90&euro;). Pour tous les pass, <strong>Enfants</strong> (11 ans et moins : gratuit). Toujours sous la responsabilité des parents. Le Summer Camp proposera quelques ateliers pour les enfants, accompagnés des parents, mais ne prévoit pas d'espace &laquo;&nbsp;garderie&nbsp;&raquo;.
         </p>
+
+        <!-- Grille programme — rappel visuel avant la billetterie -->
+        <figure class="mx-auto mt-8 max-w-3xl sm:mt-10">
+          <p class="mb-2 text-center text-base text-[var(--color-text-light)] sm:mb-3 sm:text-lg">LE PROGRAMME JOUR PAR JOUR</p>
+          <p class="mb-3 text-center text-xs font-bold text-[var(--color-text-light)] sm:mb-4 sm:text-sm">
+            Clique sur la grille pour zoomer
+          </p>
+          <a href="/images/sc-programme-grille.webp" target="_blank" rel="noopener noreferrer" class="block">
+            <img
+              src="/images/sc-programme-grille.webp"
+              alt="Programme détaillé du Summer Camp Amawé sur 4 jours (samedi 11 au mardi 14 juillet 2026)"
+              class="w-full rounded-lg shadow-sm"
+              loading="lazy"
+              decoding="async"
+              width="1600"
+              height="1790"
+            />
+          </a>
+          <figcaption class="mt-3 text-center text-xs font-bold text-[var(--color-text-light)] sm:text-sm">
+            Clique sur la grille pour zoomer
+          </figcaption>
+        </figure>
 
         <!-- Module de vente Billetweb intégré — achat depuis la page (compact, hauteur fixe + scroll interne) -->
         <div class="mx-auto mt-8 max-w-2xl sm:mt-10">
