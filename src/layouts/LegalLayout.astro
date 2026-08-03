@@ -10,18 +10,31 @@ interface Props {
 }
 
 const { title, description, lastUpdated } = Astro.props as Props
+
+function formatLastUpdatedFr(value?: string): string | undefined {
+  if (!value) return undefined
+  const d = new Date(value)
+  if (Number.isNaN(d.getTime())) return value
+  return new Intl.DateTimeFormat("fr-FR", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  }).format(d)
+}
+
+const lastUpdatedFr = formatLastUpdatedFr(lastUpdated)
 ---
 
 <Layout title={`${title} — Amawé`} description={description}>
   <Header />
   <main class="pt-20">
-    <article class="mx-auto max-w-3xl px-6 py-20 md:py-28">
+    <article class="mx-auto max-w-6xl overflow-x-hidden px-6 py-20 md:py-28">
       <header class="mb-12 border-b border-[var(--color-border)] pb-8">
         <h1 class="text-4xl md:text-5xl">{title}</h1>
         {
           lastUpdated && (
             <p class="mt-4 text-sm text-[var(--color-text-light)]">
-              Dernière mise à jour : {lastUpdated}
+              Dernière mise à jour : {lastUpdatedFr}
             </p>
           )
         }
@@ -59,11 +72,12 @@ const { title, description, lastUpdated } = Astro.props as Props
     margin-bottom: 1rem;
     line-height: 1.8;
     color: var(--color-text-medium);
+    overflow-wrap: break-word;
   }
   .prose-legal :global(ul),
   .prose-legal :global(ol) {
     margin: 0 0 1rem 0;
-    padding-left: 1.5rem;
+    padding-left: 0;
     line-height: 1.8;
     color: var(--color-text-medium);
   }
@@ -95,6 +109,7 @@ const { title, description, lastUpdated } = Astro.props as Props
   .prose-legal :global(a) {
     color: var(--color-accent-dark);
     text-decoration: underline;
+    overflow-wrap: anywhere;
   }
   .prose-legal :global(a:hover) {
     color: var(--color-primary);
