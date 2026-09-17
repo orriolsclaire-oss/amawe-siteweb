@@ -8,6 +8,7 @@ type Intent =
   | "contact"
   | "waitlist_ei"
   | "waitlist_retraite_silence"
+  | "waitlist_sc_2027"
   | "stages_avant_premiere"
 
 const INTENT_TO_GROUP_ENV: Record<Intent, string> = {
@@ -16,6 +17,7 @@ const INTENT_TO_GROUP_ENV: Record<Intent, string> = {
   contact: "MAILERLITE_GROUP_CONTACT",
   waitlist_ei: "MAILERLITE_GROUP_WAITLIST_EI",
   waitlist_retraite_silence: "MAILERLITE_GROUP_WAITLIST_RETRAITE_SILENCE",
+  waitlist_sc_2027: "MAILERLITE_GROUP_WAITLIST_SC_2027",
   stages_avant_premiere: "MAILERLITE_GROUP_STAGES_AVANT_PREMIERE",
 }
 
