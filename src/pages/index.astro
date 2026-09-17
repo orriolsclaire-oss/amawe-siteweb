@@ -165,13 +165,14 @@ const offres = [
           />
 
           <div class="mt-8 flex flex-col gap-4 sm:flex-row">
+            {/* TODO : quand la PDV Flow sera prête, remplacer ce CTA vers /stages/ par un renvoi direct vers la page Flow */}
             <a
-              href="/summer-camp/"
-              id="hero-cta-summer-camp"
+              href="/stages/"
+              id="hero-cta-stages"
               class="inline-block text-center leading-tight whitespace-nowrap px-8 py-3 font-['Lato',system-ui,sans-serif] text-xs font-medium uppercase tracking-[0.12em] text-[var(--color-surface)] bg-[var(--color-sage-dark)] border-2 border-[var(--color-sage-dark)] rounded-full transition-all duration-300 cursor-pointer"
             >
-              <span class="block opacity-80 text-[0.65rem]">Été 2027</span>
-              <span class="block mt-1">Summer Camp · Édition en préparation</span>
+              <span class="block opacity-80 text-[0.65rem]">Prochaines dates</span>
+              <span class="block mt-1">Stages & retraites</span>
             </a>
             <a
               href="#vision"
@@ -829,7 +830,7 @@ const offres = [
 
 <style is:global>
   /* Hover : passage du vert sapin au prune (palette Amawé) */
-  #hero-cta-summer-camp:hover {
+  #hero-cta-stages:hover {
     background-color: var(--color-accent-dark);
     border-color: var(--color-accent-dark);
   }
