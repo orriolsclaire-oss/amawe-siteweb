@@ -3,6 +3,12 @@ import Layout from "~/layouts/Layout.astro"
 import Header from "~/components/Header.astro"
 import Footer from "~/components/Footer.astro"
 
+// BROUILLON : 404 en production tant que Claire n'a pas validé la mise en ligne (visible en local uniquement).
+// Pour publier : supprimer ce bloc et le filtre "/flow/" du sitemap dans astro.config.mjs.
+if (import.meta.env.PROD) {
+  return new Response(null, { status: 404 })
+}
+
 // TODO — remplacer par l'URL Podia réelle du produit Flow dès qu'elle est active.
 const checkoutUrl = "https://mesprogrammes.amawe.com/flow"
 const contactEmail = "hello@amawe.com"

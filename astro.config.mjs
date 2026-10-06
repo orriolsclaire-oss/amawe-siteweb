@@ -18,6 +18,7 @@ export default defineConfig({
 
   integrations: [
     sitemap({
+      filter: (page) => !page.includes("/flow/"),
       i18n: {
         defaultLocale: "fr",
         locales: {
