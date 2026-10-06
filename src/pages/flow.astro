@@ -1,0 +1,1242 @@
+---
+import Layout from "~/layouts/Layout.astro"
+import Header from "~/components/Header.astro"
+import Footer from "~/components/Footer.astro"
+
+// TODO — remplacer par l'URL Podia réelle du produit Flow dès qu'elle est active.
+const checkoutUrl = "https://mesprogrammes.amawe.com/flow"
+const contactEmail = "hello@amawe.com"
+const promoEndDate = "2026-10-25"
+
+// 5 familles de mouvement — ordre et noms tranchés
+const families = [
+  { title: "Respirer", text: "Travail du souffle en mouvement ou statique, pour réguler le système nerveux, oxygéner les tissus et s'ancrer dans le présent." },
+  { title: "Libérer", text: "Mobilité douce, étirements actifs, décharge des tensions corporelles, émotionnelles et mentales." },
+  { title: "Bouger librement", text: "Mouvement naturel et exploration, pour redécouvrir tout ce que ton corps sait faire, dehors ou chez toi." },
+  { title: "Renforcer", text: "De la force fonctionnelle, au poids du corps ou avec des poids légers, pour un corps solide, tonique et durablement en forme." },
+  { title: "Relaxer", text: "Détente profonde, retour au calme, intégration et appréciation des pratiques proposées." },
+]
+
+// Pour qui — 8 profils, chacun résumé par un mot + un picto SVG
+const forYou = [
+  { tag: "Élan retrouvé", icon: "sparkles", text: "Tu as envie de bouger, mais pas de t'astreindre à un programme de fitness classique, avec ses objectifs, ses chronos, ses injonctions." },
+  { tag: "Gestion du stress", icon: "wind", text: "Le stress s'est logé quelque part, épaules, mâchoire serrée, ventre noué, dos ou hanches bloquées, et tu veux un moyen concret de le faire sortir, pas juste d'en parler." },
+  { tag: "Mobilité", icon: "activity", text: "Tu es plutôt sédentaire, et tu sens ton corps se raidir sans savoir par où commencer pour le débloquer." },
+  { tag: "Liberté et confiance", icon: "sun", text: "Tu veux retrouver de la liberté dans ton corps, te sentir plus vivant·e, plus présent·e et plus confiant·e au quotidien." },
+  { tag: "Énergie", icon: "zap", text: "Tu sens que ton énergie est basse, bloquée ou stagnante, et tu sais que la clé pour retrouver une meilleure vitalité passe par le corps." },
+  { tag: "Reconnexion", icon: "link", text: "Tu as perdu la connexion avec ton corps (un peu, beaucoup ou complètement) et tu veux la retrouver." },
+  { tag: "Ancrage", icon: "anchor", text: "Tu veux sortir du mental et revenir dans ton corps, cesser de tourner en boucle et apprécier l'instant." },
+  { tag: "Plaisir et santé", icon: "heart", text: "Tu veux trouver une pratique corporelle simple, dans laquelle tu prends plaisir et qui prend soin de toi." },
+]
+
+// Paths SVG des pictos (Lucide-style, viewBox 24)
+const iconPaths: Record<string, string> = {
+  sparkles: "M12 3l1.5 4.5L18 9l-4.5 1.5L12 15l-1.5-4.5L6 9l4.5-1.5L12 3zM5 17l.75 2.25L8 20l-2.25.75L5 23l-.75-2.25L2 20l2.25-.75L5 17zM19 14l.75 2.25L22 17l-2.25.75L19 20l-.75-2.25L16 17l2.25-.75L19 14z",
+  wind: "M9.59 4.59A2 2 0 1111 8H2m10.59 11.41A2 2 0 1014 16H2m15.73-8.27A2.5 2.5 0 1119.5 12H2",
+  activity: "M5 9L2 12l3 3M9 5l3-3 3 3M15 19l-3 3-3-3M19 9l3 3-3 3M2 12h20M12 2v20",
+  sun: "M12 4V2m0 20v-2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32l1.41-1.41M16 12a4 4 0 11-8 0 4 4 0 018 0z",
+  zap: "M13 2L3 14h9l-1 8 10-12h-9l1-8z",
+  link: "M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71m-.29 5.82a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71",
+  anchor: "M12 22V8m-7 6l7-6 7 6M5 22a7 7 0 007-7v-3m0 3v3a7 7 0 007 7M12 8a3 3 0 100-6 3 3 0 000 6z",
+  heart: "M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z",
+}
+
+// Ce qui est inclus — enrichi (question introspective quotidienne)
+const included = [
+  "15 séances de mouvement filmées (18 à 25 minutes chacune)",
+  "15 audios (vision, pédagogie, pratiques concrètes)",
+  "Une question d'introspection à la fin de chaque séance, pour te relier à ton ressenti",
+  "Accès immédiat et illimité",
+  "Un live bonus avec Claire, le 31 octobre au matin",
+]
+
+// 15 thèmes d'audio (source : intent.md, thèmes tranchés 28/09)
+const themes = [
+  { day: "J2", title: "Pourquoi ton corps retient tout" },
+  { day: "J4", title: "Le corps n'est pas une machine à performer" },
+  { day: "J6", title: "Le souffle, ton régulateur gratuit" },
+  { day: "J8", title: "L'équilibre, une meilleure boussole que la performance" },
+  { day: "J10", title: "Pourquoi tes hanches sont bloquées" },
+  { day: "J12", title: "Marcher et courir…" },
+  { day: "J14", title: "La force fonctionnelle vs la force de salle" },
+  { day: "J16", title: "Ralentir pour ressentir" },
+  { day: "J18", title: "Le stress, ce qui se passe vraiment dans ton corps" },
+  { day: "J20", title: "Réveiller l'énergie vitale" },
+  { day: "J22", title: "Le jeu, l'enfant que tu as été" },
+  { day: "J24", title: "La nature comme régulateur, pas comme décor" },
+  { day: "J26", title: "Porter, une compétence oubliée" },
+  { day: "J28", title: "Me renforcer et bouger dans mon quotidien" },
+  { day: "J30", title: "Bilan des 30 jours + plan pour la suite" },
+]
+
+// FAQ
+const faqs = [
+  {
+    q: "Est-ce fait pour moi si je ne suis pas “sportive” ?",
+    a: "Oui, complètement. Flow n'est pas un programme de performance. Tu avances à ton rythme, sans objectif à atteindre, sans pression.",
+  },
+  {
+    q: "Combien de temps par jour ?",
+    a: "Entre 15 et 25 minutes, un jour sur deux. L'autre jour, un audio de 8 à 12 minutes.",
+  },
+  {
+    q: "De quel matériel j'ai besoin ?",
+    a: "Un tapis, deux haltères de 3 kg (ou deux bouteilles d'eau), une balle de tennis, une chaise stable ou un mur. Rien d'exotique, rien à acheter de coûteux.",
+  },
+  {
+    q: "Comment ça se passe concrètement ?",
+    a: "Tout est accessible sur Podia, immédiatement après ton achat, à ton rythme, sans limite dans le temps.",
+  },
+  {
+    q: "C'est réservé aux femmes ?",
+    a: "Non, toute personne est bienvenue.",
+  },
+  {
+    q: "J'ai un problème de dos, de genou, je suis enceinte, je peux faire Flow ?",
+    a: "Écoute ton corps et adapte chaque mouvement. En cas de doute, demande l'avis de ton médecin ou de ton kiné avant de commencer.",
+  },
+  {
+    q: "Et si j'ai une autre question ?",
+    a: `Écris-nous à <a href="mailto:${contactEmail}" class="underline decoration-1 underline-offset-2">${contactEmail}</a>, on te répond.`,
+  },
+]
+
+const testimonials = [
+  {
+    src: "/images/temoignage-flow-sandra.png",
+    alt: "Témoignage de Sandra sur le programme Flow — mise en mouvement, déverrouillage du bassin, prise de conscience corporelle",
+    width: 1022,
+    height: 723,
+  },
+  {
+    src: "/images/temoignage-flow-anne-michele.png",
+    alt: "Témoignage sur Flow — chemin pour se reconnecter à sa puissance intérieure",
+    width: 683,
+    height: 450,
+  },
+  {
+    src: "/images/temoignage-flow-anonyme-1.png",
+    alt: "Témoignage sur Flow — un programme de grande qualité",
+    width: 1010,
+    height: 61,
+  },
+  {
+    src: "/images/temoignage-flow-amelie.png",
+    alt: "Témoignage d'Amélie sur Flow — audios courts, thématiques, remettre du mouvement dans sa vie",
+    width: 1005,
+    height: 370,
+  },
+  {
+    src: "/images/temoignage-flow-sandrine.png",
+    alt: "Témoignage de Sandrine sur Flow — parcours qui permet de prendre du temps pour soi et se reconnecter à son corps",
+    width: 1019,
+    height: 141,
+  },
+  {
+    src: "/images/temoignage-flow-anonyme-2.png",
+    alt: "Témoignage sur Flow — prendre du temps pour soi, se reconnecter à son corps et prendre du recul",
+    width: 1005,
+    height: 88,
+  },
+]
+
+// SEO
+const pageTitle = "Flow, 30 jours pour te reconnecter à ton corps | Amawé"
+const pageDescription =
+  "Flow, c'est 30 jours pour libérer les tensions et le stress, retrouver de la mobilité et gagner en liberté. 15 séances filmées + 15 audios, à ton rythme, en accès illimité. 88 € au lieu de 110 € jusqu'au 25 octobre."
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  name: "Flow, programme de mouvement 30 jours",
+  description: pageDescription,
+  brand: { "@type": "Brand", name: "Amawé" },
+  offers: {
+    "@type": "Offer",
+    price: "88",
+    priceCurrency: "EUR",
+    availability: "https://schema.org/InStock",
+    priceValidUntil: promoEndDate,
+    url: checkoutUrl,
+  },
+}
+---
+
+<Layout title={pageTitle} description={pageDescription} jsonLd={jsonLd}>
+  <Header hideBannerOnScroll />
+  <main class="pt-20 overflow-x-hidden">
+    <!-- ============================================
+         1. HERO — composition asymétrique, tons clairs (Lin / Sable Doré)
+         ============================================ -->
+    <section
+      class="relative flex min-h-[85vh] items-center overflow-hidden"
+      style="background: linear-gradient(135deg, #F8F3F0 0%, #F5EFE7 45%, #E8D5B5 100%);"
+    >
+      <!-- Trace SVG — une seule ligne courbe pleine, dans la bande haute -->
+      <svg
+        class="pointer-events-none absolute inset-x-0 top-0 h-36 w-full opacity-70 md:h-52"
+        viewBox="0 0 1440 200"
+        preserveAspectRatio="none"
+        aria-hidden="true"
+      >
+        <path
+          d="M -50 150 Q 360 -20 720 100 T 1500 20"
+          stroke="#CE766A"
+          stroke-width="2"
+          fill="none"
+          stroke-linecap="round"
+        />
+      </svg>
+
+      <div class="relative z-10 mx-auto w-full max-w-6xl px-6 py-20 md:py-24">
+        <div class="grid items-center gap-10 md:grid-cols-12 md:gap-8">
+          <!-- Colonne gauche : titre + promesse (asymétrique) -->
+          <div class="order-2 md:order-1 md:col-span-7">
+            <p class="section-label mb-6 !text-[var(--color-primary)]">Amawé · Programme mouvement</p>
+
+            <!-- Titre géant qui déborde sur la droite (asymétrie) -->
+            <h1
+              class="font-['Josefin_Sans',sans-serif] uppercase leading-[0.85] tracking-[-0.02em] text-7xl text-[var(--color-primary)] md:text-[9.5rem] lg:text-[12rem]"
+              style="font-weight: 250; margin-left: -0.05em;"
+            >
+              Flow
+            </h1>
+
+            <p
+              class="mt-6 max-w-xl font-['Josefin_Sans',sans-serif] text-2xl italic leading-tight text-[var(--color-accent)] md:text-3xl"
+            >
+              30 jours pour te reconnecter à ton corps.
+            </p>
+
+            <!-- Le "c'est quoi" en une phrase — pose le format d'entrée -->
+            <p class="mt-6 max-w-xl text-base leading-relaxed text-[var(--color-text-medium)] md:text-lg">
+              Un <strong class="font-medium text-[var(--color-primary)]">programme de 30 jours</strong> avec Claire, où chaque jour, tu es guidé·e dans une <strong class="font-medium text-[var(--color-primary)]">exploration corporelle unique</strong> par des séances en vidéos et des audios.
+            </p>
+
+            <!-- Triptyque promesse — aligné, avec tirets -->
+            <div class="mt-8 flex flex-col gap-1.5">
+              <p class="text-lg leading-snug text-[var(--color-primary)] md:text-xl">
+                <span class="mr-3 text-[var(--color-accent)]">—</span>
+                Libérer les tensions et le stress.
+              </p>
+              <p class="text-lg leading-snug text-[var(--color-primary)] md:text-xl">
+                <span class="mr-3 text-[var(--color-accent)]">—</span>
+                Retrouver de la mobilité.
+              </p>
+              <p class="text-lg leading-snug text-[var(--color-primary)] md:text-xl">
+                <span class="mr-3 text-[var(--color-accent)]">—</span>
+                Gagner en liberté.
+              </p>
+            </div>
+
+            <!-- CTA -->
+            <div class="mt-10 flex flex-col items-start gap-3">
+              <a
+                href={checkoutUrl}
+                class="btn-accent leading-tight !bg-[var(--color-accent)] !border-[var(--color-accent)] !px-9 !py-3.5 hover:!bg-[var(--color-accent-dark)] hover:!border-[var(--color-accent-dark)] md:!px-10 md:!py-4 md:!text-sm"
+              >
+                Je commence Flow · 88&nbsp;€ <span class="ml-1.5 opacity-70 line-through">110&nbsp;€</span>
+              </a>
+              <p class="text-sm text-[var(--color-text-medium)]">
+                En promo jusqu'au 25 octobre &nbsp;·&nbsp; Accès immédiat et illimité
+              </p>
+            </div>
+          </div>
+
+          <!-- Colonne droite : photo inclinée -->
+          <div class="order-1 md:order-2 md:col-span-5">
+            <div
+              class="relative w-full overflow-hidden rounded-lg shadow-2xl"
+              style="aspect-ratio: 3/4; transform: rotate(-2deg);"
+            >
+              <img
+                src="/images/claire-danse-libre.webp"
+                alt="Claire Orriols en mouvement libre, programme Flow, mouvement pour se reconnecter au corps"
+                width="1200"
+                height="1600"
+                loading="eager"
+                decoding="async"
+                fetchpriority="high"
+                class="absolute inset-0 h-full w-full object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ligne d'accent bas -->
+      <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[var(--color-accent)] via-[var(--color-accent)]/50 to-transparent"></div>
+    </section>
+
+    <!-- ============================================
+         2. SOUS-PROMESSE — L'intention
+         ============================================ -->
+    <section class="pt-16 pb-16 md:pt-24 md:pb-24">
+      <div class="mx-auto max-w-6xl px-6 text-center">
+        <h2 class="text-4xl !text-[var(--color-primary)] md:text-5xl">
+          Et si tu te (re)mettais à bouger…<br /><em
+            class="font-['Josefin_Sans',sans-serif] font-light italic text-[var(--color-accent)]"
+          >mais autrement ?</em>
+        </h2>
+        <div class="divider mx-auto mt-6 mb-8" style="background-color: var(--color-sage-dark);"></div>
+
+        <div class="space-y-3 text-lg leading-relaxed text-[var(--color-primary)] md:text-xl">
+          <p>
+            Pas pour transpirer à tout prix. Pas pour brûler des calories. Pas par force ou contrainte.
+          </p>
+          <p>
+            Mais pour <strong class="font-semibold">te sentir vivant·e</strong>. Pour écouter ton corps. Pour réveiller ton énergie là où elle sommeille. Pour <strong class="font-semibold">retrouver confiance</strong>.
+          </p>
+          <p>
+            Pour retrouver un corps qui bouge parce que <strong class="font-semibold">ça lui fait du bien</strong>.
+          </p>
+          <p>
+            Flow est un programme à la fois <strong class="font-semibold">doux et puissant</strong> (et dans tous les cas <em>transformateur</em>), pour revenir dans ton corps, à ton rythme, par le mouvement. <strong class="font-semibold">Accessible à tous niveaux.</strong>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         3. FLOW, C'EST QUOI — vue d'ensemble de l'expérience quotidienne
+         ============================================ -->
+    <section class="relative overflow-hidden bg-[var(--color-primary)] py-20 md:py-28">
+      <!-- Mot décoratif "Flow" en background — juste le haut caché derrière les placeholders -->
+      <p
+        class="pointer-events-none absolute bottom-2 -right-4 font-['Josefin_Sans',sans-serif] uppercase text-[10rem] leading-none text-[var(--color-surface)]/[0.04] md:bottom-4 md:text-[15rem]"
+        style="font-weight: 200;"
+        aria-hidden="true"
+      >
+        Flow
+      </p>
+
+      <div class="relative mx-auto max-w-6xl px-6">
+        <div class="grid gap-14 md:grid-cols-12 md:gap-16">
+          <!-- Colonne gauche : titre + "30 jours" XXL -->
+          <div class="md:col-span-5">
+            <p class="section-label mb-3 !text-[var(--color-accent-light)] tracking-[0.25em]">
+              FLOW, C'EST QUOI ?
+            </p>
+            <h2
+              class="text-4xl !text-[var(--color-surface)] md:text-5xl lg:text-6xl"
+              style="color: var(--color-surface); font-weight: 250;"
+            >
+              Ce que tu vis pendant
+            </h2>
+            <p
+              class="mt-2 font-['Josefin_Sans',sans-serif] text-7xl leading-none text-[var(--color-accent)] md:text-8xl lg:text-9xl"
+              style="font-weight: 200; letter-spacing: -0.02em;"
+            >
+              30 jours
+            </p>
+            <div class="mt-6 h-px w-16 bg-[var(--color-accent)]"></div>
+          </div>
+
+          <!-- Colonne droite : ce que tu as chaque jour -->
+          <div class="md:col-span-7">
+            <p
+              class="mb-6 font-['Josefin_Sans',sans-serif] text-xl text-[var(--color-warm-dark)] md:text-2xl"
+              style="font-weight: 300;"
+            >
+              Chaque jour, tu as accès à :
+            </p>
+            <ul class="space-y-4">
+              <li class="flex items-start gap-4">
+                <span
+                  class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[var(--color-sage)] text-xs text-white"
+                >
+                  ✓
+                </span>
+                <p class="text-base leading-relaxed text-[var(--color-surface)] md:text-lg">
+                  Une <strong class="font-semibold text-[var(--color-warm-dark)]">séance filmée</strong> de 18 à 25 minutes (un jour sur deux)
+                </p>
+              </li>
+              <li class="flex items-start gap-4">
+                <span
+                  class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[var(--color-sage)] text-xs text-white"
+                >
+                  ✓
+                </span>
+                <p class="text-base leading-relaxed text-[var(--color-surface)] md:text-lg">
+                  Un <strong class="font-semibold text-[var(--color-warm-dark)]">audio de réflexions</strong> de 5 à 12 minutes (un jour sur deux)
+                </p>
+              </li>
+              <li class="flex items-start gap-4">
+                <span
+                  class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[var(--color-sage)] text-xs text-white"
+                >
+                  ✓
+                </span>
+                <p class="text-base leading-relaxed text-[var(--color-surface)] md:text-lg">
+                  Des <strong class="font-semibold text-[var(--color-warm-dark)]">thèmes d'exploration</strong> (libération, respiration, force, ancrage, équilibre…)
+                </p>
+              </li>
+              <li class="flex items-start gap-4">
+                <span
+                  class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[var(--color-sage)] text-xs text-white"
+                >
+                  ✓
+                </span>
+                <p class="text-base leading-relaxed text-[var(--color-surface)] md:text-lg">
+                  Une <strong class="font-semibold text-[var(--color-warm-dark)]">exploration de différentes formes de mouvement</strong> (mouvement naturel, yoga, renforcement et mobilité…)
+                </p>
+              </li>
+              <li class="flex items-start gap-4">
+                <span
+                  class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[var(--color-sage)] text-xs text-white"
+                >
+                  ✓
+                </span>
+                <p class="text-base leading-relaxed text-[var(--color-surface)] md:text-lg">
+                  Des <strong class="font-semibold text-[var(--color-warm-dark)]">questions d'introspection</strong> pour te relier à ton ressenti
+                </p>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Placeholders vidéos / audios / photos — aperçu compact du contenu -->
+        <div class="mt-14 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-5 md:gap-4">
+          <!-- Placeholder 1 : vidéo -->
+          <div class="relative aspect-video overflow-hidden rounded-lg shadow-xl">
+            <img
+              src="/images/claire-danse-libre.webp"
+              alt="Aperçu séance vidéo Flow"
+              width="600"
+              height="400"
+              loading="lazy"
+              decoding="async"
+              class="absolute inset-0 h-full w-full object-cover"
+            />
+            <div class="absolute inset-0 flex items-center justify-center bg-black/30">
+              <div class="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--color-surface)]/95 shadow-md">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--color-primary)" aria-hidden="true">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Placeholder 2 : audio -->
+          <div class="flex flex-col justify-center rounded-lg border border-[var(--color-surface)]/15 bg-[var(--color-surface)]/[0.06] p-3 backdrop-blur-sm">
+            <div class="flex items-center gap-2">
+              <button
+                type="button"
+                aria-label="Extrait audio"
+                class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[var(--color-accent)] text-[var(--color-surface)]"
+              >
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </button>
+              <div class="flex-1 min-w-0">
+                <p class="text-[10px] font-medium text-[var(--color-surface)] truncate">
+                  <span class="text-[var(--color-warm-dark)]">J6</span> · Le souffle
+                </p>
+                <div class="mt-1 flex items-center gap-1">
+                  <div class="flex-1 h-[3px] overflow-hidden rounded-full bg-[var(--color-surface)]/20">
+                    <div class="h-full w-[35%] rounded-full bg-[var(--color-accent)]"></div>
+                  </div>
+                  <span class="text-[8px] tabular-nums text-[var(--color-surface)]/60">08:12</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Placeholder 3 : vidéo -->
+          <div class="relative aspect-video overflow-hidden rounded-lg shadow-xl">
+            <img
+              src="/images/claire-orriols-meditation-yoga-aveyron-energie-illimitee.webp"
+              alt="Aperçu séance yoga Flow"
+              width="600"
+              height="400"
+              loading="lazy"
+              decoding="async"
+              class="absolute inset-0 h-full w-full object-cover"
+            />
+            <div class="absolute inset-0 flex items-center justify-center bg-black/30">
+              <div class="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--color-surface)]/95 shadow-md">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--color-primary)" aria-hidden="true">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Placeholder 4 : audio -->
+          <div class="flex flex-col justify-center rounded-lg border border-[var(--color-surface)]/15 bg-[var(--color-surface)]/[0.06] p-3 backdrop-blur-sm">
+            <div class="flex items-center gap-2">
+              <button
+                type="button"
+                aria-label="Extrait audio"
+                class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[var(--color-accent-dark)] text-[var(--color-surface)]"
+              >
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </button>
+              <div class="flex-1 min-w-0">
+                <p class="text-[10px] font-medium text-[var(--color-surface)] truncate">
+                  <span class="text-[var(--color-warm-dark)]">J18</span> · Le stress
+                </p>
+                <div class="mt-1 flex items-center gap-1">
+                  <div class="flex-1 h-[3px] overflow-hidden rounded-full bg-[var(--color-surface)]/20">
+                    <div class="h-full w-[55%] rounded-full bg-[var(--color-accent-dark)]"></div>
+                  </div>
+                  <span class="text-[8px] tabular-nums text-[var(--color-surface)]/60">11:04</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Placeholder 5 : vidéo -->
+          <div class="relative aspect-video overflow-hidden rounded-lg shadow-xl">
+            <img
+              src="/images/claire-orriols-grimper-arbre-mouvement-naturel.webp"
+              alt="Aperçu séance mouvement naturel Flow"
+              width="600"
+              height="400"
+              loading="lazy"
+              decoding="async"
+              class="absolute inset-0 h-full w-full object-cover"
+            />
+            <div class="absolute inset-0 flex items-center justify-center bg-black/30">
+              <div class="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--color-surface)]/95 shadow-md">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--color-primary)" aria-hidden="true">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Punchline finale italique -->
+        <p
+          class="mt-12 max-w-3xl font-['Josefin_Sans',sans-serif] text-xl italic leading-snug text-[var(--color-warm-dark)] md:text-2xl"
+        >
+          Accessible à tou·te·s. Sans niveau requis.<br />À suivre à ton rythme.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================================
+         4. POUR QUI — composition staggered (asymétrique)
+         ============================================ -->
+    <section class="bg-[var(--color-warm)] py-20 md:py-28">
+      <div class="mx-auto max-w-5xl px-6">
+        <p class="section-label mb-3 text-center text-[var(--color-accent)] tracking-[0.25em]">
+          POUR QUI
+        </p>
+        <h2 class="text-center text-4xl md:text-5xl">Flow est fait pour toi si…</h2>
+        <div class="divider mx-auto mt-6 mb-14" style="background-color: var(--color-accent);"></div>
+
+        <!-- Grille asymétrique : cards décalées -->
+        <div class="grid gap-6 md:grid-cols-2 md:gap-x-10 md:gap-y-8">
+          {
+            forYou.map((item, i) => {
+              const colors = [
+                "var(--color-accent-dark)",
+                "var(--color-accent)",
+                "var(--color-sage-dark)",
+              ]
+              const offsets = ["md:mt-0", "md:mt-14", "md:-mt-4", "md:mt-10"]
+              const c = colors[i % 3]
+              const offset = offsets[i % 4]
+              return (
+                <div class={`relative ${offset}`}>
+                  <div
+                    class="rounded-lg border border-[var(--color-border)] border-l-[4px] bg-[var(--color-surface)] p-6 shadow-sm md:p-7"
+                    style={`border-left-color: ${c};`}
+                  >
+                    <span
+                      class="mb-3 inline-flex items-center gap-1.5 rounded-full px-3 py-1 font-['Josefin_Sans',sans-serif] text-xs font-medium uppercase tracking-[0.15em] text-[var(--color-surface)]"
+                      style={`background-color: ${c};`}
+                    >
+                      <svg
+                        width="13"
+                        height="13"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <path d={iconPaths[item.icon]} />
+                      </svg>
+                      {item.tag}
+                    </span>
+                    <p class="mt-3 text-base leading-relaxed text-[var(--color-primary)] md:text-lg">
+                      {item.text}
+                    </p>
+                  </div>
+                </div>
+              )
+            })
+          }
+        </div>
+
+        <p
+          class="mt-16 text-center text-base leading-relaxed text-[var(--color-primary)] sm:text-lg"
+        >
+          Aucun niveau requis. Aucune performance attendue. Que tu sois sportif·ve ou pas.
+        </p>
+
+        <!-- CTA après "Pour qui" — moment où le visiteur s'identifie -->
+        <div class="mt-12 flex flex-col items-center gap-3">
+          <a
+            href={checkoutUrl}
+            class="btn-accent leading-tight !bg-[var(--color-sage-dark)] !border-[var(--color-sage-dark)] !px-9 !py-3.5 hover:!bg-[var(--color-primary)] hover:!border-[var(--color-primary)] md:!px-10 md:!py-4 md:!text-sm"
+          >
+            Ça me parle, je m'inscris à Flow
+          </a>
+          <p class="text-sm text-[var(--color-text-medium)]">
+            88&nbsp;€ <span class="price-struck">110&nbsp;€</span>
+            &nbsp;·&nbsp; En promo jusqu'au 25 octobre
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         5. 5 FAMILLES DE MOUVEMENT
+         ============================================ -->
+    <section class="relative overflow-hidden py-20 md:py-28">
+      <div class="relative z-10 mx-auto max-w-6xl px-6">
+        <!-- Header en 2 colonnes : card à gauche + phrase prune + description à droite -->
+        <div class="grid gap-8 md:grid-cols-12 md:gap-8">
+          <!-- Card gauche (même format que LES AUDIOS) -->
+          <div class="md:col-span-4">
+            <div class="rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] p-8 shadow-sm md:p-10">
+              <p class="section-label mb-3 text-[var(--color-accent-dark)] tracking-[0.25em]">
+                LES VIDÉOS
+              </p>
+              <h2 class="text-4xl !text-[var(--color-primary)] md:text-5xl">15 séances issues<br />des 5 grandes<br />familles</h2>
+              <div class="mt-6 mb-6 h-px w-16 bg-[var(--color-accent-dark)]"></div>
+              <p class="text-base leading-relaxed text-[var(--color-text-medium)] md:text-lg">
+                Une pratique filmée, entièrement guidée, 1 jour sur 2.
+              </p>
+            </div>
+          </div>
+
+          <!-- Colonne droite : phrase prune (au-dessus, centrée) + description (en dessous) -->
+          <div class="flex flex-col justify-center md:col-span-8">
+            <p
+              class="text-center font-['Josefin_Sans',sans-serif] text-xl italic text-[var(--color-accent-dark)] md:text-2xl"
+            >
+              Il y aura du doux, du plus intense.<br />Et un peu de tout ce qu'il y a entre les deux.
+            </p>
+            <p
+              class="mt-5 text-center text-base leading-relaxed text-[var(--color-primary)] md:text-lg"
+            >
+              Les 15 séances vidéos explorent cinq familles, mélangées tout au long des
+              30 jours.<br />Tu découvriras des séances <strong class="font-semibold">focus</strong> spécifiques et des séances
+              qui <strong class="font-semibold">mixent 2 à 3 familles</strong>.
+            </p>
+          </div>
+        </div>
+
+        <!-- 5 cards alignées sur une ligne desktop, 2 col sur tablet, 1 col sur mobile -->
+        <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-5 lg:gap-4">
+          {
+            families.map((fam, i) => {
+              const colors = [
+                "var(--color-sage-dark)",
+                "var(--color-accent-dark)",
+                "var(--color-sage)",
+                "var(--color-accent)",
+                "var(--color-primary)",
+              ]
+              const c = colors[i]
+              return (
+                <div
+                  class="flex h-full flex-col rounded-lg border border-[var(--color-border)] border-t-[3px] bg-[var(--color-surface)] p-5 shadow-sm transition-shadow hover:shadow-lg"
+                  style={`border-top-color: ${c}`}
+                >
+                  <span
+                    class="mb-3 font-['Josefin_Sans',sans-serif] text-xs uppercase tracking-[0.15em]"
+                    style={`color: ${c};`}
+                  >
+                    Famille 0{i + 1}
+                  </span>
+                  <h3 class="text-lg leading-snug lg:text-xl" style={`color: ${c};`}>
+                    {fam.title}
+                  </h3>
+                  <p class="mt-3 text-sm leading-relaxed text-[var(--color-text-medium)]">
+                    {fam.text}
+                  </p>
+                </div>
+              )
+            })
+          }
+        </div>
+      </div>
+
+      <!-- Vague terracotta pleine largeur — sort du container centré, extrémités clippées par la fenêtre -->
+      <svg
+        class="pointer-events-none mt-12 h-24 w-full opacity-70 md:h-32"
+        viewBox="0 0 1440 200"
+        preserveAspectRatio="none"
+        aria-hidden="true"
+      >
+        <path
+          d="M -100 150 Q 360 -60 720 100 T 1540 -30"
+          stroke="#CE766A"
+          stroke-width="2"
+          fill="none"
+          stroke-linecap="round"
+        />
+      </svg>
+
+      <!-- Aperçu vidéo : 1 centre + 2 miniatures latérales cropées par les bords de l'écran -->
+      <div class="relative mt-8 overflow-hidden md:mt-12">
+        <div class="flex items-center justify-center gap-4 px-6 md:gap-6">
+          <!-- Miniature gauche (cropée par le bord gauche) -->
+          <div class="relative hidden aspect-video w-[35vw] max-w-xl shrink-0 overflow-hidden rounded-lg shadow-xl md:block">
+            <img
+              src="/images/claire-orriols-meditation-yoga-aveyron-energie-illimitee.webp"
+              alt="Aperçu d'une séance de mouvement lent et respiration du programme Flow"
+              loading="lazy"
+              decoding="async"
+              class="absolute inset-0 h-full w-full object-cover"
+            />
+            <div class="absolute inset-0 bg-black/40"></div>
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="flex h-14 w-14 items-center justify-center rounded-full bg-[var(--color-surface)]/90 shadow-lg">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="var(--color-primary)" aria-hidden="true">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Vidéo centrale principale -->
+          <div class="relative aspect-video w-[92vw] max-w-2xl shrink-0 overflow-hidden rounded-lg shadow-2xl">
+            <img
+              src="/images/flow-apercu-seance-video.webp"
+              alt="Aperçu d'une séance vidéo du programme Flow — Claire en posture de mouvement dans son studio"
+              width="2000"
+              height="919"
+              loading="lazy"
+              decoding="async"
+              class="absolute inset-0 h-full w-full object-cover"
+            />
+            <div class="absolute inset-0 flex items-center justify-center bg-black/25 transition-all hover:bg-black/15">
+              <div class="flex h-20 w-20 items-center justify-center rounded-full bg-[var(--color-surface)]/95 shadow-xl md:h-24 md:w-24">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="var(--color-primary)" aria-hidden="true">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Miniature droite (cropée par le bord droit) -->
+          <div class="relative hidden aspect-video w-[35vw] max-w-xl shrink-0 overflow-hidden rounded-lg shadow-xl md:block">
+            <img
+              src="/images/retraite-claire-danse-libre.webp"
+              alt="Aperçu d'une séance de mouvement libre et danse du programme Flow"
+              loading="lazy"
+              decoding="async"
+              class="absolute inset-0 h-full w-full object-cover"
+            />
+            <div class="absolute inset-0 bg-black/40"></div>
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="flex h-14 w-14 items-center justify-center rounded-full bg-[var(--color-surface)]/90 shadow-lg">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="var(--color-primary)" aria-hidden="true">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         6. LES 15 THÈMES D'AUDIO — ruban statique éditorial
+         ============================================ -->
+    <section
+      class="relative overflow-hidden py-20 md:py-28"
+      style="background-color: var(--color-warm);"
+    >
+      <div class="mx-auto max-w-6xl px-6">
+        <div class="grid gap-12 md:grid-cols-12 md:gap-8">
+          <!-- Titre + intro (colonne gauche) — dans une card -->
+          <div class="md:col-span-4">
+            <div class="rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] p-8 shadow-sm md:p-10">
+              <p class="section-label mb-3 text-[var(--color-accent-dark)] tracking-[0.25em]">
+                LES AUDIOS
+              </p>
+              <h2 class="text-4xl !text-[var(--color-primary)] md:text-5xl">15 thèmes<br />pour comprendre<br />ton corps</h2>
+              <div class="mt-6 mb-6 h-px w-16 bg-[var(--color-accent-dark)]"></div>
+              <p class="text-base leading-relaxed text-[var(--color-text-medium)] md:text-lg">
+                Un audio, pour comprendre, réfléchir, s'inspirer puis pratiquer.
+                De 5 à 12 minutes, à écouter où tu veux. 1 jour sur 2.
+              </p>
+            </div>
+          </div>
+
+          <!-- Liste des 15 thèmes en 2 colonnes (colonne droite) -->
+          <div class="md:col-span-8">
+            <div class="grid grid-cols-1 gap-x-8 sm:grid-cols-2">
+              <!-- Colonne 1 : J2 à J16 (8 items) -->
+              <ol class="flex flex-col">
+                {
+                  themes.slice(0, 8).map((t, i) => {
+                    const c =
+                      i % 3 === 0
+                        ? "var(--color-sage-dark)"
+                        : i % 3 === 1
+                          ? "var(--color-accent)"
+                          : "var(--color-accent-dark)"
+                    return (
+                      <li class="group flex items-baseline gap-3 border-b border-[var(--color-border)] py-2.5 transition-all hover:pl-2">
+                        <span
+                          class="w-9 shrink-0 font-['Josefin_Sans',sans-serif] text-sm font-medium tracking-wide"
+                          style={`color: ${c};`}
+                        >
+                          {t.day}
+                        </span>
+                        <span class="text-base leading-snug text-[var(--color-primary)]">
+                          {t.title}
+                        </span>
+                      </li>
+                    )
+                  })
+                }
+              </ol>
+
+              <!-- Colonne 2 : J18 à J30 (7 items) -->
+              <ol class="flex flex-col">
+                {
+                  themes.slice(8).map((t, i) => {
+                    const idx = i + 8
+                    const c =
+                      idx % 3 === 0
+                        ? "var(--color-sage-dark)"
+                        : idx % 3 === 1
+                          ? "var(--color-accent)"
+                          : "var(--color-accent-dark)"
+                    return (
+                      <li class="group flex items-baseline gap-3 border-b border-[var(--color-border)] py-2.5 transition-all hover:pl-2">
+                        <span
+                          class="w-9 shrink-0 font-['Josefin_Sans',sans-serif] text-sm font-medium tracking-wide"
+                          style={`color: ${c};`}
+                        >
+                          {t.day}
+                        </span>
+                        <span class="text-base leading-snug text-[var(--color-primary)]">
+                          {t.title}
+                        </span>
+                      </li>
+                    )
+                  })
+                }
+              </ol>
+            </div>
+
+            <!-- Mini player audio (placeholder) — sur la ligne en dessous de J16, pleine largeur des 2 colonnes -->
+            <div class="mt-4 flex items-center gap-2 rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] px-3 py-2 shadow-sm">
+              <button
+                type="button"
+                aria-label="Écouter un extrait"
+                class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[var(--color-accent-dark)] text-[var(--color-surface)] transition-opacity hover:opacity-90"
+              >
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </button>
+              <div class="flex-1 min-w-0">
+                <p class="text-[11px] font-medium text-[var(--color-primary)] truncate">
+                  <span class="text-[var(--color-accent-dark)]">J2</span> · Pourquoi ton corps retient tout
+                </p>
+                <div class="mt-1 flex items-center gap-1.5">
+                  <span class="text-[9px] tabular-nums text-[var(--color-text-light)]">01:12</span>
+                  <div class="flex-1 h-[3px] overflow-hidden rounded-full bg-[var(--color-border)]">
+                    <div class="h-full w-[22%] rounded-full bg-[var(--color-accent-dark)]"></div>
+                  </div>
+                  <span class="text-[9px] tabular-nums text-[var(--color-text-light)]">05:24</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         6bis. TÉMOIGNAGES — placés après les features (5 familles + 15 audios), sur fond noir
+         ============================================ -->
+    <section class="bg-[var(--color-primary)] py-20 md:py-28">
+      <div class="mx-auto max-w-6xl px-6">
+        <p class="section-label mb-3 text-center !text-[var(--color-accent-light)] tracking-[0.25em]">
+          CE QU'ILS EN DISENT
+        </p>
+        <h2 class="text-center text-4xl !text-[var(--color-surface)] md:text-5xl">Ils ont vécu Flow</h2>
+        <div class="divider mx-auto mt-6 mb-12" style="background-color: var(--color-accent);"></div>
+
+        <!-- Grille masonry : 1 col mobile, 2 col tablet, 3 col desktop — sans les 2 strips anonymes -->
+        <div class="columns-1 gap-5 md:columns-2 lg:columns-3 lg:gap-6">
+          {
+            testimonials
+              .filter((t) => !t.src.includes("anonyme"))
+              .map((t, i) => {
+                const colors = [
+                  "var(--color-accent)",
+                  "var(--color-warm-dark)",
+                  "var(--color-accent-light)",
+                  "var(--color-accent)",
+                ]
+                const c = colors[i % colors.length]
+                return (
+                  <div
+                    class="mb-4 break-inside-avoid rounded-lg border border-l-[3px] border-[var(--color-surface)]/10 bg-[var(--color-surface)] p-3 shadow-lg transition-shadow hover:shadow-xl"
+                    style={`border-left-color: ${c};`}
+                  >
+                    <img
+                      src={t.src}
+                      alt={t.alt}
+                      width={t.width}
+                      height={t.height}
+                      loading="lazy"
+                      decoding="async"
+                      class="w-full rounded-md"
+                    />
+                  </div>
+                )
+              })
+          }
+        </div>
+
+        <!-- Ligne dédiée aux 2 témoignages anonymes (strips fins), côte à côte pour les agrandir -->
+        <div class="mt-4 grid grid-cols-1 gap-5 md:grid-cols-2 lg:gap-6">
+          {
+            testimonials
+              .filter((t) => t.src.includes("anonyme"))
+              .map((t, i) => {
+                const c = i === 0 ? "var(--color-warm-dark)" : "var(--color-accent-light)"
+                return (
+                  <div
+                    class="break-inside-avoid rounded-lg border border-l-[3px] border-[var(--color-surface)]/10 bg-[var(--color-surface)] p-3 shadow-lg transition-shadow hover:shadow-xl"
+                    style={`border-left-color: ${c};`}
+                  >
+                    <img
+                      src={t.src}
+                      alt={t.alt}
+                      width={t.width}
+                      height={t.height}
+                      loading="lazy"
+                      decoding="async"
+                      class="w-full rounded-md"
+                    />
+                  </div>
+                )
+              })
+          }
+        </div>
+
+        <!-- CTA + prix dans la section noire -->
+        <div class="mt-14 flex flex-col items-center gap-4 text-center">
+          <a
+            href={checkoutUrl}
+            class="inline-block rounded-full bg-[var(--color-accent)] px-10 py-4 text-sm font-medium uppercase tracking-[0.2em] text-[var(--color-surface)] shadow-lg transition-all hover:bg-[var(--color-accent-dark)] hover:shadow-xl"
+          >
+            Je m'inscris et découvre Flow
+          </a>
+          <p class="text-sm text-[var(--color-surface)]/70">
+            <span class="text-[var(--color-surface)]">88 €</span>
+            <span class="line-through opacity-60"> au lieu de 110 €</span>
+            <span class="mx-1">·</span>
+            <span>En promo jusqu'au 25 octobre</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         8. À PROPOS DE CLAIRE — retour fond clair
+         ============================================ -->
+    <section class="bg-[var(--color-warm)] py-20 md:py-28">
+      <div class="mx-auto max-w-6xl px-6">
+        <div class="grid items-center gap-12 md:grid-cols-2 md:gap-16">
+          <!-- Portrait Claire, incliné -->
+          <div class="order-1 md:order-1">
+            <div class="relative mx-auto max-w-md">
+              <img
+                src="/images/claire-orriols-grimper-arbre-mouvement-naturel.webp"
+                alt="Claire Orriols en pratique de mouvement naturel, coach MovNat niveau 2 et fondatrice d'Amawé"
+                width="800"
+                height="1067"
+                loading="lazy"
+                decoding="async"
+                class="relative z-10 aspect-[3/4] w-full object-cover shadow-lg"
+                style="transform: rotate(-1.5deg);"
+              />
+              <!-- Rectangle décoratif en fond, décalé -->
+              <div
+                class="absolute inset-0 rounded-lg border-2 border-[var(--color-accent)]"
+                style="transform: translate(12px, 12px) rotate(1deg);"
+                aria-hidden="true"
+              ></div>
+            </div>
+          </div>
+
+          <!-- Texte -->
+          <div class="order-2 md:order-2">
+            <p class="section-label mb-3 text-[var(--color-accent)] tracking-[0.25em]">
+              À PROPOS
+            </p>
+            <h2 class="text-4xl md:text-5xl">Claire Orriols</h2>
+            <div class="divider mt-6 mb-8" style="background-color: var(--color-accent);"></div>
+
+            <p class="text-lg leading-relaxed text-[var(--color-text-medium)]">
+              Je suis
+              <strong class="font-semibold text-[var(--color-primary)]">coach certifiée MovNat</strong>
+              (mouvement naturel) niveau 2,
+              <strong class="font-semibold text-[var(--color-primary)]">praticienne en naturopathie</strong>,
+              <strong class="font-semibold text-[var(--color-primary)]">fondatrice d'Amawé</strong>.
+            </p>
+
+            <p class="mt-5 text-base leading-relaxed text-[var(--color-text-medium)] md:text-lg">
+              Je me souviens encore de l'époque où j'étais peu confiante dans mon corps,
+              limitée, bloquée, sans même imaginer toutes ses possibilités. Où les peurs,
+              les blocages émotionnels ou mentaux prenaient le dessus sur ma façon de
+              bouger et plus largement <em class="text-[var(--color-accent-dark)]">sur ma façon d'être ou d'agir dans ma vie</em>. Puis j'ai
+              découvert le mouvement comme une voie de transformation profonde.
+            </p>
+
+            <p class="mt-5 text-base leading-relaxed text-[var(--color-text-medium)] md:text-lg">
+              Aujourd'hui je l'aborde à la fois comme un
+              <strong class="font-semibold text-[var(--color-primary)]">outil de renforcement physique concret</strong>,
+              et comme une
+              <strong class="font-semibold text-[var(--color-primary)]">expression libre de qui je suis</strong>,
+              qui connecte le corps, le cœur et l'esprit.
+            </p>
+
+            <p class="mt-5 text-base leading-relaxed text-[var(--color-text-medium)] md:text-lg">
+              Mon approche du corps relie <strong class="font-semibold text-[var(--color-primary)]">vitalité et présence</strong>.
+              Et j'ai vraiment à cœur de te partager des pépites pour que toi aussi tu puisses
+              <em class="text-[var(--color-accent-dark)]">ouvrir la voie de la transformation à l'aide du mouvement</em>.
+            </p>
+
+            <!-- CTA après la bio Claire — moment de confiance -->
+            <div class="mt-12 flex flex-col items-start gap-3">
+              <a
+                href={checkoutUrl}
+                class="btn-accent leading-tight !bg-[var(--color-accent)] !border-[var(--color-accent)] hover:!bg-[var(--color-accent-dark)] hover:!border-[var(--color-accent-dark)]"
+              >
+                Je m'inscris et découvre Flow
+              </a>
+              <p class="text-sm text-[var(--color-text-medium)]">
+                88&nbsp;€ <span class="line-through">au lieu de 110&nbsp;€</span> &nbsp;·&nbsp; En promo jusqu'au 25 octobre
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         9. LE CORPS N'EST PAS UNE MACHINE — statement pleine largeur (compact)
+         ============================================ -->
+    <section
+      class="relative overflow-hidden py-14 md:py-20"
+      style="background-color: var(--color-accent-dark);"
+    >
+      <!-- Grand guillemet décoratif — placé devant le titre -->
+      <p
+        class="pointer-events-none absolute left-2 top-8 font-['Josefin_Sans',sans-serif] text-[8rem] leading-none text-[var(--color-surface)]/[0.15] md:left-20 md:top-6 md:text-[12rem]"
+        style="font-weight: 200;"
+        aria-hidden="true"
+      >
+        &ldquo;
+      </p>
+
+      <div class="relative mx-auto max-w-5xl px-6">
+        <div class="grid gap-6 md:grid-cols-3 md:items-center md:gap-10">
+          <!-- Colonne gauche : texte principal (2/3 sur desktop) -->
+          <div class="md:col-span-2">
+            <p class="section-label mb-3 !text-[var(--color-warm-dark)] tracking-[0.25em]">
+              LE POINT DE VUE
+            </p>
+            <p
+              class="font-['Josefin_Sans',sans-serif] text-3xl leading-tight text-[var(--color-surface)] md:text-4xl lg:text-5xl"
+              style="font-weight: 250;"
+            >
+              Le corps n'est pas <em class="font-light italic text-[var(--color-warm-dark)]">une machine</em>.
+            </p>
+            <p
+              class="mt-4 text-base leading-relaxed text-[var(--color-surface)]/85 md:text-lg"
+            >
+              C'est ton temple, ta maison, ton messager, ton allié.<br />Un corps
+              <strong class="font-semibold text-[var(--color-warm-dark)]">fort, mobile et expressif</strong>
+              est un corps plus libre.
+            </p>
+          </div>
+
+          <!-- Colonne droite : triptyque en colonne (1/3) -->
+          <div
+            class="flex flex-col items-start gap-1 font-['Josefin_Sans',sans-serif] text-2xl font-light text-[var(--color-warm-dark)] md:items-end md:text-3xl lg:text-4xl"
+          >
+            <p>Le ressentir</p>
+            <p>Le libérer</p>
+            <p>Le renforcer</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         10. CE QUI EST INCLUS — 6 items (avec question d'introspection)
+         ============================================ -->
+    <section class="bg-[var(--color-surface)] py-20 md:py-28">
+      <div class="mx-auto max-w-4xl px-6">
+        <p class="section-label mb-3 text-center text-[var(--color-accent-dark)] tracking-[0.25em]">
+          CE QUI EST INCLUS
+        </p>
+        <h2 class="text-center text-4xl md:text-5xl">Tout ce que tu reçois</h2>
+        <div class="divider mx-auto mt-6 mb-12" style="background-color: var(--color-accent-dark);"></div>
+
+        <ul class="space-y-4">
+          {
+            included.map((item, i) => (
+              <li class="flex items-start gap-4 rounded-lg border border-[var(--color-border)] bg-[var(--color-warm)] px-6 py-5 transition-shadow hover:shadow-md">
+                <span class="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[var(--color-sage)] text-sm text-white">
+                  ✓
+                </span>
+                <p class="text-base leading-relaxed text-[var(--color-primary)] md:text-lg">
+                  {item}
+                </p>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============================================
+         11. PRIX
+         ============================================ -->
+    <section
+      class="py-16 md:py-20"
+      style="background: linear-gradient(135deg, #005850 0%, #2C4F42 55%, #1A1A1A 100%);"
+    >
+      <div class="mx-auto max-w-3xl px-6 text-center">
+        <p class="section-label mb-4 !text-[var(--color-warm-dark)] tracking-[0.25em] md:text-sm">
+          TARIF DE LANCEMENT
+        </p>
+        <h2
+          class="text-6xl !text-[var(--color-surface)] md:text-7xl lg:text-8xl"
+          style="color: var(--color-surface); font-weight: 250;"
+        >
+          88&nbsp;€
+          <span
+            class="ml-3 align-middle text-3xl font-light text-[var(--color-surface)]/50 line-through md:text-4xl lg:text-5xl"
+          >
+            110&nbsp;€
+          </span>
+        </h2>
+        <p class="mt-6 text-lg text-[var(--color-warm-dark)] md:text-xl">
+          Jusqu'au <strong class="font-semibold">25 octobre</strong>. Accès immédiat et illimité.
+        </p>
+
+        <div class="mt-10 flex flex-col items-center gap-3">
+          <a
+            href={checkoutUrl}
+            class="btn-accent !bg-[var(--color-accent)] !border-[var(--color-accent)] !px-10 !py-4 hover:!bg-[var(--color-warm-dark)] hover:!border-[var(--color-warm-dark)] hover:!text-[var(--color-primary)] md:!px-12 md:!py-5 md:!text-sm"
+          >
+            Je commence Flow
+          </a>
+          <p class="text-sm text-[var(--color-surface)]/60">
+            Paiement sécurisé · Accès instantané sur Podia
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         13. FAQ
+         ============================================ -->
+    <section class="py-20 md:py-28">
+      <div class="mx-auto max-w-3xl px-6">
+        <p class="section-label mb-4 text-center">DES QUESTIONS ?</p>
+        <h2 class="text-center text-4xl md:text-5xl">FAQ</h2>
+        <div class="divider mx-auto mt-6 mb-12" style="background-color: var(--color-accent);"></div>
+        <div class="space-y-2.5">
+          {
+            faqs.map((faq) => (
+              <details class="faq-item group border border-[var(--color-border)] bg-[var(--color-background)]">
+                <summary class="flex cursor-pointer items-center justify-between px-5 py-4">
+                  <h3 class="pr-4" style="font-size: 1.05rem; font-weight: 500;">
+                    {faq.q}
+                  </h3>
+                  <span class="faq-icon text-lg text-[var(--color-accent)]">+</span>
+                </summary>
+                <div class="bg-[var(--color-warm)] px-5 py-4">
+                  <div
+                    class="text-base leading-relaxed text-[var(--color-text-medium)]"
+                    set:html={faq.a}
+                  />
+                </div>
+              </details>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         14. CTA FINAL
+         ============================================ -->
+    <section
+      class="relative overflow-hidden py-20 md:py-28"
+      style="background: linear-gradient(135deg, #005850 0%, #2C4F42 55%, #1A1A1A 100%);"
+    >
+      <!-- Trace SVG décorative en fond -->
+      <svg
+        class="pointer-events-none absolute inset-0 h-full w-full opacity-[0.08]"
+        viewBox="0 0 1440 500"
+        preserveAspectRatio="xMidYMid slice"
+        aria-hidden="true"
+      >
+        <path
+          d="M -50 250 Q 400 100 800 300 T 1500 200"
+          stroke="#F5EFE7"
+          stroke-width="1.5"
+          fill="none"
+        />
+      </svg>
+
+      <div class="relative mx-auto max-w-4xl px-6 text-center">
+        <p
+          class="font-['Josefin_Sans',sans-serif] text-2xl font-light italic leading-snug text-[var(--color-surface)] md:text-3xl lg:text-4xl"
+        >
+          Flow, c'est 30 jours.<br />Pas pour devenir quelqu'un d'autre,<br />
+          <span class="text-[var(--color-warm-dark)]">
+            pour redevenir toi, dans un corps qui bouge librement.
+          </span>
+        </p>
+
+        <div class="mt-12 flex flex-col items-center gap-4">
+          <a
+            href={checkoutUrl}
+            class="btn-accent !bg-[var(--color-accent)] !border-[var(--color-accent)] hover:!bg-[var(--color-warm-dark)] hover:!border-[var(--color-warm-dark)] hover:!text-[var(--color-primary)]"
+          >
+            Je commence Flow — 88&nbsp;€
+          </a>
+          <p class="text-sm text-[var(--color-surface)]/60">
+            Promo jusqu'au 25 octobre · Accès immédiat et illimité
+          </p>
+          <a
+            href={`mailto:${contactEmail}`}
+            class="mt-2 text-sm text-[var(--color-surface)]/70 underline decoration-1 underline-offset-4 transition-opacity hover:opacity-80"
+          >
+            Une question ? {contactEmail}
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

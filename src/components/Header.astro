@@ -1,8 +1,13 @@
 ---
 import { getLangFromUrl, useTranslations } from "~/i18n/utils"
 
+interface Props {
+  hideBannerOnScroll?: boolean
+}
+
 const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
+const { hideBannerOnScroll = false } = Astro.props
 ---
 
 <!-- Wrapper fixed : header + bandeau actu restent visibles ensemble au scroll -->
@@ -76,15 +81,17 @@ const t = useTranslations(lang)
 
   <!-- Bandeau actu — Roue de la Santé (lead magnet) -->
   <a
+    id="site-banner"
     href="/audit-roue-sante/"
-    class="block w-full bg-[var(--color-sage-dark)] text-center text-xs font-medium uppercase tracking-[0.15em] text-[var(--color-surface)] transition-opacity hover:opacity-90"
+    data-hide-on-scroll={hideBannerOnScroll ? "true" : undefined}
+    class="block w-full overflow-hidden bg-[var(--color-sage-dark)] text-center text-xs font-medium uppercase tracking-[0.15em] text-[var(--color-surface)] transition-all duration-300 hover:opacity-90"
     style="padding: 0.55rem 1rem;"
   >
     <span class="hidden sm:inline">Roue de la Santé Amawé · Fais le bilan gratuitement →</span>
     <span class="sm:hidden">Roue de la Santé · Fais le bilan →</span>
   </a>
   <!-- Trait blanc pour séparer visuellement le bandeau du contenu en-dessous -->
-  <div class="h-[3px] bg-white" aria-hidden="true"></div>
+  <div id="site-banner-separator" class="h-[3px] bg-white transition-all duration-300" aria-hidden="true"></div>
 </div>
 
 <script is:inline>
@@ -116,5 +123,28 @@ const t = useTranslations(lang)
     }
     window.addEventListener("scroll", onScroll, { passive: true })
     onScroll()
+  }
+
+  // Bandeau Roue Santé — rétraction au scroll uniquement sur pages qui l'activent
+  const banner = document.getElementById("site-banner")
+  const bannerSeparator = document.getElementById("site-banner-separator")
+  if (banner && banner.dataset.hideOnScroll === "true") {
+    const onBannerScroll = () => {
+      if (window.scrollY > 60) {
+        banner.style.maxHeight = "0"
+        banner.style.paddingTop = "0"
+        banner.style.paddingBottom = "0"
+        banner.style.opacity = "0"
+        if (bannerSeparator) bannerSeparator.style.height = "0"
+      } else {
+        banner.style.maxHeight = ""
+        banner.style.paddingTop = ""
+        banner.style.paddingBottom = ""
+        banner.style.opacity = ""
+        if (bannerSeparator) bannerSeparator.style.height = ""
+      }
+    }
+    window.addEventListener("scroll", onBannerScroll, { passive: true })
+    onBannerScroll()
   }
 </script>
