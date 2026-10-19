@@ -47,6 +47,23 @@ const ressourcesActuelles = [
     image: "/images/snacks-mouvement.webp",
     imageAlt: "Claire Orriols en MovNat — mouvement naturel en pleine nature, pratique au quotidien",
   },
+  {
+    label: "ANCIENS PROGRAMMES EN PROMOTION",
+    titre: "Les anciens programmes, à -60 %",
+    sous: "Club de recettes saines, programme détox, dossier santé",
+    description: "Tous les anciens programmes Amawé sont à -60 %.",
+    programmes: [
+      { nom: "Club de recettes saines", detail: null },
+      { nom: "Programme détox", detail: null },
+      { nom: "Dossier santé", detail: "perte de poids, microbiote et cycles féminins" },
+    ],
+    cta: "Voir les programmes à -60 %",
+    href: "https://mesprogrammes.amawe.com/?coupon=PROMO60END",
+    statut: "disponible",
+    image: "/images/amawe-assiette-vivante-saine.webp",
+    imageAlt: "Bol de crudités colorées, carottes, radis et chou rouge — cuisine saine Amawé",
+    badge: "-60 %",
+  },
 ]
 
 const ressourcesAVenir = [
@@ -100,7 +117,10 @@ const ressourcesAVenir = [
           {ressourcesActuelles.map((r) => {
             const isComingSoon = r.statut === "à venir"
             const Tag = isComingSoon ? "div" : "a"
-            const linkProps = isComingSoon ? {} : { href: r.href }
+            const isExternal = r.href.startsWith("http")
+            const linkProps = isComingSoon
+              ? {}
+              : { href: r.href, ...(isExternal && { target: "_blank", rel: "noopener" }) }
             return (
             <Tag
               {...linkProps}
@@ -109,7 +129,12 @@ const ressourcesAVenir = [
                 isComingSoon ? "cursor-default opacity-80" : "transition-shadow hover:shadow-md",
               ]}
             >
-              <div class="flex-shrink-0 sm:w-36 md:w-44">
+              <div class="relative flex-shrink-0 sm:w-36 md:w-44">
+                {r.badge && (
+                  <span class="absolute left-0 top-3 z-10 rounded-r-full bg-[var(--color-accent)] px-3 py-1 text-xs font-medium tracking-[0.08em] text-[var(--color-surface)] shadow-md">
+                    {r.badge}
+                  </span>
+                )}
                 {r.image && (
                   <img
                     src={r.image}
@@ -152,7 +177,21 @@ const ressourcesAVenir = [
                 <p class="section-label text-[var(--color-accent)]">{r.label}</p>
                 <p class="mt-1.5 font-['Josefin_Sans',sans-serif] text-xl leading-tight text-[var(--color-primary)] md:text-2xl">{r.titre}</p>
                 <p class="mt-1 text-xs italic text-[var(--color-text-light)] sm:text-sm">{r.sous}</p>
-                <p class="mt-2 flex-1 text-base leading-relaxed text-[var(--color-text-medium)]">{r.description}</p>
+                <p class="mt-2 text-base leading-relaxed text-[var(--color-text-medium)]">{r.description}</p>
+                {r.programmes && (
+                  <ul class="mt-3 space-y-2">
+                    {r.programmes.map((p) => (
+                      <li class="flex items-start gap-3 text-base leading-snug text-[var(--color-text-medium)]">
+                        <span class="mt-[9px] block h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-accent)]" aria-hidden="true" />
+                        <span>
+                          <span class="font-medium text-[var(--color-primary)]">{p.nom}</span>
+                          {p.detail && <span class="text-[var(--color-text-light)]"> · {p.detail}</span>}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                <span class="flex-1" />
                 <span class="mt-3 inline-flex items-start gap-3 text-xs font-medium uppercase tracking-[0.15em] text-[var(--color-accent)]">
                   <span class="mt-[5px] block h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-accent)]" aria-hidden="true"></span>
                   <span class="relative pb-1">
