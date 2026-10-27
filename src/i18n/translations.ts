@@ -46,7 +46,7 @@ export const translations = {
     "program.subtitle":
       "Un accompagnement de 3 mois pour retrouver ta vitalité",
     "program.description":
-      "Un programme transformateur qui allie coaching de groupe, séances individualisées et immersions en nature pour t'aider à sortir du mode survie et retrouver une énergie durable.",
+      "Un programme transformateur qui allie coaching de groupe, séances individualisées et stages en nature pour t'aider à sortir du mode survie et retrouver une énergie durable.",
     "program.duration": "3 mois d'accompagnement",
     "program.start": "Prochaine session : 20 avril 2026",
     "program.cta": "Découvrir le programme",
@@ -136,10 +136,10 @@ export const translations = {
       "En 3 mois, tu restaures ta vitalité physique, tu clarifies ton mental, tu renforces ton équilibre émotionnel — pour arrêter de t'épuiser, retrouver un élan solide, et mettre cette énergie au service de la vie que tu veux vraiment construire.",
     "ei.hero.punchline":
       "Quand ton niveau d'énergie change, tout s'aligne enfin.",
-    "ei.cta": "Je candidate pour Énergie Illimitée",
+    "ei.cta": "Je m'inscris à Énergie Illimitée",
     "ei.cta.secondary": "Prendre un appel avec Claire",
-    "ei.cta.note": "Liste d'attente actuellement ouverte",
-    "ei.badge": "Prochaine ouverture fin 2026 début 2027",
+    "ei.cta.note": "Inscriptions ouvertes",
+    "ei.badge": "Prochaine session : du 15 février au 15 mai 2027",
 
     // Promesse
     "ei.promise.title":
@@ -163,15 +163,15 @@ export const translations = {
     "ei.audience.1":
       "Tu ressens une fatigue qui s'installe et un épuisement, ton corps lâche peut-être par moments (sommeil, douleurs, digestion, immunité, cycles…). Tu sens que ce n'est pas juste un \"besoin de vacances\", mais quelque chose à rééquilibrer en profondeur.",
     "ei.audience.2":
-      "Tu sais, au fond, qu'un autre niveau d'énergie est possible pour toi. Tu as peut-être déjà essayé seul·e, sans cadre, sans constance, et ça n'a pas tenu. Tu as besoin d'une méthode claire, d'outils concrets et d'un accompagnement dans la durée pour activer enfin ce que tu pressens.",
+      "Tu sais, au fond, qu'un autre niveau d'énergie est possible pour toi. Tu as peut-être déjà essayé seul·e, sans cadre, sans constance, et ça n'a pas tenu. Tu as besoin d'une méthode claire, d'outils concrets et d'un accompagnement dans la durée.",
     "ei.audience.3":
       "Tu fonctionnes à fond sans plus rien ressentir, en mode \"je tiens\". Ton mental tourne à plein régime, ton rythme te dépasse, tu n'as plus d'espace pour toi. Tu satures. Tu veux retrouver une vitalité et un mental clair qui te porte.",
     "ei.audience.4":
       "Tu sens que certaines choses te vident (stress, charge mentale, alimentation mal optimisée, manque de mouvement, émotions, pensées répétitives, procrastination ou hyper-activité…) et tu veux reprendre les commandes et libérer ce poids.",
     "ei.audience.5":
-      "Tu veux réhabiter ton corps comme un espace de puissance, de plaisir et de liberté, pas juste \"tenir le coup\", mais créer la vie que tu souhaites vraiment vivre.",
+      "Tu veux réhabiter ton corps comme un espace de puissance, de plaisir et de liberté, pas juste \"tenir le coup\", mais créer la vie que tu souhaites vraiment vivre, avec un corps solide.",
     "ei.audience.6":
-      "Tu es engagé(e) dans quelque chose qui compte : un travail, un projet, une famille, une vocation, des responsabilités, et tu as besoin d'une énergie qui soutient ta vision et ton rythme au lieu de l'épuiser.",
+      "Tu es engagé·e dans quelque chose qui compte : un travail, un projet, une famille, une passion, des responsabilités, et tu as besoin d'une énergie qui soutient ta vision et ton rythme au lieu de l'épuiser.",
     "ei.audience.7":
       "Tu as accumulé du savoir (yoga, jeûne, méditation, sport, thérapies, lectures, dev perso, formations…) et chaque pièce t'a apporté un bout. Mais aucune n'a vraiment tenu dans ta vie au quotidien. Tu veux passer de \"je sais\" à \"je vis\", arrêter de collectionner des outils et enfin incarner ce que tu sais.",
     "ei.audience.8":
@@ -209,12 +209,12 @@ export const translations = {
     "ei.results.life.1":
       "Remettre ton énergie au service de ta vision, de tes projets et de ton ambition",
     "ei.results.life.2":
-      "Être plus présent(e) pour ce qui compte pour toi, sans t'oublier toi-même",
+      "Être plus présent·e pour ce qui compte pour toi, sans t'oublier toi-même",
     "ei.results.life.3":
       "Avoir un socle solide pour construire ce que tu veux vraiment vivre",
 
     // 4 Piliers
-    "ei.pillars.label": "LES 4 PILIERS",
+    "ei.pillars.label": "LES PILIERS",
     "ei.pillars.title": "Une approche vraiment globale",
     "ei.pillar.1.title": "Alimentation & Détox naturelle",
     "ei.pillar.1.text":
@@ -243,8 +243,8 @@ export const translations = {
 
     // Format
     "ei.format.label": "LE PROGRAMME",
-    "ei.format.title": "1 coaching en direct/semaine pendant 3 mois + 2 immersions en présentiel",
-    "ei.format.start": "Prochaine ouverture fin 2026 début 2027",
+    "ei.format.title": "1 coaching en direct/semaine pendant 3 mois + 2 stages en présentiel",
+    "ei.format.start": "Prochaine session : du 15 février au 15 mai 2027",
     "ei.format.coaching.title": "1 coaching de groupe tous les 15 jours",
     "ei.format.coaching.subtitle": "Un mardi sur deux à 20h",
     "ei.format.coaching.text":
@@ -253,23 +253,23 @@ export const translations = {
     "ei.format.hotseat.subtitle": "Plusieurs créneaux proposés en journée pour s'adapter à tes disponibilités",
     "ei.format.hotseat.text":
       "Un coaching individualisé où tu présentes tes besoins, ta problématique, tes avancées et on va en profondeur dans les solutions et l'adaptation à ton cas particulier. Ici, on focus sur le 4ème pilier : TA priorité du moment. Les sessions de hot seat assurent un suivi personnalisé tout au long des 3 mois.",
-    "ei.format.immersion.title": "2 immersions en présentiel",
-    "ei.format.immersion.subtitle": "Comme un stage intensif, inclus dans l'accompagnement. Des moments de transformation et des espaces de pratique où on se retrouve, on partage et on crée de vrais liens.",
-    "ei.format.immersion.1.title": "Immersion 1 : Montpellier",
+    "ei.format.immersion.title": "2 stages en présentiel",
+    "ei.format.immersion.subtitle": "Des temps intensifs, inclus dans l'accompagnement. Des moments de transformation et des espaces de pratique où on se retrouve, on partage et on crée de vrais liens.",
+    "ei.format.immersion.1.title": "Stage 1 : proche de Montpellier",
     "ei.format.immersion.1.text":
-      "2 jours d'immersion à Montpellier",
-    "ei.format.immersion.2.title": "Immersion 2 : Écolieu, Sud Aveyron",
+      "2 jours (19-21 février)",
+    "ei.format.immersion.2.title": "Stage 2 : proche de Montpellier",
     "ei.format.immersion.2.text":
-      "4 jours en pleine nature dans notre écolieu (à 1h30 de Montpellier, 2h30 de Toulouse)",
+      "4 jours (6-9 mai)",
     "ei.format.hybrid":
       "Un format hybride, en ligne et en présentiel pour une transformation qui s'ancre vraiment.",
     "ei.format.hybrid.text":
-      "Tous les coachings et les immersions sont là pour t'apporter des enseignements et pratiques ciblés et actionnables, des réponses concrètes à tes questions, et des espaces d'échange et de partage avec le groupe.",
+      "Tous les coachings et les stages sont là pour t'apporter des enseignements et pratiques ciblés et actionnables, des réponses concrètes à tes questions, et des espaces d'échange et de partage avec le groupe.",
     "ei.format.rhythm": "= 1 séance par semaine au total",
 
     // Dates
     "ei.dates.label": "DATES",
-    "ei.dates.start": "Prochaine ouverture fin 2026 début 2027",
+    "ei.dates.start": "Prochaine session : du 15 février au 15 mai 2027",
     "ei.dates.end": "",
     "ei.dates.duration": "3 mois d'accompagnement",
 
@@ -282,48 +282,48 @@ export const translations = {
     "ei.pricing.payment.3x": "Paiement en 3x : 450 €/mois",
     "ei.pricing.payment.5x": "Paiement en 5x : 270 €/mois",
     "ei.pricing.includes":
-      "Inclus : coaching, immersions (lieu + enseignements), bibliothèque de vidéos mouvement, recettes, groupe WhatsApp, suivi post-programme à M+1",
+      "Inclus : coaching, stages (lieu + enseignements), bibliothèque de vidéos mouvement, recettes, groupe WhatsApp, suivi post-programme à M+1",
     "ei.pricing.immersion.included":
-      "Pour les immersions, sont inclus dans le tarif : le lieu et la salle qui nous accueille, les enseignements et les transmissions.",
+      "Pour les stages, sont inclus dans le tarif : le lieu et la salle qui nous accueille, les enseignements et les transmissions.",
     "ei.pricing.immersion.notincluded":
       "Non inclus : transport, hébergement, repas (des options seront proposées et le transport pourra être mutualisé avec les autres participants).",
     "ei.pricing.payment.info":
       "Paiement sécurisé par carte bancaire ou virement. Paiement en 1x, 3x ou 5x sans frais. Délai légal de rétractation de 14 jours.",
 
     // Bonus
-    "ei.bonus.label": "BONUS INCLUS",
+    "ei.bonus.label": "LES BONUS INCLUS",
     "ei.bonus.1": "Masterclasses d'invités pour approfondir certains sujets spécifiques",
-    "ei.bonus.4": "Accès au groupe WhatsApp privé d'échanges entre participant(e)s",
+    "ei.bonus.4": "Accès au groupe WhatsApp privé d'échanges entre participant·e·s",
     "ei.bonus.5":
-      "Une session live \"Cercle de Suivi\" post-programme à M+1",
+      "Une session \"Cercle de Suivi\" post-programme à M+1",
     "ei.bonus.6":
-      "Accès privilégié à une 3ème rencontre en présentiel avec tous les participants de cette édition + tous les anciens d'Énergie Illimitée, env. 3 à 6 mois après la fin du programme",
+      "Accès privilégié à une 3ème rencontre en présentiel avec tous les participants de cette édition + tous les anciens d'Énergie Illimitée, env. 6 mois à 1 an après la fin du programme",
 
     // FAQ
-    "ei.faq.label": "ON Y RÉPOND",
+    "ei.faq.label": "J'Y RÉPONDS",
     "ei.faq.1.q":
-      "Est-ce possible de ne faire que les coachings en ligne ou uniquement les immersions en présentiel ?",
+      "Puis-je suivre seulement les coachings en ligne, ou seulement les stages en présentiel ?",
     "ei.faq.1.a":
-      "<p>ÉNERGIE ILLIMITÉE est un programme pensé comme un tout cohérent et transformateur.</p><ul class=\"my-3 ml-5 list-disc space-y-2\"><li>Les <strong>coachings en ligne</strong> t'apportent la régularité, l'ancrage, les clés concrètes et l'intégration dans ton quotidien.</li><li>Les <strong>immersions</strong> sont des moments puissants de transformation, de reconnexion et de bascule intérieure, qui ne peuvent être remplacés à distance. Participer à l'ensemble du parcours est essentiel pour vivre une vraie expérience, en profondeur et sur la durée.</li></ul><p class=\"mt-3\">Il n'est pas possible de s'inscrire qu'aux immersions sans suivre le parcours en ligne.</p><p class=\"mt-3\">Les immersions sont incluses et vivement recommandées au-delà des coachings et de la bibliothèque en ligne, mais si tu n'es pas disponible pour une immersion, on comprend, cela arrive.</p>",
+      "<p>ÉNERGIE ILLIMITÉE est un programme pensé comme un tout cohérent et transformateur.</p><ul class=\"my-3 ml-5 list-disc space-y-2\"><li>Les <strong>coachings en ligne</strong> t'apportent la régularité, l'ancrage, les clés concrètes et l'intégration dans ton quotidien.</li><li>Les <strong>stages</strong> sont des moments puissants de transformation, de reconnexion et de bascule intérieure, qui ne peuvent être remplacés à distance. Participer à l'ensemble du parcours est essentiel pour vivre une vraie expérience, en profondeur et sur la durée.</li></ul><p class=\"mt-3\">Tu ne peux pas t'inscrire uniquement aux stages : ils font partie du programme et s'appuient sur l'accompagnement en ligne.</p><p class=\"mt-3\">Les stages sont inclus et vivement recommandés au-delà des coachings et de la bibliothèque en ligne, mais si tu n'es pas disponible pour un stage, je comprends, cela peut arriver. Dans ce cas, il ne pourra pas être remboursé ni décalé à un autre moment.</p><p class=\"mt-3\">Les dates des stages sont validées ainsi : stage 1 du 19 au 21 février, stage 2 du 6 au 9 mai 2027. Essaye vraiment d'être présent aux deux dates, sinon au moins une.</p>",
     "ei.faq.2.q":
       "Et si je ne peux pas être là à tous les open-coachings ?",
     "ei.faq.2.a":
       "<p>Pas de souci : tous les open-coachings sont enregistrés et disponibles en replay. Tu pourras les regarder à ton rythme, et rester dans le fil du programme.</p>",
     "ei.faq.3.q": "Qu'est-ce que le format open-coaching ?",
     "ei.faq.3.a":
-      "<p>L'open-coaching est un format de coaching collectif où chacun·e peut poser sa question, partager une situation ou un blocage en live, et tout le groupe en profite.</p><p class=\"mt-3\">Concrètement :</p><ul class=\"my-2 ml-5 list-disc space-y-1.5\"><li>Tu viens avec ton sujet du moment (ou tu écoutes celui des autres si tu n'es pas prêt·e ce jour-là).</li><li>On creuse ta situation ensemble : je te pose des questions, je t'apporte des clés concrètes et des pistes adaptées à ta réalité.</li><li>Les autres participant·e·s assistent et bénéficient des effets miroirs, souvent très puissants : ce que tu travailles fait écho à ce qu'ils traversent aussi.</li></ul><p class=\"mt-3\">C'est un espace vivant, spontané, où les bénéfices se font sentir à la fois individuellement et collectivement. Sur Zoom.</p>",
+      "<p>L'open-coaching est un format de coaching collectif où chacun·e peut poser sa question, partager une situation ou un blocage en live, et tout le groupe en profite.</p><p class=\"mt-3\">Concrètement :</p><ul class=\"my-2 ml-5 list-disc space-y-1.5\"><li>Tu viens avec ton sujet du moment (ou tu écoutes celui des autres si tu n'es pas prêt·e ce jour-là).</li><li>On creuse ta situation ensemble : je te pose des questions, je t'apporte des clés concrètes et des pistes adaptées à ta réalité.</li><li>Les autres participant·e·s assistent et bénéficient des effets miroirs, souvent très puissants : ce que tu travailles fait écho à ce qu'ils traversent aussi.</li></ul><p class=\"mt-3\">C'est un espace vivant, spontané, où les bénéfices se font sentir à la fois individuellement et collectivement. Rendez-vous sur Zoom, chaque mardi.</p>",
     "ei.faq.4.q":
       "Qu'est-ce que je vais retrouver dans la bibliothèque de contenus ?",
     "ei.faq.4.a":
-      "<p>La bibliothèque est structurée autour des <strong>3 premiers piliers</strong> du programme (alimentation, mouvement, mental &amp; émotions) et te suit à vie, même après les 3 mois d'accompagnement.</p><p class=\"mt-3\">Tu y trouves :</p><ul class=\"my-2 ml-5 list-disc space-y-1.5\"><li><strong>Des vidéos et audios</strong> guidés sur le mouvement, la respiration, le mindset, la régulation émotionnelle.</li><li><strong>Des contenus pédagogiques</strong> pour comprendre comment fonctionne ton énergie, ton système nerveux, tes cycles.</li><li><strong>Des protocoles concrets</strong> à intégrer ponctuellement ou dans ton quotidien (routines, exercices, cure alimentaire de revitalisation, etc.).</li><li><strong>Des ressources complémentaires</strong> : recettes, fiches pratiques, playlists.</li></ul><p class=\"mt-3\">Tu avances à ton rythme et tu reviens sur les contenus quand tu en as besoin, autant de fois que nécessaire.</p><p class=\"mt-3\">Le <strong>4ème pilier</strong> (ta priorité du moment) est abordé individuellement dans les sessions d'open-coachings et les sessions individuelles.</p>",
+      "<p>La bibliothèque est structurée autour des <strong>3 premiers piliers</strong> du programme (alimentation, mouvement, mental &amp; émotions) et te suit à vie, même après les 3 mois d'accompagnement.</p><p class=\"mt-3\">Tu y trouves :</p><ul class=\"my-2 ml-5 list-disc space-y-1.5\"><li><strong>Des vidéos et audios</strong> guidés sur le mouvement, la respiration, le mindset, la régulation émotionnelle.</li><li><strong>Des contenus pédagogiques</strong> pour comprendre comment fonctionne ton énergie, ton système nerveux, tes cycles.</li><li><strong>Des protocoles concrets</strong> à intégrer ponctuellement ou dans ton quotidien (routines, exercices, cure alimentaire de revitalisation, etc.).</li><li><strong>Des ressources complémentaires</strong> : recettes, fiches pratiques, conseils de lecture.</li></ul><p class=\"mt-3\">Tu avances à ton rythme et tu reviens sur les contenus quand tu en as besoin, autant de fois que nécessaire.</p><p class=\"mt-3\">Le <strong>4ème pilier</strong> (ta priorité du moment) est abordé individuellement dans les sessions d'open-coachings et les sessions individuelles.</p>",
     "ei.faq.6.q":
-      "Comment se déroulent les 2 immersions ?",
+      "Comment se déroulent les 2 stages ?",
     "ei.faq.6.a":
-      "<p>Les immersions sont les temps forts du programme. Elles incarnent dans le réel ce qu'on travaille à distance, on creuse en profondeur, on expérimente et c'est là que les déclics les plus profonds arrivent.</p><p class=\"mt-3\"><strong>1ère immersion — Montpellier ou autre ville (2 jours)</strong>, au lancement du programme :</p><ul class=\"my-2 ml-5 list-disc space-y-1.5\"><li>On active ton corps et on pose les bases : MovNat et mouvement libre, pratiques respiratoires et exploration de ton corps, bilan d'où tu en es et où tu veux aller.</li><li>Temps de partage, alignement de ton intention, rencontre et liens avec le groupe.</li></ul><p class=\"mt-3\"><strong>2ème immersion — Aveyron (4 jours en nature)</strong>, en fin de programme :</p><ul class=\"my-2 ml-5 list-disc space-y-1.5\"><li>Plongée profonde dans la nature, en éco-lieu.</li><li>Pratiques corporelles, méditatives et émotionnelles dans un cadre ressourçant.</li><li>Le moment d'intégrer, d'ancrer, d'incarner durablement ce que tu as construit pendant les 3 mois.</li></ul><p class=\"mt-3\"><strong>Côté pratique :</strong></p><ul class=\"my-2 ml-5 list-disc space-y-1.5\"><li><strong>Inclus dans le tarif :</strong> le lieu et la salle de pratique qui nous accueille, toutes les transmissions et les enseignements.</li><li><strong>Non inclus :</strong> transport, hébergement et repas. Des options sont proposées et le transport peut être mutualisé entre participants.</li></ul><p class=\"mt-3\"><strong>Pourquoi c'est essentiel :</strong> ce que le corps comprend en présentiel, le mental ne peut pas le saisir seul à distance. L'effet groupe, l'expérience partagée, l'immersion ensemble sont des accélérateurs qu'aucun replay ne peut remplacer.</p>",
+      "<p>Les stages sont les temps forts du programme. Ils incarnent dans le réel ce qu'on travaille à distance, on creuse en profondeur, on expérimente et c'est là que les déclics les plus profonds arrivent.</p><p class=\"mt-3\"><strong>1er stage — proche de Montpellier (2 jours)</strong>, au début du programme :</p><ul class=\"my-2 ml-5 list-disc space-y-1.5\"><li>On active ton corps et on pose les bases : MovNat et mouvement libre, pratiques respiratoires et exploration de tes capacités, bilan d'où tu en es et où tu veux aller.</li><li>Temps de partage, alignement de ton intention, rencontre, cohésion et lien avec le groupe.</li></ul><p class=\"mt-3\"><strong>2ème stage — proche de Montpellier (4 jours)</strong>, en fin de programme :</p><ul class=\"my-2 ml-5 list-disc space-y-1.5\"><li>Dernières transmissions santé et vitalité.</li><li>Pratiques corporelles, méditatives et émotionnelles dans un cadre ressourçant.</li><li>Le moment d'intégrer, d'ancrer, d'incarner durablement ce que tu as construit pendant les 3 mois.</li></ul><p class=\"mt-3\"><strong>Côté pratique :</strong></p><ul class=\"my-2 ml-5 list-disc space-y-1.5\"><li><strong>Inclus dans le tarif :</strong> le lieu et la salle de pratique qui nous accueille, toutes les transmissions et les enseignements.</li><li><strong>Non inclus :</strong> transport, hébergement en pension complète. Des options sont proposées et le transport peut être mutualisé entre participants.</li></ul><p class=\"mt-5 rounded-r-lg border-l-[3px] border-[var(--color-accent)] bg-[var(--color-accent)]/10 px-4 py-3 text-[var(--color-primary)]\"><strong class=\"font-semibold text-[var(--color-accent-dark)]\">Pourquoi c'est essentiel :</strong> ce que le corps comprend en présentiel, le mental ne peut pas le saisir seul à distance. L'effet groupe, l'expérience partagée, le fait de vivre le stage ensemble sont des accélérateurs qu'aucun replay ne peut remplacer.</p>",
     "ei.faq.5.q":
       "Comment se déroule concrètement le programme ?",
     "ei.faq.5.a":
-      "<p>Semaine après semaine, tu alternes entre open-coachings et les modules en ligne de la bibliothèque de contenus. Chaque mois, tu réserves une session de coaching individuel, et tu vis 2 immersions en présentiel qui viennent ancrer la transformation (en début et en fin de programme). Tous les replays sont disponibles si tu ne peux pas être présent·e aux open-coachings.</p>",
+      "<p>Semaine après semaine, tu alternes entre open-coachings et les modules en ligne de la bibliothèque de contenus. Chaque mois, tu réserves une session de suivi individuel, et tu vis 2 stages en présentiel qui viennent ancrer la transformation (en début et en fin de programme). Tous les replays sont disponibles si tu ne peux pas être présent·e aux open-coachings.</p>",
     "ei.contact":
       "Si tu as des questions, contacte-moi à hello@amawe.com",
 

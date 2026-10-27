@@ -11,6 +11,8 @@ const t = useTranslations(lang)
 const formUrl = "https://forms.gle/V8KsRaoJNLQnAi6c8"
 const waitlistUrl = "https://forms.gle/tkNQmmHcy4XdVW6n7"
 const calendarUrl = "https://calendar.app.google/FHzZyGNn5zqd1ZJq9"
+// À remplacer par le lien des inscriptions (en attendant, même formulaire que la liste d'attente)
+const registrationUrl = waitlistUrl
 const videoUrl = "https://www.youtube.com/embed/8rZzKqrOTsQ"
 
 const resultBlocks = [
@@ -67,6 +69,105 @@ const pillars = [
   },
 ]
 
+const [badgeLead, badgeDates] = t("ei.badge").split(" : ")
+
+const formatStats = [
+  { big: "3 mois", label: "du 15 février au 15 mai 2027" },
+  { big: "2 stages", label: "en présentiel, en pleine nature, tout proche de Montpellier" },
+  { big: "Petit groupe", label: "10 personnes minimum, 20\u00A0maximum" },
+]
+
+const formatFeatures = [
+  {
+    icon: "M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2zM22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z",
+    title: "Bibliothèque de contenus en illimité",
+    text: "3 thèmes : alimentation, mouvement, mental et émotions. Accès illimité à la plateforme de vidéos et PDF, même après les 3 mois.",
+  },
+  {
+    icon: "M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75",
+    title: "Open-coaching chaque semaine",
+    text: "Chaque mardi, en groupe et en live : on échange, on explore ensemble, et ce que chacun·e apporte profite à tout le groupe.",
+  },
+  {
+    icon: "M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z",
+    title: "Suivi individuel",
+    text: "Des sessions avec Claire pour assurer ton suivi et tes priorités, te motiver et te guider précisément pour atteindre ce que tu souhaites.",
+  },
+  {
+    icon: "M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0zM12 13a3 3 0 100-6 3 3 0 000 6z",
+    title: "2 stages en présentiel",
+    text: "En pleine nature et tout proche de Montpellier (à une trentaine de minutes), pour ancrer la transformation.",
+  },
+]
+
+const formatTimeline = [
+  { when: "15 février", what: "Début du programme", stage: false },
+  { when: "19-21 février", what: "Stage 1, à 30 min de Montpellier", stage: true },
+  { when: "6-9 mai", what: "Stage 2, à 30 min de Montpellier", stage: true },
+  { when: "15 mai", what: "Fin du programme", stage: false },
+]
+
+const tarifRecap = [
+  { lead: "3 mois d'accompagnement", text: "du 15 février au 15 mai 2027" },
+  { lead: "Suivi individuel mensuel", text: "avec Claire" },
+  { lead: "Open-coaching", text: "en live chaque mardi" },
+  { lead: "2 stages en présentiel*", text: "19-21 février et 6-9 mai, à 30 min de Montpellier" },
+  { lead: "Bibliothèque de contenus en illimité", text: "vidéos et PDF, même après les 3 mois" },
+  { lead: "Un petit groupe", text: "de 10 à 20 personnes" },
+  { lead: "Les bonus inclus", text: ": masterclass d'invités, groupe WhatsApp, Cercle de Suivi, réduction pour une 3ème rencontre VIP" },
+]
+
+const recapBenefits = [
+  {
+    title: "Restaures ta vitalité physique",
+    color: "var(--color-sage)",
+    items: [
+      "Une énergie plus stable, en adressant la fatigue de fond",
+      "Un corps plus tonique et fonctionnel",
+      "Une alimentation qui te nourrit vraiment et te donne de l'énergie",
+    ],
+  },
+  {
+    title: "Clarifies ton mental",
+    color: "var(--color-blush)",
+    items: [
+      "Moins de pression intérieure et d'auto-sabotage",
+      "Plus de calme et de présence au quotidien",
+      "Une meilleure connaissance de soi et de son fonctionnement",
+    ],
+  },
+  {
+    title: "Renforces ton équilibre émotionnel",
+    color: "var(--color-accent)",
+    items: [
+      "Des émotions que tu accueilles sans te laisser submerger",
+      "Une capacité à réguler ton système nerveux selon les situations",
+      "Un rapport à soi plus apaisé, une satisfaction et une confiance boostée",
+    ],
+  },
+]
+
+const stageCards = [
+  {
+    n: "Stage 1",
+    dates: "19-21 février 2027",
+    chip: "2 jours, au début du programme",
+  },
+  {
+    n: "Stage 2",
+    dates: "6-9 mai 2027",
+    chip: "4 jours, en fin de programme",
+  },
+]
+
+const hameauFacts = [
+  "À 30 minutes au nord de Montpellier",
+  "20 hectares de nature, face à la chaîne de la Séranne, au bord de la rivière Lamalou",
+  "De nombreux espaces extérieurs pour profiter de la vue et s'immerger dans ce havre de paix et de nature, avec une piscine de 25 m",
+  "Une grande salle de pratique dédiée, des hébergements variés au choix (chambres partagées ou individuelles, chalets, cabanes)",
+  "Une cuisine saine de produits frais et de saison",
+]
+
 const bonuses = [
   { text: t("ei.bonus.1"), badge: "Offert" },
   { text: t("ei.bonus.4"), badge: "Offert" },
@@ -74,19 +175,42 @@ const bonuses = [
   { text: t("ei.bonus.6"), badge: "VIP" },
 ]
 
+// Questions ajoutées à la FAQ (version FR uniquement)
+const faqLevel = {
+  q: "Faut-il être sportif·ve ou en forme pour suivre ce programme ?",
+  a: `<p>Non, pas du tout. Le programme s'adresse à tous les niveaux. C'est tout le point d'Énergie Illimitée : retrouver la forme et l'énergie, quel que soit ton point de départ.</p><p class="mt-3">Il faut bien commencer quelque part. Le meilleur moment était hier, le deuxième, c'est aujourd'hui.</p>`,
+}
+const faqMedical = {
+  q: "Ce programme remplace-t-il un suivi médical ?",
+  a: `<p>Non. Ce programme ne remplace pas un suivi médical : il se base sur la complémentarité de la naturopathie et d'autres techniques de bien-être et de vitalité corps-esprit, dans une démarche naturelle, préventive et restaurative.</p>`,
+}
+const faqAfter = {
+  q: "Que se passe-t-il après les 3 mois ?",
+  a: `<p>Le programme ne s'arrête pas net :</p><ul class="my-2 ml-5 list-disc space-y-1.5"><li>Tu gardes l'accès à la bibliothèque de contenus (vidéos et PDF), même après les 3 mois.</li><li>Tu repars avec le groupe WhatsApp et des liens forts tissés avec les autres participants, parfois même des amitiés.</li><li>Un mois après la fin, la session « Cercle de Suivi » te permet de refaire le point.</li><li>Environ 6 mois à 1 an après la fin du programme, je te proposerai de rejoindre à tarif préférentiel une 3ème rencontre en présentiel, avec les participants de ton édition et les anciens d'Énergie Illimitée.</li></ul>`,
+}
+const faqPayment = {
+  q: "Puis-je payer en plusieurs fois ?",
+  a: `<p>Oui, tu peux régler en 1x, 3x ou 6x sans frais. Une facture est possible sur demande si tu paies avec une société.</p><p class="mt-3">Le tarif early bird (1 480 €) est réservé aux 5 premières places. Ensuite, c'est le tarif normal (1 950 €).</p>`,
+}
+
 const faqs = [
   { q: t("ei.faq.1.q"), a: t("ei.faq.1.a") },
+  faqLevel,
   { q: t("ei.faq.6.q"), a: t("ei.faq.6.a") },
   { q: t("ei.faq.3.q"), a: t("ei.faq.3.a") },
   { q: t("ei.faq.2.q"), a: t("ei.faq.2.a") },
   { q: t("ei.faq.4.q"), a: t("ei.faq.4.a") },
   { q: t("ei.faq.5.q"), a: t("ei.faq.5.a") },
+  faqAfter,
+  faqPayment,
+  faqMedical,
 ]
 ---
 
 <Layout
-  title={`${t("ei.title")} — Amawe`}
-  description={t("ei.hero.subtitle")}
+  title={lang === "fr" ? "Énergie Illimitée : retrouve ton énergie en 3 mois — Amawe" : `${t("ei.title")} — Amawe`}
+  description={lang === "fr" ? "Programme de 3 mois pour retrouver une énergie stable et ta vitalité : coaching en groupe, suivi individuel, stages en nature, naturopathie et mouvement." : t("ei.hero.subtitle")}
+  ogImage="/images/og-energie-illimitee.jpg"
 >
   <Header hideBannerOnScroll />
   <main class="pt-20">
@@ -100,7 +224,15 @@ const faqs = [
         <!-- Titre chapeau -->
         <h1 class="text-center font-['Josefin_Sans',sans-serif] tracking-tight uppercase text-6xl text-[var(--color-surface)] md:text-8xl lg:text-9xl leading-[0.9] drop-shadow-[0_4px_24px_rgba(0,0,0,0.25)]" style="font-weight: 250;">{t("ei.title")}</h1>
 
-        <div class="mt-12 grid items-start gap-8 md:mt-16 md:grid-cols-2 md:gap-12 lg:gap-16">
+        <!-- Dates de la prochaine session -->
+        <p class="mt-8 text-center md:mt-10">
+          <span class="inline-block rounded-full bg-[var(--color-surface)]/95 px-5 py-2.5 text-[13px] font-medium uppercase tracking-[0.1em] text-[var(--color-accent-dark)] shadow-lg md:px-6 md:text-base md:tracking-[0.18em]">
+            <span class="block md:inline">{badgeLead} :</span>
+            <span class="whitespace-nowrap">{badgeDates}</span>
+          </span>
+        </p>
+
+        <div class="mt-10 grid items-start gap-8 md:mt-14 md:grid-cols-2 md:gap-12 lg:gap-16">
 
         <!-- Colonne gauche : texte -->
         <div class="order-2 md:order-1">
@@ -136,8 +268,11 @@ const faqs = [
 
           <!-- CTA -->
           <div class="mt-10 flex flex-col items-center gap-3">
-            <a href={waitlistUrl} target="_blank" rel="noopener noreferrer" class="btn-accent text-center leading-tight !bg-[var(--color-accent)] !border-[var(--color-accent)] hover:!bg-[var(--color-accent-light)] hover:!border-[var(--color-accent-light)] hover:!text-[var(--color-primary)]" set:html={lang === 'fr' ? 'Je candidate<br/>pour Énergie Illimitée' : t("ei.cta")}></a>
+            <a href={registrationUrl} target="_blank" rel="noopener noreferrer" class="btn-accent text-center leading-tight !bg-[var(--color-accent)] !border-[var(--color-accent)] hover:!bg-[var(--color-accent-light)] hover:!border-[var(--color-accent-light)] hover:!text-[var(--color-primary)]" set:html={lang === 'fr' ? "Je m'inscris<br/>à Énergie Illimitée" : t("ei.cta")}></a>
             <p class="text-sm text-center text-[var(--color-surface)]/50">{t("ei.cta.note")}</p>
+            <div class="mt-2 flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
+              <a href={calendarUrl} target="_blank" rel="noopener noreferrer" class="inline-block rounded-full border border-[var(--color-surface)]/70 px-6 py-3 text-xs uppercase tracking-[0.15em] text-[var(--color-surface)] transition-colors hover:bg-[var(--color-surface)] hover:text-[var(--color-accent-dark)]">{t("ei.cta.secondary")}</a>
+            </div>
           </div>
 
           <!-- Social Proof -->
@@ -154,7 +289,7 @@ const faqs = [
             <div class="h-6 w-px bg-[var(--color-surface)]/15 hidden sm:block"></div>
             <div>
               <p class="font-['Josefin_Sans',sans-serif] text-2xl text-[var(--color-accent-light)] md:text-3xl">2</p>
-              <p class="text-[10px] text-[var(--color-surface)]/50 uppercase tracking-wider">immersions en presentiel</p>
+              <p class="text-[10px] text-[var(--color-surface)]/50 uppercase tracking-wider">stages en présentiel</p>
             </div>
           </div>
         </div>
@@ -210,7 +345,7 @@ const faqs = [
           <p class="mt-8 text-lg leading-relaxed text-[var(--color-text-medium)]">
             {t("ei.promise.intro")}
           </p>
-          <p class="mt-6 text-xl font-semibold text-[var(--color-primary)]">Pendant 3 mois, tu es accompagné(e) pour :</p>
+          <p class="mt-6 text-xl font-semibold text-[var(--color-primary)]">Pendant 3 mois, tu es accompagné·e pour :</p>
           <div class="mt-8 space-y-5">
             <div class="flex items-start gap-4 py-3">
               <span class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[var(--color-sage)] text-xs text-white">✓</span>
@@ -234,15 +369,15 @@ const faqs = [
               </li>
               <li class="flex items-start gap-3">
                 <span class="mt-[0.55em] h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[var(--color-accent)]"></span>
-                <span class="text-base text-[var(--color-text-medium)]"><strong class="font-medium text-[var(--color-primary)]">{lang === 'fr' ? 'Bibliothèque de contenus' : 'Content library'}</strong> {lang === 'fr' ? 'pour avancer à ton rythme' : 'to move at your own pace'}</span>
+                <span class="text-base text-[var(--color-text-medium)]"><strong class="font-medium text-[var(--color-primary)]">{lang === 'fr' ? 'Bibliothèque de contenus en illimité' : 'Content library'}</strong> {lang === 'fr' ? 'pour avancer à ton rythme' : 'to move at your own pace'}</span>
               </li>
               <li class="flex items-start gap-3">
                 <span class="mt-[0.55em] h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[var(--color-accent)]"></span>
-                <span class="text-base text-[var(--color-text-medium)]"><strong class="font-medium text-[var(--color-primary)]">{lang === 'fr' ? 'Suivi individuel' : 'Individual follow-up'}</strong></span>
+                <span class="text-base text-[var(--color-text-medium)]"><strong class="font-medium text-[var(--color-primary)]">{lang === 'fr' ? 'Suivi individuel' : 'Individual follow-up'}</strong> {lang === 'fr' ? 'mensuel' : 'monthly'}</span>
               </li>
               <li class="flex items-start gap-3">
                 <span class="mt-[0.55em] h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[var(--color-accent)]"></span>
-                <span class="text-base text-[var(--color-text-medium)]"><strong class="font-medium text-[var(--color-primary)]">{lang === 'fr' ? 'Stages en présentiel' : 'In-person retreats'}</strong></span>
+                <span class="text-base text-[var(--color-text-medium)]"><strong class="font-medium text-[var(--color-primary)]">{lang === 'fr' ? '2 stages en présentiel' : 'In-person retreats'}</strong></span>
               </li>
               <li class="flex items-start gap-3">
                 <span class="mt-[0.55em] h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[var(--color-accent)]"></span>
@@ -254,7 +389,7 @@ const faqs = [
         </div>
         <!-- CTA centré dans la section entière -->
         <div class="mt-12 flex justify-center md:mt-16">
-          <a href={waitlistUrl} target="_blank" rel="noopener noreferrer" class="btn-accent">{lang === 'fr' ? "Rejoindre la liste d'attente" : 'Join the waitlist'}</a>
+          <a href={registrationUrl} target="_blank" rel="noopener noreferrer" class="btn-accent">{lang === 'fr' ? "Je m'inscris" : 'Join the waitlist'}</a>
         </div>
       </div>
     </section>
@@ -266,7 +401,7 @@ const faqs = [
       <div class="mx-auto max-w-5xl px-6">
         <p class="section-label mb-3 text-center text-[var(--color-accent)] tracking-[0.25em]">{t("ei.audience.label")}</p>
         <h2 class="text-center text-4xl md:text-5xl">{t("ei.audience.title")}</h2>
-        <p class="mx-auto mt-6 max-w-5xl text-center text-sm italic text-[var(--color-text-medium)] md:text-base md:whitespace-nowrap" set:html={t("ei.audience.intro")}></p>
+        <p class="mx-auto mt-6 max-w-5xl text-center text-base italic text-[var(--color-text-medium)] md:text-xl md:whitespace-nowrap" set:html={t("ei.audience.intro")}></p>
 
         <div class="mt-12 grid gap-x-8 gap-y-2 md:mt-14 md:grid-cols-2">
           {[
@@ -295,6 +430,106 @@ const faqs = [
 
         <div class="mt-8 mx-auto max-w-4xl rounded-lg border-l-4 border-[var(--color-sage-dark)] bg-[var(--color-sage)]/25 px-7 py-7 sm:px-10 sm:py-9">
           <p class="text-center text-base font-medium text-[var(--color-sage-dark)] leading-relaxed sm:text-lg md:text-xl" set:html={t("ei.audience.conclusion")}></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         7. LE FORMAT — Format avec dates : 15 février au 15 mai 2027
+         (Version cohorte classique archivée dans
+          3 - CASQUETTE/1 - AMAWE/Energie Illimitee/sections-archivees/2026-05-16_ei-section-format-3cards-cohorte.md)
+         ============================================ -->
+    <section id="format" class="bg-[var(--color-surface)] pt-6 pb-20 md:pt-8 md:pb-28 scroll-mt-20">
+      <div class="mx-auto max-w-5xl px-6 text-center">
+        <p class="section-label mb-4 text-[var(--color-accent)]">Le format</p>
+        <h2 class="text-3xl md:text-4xl">Énergie Illimitée s'enrichit</h2>
+        <div class="divider mx-auto mt-6 mb-10" style="background-color: var(--color-accent);"></div>
+
+        <p class="mb-10 text-lg leading-relaxed text-[var(--color-text-medium)] md:text-xl">
+          Pour la prochaine session, le programme prend une nouvelle forme.
+        </p>
+
+        <!-- Chiffres clés -->
+        <div class="mx-auto mb-14 grid max-w-4xl gap-px overflow-hidden rounded-2xl bg-[var(--color-warm-dark)]/25 shadow-lg md:grid-cols-3">
+          {formatStats.map((st) => (
+            <div class="flex flex-col items-center justify-center bg-[var(--color-accent-dark)] px-4 py-8 text-center md:py-10">
+              <p class="font-['Josefin_Sans',sans-serif] text-5xl leading-[1.05] text-[var(--color-warm-dark)] md:text-6xl" style="font-weight: 300;">{st.big}</p>
+              <p class="mt-3 text-[13px] uppercase tracking-[0.06em] text-[var(--color-warm-dark)]/90 md:text-sm">{st.label}</p>
+            </div>
+          ))}
+        </div>
+
+        <!-- Frise : 15 février → 15 mai, avec les 2 stages (horizontale à partir de md, verticale sur mobile) -->
+        <div class="relative mx-auto mb-16 hidden h-[220px] max-w-[40rem] md:block" aria-label="Frise du programme">
+          <p class="absolute left-1/2 top-[30px] -translate-x-1/2 whitespace-nowrap text-xs uppercase tracking-[0.12em] text-[var(--color-text-light)]">3 mois d'accompagnement</p>
+          <div class="absolute left-0 right-0 top-[92px] h-1.5 rounded-full bg-gradient-to-r from-[var(--color-accent)] via-[var(--color-accent-dark)]/60 to-[var(--color-accent)]"></div>
+
+          <!-- Début et fin du programme : repères prune aux extrémités, texte sous la barre -->
+          <span class="absolute left-0 top-[84px] h-[22px] w-1.5 rounded-full bg-[var(--color-accent-dark)]" aria-hidden="true"></span>
+          <span class="absolute right-0 top-[84px] h-[22px] w-1.5 rounded-full bg-[var(--color-accent-dark)]" aria-hidden="true"></span>
+          <div class="absolute left-0 top-[124px] text-left">
+            <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-accent-dark)]">Début du programme</p>
+            <p class="font-['Josefin_Sans',sans-serif] text-2xl text-[var(--color-primary)]">15 février</p>
+          </div>
+          <div class="absolute right-0 top-[124px] text-right">
+            <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-accent-dark)]">Fin du programme</p>
+            <p class="font-['Josefin_Sans',sans-serif] text-2xl text-[var(--color-primary)]">15 mai</p>
+          </div>
+
+          <!-- Stages : points terracotta reliés à leur texte, au-dessus de la barre -->
+          <span class="absolute top-[68px] h-[26px] w-px -translate-x-1/2 bg-[var(--color-accent)]" style="left: 5.6%;" aria-hidden="true"></span>
+          <span class="absolute top-[82px] h-[26px] w-[26px] -translate-x-1/2 rounded-full border-4 border-[var(--color-surface)] bg-[var(--color-accent)] shadow-md" style="left: 5.6%;" aria-hidden="true"></span>
+          <div class="absolute left-0 top-[-6px] text-left">
+            <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-accent)]">Stage 1</p>
+            <p class="font-['Josefin_Sans',sans-serif] text-3xl text-[var(--color-primary)]">19-21 février</p>
+            <p class="text-sm text-[var(--color-text-light)]">à 30 min de Montpellier</p>
+          </div>
+
+          <span class="absolute top-[68px] h-[26px] w-px -translate-x-1/2 bg-[var(--color-accent)]" style="left: 91.6%;" aria-hidden="true"></span>
+          <span class="absolute top-[82px] h-[26px] w-[26px] -translate-x-1/2 rounded-full border-4 border-[var(--color-surface)] bg-[var(--color-accent)] shadow-md" style="left: 91.6%;" aria-hidden="true"></span>
+          <div class="absolute right-0 top-[-6px] text-right">
+            <p class="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-accent)]">Stage 2</p>
+            <p class="font-['Josefin_Sans',sans-serif] text-3xl text-[var(--color-primary)]">6-9 mai</p>
+            <p class="text-sm text-[var(--color-text-light)]">à 30 min de Montpellier</p>
+          </div>
+        </div>
+
+        <ol class="relative mx-auto mb-14 max-w-xs space-y-7 border-l-2 border-[var(--color-accent)]/40 pl-7 text-left md:hidden">
+          {formatTimeline.map((ev) => (
+            <li class="relative">
+              <span
+                class:list={[
+                  "absolute top-1 rounded-full border-4 border-[var(--color-surface)]",
+                  ev.stage ? "-left-[44px] h-[22px] w-[22px] bg-[var(--color-accent)] shadow-md" : "-left-[40px] h-[14px] w-[14px] bg-[var(--color-warm-dark)]",
+                ]}
+                aria-hidden="true"
+              ></span>
+              <p class:list={["font-['Josefin_Sans',sans-serif] text-xl", ev.stage ? "text-[var(--color-accent)]" : "text-[var(--color-primary)]"]}>{ev.when}</p>
+              <p class="text-sm text-[var(--color-text-medium)]">{ev.what}</p>
+            </li>
+          ))}
+        </ol>
+
+        <!-- Ce que tu vis -->
+        <div class="mx-auto mb-14 grid max-w-5xl gap-4 text-left sm:grid-cols-2 lg:grid-cols-4">
+          {formatFeatures.map((f) => (
+            <div class="rounded-2xl border border-[var(--color-border)] bg-[var(--color-warm)] p-6 transition-all duration-300 ease-out hover:z-10 hover:scale-[1.04] hover:shadow-lg motion-reduce:transition-none motion-reduce:hover:scale-100">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d={f.icon} />
+              </svg>
+              <p class="mt-4 font-['Josefin_Sans',sans-serif] text-xl leading-snug text-[var(--color-primary)]">{f.title}</p>
+              <p class="mt-2 text-[15px] leading-relaxed text-[var(--color-text-medium)]">{f.text}</p>
+            </div>
+          ))}
+        </div>
+
+        <p class="mb-12 text-base italic font-semibold text-[var(--color-text-light)]">
+          Inscriptions ouvertes.
+        </p>
+
+        <div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <a href={registrationUrl} target="_blank" rel="noopener noreferrer" class="btn-accent">Je m'inscris</a>
+          <a href={calendarUrl} target="_blank" rel="noopener noreferrer" class="btn-secondary">{t("ei.cta.secondary")}</a>
         </div>
       </div>
     </section>
@@ -376,7 +611,7 @@ const faqs = [
         </div>
 
         <!-- Roue de la santé + Photo méditation -->
-        <div class="mt-16 grid items-center justify-items-center gap-8 md:grid-cols-2 md:gap-10">
+        <div class="mt-16 flex flex-col items-center gap-8 md:flex-row md:justify-center md:gap-12">
           <img
             src="/images/roue-sante-amawe.webp"
             alt="La Roue de la Santé Holistique, les 16 domaines évalués dans Énergie Illimitée"
@@ -411,19 +646,25 @@ const faqs = [
         <!-- CTA intégré dans la bannière -->
         <div class="mt-8 flex flex-col items-center">
           <a
-            href={waitlistUrl}
+            href={registrationUrl}
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-block whitespace-nowrap rounded-full border-2 border-[var(--color-surface)] bg-[var(--color-surface)] px-9 py-4 font-['Lato',system-ui,sans-serif] text-sm font-medium uppercase tracking-[0.12em] text-[var(--color-accent-dark)] transition-all duration-300 hover:bg-transparent hover:text-[var(--color-surface)] md:px-11 md:py-5 md:text-base"
+            class="inline-block whitespace-nowrap rounded-full border-2 border-[var(--color-surface)] bg-[var(--color-surface)] px-6 py-4 font-['Lato',system-ui,sans-serif] text-sm font-medium uppercase tracking-[0.12em] text-[var(--color-accent-dark)] transition-all duration-300 hover:bg-transparent hover:text-[var(--color-surface)] sm:px-9 md:px-11 md:py-5 md:text-base"
           >
-            {lang === 'fr' ? "Je m'inscris sur la liste d'attente" : 'Join the waitlist'}
+            {lang === 'fr' ? "Je m'inscris" : 'Join the waitlist'}
           </a>
           <p class="mt-3 text-sm italic text-[var(--color-surface)]/70">
-            {lang === 'fr' ? "Pour recevoir toutes les infos en avant-première" : 'To get all the info in early access'}
+            {lang === 'fr' ? "Inscriptions ouvertes" : 'To get all the info in early access'}
           </p>
         </div>
       </div>
     </section>
+
+    <!-- Bannière photo fine, pleine largeur -->
+    <picture class="block">
+      <source media="(max-width: 767px)" srcset="/images/banniere-stage-montpellier-mobile.webp" />
+      <img src="/images/banniere-stage-montpellier.webp" alt="Un cercle de participants assis au sol pendant un stage" width="2560" height="320" loading="lazy" decoding="async" class="block aspect-[7/2] w-full rounded-none object-cover md:aspect-auto md:h-40" />
+    </picture>
 
     <!-- ============================================
          6. CE QUE ÇA VA CHANGER (Transformations — résultats de la méthode)
@@ -522,9 +763,12 @@ const faqs = [
 
         <!-- CTA après la grille -->
         <div class="mt-14 flex flex-col items-center text-center">
-          <p class="mb-6 font-['Josefin_Sans',sans-serif] text-2xl italic text-[var(--color-primary)] md:text-3xl">Prêt(e) à vivre ces changements ?</p>
-          <a href={waitlistUrl} target="_blank" rel="noopener noreferrer" class="btn-accent">{lang === 'fr' ? "Je veux plus d'infos" : 'I want more info'}</a>
-          <p class="mt-3 text-sm text-[var(--color-text-light)]">{lang === 'fr' ? "Liste d'attente ouverte" : 'Waitlist open'}</p>
+          <p class="mb-6 font-['Josefin_Sans',sans-serif] text-2xl italic text-[var(--color-primary)] md:text-3xl">Prêt·e à vivre ces changements ?</p>
+          <div class="flex flex-col items-center gap-4 sm:flex-row">
+            <a href={registrationUrl} target="_blank" rel="noopener noreferrer" class="btn-accent">{lang === 'fr' ? "Je m'inscris" : 'Join the waitlist'}</a>
+            <a href={calendarUrl} target="_blank" rel="noopener noreferrer" class="btn-secondary">{t("ei.cta.secondary")}</a>
+          </div>
+          <p class="mt-3 text-sm text-[var(--color-text-light)]">{lang === 'fr' ? "Inscriptions ouvertes" : 'Waitlist open'}</p>
         </div>
       </div>
     </section>
@@ -711,7 +955,7 @@ const faqs = [
         <div class="grid grid-cols-2 gap-3 md:grid-cols-3 md:grid-rows-2 md:gap-4">
           <img
             src="/images/ei-stage-repas-mandala.webp"
-            alt="Repas en groupe en extérieur lors d'une immersion Énergie Illimitée — convivialité et nature"
+            alt="Repas en groupe en extérieur lors d'un stage Énergie Illimitée — convivialité et nature"
             width="1600"
             height="1200"
             loading="lazy"
@@ -720,7 +964,7 @@ const faqs = [
           />
           <img
             src="/images/ei-stage-brunch-maison.webp"
-            alt="Brunch en groupe lors d'une immersion Énergie Illimitée — convivialité en plein air"
+            alt="Brunch en groupe lors d'un stage Énergie Illimitée — convivialité en plein air"
             width="1600"
             height="1200"
             loading="lazy"
@@ -729,7 +973,7 @@ const faqs = [
           />
           <img
             src="/images/groupe-ei-2.webp"
-            alt="Séance de groupe en présentiel lors d'une immersion Énergie Illimitée"
+            alt="Séance de groupe en présentiel lors d'un stage Énergie Illimitée"
             width="1200"
             height="900"
             loading="lazy"
@@ -738,7 +982,7 @@ const faqs = [
           />
           <img
             src="/images/ei-stage-danse-libre.webp"
-            alt="Séance de danse libre en groupe lors d'une immersion Énergie Illimitée"
+            alt="Séance de danse libre en groupe lors d'un stage Énergie Illimitée"
             width="1600"
             height="1200"
             loading="lazy"
@@ -747,7 +991,7 @@ const faqs = [
           />
           <img
             src="/images/ei-stage-movnat-saut.webp"
-            alt="Pratique MovNat en forêt — saut et mouvement naturel lors d'une immersion Énergie Illimitée"
+            alt="Pratique MovNat en forêt — saut et mouvement naturel lors d'un stage Énergie Illimitée"
             width="1600"
             height="1200"
             loading="lazy"
@@ -760,7 +1004,7 @@ const faqs = [
         <div class="mt-3 grid grid-cols-2 gap-3 md:mt-4 md:grid-cols-4 md:gap-4">
           <img
             src="/images/ei-stage-movnat-arbre-solo.webp"
-            alt="Participante grimpant un arbre — pratique MovNat lors d'une immersion Énergie Illimitée"
+            alt="Participante grimpant un arbre — pratique MovNat lors d'un stage Énergie Illimitée"
             width="1200"
             height="1600"
             loading="lazy"
@@ -778,7 +1022,7 @@ const faqs = [
           />
           <img
             src="/images/ei-stage-ecriture.webp"
-            alt="Temps d'introspection et d'écriture lors d'une immersion Énergie Illimitée"
+            alt="Temps d'introspection et d'écriture lors d'un stage Énergie Illimitée"
             width="1200"
             height="1600"
             loading="lazy"
@@ -787,7 +1031,7 @@ const faqs = [
           />
           <img
             src="/images/ei-stage-movnat-arbre-groupe.webp"
-            alt="Pratique MovNat lors d'une immersion Énergie Illimitée — entraide pour grimper un arbre"
+            alt="Pratique MovNat lors d'un stage Énergie Illimitée — entraide pour grimper un arbre"
             width="1200"
             height="1600"
             loading="lazy"
@@ -799,63 +1043,92 @@ const faqs = [
     </section>
 
     <!-- ============================================
-         7. LE FORMAT — Teaser nouveau format janvier 2027
-         (Version cohorte classique archivée dans
-          3 - CASQUETTE/1 - AMAWE/Energie Illimitee/sections-archivees/2026-05-16_ei-section-format-3cards-cohorte.md)
+         9bis. LES STAGES — 2 stages au Hameau de l'Étoile
          ============================================ -->
-    <section id="format" class="bg-[var(--color-surface)] py-20 md:py-28 scroll-mt-20">
-      <div class="mx-auto max-w-5xl px-6 text-center">
-        <p class="section-label mb-4 text-[var(--color-accent)]">Le format</p>
-        <h2 class="text-3xl md:text-4xl">Énergie Illimitée s'enrichit</h2>
-        <div class="divider mx-auto mt-6 mb-10" style="background-color: var(--color-accent);"></div>
+    <section id="stages-presentiel" class="bg-[var(--color-warm-dark)]/25 py-20 md:py-28 scroll-mt-20">
+      <div class="mx-auto max-w-6xl px-6">
+        <div class="text-center">
+          <p class="section-label mb-4 text-[var(--color-accent)]">LES STAGES EN PRÉSENTIEL</p>
+          <h2 class="text-3xl md:text-4xl">Deux stages au Hameau de l'Étoile</h2>
+          <div class="divider mx-auto mt-6 mb-8" style="background-color: var(--color-accent);"></div>
+          <p class="mx-auto mb-14 max-w-3xl text-balance text-base leading-relaxed text-[var(--color-text-medium)] md:text-xl">
+            En pleine nature et tout proche de Montpellier : deux temps forts pour se retrouver, pratiquer ensemble, ancrer les enseignements et la transformation.
+          </p>
+        </div>
 
-        <p class="mb-6 text-lg leading-relaxed text-[var(--color-text-medium)]">
-          Pour la prochaine ouverture <strong class="text-[var(--color-accent)]">fin 2026 — début 2027</strong>, le programme prend une nouvelle forme.<br />
-          3 mois d'accompagnement intensif et 2 immersions en présentiel, avec de nouveaux moyens d'avancer à ton rythme.
-        </p>
+        <div class="mx-auto grid max-w-3xl gap-4 md:grid-cols-2 md:gap-5">
+          {stageCards.map((st) => (
+            <div class="flex flex-col rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5 shadow-sm">
+              <p class="text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--color-accent)]">{st.n}</p>
+              <p class="mt-1 font-['Josefin_Sans',sans-serif] text-2xl text-[var(--color-primary)]">{st.dates}</p>
+              <p class="mt-2 inline-block self-start rounded-full bg-[var(--color-accent)]/10 px-3 py-0.5 text-[11px] font-medium uppercase tracking-[0.12em] text-[var(--color-accent)]">{st.chip}</p>
+            </div>
+          ))}
+        </div>
 
-        <ul class="mx-auto mb-14 max-w-4xl space-y-4 text-left">
-          <li class="flex items-start gap-8">
-            <span class="mt-[0.55em] h-2 w-2 flex-shrink-0 rounded-full bg-[var(--color-accent)]"></span>
-            <span class="text-base text-[var(--color-text-medium)]">Une <strong>bibliothèque de contenus</strong> structurée sur les 3 piliers (alimentation, mouvement, mental &amp; émotions), <strong>accès illimité, même après les 3 mois</strong></span>
-          </li>
-          <li class="flex items-start gap-8">
-            <span class="mt-[0.55em] h-2 w-2 flex-shrink-0 rounded-full bg-[var(--color-accent)]"></span>
-            <span class="text-base text-[var(--color-text-medium)]">
-              Des <strong>sessions open-coaching hebdomadaires</strong> pour avancer ensemble : questions, partages et explorations en groupe
-              <span class="mt-1 block text-xs italic text-[var(--color-text-light)]">open-coaching = chacun·e peut poser sa question en live, tout le groupe en profite</span>
-            </span>
-          </li>
-          <li class="flex items-start gap-8">
-            <span class="mt-[0.55em] h-2 w-2 flex-shrink-0 rounded-full bg-[var(--color-accent)]"></span>
-            <span class="text-base text-[var(--color-text-medium)]">Des <strong>sessions de coaching individuel</strong> avec Claire pour assurer ton suivi et tes priorités</span>
-          </li>
-          <li class="flex items-start gap-8">
-            <span class="mt-[0.55em] h-2 w-2 flex-shrink-0 rounded-full bg-[var(--color-accent)]"></span>
-            <span class="text-base text-[var(--color-text-medium)]"><strong>Deux immersions en présentiel</strong> en France (Montpellier et sud Aveyron) pour ancrer la transformation</span>
-          </li>
-        </ul>
+        <div class="mt-16 grid items-start gap-x-14 gap-y-8 md:grid-cols-2">
+          <figure class="order-1 md:col-start-1 md:row-start-1">
+            <img
+              src="/images/hameau-de-letoile.webp"
+              alt="Vue aérienne du Hameau de l'Étoile, entouré de collines boisées, avec sa piscine et ses bâtiments en pierre"
+              width="1440"
+              height="1080"
+              loading="lazy"
+              class="w-full rounded-2xl object-cover shadow-sm"
+            />
+            <figcaption class="mt-2 text-xs text-[var(--color-text-light)]">
+              Crédit photo : @hameaudeletoile
+            </figcaption>
+          </figure>
+          <figure class="order-2 md:col-start-1 md:row-start-2">
+            <img
+              src="/images/hameau-de-letoile-salle-patio.webp"
+              alt="La salle Patio du Hameau de l'Étoile : parquet clair, murs en pierre et grande baie vitrée ouverte sur une cour intérieure"
+              width="1600"
+              height="1067"
+              loading="lazy"
+              class="w-full rounded-2xl object-cover shadow-sm"
+            />
+            <figcaption class="mt-2 text-xs text-[var(--color-text-light)]">
+              Crédit photo : @hameaudeletoile
+            </figcaption>
+          </figure>
+          <div class="order-3 text-left md:col-start-2 md:row-start-1">
+            <p class="section-label mb-3 text-[var(--color-accent-dark)]">LE LIEU</p>
+            <h3 class="font-['Josefin_Sans',sans-serif] text-3xl text-[var(--color-primary)]">Le Hameau de l'Étoile</h3>
+            <ul class="mt-6 space-y-3">
+              {hameauFacts.map((f) => (
+                <li class="flex items-start gap-3 text-base leading-snug text-[var(--color-text-medium)]">
+                  <svg class="mt-0.5 shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5" /></svg>
+                  <span>{f}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="order-4 md:col-start-2 md:row-start-2 md:-mt-16">
+          <div class="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)]/70 p-5">
+            <p class="text-sm font-medium text-[var(--color-primary)]">Estimatif du coût de ton hébergement en pension complète</p>
+            <p class="mt-2 text-sm leading-relaxed text-[var(--color-text-medium)]">de 77&nbsp;€ à 105&nbsp;€/nuit selon le standing de l'hébergement choisi</p>
+            <p class="mt-3 text-sm leading-relaxed text-[var(--color-text-medium)]">La pension complète est incluse dans ce prix : petit déjeuner, déjeuner, dîner et 2 collations (matin et après-midi). Le lieu prend en compte les spécificités alimentaires.</p>
+            <p class="mt-3 border-t border-[var(--color-border)] pt-3 text-sm leading-relaxed text-[var(--color-text-medium)]">Dès que ton inscription est validée, je t'enverrai un lien privé pour réserver ton hébergement directement auprès du Hameau de l'Étoile.</p>
+          </div>
 
-        <p class="mb-12 text-base italic font-semibold text-[var(--color-text-light)]">
-          Détails complets, tarif et dates partagés à la liste d'attente.
-        </p>
-
-        <a href={waitlistUrl} target="_blank" rel="noopener noreferrer" class="btn-accent">
-          Rejoindre la liste d'attente
-        </a>
-      </div>
-    </section>
-
-    <!-- ============================================
-         9. DATES BAR
-         ============================================ -->
-    <section class="border-y border-[var(--color-accent-dark)] bg-[var(--color-accent-dark)] py-10">
-      <div class="mx-auto flex max-w-4xl flex-col items-center gap-4 px-6 text-center md:flex-row md:justify-center md:gap-12">
-        <p class="section-label !text-[var(--color-warm-dark)]">{t("ei.dates.label")}</p>
-        <p class="text-lg text-[var(--color-warm-dark)]">{t("ei.dates.start")}</p>
-        {t("ei.dates.end") && <span class="hidden text-[var(--color-warm-dark)] md:inline">—</span>}
-        {t("ei.dates.end") && <p class="text-lg text-[var(--color-warm-dark)]">{t("ei.dates.end")}</p>}
-        <span class="badge-urgency">{t("ei.dates.duration")}</span>
+          <div class="mt-8">
+            <p class="section-label mb-3 text-[var(--color-accent-dark)]">ACCÈS</p>
+            <p class="text-base leading-snug text-[var(--color-text-medium)]"><strong class="font-medium text-[var(--color-primary)]">Adresse pour les 2 stages :</strong> Le Hameau de l'Étoile, Frouzet, 34380 Saint-Martin-de-Londres, France</p>
+            <ul class="mt-4 space-y-3">
+              <li class="flex items-start gap-3 text-base leading-snug text-[var(--color-text-medium)]">
+                <svg class="mt-0.5 shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5" /></svg>
+                <span>En voiture personnelle (ou organisation de covoiturage entre participants pour mutualiser)</span>
+              </li>
+              <li class="flex items-start gap-3 text-base leading-snug text-[var(--color-text-medium)]">
+                <svg class="mt-0.5 shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5" /></svg>
+                <span>Depuis la gare ou l'aéroport de Montpellier, service de taxi proposé (tarif dégressif si partagé avec d'autres participants) et/ou covoiturage possible</span>
+              </li>
+            </ul>
+          </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -864,13 +1137,16 @@ const faqs = [
          ============================================ -->
     <section class="bg-[var(--color-surface)] py-12 md:py-16">
       <div class="mx-auto max-w-4xl px-6">
-        <p class="section-label mb-3 text-center text-[var(--color-accent-dark)]">{t("ei.bonus.label")}</p>
-        <div class="divider mx-auto mt-2 mb-8" style="background-color: var(--color-accent-dark);"></div>
+        <p class="mx-auto mb-10 max-w-2xl text-balance text-center text-lg leading-relaxed text-[var(--color-text-medium)] md:text-xl">
+          <strong class="font-medium text-[var(--color-primary)]">3 mois d'accompagnement</strong> avec un open-coaching en live chaque semaine, un suivi individuel mensuel avec Claire, et 2 stages.
+        </p>
+        <p class="section-label mb-3 text-center text-[var(--color-accent)]">{t("ei.bonus.label")}</p>
+        <div class="divider mx-auto mt-2 mb-8" style="background-color: var(--color-accent);"></div>
         <div class="grid gap-4 md:grid-cols-2">
           {bonuses.map((bonus) => (
-            <div class="flex items-start gap-4 rounded-lg border-l-[3px] border-l-[var(--color-accent-dark)] border border-[var(--color-border)] bg-[var(--color-warm)] p-5 shadow-sm transition-shadow hover:shadow-md">
-              <span class="badge-included shrink-0 mt-0.5">{bonus.badge}</span>
-              <p class="text-sm leading-relaxed text-[var(--color-text-medium)]">{bonus.text}</p>
+            <div class="flex items-start gap-4 rounded-lg border border-l-[3px] border-[var(--color-accent)]/20 border-l-[var(--color-accent)] bg-[var(--color-accent)]/10 p-5 shadow-sm transition-shadow hover:shadow-md">
+              <span class="badge-included shrink-0 mt-0.5 !border-[var(--color-accent)] !bg-transparent !text-[var(--color-accent)]">{bonus.badge}</span>
+              <p class="text-base leading-relaxed text-[var(--color-text-medium)]">{bonus.text}</p>
             </div>
           ))}
         </div>
@@ -878,26 +1154,87 @@ const faqs = [
     </section>
 
     <!-- ============================================
-         11. TARIF — Teaser ouverture fin 2026 / début 2027
+         11. TARIF — Session du 15 février au 15 mai 2027
          ============================================ -->
-    <section class="bg-[var(--color-warm-dark)] py-12 md:py-16">
-      <div class="mx-auto max-w-7xl px-6 text-center">
-        <p class="section-label mb-3 text-[var(--color-accent-dark)]">POUR T'ENGAGER</p>
+    <section id="tarif" class="bg-[var(--color-warm-dark)] py-16 md:py-24 scroll-mt-20">
+      <div class="mx-auto max-w-6xl px-6 text-center">
+        <p class="section-label mb-3 text-[var(--color-accent-dark)]">POUR NOUS REJOINDRE</p>
         <h2 class="text-3xl text-[var(--color-primary)] md:text-4xl">Le tarif</h2>
-        <div class="divider mx-auto mt-4 mb-8" style="background-color: var(--color-accent-dark);"></div>
+        <div class="divider mx-auto mt-4 mb-6" style="background-color: var(--color-accent-dark);"></div>
 
-        <p class="mb-5 text-base leading-relaxed text-[var(--color-text-medium)] md:text-lg">
-          La prochaine ouverture d'Énergie Illimitée aura lieu <strong class="text-[var(--color-text-light)]">fin 2026 — début 2027</strong>,<br />
-          avec un <strong class="text-[var(--color-text-light)]">tarif early bird réservé aux premières inscriptions</strong>.
+        <p class="mx-auto mb-14 max-w-3xl text-balance text-base leading-relaxed text-[var(--color-text-medium)] md:text-xl">
+          Session du <strong class="font-medium text-[var(--color-primary)]">15 février au 15 mai 2027</strong> : 3 mois d'accompagnement avec 2 stages en présentiel.
         </p>
 
-        <p class="mb-8 text-base leading-relaxed text-[var(--color-text-medium)] md:text-lg md:whitespace-nowrap">
-          Pour être informé(e) du tarif détaillé, des modalités et des places limitées : rejoins la liste d'attente.
-        </p>
+        <div class="mx-auto grid max-w-2xl gap-5 md:grid-cols-2 md:gap-5">
+          <div class="relative flex flex-col items-center justify-center rounded-2xl border-2 border-[var(--color-accent)] bg-[var(--color-surface)] px-6 py-6 shadow-md md:py-7">
+            <span class="absolute -top-3 rounded-full bg-[var(--color-accent)] px-4 py-1 text-xs font-medium uppercase tracking-[0.15em] text-[var(--color-surface)]">5 premières places</span>
+            <p class="text-sm uppercase tracking-[0.18em] text-[var(--color-accent)]">Tarif early bird</p>
+            <p class="mt-3 font-['Josefin_Sans',sans-serif] text-4xl text-[var(--color-accent)] md:text-5xl" style="font-weight: 300;">1&nbsp;480&nbsp;€</p>
+            <p class="mt-3 text-sm text-[var(--color-text-medium)]">soit 470&nbsp;€ de moins que le tarif normal</p>
+          </div>
+          <div class="flex flex-col items-center justify-center rounded-2xl border-2 border-transparent bg-[var(--color-surface)]/60 px-6 py-6 md:py-7">
+            <p class="text-sm uppercase tracking-[0.18em] text-[var(--color-text-light)]">Tarif normal</p>
+            <p class="mt-3 font-['Josefin_Sans',sans-serif] text-4xl text-[var(--color-primary)] md:text-5xl" style="font-weight: 300;">1&nbsp;950&nbsp;€</p>
+          </div>
+        </div>
 
-        <a href={waitlistUrl} target="_blank" rel="noopener noreferrer" class="btn-accent">
-          Rejoindre la liste d'attente
-        </a>
+        <div class="mx-auto mt-8 flex max-w-5xl flex-col items-center gap-1.5 text-base text-[var(--color-text-medium)] md:flex-row md:justify-center md:gap-6">
+          <p>Payable en <strong class="font-medium text-[var(--color-primary)]">1x, 3x ou 6x sans frais</strong></p>
+          <span class="hidden md:inline" aria-hidden="true">·</span>
+          <p>Facture sur demande si paiement par une société</p>
+        </div>
+
+        <div class="mx-auto mt-16 max-w-5xl rounded-2xl bg-[var(--color-surface)]/70 p-6 text-left md:p-10">
+          <p class="mb-5 text-center text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-accent-dark)]">Ce que comprend le programme</p>
+          <ul class="grid gap-x-12 gap-y-4 md:grid-cols-2">
+            {tarifRecap.map((item) => (
+              <li class="flex items-start gap-3 text-[15px] leading-snug text-[var(--color-text-medium)]">
+                <svg class="mt-0.5 shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5" /></svg>
+                <span><strong class="font-medium text-[var(--color-primary)]">{item.lead}</strong> {item.text}</span>
+              </li>
+            ))}
+          </ul>
+          <p class="mt-6 border-t border-[var(--color-border)] pt-4 text-sm leading-relaxed text-[var(--color-text-light)]">
+            *Dans le tarif : la privatisation des salles des stages, les enseignements et les transmissions pour les 2 stages.<br />
+            Non inclus : transport, <a href="#stages-presentiel" class="underline decoration-1 underline-offset-2 transition-colors hover:text-[var(--color-accent)]">hébergement en pension complète</a> (des options seront proposées et le transport pourra être mutualisé entre participants).
+          </p>
+        </div>
+
+        <p class="mx-auto mt-14 mb-7 max-w-xl text-base leading-relaxed text-[var(--color-text-medium)] md:text-lg">
+          Les inscriptions sont ouvertes. Une question avant de te lancer ? Prends un appel avec Claire.
+        </p>
+        <div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <a href={registrationUrl} target="_blank" rel="noopener noreferrer" class="btn-accent">Je m'inscris</a>
+          <a href={calendarUrl} target="_blank" rel="noopener noreferrer" class="btn-secondary">{t("ei.cta.secondary")}</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         11bis. RÉCAP DES BIENFAITS (rappel juste avant la FAQ)
+         ============================================ -->
+    <section class="bg-[var(--color-warm)] py-16 md:py-20">
+      <div class="mx-auto max-w-6xl px-6">
+        <p class="section-label mb-3 text-center text-[var(--color-accent)]">LES BIENFAITS</p>
+        <h2 class="text-center text-3xl md:text-4xl">En 3 mois, tu :</h2>
+        <div class="divider mx-auto mt-6 mb-10" style="background-color: var(--color-accent);"></div>
+        <div class="grid gap-5 md:grid-cols-3 md:gap-6">
+          {recapBenefits.map((b) => (
+            <div class="rounded-lg border border-[var(--color-border)] border-t-[3px] bg-[var(--color-surface)] p-5 shadow-sm md:p-6" style={`border-top-color: ${b.color};`}>
+              <h3 class="text-lg" style={`color: ${b.color};`}>{b.title}</h3>
+              <ul class="mt-4 space-y-3">
+                {b.items.map((item) => (
+                  <li class="flex items-start gap-2.5 text-[15px] leading-relaxed text-[var(--color-text-medium)]">
+                    <span class="mt-[5px] flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-full text-[8px] text-white" style={`background-color: ${b.color};`}>✓</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+        <p class="mx-auto mt-10 max-w-2xl text-balance text-center text-lg leading-relaxed text-[var(--color-text-medium)] md:text-xl">Une énergie que tu mets au service de tes projets, de ton bien-être et de ta vie.</p>
       </div>
     </section>
 
@@ -935,10 +1272,9 @@ const faqs = [
         </p>
         <p class="mt-4 text-sm text-[var(--color-surface)]/60">Énergie Illimitée</p>
         <div class="mt-10 flex flex-col items-center gap-4">
-          <a href={waitlistUrl} target="_blank" rel="noopener noreferrer" class="btn-accent !bg-[var(--color-accent)] !border-[var(--color-accent)] hover:!bg-[var(--color-warm-dark)] hover:!border-[var(--color-warm-dark)] hover:!text-[var(--color-primary)]">{t("ei.cta")}</a>
-          <a href="mailto:hello@amawe.com" class="btn-secondary !bg-[var(--color-warm-dark)] !border-[var(--color-warm-dark)] !text-[var(--color-primary)] hover:!bg-[var(--color-primary)] hover:!border-[var(--color-primary)] hover:!text-[var(--color-surface)]">
-            Questions ? envoyer un email
-          </a>
+          <a href={registrationUrl} target="_blank" rel="noopener noreferrer" class="btn-accent !bg-[var(--color-accent)] !border-[var(--color-accent)] hover:!bg-[var(--color-warm-dark)] hover:!border-[var(--color-warm-dark)] hover:!text-[var(--color-primary)]">{lang === 'fr' ? "Je m'inscris à Énergie Illimitée" : t("ei.cta")}</a>
+          <a href={calendarUrl} target="_blank" rel="noopener noreferrer" class="btn-secondary !bg-[var(--color-warm-dark)] !border-[var(--color-warm-dark)] !text-[var(--color-primary)] hover:!bg-[var(--color-primary)] hover:!border-[var(--color-primary)] hover:!text-[var(--color-surface)]">{t("ei.cta.secondary")}</a>
+          <a href="mailto:hello@amawe.com" class="text-sm text-[var(--color-surface)]/70 underline decoration-1 underline-offset-4 hover:text-[var(--color-surface)]">Questions ? envoyer un email</a>
         </div>
       </div>
     </section>
