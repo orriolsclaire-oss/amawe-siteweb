@@ -111,6 +111,7 @@ const offres = [
     texte:
       "Restaurer ta vitalité physique, clarifier ton mental, renforcer ton équilibre émotionnel. Sortir du mode survie et mettre cette énergie au service de ce qui compte vraiment pour toi !",
     cta: "Inscriptions ouvertes",
+    highlight: true,
     href: "/energie-illimitee/",
     image: "/images/claire-ei-hero-coaching.webp",
     alt: "Programme Énergie Illimitée — Claire Orriols en animation, transmission en présentiel",
@@ -315,7 +316,12 @@ const offres = [
               href={o.href}
               target={o.href.startsWith("http") ? "_blank" : undefined}
               rel={o.href.startsWith("http") ? "noopener" : undefined}
-              class="group flex flex-col overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] transition-shadow hover:shadow-lg"
+              class:list={[
+                "group flex flex-col overflow-hidden rounded-2xl bg-[var(--color-surface)] transition-shadow hover:shadow-lg",
+                o.highlight
+                  ? "border border-[var(--color-accent)]/60 shadow-[0_10px_28px_-18px_rgba(206,118,106,0.35)]"
+                  : "border border-[var(--color-border)]",
+              ]}
             >
               <div class="relative">
                 <img
