@@ -190,12 +190,12 @@ const faqAfter = {
 }
 const faqPayment = {
   q: "Puis-je payer en plusieurs fois ?",
-  a: `<p>Oui, tu peux régler en 1x, 3x ou 6x sans frais. Une facture est possible sur demande si tu paies avec une société.</p><p class="mt-3">Le tarif early bird (1 480 €) est réservé aux 5 premières places. Ensuite, c'est le tarif normal (1 950 €).</p><p class="mt-3">Si le prix est un frein pour toi, écris-moi par mail à <a href="mailto:hello@amawe.com" class="underline decoration-1 underline-offset-2">hello@amawe.com</a> : on en discute, j'étudie chaque situation individuellement.</p>`,
+  a: `<p>Oui, tu peux régler en 1x, 3x ou 6x sans frais. Une facture est possible sur demande si tu paies avec une société.</p><p class="mt-3">Le tarif early bird (1 480 €) est réservé aux 5 premières places. Ensuite, c'est le tarif normal (1 950 €).</p><p class="mt-3">Une question sur le paiement, ou une situation particulière ? Écris-moi à <a href="mailto:hello@amawe.com" class="underline decoration-1 underline-offset-2">hello@amawe.com</a> : on en discute, j'étudie chaque situation individuellement.</p>`,
 }
 
 const faqCancel = {
   q: "Quelles sont les conditions d'annulation ?",
-  a: `<p>Tu disposes du <strong>délai légal de rétractation de 14 jours</strong> à partir de ton inscription.</p><p class="mt-3">Passé ce délai, aucune annulation ni aucun remboursement n'est possible (sauf cas de force majeure justifié) : le montant total est dû et, si tu as choisi de payer en plusieurs fois, chaque paiement commencé va jusqu'au bout.</p><p class="mt-3">Tu t'engages pour un parcours de 3 mois. Si tu ne peux pas être présent·e à un open-coaching, tu retrouves le replay et tu gardes le fil. Si tu ne peux pas venir à un stage, par choix ou par empêchement, il ne peut être ni remboursé ni décalé à un autre moment : les stages sont inclus dans le programme.</p>`,
+  a: `<p>Tu disposes du <strong>délai légal de rétractation de 14 jours</strong> à partir de ton inscription, si tu n'as pas encore eu accès au programme.</p><p class="mt-3">Passé ce délai, aucune annulation ni aucun remboursement n'est possible (sauf cas de force majeure justifié) : le montant total est dû et, si tu as choisi de payer en plusieurs fois, chaque paiement commencé va jusqu'au bout.</p><p class="mt-3">Tu t'engages pour un parcours de 3 mois. Si tu ne peux pas être présent·e à un open-coaching, tu retrouves le replay et tu gardes le fil. Si tu ne peux pas venir à un stage, par choix ou par empêchement, il ne peut être ni remboursé ni décalé à un autre moment : les stages sont inclus dans le programme.</p>`,
 }
 
 const faqs = [
@@ -386,11 +386,11 @@ const faqColumns = [faqs.slice(0, faqHalf), faqs.slice(faqHalf)]
               </li>
               <li class="flex items-start gap-3">
                 <span class="mt-[0.55em] h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[var(--color-accent)]"></span>
-                <span class="text-base text-[var(--color-text-medium)]"><strong class="font-bold text-[var(--color-primary)]">{lang === 'fr' ? '2 stages en présentiel' : 'In-person retreats'}</strong></span>
+                <span class="text-base text-[var(--color-text-medium)]"><strong class="font-bold text-[var(--color-primary)]">{lang === 'fr' ? '2 stages en présentiel' : 'In-person retreats'}</strong>{lang === 'fr' && ' proche de Montpellier'}</span>
               </li>
               <li class="flex items-start gap-3">
                 <span class="mt-[0.55em] h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[var(--color-accent)]"></span>
-                <span class="text-base text-[var(--color-text-medium)]"><strong class="font-bold text-[var(--color-primary)]">{lang === 'fr' ? 'Un groupe qui te soutient' : 'A supportive group'}</strong></span>
+                <span class="text-base text-[var(--color-text-medium)]"><strong class="font-bold text-[var(--color-primary)]">{lang === 'fr' ? 'Un groupe qui te soutient' : 'A supportive group'}</strong>{lang === 'fr' && ' tout au long du parcours'}</span>
               </li>
             </ul>
           </div>
