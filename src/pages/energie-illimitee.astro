@@ -560,7 +560,7 @@ const faqColumns = [faqs.slice(0, faqHalf), faqs.slice(faqHalf)]
             return (
               <div class="flex flex-col rounded-lg border border-[var(--color-border)] border-t-[3px] bg-[var(--color-surface)] p-5 shadow-sm transition-all hover:shadow-md sm:p-6" style={`border-top-color: ${c}`}>
                 <!-- Numero + Picto SVG -->
-                <div class="mb-4 flex items-center justify-between">
+                <div class="mb-4 flex items-center gap-3">
                   <span class="font-['Josefin_Sans',sans-serif] text-4xl font-light" style={`color: ${c}`}>{pillar.num}</span>
                   <svg width="30" height="30" viewBox="0 0 44 44" fill="none" stroke={c} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     {i === 0 && (
