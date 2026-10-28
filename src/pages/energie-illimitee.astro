@@ -110,7 +110,7 @@ const formatTimeline = [
 const tarifRecap = [
   { lead: "3 mois d'accompagnement", text: "du 15 février au 15 mai 2027" },
   { lead: "Suivi individuel mensuel", text: "avec Claire" },
-  { lead: "Open-coaching", text: "en live chaque mardi soir" },
+  { lead: "13 sessions d'open-coaching", text: "en live chaque mardi soir" },
   { lead: "2 stages en présentiel*", text: "19-21 février et 6-9 mai, à 30 min de Montpellier" },
   { lead: "Bibliothèque de contenus en illimité", text: "vidéos et PDF, même après les 3 mois" },
   { lead: "Un petit groupe", text: "de 10 à 20 personnes" },
@@ -144,6 +144,25 @@ const recapBenefits = [
       "Une capacité à réguler ton système nerveux selon les situations",
       "Un rapport à soi plus apaisé, une satisfaction et une confiance boostée",
     ],
+  },
+]
+
+// Extraits de témoignages affichés dans le mini bandeau sous le haut de page
+const miniTestimonials = [
+  {
+    quote: "Une étoile de plus dans la constellation « énergie ». Et <strong>quand t'es à deux étoiles et demi d'énergie depuis 10 ans, de passer à quasiment 4 étoiles, c'est juste ouf.</strong> En moins de six mois..",
+    author: "Participant",
+    color: "var(--color-accent)",
+  },
+  {
+    quote: "Le programme Énergie Illimitée est le <strong>plus beau cadeau que je pouvais me faire.</strong> Claire a une connaissance très impressionnante du corps dans tous ses états.",
+    author: "Annie",
+    color: "var(--color-blush)",
+  },
+  {
+    quote: "Sur le <strong>plan émotionnel et mindset</strong>, ce programme a été une grande <strong>révélation</strong>.",
+    author: "Pauline",
+    color: "var(--color-sage)",
   },
 ]
 
@@ -400,6 +419,22 @@ const faqColumns = [faqs.slice(0, faqHalf), faqs.slice(faqHalf)]
         <div class="mt-12 flex justify-center md:mt-16">
           <a href={registrationUrl} target="_blank" rel="noopener noreferrer" class="btn-accent">{lang === 'fr' ? "Je m'inscris" : 'Join the waitlist'}</a>
         </div>
+      </div>
+    </section>
+
+    <!-- Mini bandeau : extraits de témoignages -->
+    <section class="bg-[var(--color-warm-dark)]/40 py-8 md:py-10" aria-label="Extraits de témoignages">
+      <div class="mx-auto flex max-w-6xl snap-x snap-mandatory gap-4 overflow-x-auto px-6 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:grid md:grid-cols-3 md:overflow-visible md:pb-0">
+        {miniTestimonials.map((m) => (
+          <figure class="flex w-[82%] shrink-0 snap-center flex-col rounded-lg border border-l-[3px] border-[var(--color-border)] bg-[var(--color-surface)] p-4 shadow-sm md:w-auto md:shrink" style={`border-left-color: ${m.color};`}>
+            <div class="font-['Josefin_Sans',sans-serif] text-3xl leading-none" style={`color: ${m.color};`}>"</div>
+            <p class="mt-1 flex-1 text-[13px] leading-relaxed text-[var(--color-text-medium)] [&_strong]:font-bold [&_strong]:text-[var(--color-primary)]" set:html={m.quote}></p>
+            <figcaption class="mt-3 flex items-center gap-2 border-t border-[var(--color-border)] pt-2.5">
+              <span class="h-1.5 w-1.5 rounded-full" style={`background-color: ${m.color};`}></span>
+              <span class="text-xs font-medium text-[var(--color-primary)]">{m.author}</span>
+            </figcaption>
+          </figure>
+        ))}
       </div>
     </section>
 
